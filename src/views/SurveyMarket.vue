@@ -1,18 +1,15 @@
 <template>
   <span>
     <MarketJumbo></MarketJumbo>
-    <MarketContext></MarketContext>
   </span>
 </template>
 
 <script>
   import MarketJumbo from '@/components/MarketJumbo'
-  import MarketContext from '@/components/MarketContext'
 
   export default {
     components: {
       MarketJumbo,
-      MarketContext
     }
   }
 </script>

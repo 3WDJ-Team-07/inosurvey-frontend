@@ -8,7 +8,7 @@
         <v-flex xs12 sm12 md6 class="pa-4" v-for="card in cardFeatures" :key="card.title" fill-height>
            <v-card flat heigth="100%" class="elevation-0">
               <v-responsive>
-                <v-img :src="card.img" height="300px">
+                <v-img height="300px">
                   <v-container fill-height fluid>
                     <v-layout fill-height>
                       <v-flex xs12 align-end flexbox>

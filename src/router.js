@@ -3,8 +3,9 @@ import Router from 'vue-router'
 import Home from '@/views/Home'
 import Services from '@/views/Services'
 import Market from '@/views/Market'
+import SurveyMarket from '@/views/SurveyMarket'
 import Join from '@/views/Join'
-
+import Login from '@/views/Login'
 
 Vue.use(Router)
 
@@ -26,6 +27,16 @@ const router =  new Router({
       path: '/market',
       name: 'market',
       component: Market
+    },
+    {
+      path: '/surveyMarket',
+      name: 'surveyMarket',
+      component: SurveyMarket
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     },
     {
       path: '/join',

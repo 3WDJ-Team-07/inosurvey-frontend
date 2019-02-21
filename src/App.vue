@@ -2,7 +2,7 @@
   <v-app>
    <Navbar></Navbar> 
    <v-content transition="slide-x-transition" class="ma-0 pa-0">
-      <v-fade-transition mode="out-in">
+      <v-fade-transition name="fade" mode="out-in">
         <router-view></router-view>
       </v-fade-transition>
    </v-content>
@@ -29,4 +29,5 @@ export default {
 </script>
 
 <style>
+
 </style>

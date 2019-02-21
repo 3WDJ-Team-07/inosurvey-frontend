@@ -4,7 +4,7 @@
             <v-flex xs12 sm8 md4>
                 <v-card class="elevation-12">
                     <v-toolbar dark color="primary">
-                        <v-toolbar-title>Join Form</v-toolbar-title>
+                        <v-toolbar-title>SingIN Form</v-toolbar-title>
                     </v-toolbar>
                     <v-card-text>
                         <v-form ref="form" v-model="valid" lazy-validation>
@@ -18,7 +18,7 @@
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="primary" :disabled="!valid" @click="submit">Join</v-btn>
+                        <v-btn color="primary" :disabled="!valid" @click="submit">LOGIN</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-flex>
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-    name: 'Join',
+    name: 'Signin',
     data() {
         return {
             valid: false,
@@ -49,7 +49,7 @@ export default {
     methods: {
         submit() {
             if (this.$refs.form.validate()) {
-                this.$store.dispatch('userJoin', {
+                this.$store.dispatch('userLogin', {
                     email: this.email,
                     password: this.password
                 });

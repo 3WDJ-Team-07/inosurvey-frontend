@@ -1,6 +1,6 @@
 <template>
   <v-fade-transition mode="out-in">
-    <v-layout row wrap v-if="namespace" :key="$route.path" :src="heroImage">
+    <v-layout row wrap v-if="namespace" :key="$route.path">
       <v-flex xs12 sm12 md6>
         <v-card dark tile flat color="primary" height="70vh">
           <v-card-text>응답자</v-card-text>
