@@ -1,13 +1,21 @@
 <template>
-  <HelloWorld />
+  <span>
+    <Jumbotron></Jumbotron>
+    <HomeContext></HomeContext>  
+    <HomeIntroduce></HomeIntroduce>
+  </span>
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
+  import Jumbotron from '@/components/Jumbotron'
+  import HomeContext from '@/components/HomeContext'
+  import HomeIntroduce from '@/components/HomeIntroduce'
 
   export default {
     components: {
-      HelloWorld
+      Jumbotron,
+      HomeContext,
+      HomeIntroduce
     }
   }
 </script>

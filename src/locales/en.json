@@ -1,3 +1,155 @@
 {
-  "message": "hello i18n !!"
+  "Footer": {
+    "company": "INO-SURVEY",
+    "services": "Services",
+    "projects": "Projects",
+    "ourTeam": "Our Team",
+    "community": "Commitment to the Community",
+    "rights": "All Rights reserved.",
+    "text": "hicula lacinia malesuamhicada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus ecada. Nulla placerat augue vel ipsum ultrices."
+  },
+  "View": {
+    "items": [
+      {
+        "to": "/",
+        "text": "Home"
+      },
+      {
+        "to": "/services",
+        "text": "Services"
+      },
+      {
+        "to": "/market",
+        "text": "Market"
+      },
+      {
+        "to": "/join",
+        "text": "Join"
+      }
+    ]
+  },
+  "Contact": {
+    "jumbotronTitle": "Contact Alpha Construction",
+    "jumbotronSubTitle": "Get in touch with our Support Staff",
+    "heading1": "We\"d Love to Hear From You!",
+    "headingText1": "To request more informaiton, please fill out and submit the form below",
+    "phone": "(561) 284 - 5555",
+    "address": "555 Main Street",
+    "cityState": "Boca Raton, FL",
+    "zip": "33555",
+    "submit": "Submit"
+  },
+  "Home": {
+    "jumbotronTitle": "투명하고 신뢰있는 인기 설문조사 INO-Survey",
+    "jumbotronSubTitle": "나에게 필요한 답을 찾으세요",
+    "cardFeatures": [
+      {
+        "title": "Award-winning architecture",
+        "text": "Every achievement begins with a vision. It is built on a foundation of creative concepts and dreams to become something bigger and better. At AlphaConstruction",
+        "img": "/static/feature4.jpg"
+      },
+      {
+        "title": "Relentless  of your vision",
+        "text": "Our commitment to excellence and continous improvement, to building lasting relationships with our clients, and to the team members who create your visionasdf",
+        "img": "/static/feature4.jpg"
+      },
+      {
+        "title": "Your vision - Our mission",
+        "text": "To build an everlasting environment of trust with our clients and team members that will foster customer loyalty by delivering superior service and quality projects.",
+        "img": "/static/feature4.jpg"
+      },
+      {
+        "title": "Award-as architecture",
+        "text": "Every achievement begins with a vision. It is built on a foundation of creative concepts and dreams to become something bigger and better. At AlphaConstruction",
+        "img": "/static/feature4.jpg"
+      }
+    ],
+    "testimonialsTitle": "Testimonials",
+    "testimonials": [
+      {
+        "author": "Nancy Swanson",
+        "title": "President, Springfield Country Club",
+        "quote": "Leverage agile frameworks to provide a robust synopsis for high level over Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment."
+      },
+      {
+        "author": "Jason Schraiber",
+        "title": "Mayor, Boca Raton",
+        "quote": "Leverage agile frameworks to provide a robust synopsis for high level over Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment."
+      },
+      {
+        "author": "Joe Malonagi",
+        "title": "General Manager, Springfield Tower",
+        "quote": "The complexities and challenges AlphaConstruction successfully overcame on our behalf includes substantial permit obstacles, coordination and selection support of all design and finish materials, and the diffculty of integrating existing and new structures."
+      }
+    ]
+  },
+  "Projects": {
+    "jumbotronTitle": "Building a Culture of Excellence",
+    "jumbotronSubTitle": "Relentlessly advancing our clients\" visions, beyond their expectations",
+    "categories": [
+      {
+        "text": "All",
+        "filter": null
+      },
+      {
+        "text": "Skyscrapers",
+        "filter": 1
+      },
+      {
+        "text": "Government",
+        "filter": 2
+      },
+      {
+        "text": "Customized",
+        "filter": 3
+      }
+    ],
+    "projects": [
+      {
+        "name": "Lorem Ipsum",
+        "img": "project1.jpg",
+        "categories": [1, 3]
+      },
+      {
+        "name": "Lorem Ipsum",
+        "img": "project2.jpg",
+        "categories": [2, 3]
+      },
+      {
+        "name": "Lorem Ipsum",
+        "img": "project3.jpg",
+        "categories": [4, 3]
+      },
+      {
+        "name": "Lorem Ipsum",
+        "img": "project4.jpg",
+        "categories": [1, 2]
+      },
+      {
+        "name": "Lorem Ipsum",
+        "img": "project5.jpg",
+        "categories": [2, 4]
+      },
+      {
+        "name": "Lorem Ipsum",
+        "img": "project6.jpg",
+        "categories": [1, 4]
+      }
+    ]
+  },
+  "Services": {
+    "jumbotronTitle": "ASCC - Alpha Software Compute Cloud",
+    "jumbotronSubTitle": "Launch applications when needed without upfront commitments.",
+    "heading1": "Realtime Global Deployments",
+    "headingText1": "Te dolor consul mei, etiam molestie indoctum usu ad, qui inermis eleifend an. Pro iriure alienum incorrupte ex, cu diceret moderatius mei. Te corrumpit posidonium sit, in cum nonumy utamur. Usu impedit patrioque vituperatoribus ei, cu voluptua nominati philosophia mel. Sea at legendos percipitur, nulla dicant convenire ne duo. Veniam epicuri vis cu, ea pri alii ceteros fierent.",
+    "heading2": "Focus On What Drives Your Business",
+    "headingText2a": "Lorem ipsum dolor sit amet, ea mutat tation constituam per, mei error ocurreret definiebas ne. Te harum constituto inciderint his. Vis no delenit mediocritatem. His et debet possim perpetua, assum argumentum ne quo, constituto eloquentiam sea ne. Ne has ludus graecis fabellas.",
+    "headingText2b": "Ei est iriure partiendo, ius falli tritani accumsan ad, mea altera eripuit fierent ut. Te quem legere fastidii ius. Ei vis quod qualisque, ignota nemore cotidieque mea eu. Scripta labitur ei vel, mei case quidam corpora no, est dico sale utroque ne. Eu erroribus delicatissimi eum, ut quem veri tincidunt vim.",
+    "headingText2c": "Velit eruditi an est, cu eius graeci sed. Vel ei dolorem sapientem temporibus. No his omnes meliore maiestatis, mei iisque molestiae gubergren ex. Usu placerat liberavisse et, eam dicta blandit evertitur an. Ea vim fabellas indoctum maiestatis.",
+    "testimonial": {
+      "author": "Jay Oakerson",
+      "title": "CEO Abocado",
+      "quote": "With Alpha Software powering all of our customer-facing services and ASCC, helping us monitor and understand application performance, Abocado is in great shape to create and release new products."
+    }
+  }
 }

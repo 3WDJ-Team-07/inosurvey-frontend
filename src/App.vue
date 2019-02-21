@@ -1,38 +1,32 @@
 <template>
   <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-toolbar>
-
-    <v-content>
-      <HelloWorld/>
-    </v-content>
+   <Navbar></Navbar> 
+   <v-content transition="slide-x-transition" class="ma-0 pa-0">
+      <v-fade-transition mode="out-in">
+        <router-view></router-view>
+      </v-fade-transition>
+   </v-content>
+   <Footer></Footer>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  },
-  data () {
-    return {
-      //
+    name: 'App',
+    components:{
+      Navbar,
+      Footer
+    },
+    watch: {
+      '$route': function () {
+        this.$vuetify.goTo(0)
+      }
     }
-  }
-}
+};
 </script>
+
+<style>
+</style>
