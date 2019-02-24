@@ -1,7 +1,7 @@
 <template>
   <v-fade-transition mode="out-in">
     <v-img src="/static/main.png" v-if="namespace" :key="$route.path"  height="100vh"
-    gradient="to bottom,  rgba(128, 128, 128, .9),rgba(128, 128, 128, .8),rgba(0, 0, 0, .6), rgba(0, 0, 0, .8)">
+    gradient="to bottom,  rgba(128, 128, 128, .9), rgba(128, 128, 128, .8), rgba(0, 0, 0, .6), rgba(0, 0, 0, .8)">
       <v-fade-transition mode="out-in">
         <v-container v-if="isBooted" :key="$route.path" fill-height>
           <v-layout align-center>
@@ -27,7 +27,6 @@
     data: () => ({
       isBooted: false
     }),
-
     computed: {
       isHome () {
         return this.$route.path === '/'
@@ -42,7 +41,6 @@
         return this.$t(`${this.namespace}.jumbotronSubTitle`)
       },
     },
-
     mounted () {
       setTimeout(() => {
         this.isBooted = true

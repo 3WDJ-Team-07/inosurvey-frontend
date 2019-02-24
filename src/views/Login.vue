@@ -21,8 +21,6 @@
         </v-card-text>
         <v-card-actions>
           <v-btn :loading="loading" :disabled="loading" color="grey" block outline @click="loader ='loading'" >LOGIN</v-btn>
-
-
         </v-card-actions>
       </v-card>
     </v-dialog>

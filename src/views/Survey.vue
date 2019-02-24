@@ -1,7 +1,7 @@
 <template>
   <v-container fluid grid-list-md fill-height class="pa-5 mt-5">
-    <v-layout row wrap align-center justify-center>
-      <v-flex d-flex xs12 sm6 md5>
+    <v-layout row wrap align-center justify-center class="ml-5">
+      <v-flex d-flex xs12 sm6 md6 lg5 xl4>
         <v-hover>
           <v-card slot-scope="{ hover }" color="grey lighten-4" max-width="600">
             <v-img :aspect-ratio="16/12" src="/static/respond.png">
@@ -16,7 +16,7 @@
           </v-card>
         </v-hover>
       </v-flex>
-      <v-flex d-flex xs12 sm6 md5>
+      <v-flex d-flex xs12 sm6 md6 lg5 xl4>
         <v-hover>
           <v-card slot-scope="{ hover }" color="grey lighten-4" max-width="600">
             <v-img :aspect-ratio="16/12" src="/static/request.png">

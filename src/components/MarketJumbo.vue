@@ -26,7 +26,6 @@
     data: () => ({
       isBooted: false
     }),
-
     computed: {
       isHome () {
         return this.$route.path === '/'
@@ -44,7 +43,6 @@
         return `/static/${this.namespace.toLowerCase()}-hero.png`
       }
     },
-
     mounted () {
       setTimeout(() => {
         this.isBooted = true

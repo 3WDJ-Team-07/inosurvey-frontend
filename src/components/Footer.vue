@@ -1,7 +1,13 @@
 <template>
   <v-footer height="auto">
-    <v-container fill-height grid-list-lg>
-      <v-layout row justify-center align-center wrap>
+    <v-container 
+    fill-height 
+    grid-list-lg>
+      <v-layout 
+      row 
+      justify-center 
+      align-center 
+      wrap>
         <v-flex xs12 sm12 md7>
           <v-card-text class="black--text pa-3">
             {{ $t('Footer.text')}}
