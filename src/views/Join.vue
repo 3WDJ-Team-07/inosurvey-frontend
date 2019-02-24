@@ -1,29 +1,71 @@
 <template>
-    <v-container fill-height>
-        <v-layout align-center justify-center>
-            <v-flex xs12 sm8 md4>
-                <v-card class="elevation-12">
-                    <v-toolbar dark color="primary">
-                        <v-toolbar-title>Join Form</v-toolbar-title>
-                    </v-toolbar>
-                    <v-card-text>
-                        <v-form ref="form" v-model="valid" lazy-validation>
-                            <v-text-field prepend-icon="person" name="email" label="Email" type="email"
-                                          v-model="email" :rules="emailRules" required>
-                            </v-text-field>
-                            <v-text-field prepend-icon="lock" name="password" label="Password" id="password"
-                                          type="password" required v-model="password" :rules="passwordRules">
-                            </v-text-field>
-                        </v-form>
-                    </v-card-text>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn color="primary" :disabled="!valid" @click="submit">Join</v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-flex>
-        </v-layout>
-    </v-container>
+   <v-fade-transition mode="out-in">
+    <v-container fluid mt-5><v-layout row wrap :key="$route.path">
+
+      <v-flex xs12 sm12 md7 class="pa-5">
+        <v-card tile flat color="#FAFAFA" height="100vh">
+          <v-card-text>
+             <v-card-text>
+          <v-text-field
+            placeholder="John Doe"
+            required
+          ></v-text-field>
+          <v-text-field
+            placeholder="Snowy Rock Pl"
+            counter="25"
+            required
+          ></v-text-field>
+          <v-text-field
+            placeholder="El Paso"
+            required
+          ></v-text-field>
+          <v-text-field
+            required
+            placeholder="TX"
+          ></v-text-field>
+          <v-text-field
+            required
+            placeholder="79938"
+          ></v-text-field>
+          <v-autocomplete
+            placeholder="Select..."
+            required
+          ></v-autocomplete>
+        <v-card-actions>
+          <v-slide-x-reverse-transition>
+            <v-tooltip
+              right
+            >
+              <v-btn
+                slot="activator"
+                icon
+                class="my-0"
+              >
+                <v-icon>refresh</v-icon>
+              </v-btn>
+              <span>Refresh form</span>
+            </v-tooltip>
+          </v-slide-x-reverse-transition>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" text >Submit</v-btn>
+        </v-card-actions>
+        </v-card-text>
+            
+          </v-card-text>
+        </v-card>
+      </v-flex>
+      <v-flex xs12 sm12 md5>
+        <v-card tile flat height="100vh" color="#FAFAFA">
+          <v-card-text class="home-hero">
+              <v-card-title primary-title >
+                  <h2 class="white--text">어떤 것을 알아보고 싶으세요?</h2>
+              </v-card-title>
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout></v-container>
+    
+  </v-fade-transition>
 </template>
 
 <script>
@@ -31,33 +73,18 @@ export default {
     name: 'Join',
     data() {
         return {
-            valid: false,
-            email: '',
-            password: '',
-            emailRules: [
-                v => !!v || '이메일을 입력하세요',
-                v => /.+@.+/.test(v) || '이메일 형식으로 입력하세요' // 전자 메일 주소의 유효성을 검사하기 위해 내용이 기본 RegExp와 일치하는지 확인
-            ],
-            passwordRules: [
-                v => !!v || '비밀번호를 입력하세요',
-                v =>
-                    v.length >= 6 ||
-                    '6자 이상으로 입력해주세요'
-            ]
+        
         };
     },
-    methods: {
-        submit() {
-            if (this.$refs.form.validate()) {
-                this.$store.dispatch('userJoin', {
-                    email: this.email,
-                    password: this.password
-                });
-            }
-        }
-    }
+    
 };
 </script>
 
 <style scoped>
+.home-hero {
+    background: url('http://source.unsplash.com/bG3M_acL-Ao');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
 </style>

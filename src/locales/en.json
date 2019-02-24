@@ -44,22 +44,22 @@
     "jumbotronSubTitle": "나에게 필요한 답을 찾으세요",
     "cardFeatures": [
       {
-        "title": "Award-winning architecture",
+        "title": "설문조사 만들기",
         "text": "Every achievement begins with a vision. It is built on a foundation of creative concepts and dreams to become something bigger and better. At AlphaConstruction",
         "img": "/static/feature4.jpg"
       },
       {
-        "title": "Relentless  of your vision",
+        "title": "설문결과 분석",
         "text": "Our commitment to excellence and continous improvement, to building lasting relationships with our clients, and to the team members who create your visionasdf",
         "img": "/static/feature4.jpg"
       },
       {
-        "title": "Your vision - Our mission",
+        "title": "설문 응답",
         "text": "To build an everlasting environment of trust with our clients and team members that will foster customer loyalty by delivering superior service and quality projects.",
         "img": "/static/feature4.jpg"
       },
       {
-        "title": "Award-as architecture",
+        "title": "마켓 플레이스",
         "text": "Every achievement begins with a vision. It is built on a foundation of creative concepts and dreams to become something bigger and better. At AlphaConstruction",
         "img": "/static/feature4.jpg"
       }

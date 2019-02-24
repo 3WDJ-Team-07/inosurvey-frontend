@@ -1,37 +1,43 @@
 <template>
-    <v-container fill-height>
-        <v-layout align-center justify-center>
-            <v-flex xs12 sm8 md4>
-                <v-card class="elevation-12">
-                    <v-toolbar dark color="primary">
-                        <v-toolbar-title>SingIN Form</v-toolbar-title>
-                    </v-toolbar>
-                    <v-card-text>
-                        <v-form ref="form" v-model="valid" lazy-validation>
-                            <v-text-field prepend-icon="person" name="email" label="Email" type="email"
-                                          v-model="email" :rules="emailRules" required>
-                            </v-text-field>
-                            <v-text-field prepend-icon="lock" name="password" label="Password" id="password"
-                                          type="password" required v-model="password" :rules="passwordRules">
-                            </v-text-field>
-                        </v-form>
-                    </v-card-text>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn color="primary" :disabled="!valid" @click="submit">LOGIN</v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-flex>
-        </v-layout>
-    </v-container>
+  <v-layout row justify-center>
+    <v-dialog v-model="this.$store.state.dialog" persistent max-width="500px">
+      <v-card>
+        <v-toolbar dark color="primary">
+            <v-toolbar-title >LOGIN</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <span class="headline" @click="this.$store.state.dialog == false"><i class="far fa-times-circle"></i></span>
+        </v-toolbar>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field prepend-icon="person" name="email" label="Email" type="email" v-model="email" :rules="emailRules" required></v-text-field>
+              </v-flex>
+              <v-flex xs12> 
+                <v-text-field prepend-icon="lock" name="password" label="Password" id="password" type="password" required v-model="password" :rules="passwordRules"></v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn :loading="loading" :disabled="loading" color="grey" block outline @click="loader ='loading'" >LOGIN</v-btn>
+
+
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-layout>
 </template>
 
 <script>
-export default {
-    name: 'Signin',
+  export default {
+    name: 'Login',
     data() {
-        return {
-            valid: false,
+      return {
+        dialog: false,
+        loader: null,
+        loading: false,
+        valid: false,
             email: '',
             password: '',
             emailRules: [
@@ -44,20 +50,40 @@ export default {
                     v.length >= 6 ||
                     '6자 이상으로 입력해주세요'
             ]
-        };
+      }
+    },
+    watch: {
+      loader () {
+        const l = this.loader
+        this[l] = !this[l]
+        setTimeout(() => (this[l] = false), 2000)
+        this.loader = null
+      }
     },
     methods: {
         submit() {
             if (this.$refs.form.validate()) {
-                this.$store.dispatch('userLogin', {
+                this.$store.dispatch('userJoin', {
                     email: this.email,
                     password: this.password
                 });
             }
-        }
+        },
     }
-};
+  }
 </script>
 
 <style scoped>
+    .custom-loader {
+    animation: loader 1s infinite;
+    display: flex;
+  }
+  @-moz-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 </style>

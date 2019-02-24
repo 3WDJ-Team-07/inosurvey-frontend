@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    drawer : null
+    drawer : null,
+    dialog : false
   },
   mutations: {
     setDrawer: set('drawer'),
