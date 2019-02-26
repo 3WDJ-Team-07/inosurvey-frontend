@@ -8,7 +8,7 @@
       <v-btn :active-class="!isScrolling ? 'white--text' : undefined" to="/market" flat class="title">Market</v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>
-    <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'white--text' : undefined" @click="dialogChange" flat outline class="subheading">Login</v-btn>
+    <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'white--text' : undefined" @click="LoginDialogChange" flat outline class="subheading">Login</v-btn>
     <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'white--text' : undefined" to="/join" flat outline class="subheading">Sign Up</v-btn>
     <v-btn v-if="!$vuetify.breakpoint.mdAndUp" icon @click="toggleDrawer">
       <v-icon color="white">menu</v-icon>
@@ -31,7 +31,7 @@
       }
     },
     methods: {
-      ...mapMutations(['toggleDrawer','dialogChange']),
+      ...mapMutations(['toggleDrawer','LoginDialogChange']),
       onScroll () {
         this.isScrolling = (window.pageYOffset ||
           document.documentElement.scrollTop || 0) > 100

@@ -5,7 +5,7 @@
         <v-toolbar dark color="primary">        
             <v-toolbar-title >LOGIN</v-toolbar-title>
             <v-spacer></v-spacer>
-            <span class="headline" @click="dialogChange"><i class="far fa-times-circle"></i></span>
+            <span class="headline" @click="LoginDialogChange"><i class="far fa-times-circle"></i></span>
         </v-toolbar>
         <v-card-text>
           <v-container grid-list-md>
@@ -28,11 +28,12 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
   export default {
     name: 'Login',
     data() {
       return {
-        dialog: false,
         loader: null,
         loading: false,
         valid: false,
@@ -59,6 +60,7 @@
       }
     },
     methods: {
+      ...mapMutations(['LoginDialogChange']),
         submit() {
             if (this.$refs.form.validate()) {
                 this.$store.dispatch('userJoin', {
@@ -67,9 +69,6 @@
                 });
             }
         },
-        dialogChange(){
-          this.$store.commit('dialogChange')
-        }
     },
   }
 </script>

@@ -5,8 +5,8 @@
             <v-flex xs12 class="text-xs-center display-1 font-weight-black ">서비스 소개</v-flex>
         </v-layout>
       <v-layout align-center justify-center fill-height wrap class="pa-5">
-          <v-flex xs12 sm12 md6 xl5 class="pa-2" v-for="card in cardFeatures" :key="card.title">
-            <v-card color="white darken-2" class="white--text pa-3">
+          <v-flex xs12 sm12 md5 xl5 class="pa-2" v-for="card in cardFeatures" :key="card.title">
+            <v-card color="white darken-2" class="white--text pa-3" data-aos="fade-right" data-aos-delay="200" >
               <v-layout>
                 <v-flex xs5 class="pa-4">
                   <v-img class="roundedImg" src="/static/laptop.png" height="200px" contain></v-img>
