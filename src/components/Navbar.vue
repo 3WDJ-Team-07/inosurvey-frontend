@@ -1,7 +1,7 @@
 <template>
   <v-toolbar v-scroll="onScroll" app :flat="!isScrolling"
   :color="!isScrolling ? 'transparent' : '#ffffff'">
-    <router-link to="/"><img src="/static/logo.png"></router-link>
+    <router-link to="/"><img src="/static/logo.png" id="top"></router-link>
     <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp" >
       <v-btn :active-class="!isScrolling ? 'white--text' : undefined" to="/" flat class="title">Home</v-btn>
       <v-btn :active-class="!isScrolling ? 'white--text' : undefined" to="/survey" flat class="title">Survey</v-btn>

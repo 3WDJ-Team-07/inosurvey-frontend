@@ -6,7 +6,9 @@ import {store} from './store'
 import i18n from './i18n'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import VueScrollTo from 'vue-scrollto'
 
+Vue.use(VueScrollTo)
 Vue.config.productionTip = false
 
 new Vue({

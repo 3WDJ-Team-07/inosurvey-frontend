@@ -2,7 +2,7 @@
   <div>
     <v-container fluid grid-list-lg class="mt-3 mb-3">
       <v-layout row>
-            <v-flex xs12 class="text-xs-center display-1 font-weight-black ">서비스 소개</v-flex>
+            <v-flex xs12 class="text-xs-center display-1 font-weight-black " id="element">서비스 소개</v-flex>
         </v-layout>
       <v-layout align-center justify-center fill-height wrap class="pa-5">
           <v-flex xs12 sm12 md5 xl5 class="pa-2" v-for="card in cardFeatures" :key="card.title">

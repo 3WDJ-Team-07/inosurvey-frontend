@@ -13,7 +13,7 @@
               </v-flex>
             </v-fade-transition>
             <v-btn class="floating" absolute flat fab bottom right >
-              <v-icon class="grey--text" x-large>expand_more</v-icon>
+              <v-icon class="grey--text" x-large v-scroll-to="{ el: '#element',offset:-100,duration:2000}">expand_more</v-icon>
             </v-btn>
           </v-layout>
         </v-container>
