@@ -19,6 +19,7 @@
         </v-container>
       </v-fade-transition>
     </v-img>
+    
   </v-fade-transition>
 </template>
 

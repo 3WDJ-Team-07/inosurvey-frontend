@@ -8,10 +8,10 @@
       <v-btn :active-class="!isScrolling ? 'white--text' : undefined" to="/market" flat class="title">Market</v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>
-    <v-btn :active-class="!isScrolling ? 'white--text' : undefined"  @click="clickLogin" flat outline class="subheading">Login</v-btn>
-    <v-btn :active-class="!isScrolling ? 'white--text' : undefined" to="/join" flat outline class="subheading">Sign Up</v-btn>
-    <v-btn icon @click="toggleDrawer">
-      <v-icon>mdi-menu</v-icon>
+    <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'white--text' : undefined" @click="dialogChange" flat outline class="subheading">Login</v-btn>
+    <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'white--text' : undefined" to="/join" flat outline class="subheading">Sign Up</v-btn>
+    <v-btn v-if="!$vuetify.breakpoint.mdAndUp" icon @click="toggleDrawer">
+      <v-icon color="white">menu</v-icon>
     </v-btn>
   </v-toolbar>
 </template>
@@ -31,14 +31,11 @@
       }
     },
     methods: {
-      ...mapMutations(['toggleDrawer']),
+      ...mapMutations(['toggleDrawer','dialogChange']),
       onScroll () {
         this.isScrolling = (window.pageYOffset ||
           document.documentElement.scrollTop || 0) > 100
       },
-      clickLogin(){
-        this.$store.state.dialog == true
-      }
     }
   }
 </script>

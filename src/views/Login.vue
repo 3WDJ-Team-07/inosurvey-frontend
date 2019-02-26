@@ -2,10 +2,10 @@
   <v-layout row justify-center>
     <v-dialog v-model="this.$store.state.dialog" persistent max-width="500px">
       <v-card>
-        <v-toolbar dark color="primary">
+        <v-toolbar dark color="primary">        
             <v-toolbar-title >LOGIN</v-toolbar-title>
             <v-spacer></v-spacer>
-            <span class="headline" @click="this.$store.state.dialog == false"><i class="far fa-times-circle"></i></span>
+            <span class="headline" @click="dialogChange"><i class="far fa-times-circle"></i></span>
         </v-toolbar>
         <v-card-text>
           <v-container grid-list-md>
@@ -67,7 +67,10 @@
                 });
             }
         },
-    }
+        dialogChange(){
+          this.$store.commit('dialogChange')
+        }
+    },
   }
 </script>
 

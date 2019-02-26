@@ -1,6 +1,6 @@
 <template>
   <v-fade-transition mode="out-in">
-    <v-layout row wrap text-md-center>
+    <v-layout row wrap text-md-center text-xs-center>
       <v-flex xs12 sm12 md6>
         <v-card dark tile flat color="#29B6F6" height="75vh" class="pa-5">
           <v-card-text class="display-1 mt-2 mb-3 font-weight-black">응답자용</v-card-text>
@@ -15,7 +15,7 @@
           <v-btn color="white" class="grey--text mt-5" large>모든 서비스 보기</v-btn>
         </v-card>
       </v-flex>
-      <v-flex md12 text-md-center>
+      <v-flex md12 text-md-center text-xs-center>
             <v-card tile flat height="40vh" class="pa-5 mt-5" color='#FAFAFA'>
                 <v-card-text class="display-2">
                   궁금하지않으세요?
