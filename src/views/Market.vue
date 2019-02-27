@@ -1,17 +1,17 @@
 <template>
   <span>
-    <MarketJumbo></MarketJumbo>
+    <MarketJumbotron></MarketJumbotron>
     <MarketContext></MarketContext>
   </span>
 </template>
 
 <script>
-  import MarketJumbo from '@/components/MarketJumbo'
-  import MarketContext from '@/components/MarketContext'
+  import MarketJumbotron from '@/components/market/MarketJumbotron'
+  import MarketContext from '@/components/market/MarketContext'
 
   export default {
     components: {
-      MarketJumbo,
+      MarketJumbotron,
       MarketContext
     }
   }

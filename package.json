@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",
+    "axios": "^0.18.0",
     "vue": "^2.5.22",
     "vue-i18n": "^8.0.0",
     "vue-router": "^3.0.1",

@@ -1,6 +1,6 @@
 <template>
   <span>
-    <Jumbotron></Jumbotron>
+    <HomeJumbotron></HomeJumbotron>
     <HomeContext></HomeContext>  
     <HomeIntroduce></HomeIntroduce>
     <v-btn color="info" dark fixed bottom right fab
@@ -13,15 +13,15 @@
 </template>
 
 <script>
-  import Jumbotron from '@/components/Jumbotron'
-  import HomeContext from '@/components/HomeContext'
-  import RequestDialog from '@/components/RequestDialog'
-  import ResponseDialog from '@/components/ResponseDialog'
-  import HomeIntroduce from '@/components/HomeIntroduce'
+  import HomeJumbotron from '@/components/home/HomeJumbotron'
+  import HomeContext from '@/components/home/HomeContext'
+  import HomeIntroduce from '@/components/home/HomeIntroduce'
+  import RequestDialog from '@/components/home/RequestDialog'
+  import ResponseDialog from '@/components/home/ResponseDialog'
 
   export default {
     components: {
-      Jumbotron,
+      HomeJumbotron,
       HomeContext,
       HomeIntroduce,
       RequestDialog,
