@@ -1,11 +1,11 @@
 <template>
   <v-layout row justify-center>
-    <v-dialog v-model="this.$store.state.dialog" persistent max-width="500px">
+    <v-dialog v-model="isLoginDialog" persistent max-width="500px">
       <v-card>
         <v-toolbar dark color="primary">        
             <v-toolbar-title >LOGIN</v-toolbar-title>
             <v-spacer></v-spacer>
-            <span class="headline" @click="LoginDialogChange"><i class="far fa-times-circle"></i></span>
+            <span class="headline" @click="SET_IS_LOGIN(false)"><i class="far fa-times-circle"></i></span>
         </v-toolbar>
         <v-card-text>
           <v-container grid-list-md>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
 
   export default {
     name: 'Login',
@@ -59,8 +59,15 @@ import { mapMutations } from 'vuex';
         this.loader = null
       }
     },
+    computed: {
+      ...mapState([
+        'isLoginDialog',
+      ])
+    },
     methods: {
-      ...mapMutations(['LoginDialogChange']),
+      ...mapMutations([
+        'SET_IS_LOGIN',
+        ]),
         submit() {
             if (this.$refs.form.validate()) {
                 this.$store.dispatch('userJoin', {

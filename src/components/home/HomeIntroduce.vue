@@ -5,14 +5,16 @@
         <v-card dark tile flat color="#29B6F6" height="75vh" class="pa-5" data-aos="fade-right" data-aos-delay="200" >
           <v-card-text class="display-1 mt-2 mb-3 font-weight-black">응답자용</v-card-text>
           <v-img src="/static/respond.png" width="35%" class="center"></v-img>
-          <v-btn color="white" class="blue--text mt-5" large @click="ResponseDialogChange">모든 서비스 보기</v-btn>
+          <v-btn color="white" class="blue--text mt-5" large 
+          @click="SET_IS_RESPONSE_DIALOG(true)">모든 서비스 보기</v-btn>
         </v-card>
       </v-flex>
       <v-flex xs12 sm12 md6>
         <v-card dark tile flat color="#616161" height="75vh" class="pa-5" data-aos="fade-left" data-aos-delay="300" >
           <v-card-text class="display-1 mt-2 mb-3 font-weight-black">요청자용</v-card-text>
           <v-img src="/static/request.png" width="35%" class="center"></v-img>
-          <v-btn color="white" class="grey--text mt-5" large @click="ReqeustDialogChange">모든 서비스 보기</v-btn>
+          <v-btn color="white" class="grey--text mt-5" large 
+          @click="SET_IS_REQUEST_DIALOG(true)">모든 서비스 보기</v-btn>
         </v-card>
       </v-flex>
       <v-flex md12 text-md-center text-xs-center>
@@ -23,18 +25,27 @@
                 <v-btn color="primary" large to="/join">시작하기</v-btn>
             </v-card>
         </v-flex>
+      <ResponseDialog></ResponseDialog>
+      <RequestDialog></RequestDialog>
     </v-layout>
   </v-fade-transition>
 </template>
 
 <script>
+import ResponseDialog from '@/components/home/ResponseDialog'
+import RequestDialog from '@/components/home/RequestDialog'
 import { mapMutations } from 'vuex';
+
   export default {
     name: 'homeIntroduce',
+    components:{
+      ResponseDialog,
+      RequestDialog
+    },
     methods:{
       ...mapMutations([
-        'ResponseDialogChange',
-        'ReqeustDialogChange'
+        'SET_IS_RESPONSE_DIALOG',
+        'SET_IS_REQUEST_DIALOG'
         ]),
     }
   }

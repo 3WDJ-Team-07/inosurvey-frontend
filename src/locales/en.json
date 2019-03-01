@@ -12,19 +12,19 @@
     "items": [
       {
         "to": "/",
-        "text": "Home"
+        "text": "HOME"
       },
       {
-        "to": "/services",
-        "text": "Services"
+        "to": "/survey",
+        "text": "SURVEY"
       },
       {
         "to": "/market",
-        "text": "Market"
+        "text": "MARKET"
       },
       {
         "to": "/join",
-        "text": "Join"
+        "text": "JOIN"
       }
     ]
   },
