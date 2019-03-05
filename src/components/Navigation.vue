@@ -13,6 +13,9 @@
       <v-list-tile @click="SET_IS_LOGIN(true)">
         <v-list-tile-title >LOGIN</v-list-tile-title>
       </v-list-tile>
+      <v-list-tile to="/join">
+        <v-list-tile-title>JOIN</v-list-tile-title>
+      </v-list-tile>
     </v-list>
   </v-navigation-drawer>
 </template>

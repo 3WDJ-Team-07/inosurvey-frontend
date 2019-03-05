@@ -4,25 +4,34 @@
 
       <v-flex xs12 sm12 md7 class="pa-5">
         <v-card tile flat color="#FAFAFA" height="100vh">
+          <v-card-title primary-title>
+            <span class="display-1 font-weight-light">계정 만들기</span>
+          </v-card-title>
+          <v-list-tile-title>이미 회원이신가요? <router-link to="">로그인</router-link></v-list-tile-title>
+          <v-divider class="mt-4"></v-divider>
           <v-card-text>
              <v-card-text>
           <v-text-field
-            placeholder="John Doe"
+            placeholder="아이디"
             required
           ></v-text-field>
           <v-text-field
-            placeholder="Snowy Rock Pl"
+            placeholder="비밀번호"
             counter="25"
             required
           ></v-text-field>
           <v-text-field
-            placeholder="El Paso"
+            placeholder="이메일"
             required
           ></v-text-field>
           <v-text-field
             required
-            placeholder="TX"
+            placeholder="이름"
           ></v-text-field>
+          <v-radio-group v-model="row" row>
+            <v-radio color="red" label="남성" value="radio-1"></v-radio>
+            <v-radio label="여성" value="radio-2"></v-radio>
+          </v-radio-group>
           <v-text-field
             required
             placeholder="79938"
@@ -32,22 +41,7 @@
             required
           ></v-autocomplete>
         <v-card-actions>
-          <v-slide-x-reverse-transition>
-            <v-tooltip
-              right
-            >
-              <v-btn
-                slot="activator"
-                icon
-                class="my-0"
-              >
-                <v-icon>refresh</v-icon>
-              </v-btn>
-              <span>Refresh form</span>
-            </v-tooltip>
-          </v-slide-x-reverse-transition>
-          <v-spacer></v-spacer>
-          <v-btn color="primary" text >Submit</v-btn>
+          <v-btn color="primary" large block text >Submit</v-btn>
         </v-card-actions>
         </v-card-text>
             

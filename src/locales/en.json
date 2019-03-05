@@ -21,47 +21,56 @@
       {
         "to": "/market",
         "text": "MARKET"
-      },
-      {
-        "to": "/join",
-        "text": "JOIN"
       }
     ]
   },
-  "Contact": {
-    "jumbotronTitle": "Contact Alpha Construction",
-    "jumbotronSubTitle": "Get in touch with our Support Staff",
-    "heading1": "We\"d Love to Hear From You!",
-    "headingText1": "To request more informaiton, please fill out and submit the form below",
-    "phone": "(561) 284 - 5555",
-    "address": "555 Main Street",
-    "cityState": "Boca Raton, FL",
-    "zip": "33555",
-    "submit": "Submit"
+  "Survey": {
+    "surveyFeatures": [
+      {
+        "hoverTitle": "설문 작성하기",
+        "mainText": "For the perfect meal",
+        "subText": "QW cooking utensils",
+        "img": "/static/respond.png",
+        "color": "blue--text"
+      },
+      {
+        "hoverTitle": "내 설문조사 보기",
+        "mainText": "For the perfect meal",
+        "subText": "QW cooking utensils",
+        "img": "/static/request.png",
+        "color": "orange--text"
+      }
+    ]
   },
   "Home": {
     "jumbotronTitle": "투명하고 신뢰있는 인기 설문조사 INO-Survey",
     "jumbotronSubTitle": "나에게 필요한 답을 찾으세요",
+    "btnText": "설문조사 요청하기",
+    "cardTitle": "서비스 소개",
     "cardFeatures": [
       {
         "title": "설문조사 만들기",
         "text": "Every achievement begins with a vision. It is built on a foundation of creative concepts and dreams to become something bigger and better. At AlphaConstruction",
-        "img": "/static/feature4.jpg"
+        "img": "/static/laptop.png",
+        "day": "(2014)"
       },
       {
         "title": "설문결과 분석",
         "text": "Our commitment to excellence and continous improvement, to building lasting relationships with our clients, and to the team members who create your visionasdf",
-        "img": "/static/feature4.jpg"
+        "img": "/static/laptop.png",
+        "day": "(2014)"
       },
       {
         "title": "설문 응답",
         "text": "To build an everlasting environment of trust with our clients and team members that will foster customer loyalty by delivering superior service and quality projects.",
-        "img": "/static/feature4.jpg"
+        "img": "/static/laptop.png",
+        "day": "(2014)"
       },
       {
         "title": "마켓 플레이스",
         "text": "Every achievement begins with a vision. It is built on a foundation of creative concepts and dreams to become something bigger and better. At AlphaConstruction",
-        "img": "/static/feature4.jpg"
+        "img": "/static/laptop.png",
+        "day": "(2014)"
       }
     ],
     "testimonialsTitle": "Testimonials",

@@ -2,21 +2,21 @@
   <div>
     <v-container fluid grid-list-lg class="mt-3 mb-3">
       <v-layout row>
-            <v-flex xs12 class="text-xs-center display-1 font-weight-black " id="element">서비스 소개</v-flex>
+            <v-flex xs12 class="text-xs-center display-1 font-weight-black " id="element">{{$t("Home.cardTitle")}}</v-flex>
         </v-layout>
       <v-layout align-center justify-center fill-height wrap class="pa-5">
           <v-flex xs12 sm12 md5 xl5 class="pa-2" v-for="card in cardFeatures" :key="card.title">
             <v-card color="white darken-2" class="white--text pa-3" data-aos="fade-right" data-aos-delay="200" >
               <v-layout>
                 <v-flex xs5 class="pa-4">
-                  <v-img class="roundedImg" src="/static/laptop.png" height="200px" contain></v-img>
+                  <v-img class="roundedImg" :src="card.img" height="200px" contain></v-img>
                 </v-flex>
                 <v-flex xs7>
                   <v-card-title primary-title class="black--text">
                     <div>
                       <div class="headline font-weight-light">{{ card.title }}</div>
-                      <div>Foster the People</div>
-                      <div>(2014)</div>
+                      <div>{{ card.text }}</div>
+                      <div>{{ card.day }}</div>
                     </div>
                   </v-card-title>
                 </v-flex>

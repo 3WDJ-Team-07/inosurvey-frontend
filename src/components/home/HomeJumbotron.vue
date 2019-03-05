@@ -9,7 +9,7 @@
               <v-flex :key="$route.path" text-xs-center>
                 <h1 class="display-2 white--text font-weight-bold" v-html="title"/>
                 <div v-if="subTitle" class="subheading white--text" v-html="subTitle"/>
-                <v-btn color="info" large class="headline font-weight-bold mt-4" >설문조사 요청하기</v-btn>
+                <v-btn color="info" large class="headline font-weight-bold mt-4" >{{ $t('Home.btnText')}}</v-btn>
               </v-flex>
             </v-fade-transition>
             <v-btn class="floating" absolute flat fab bottom right >

@@ -1,26 +1,26 @@
 <template>
   <v-layout row justify-center>
-    <v-dialog v-model="isLoginDialog" persistent max-width="500px">
-      <v-card>
-        <v-toolbar dark color="primary">        
-            <v-toolbar-title >LOGIN</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <span class="headline" @click="SET_IS_LOGIN(false)"><i class="far fa-times-circle"></i></span>
-        </v-toolbar>
+    <v-dialog v-model="isLoginDialog" persistent max-width="400px">
+      <v-card class="pa-4 rounded-card" >
+        <span class="headline right grey--text" @click="SET_IS_LOGIN(false)"><i class="far fa-times-circle"></i></span>
+        <img src="/static/logo.png" id="center" class="center pa-4">
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12>
-                <v-text-field prepend-icon="person" name="email" label="Email" type="email" v-model="email" :rules="emailRules" required></v-text-field>
+                <v-text-field prepend-inner-icon="person" name="email"  label="Email" type="email" v-model="email" :rules="emailRules" required></v-text-field>
               </v-flex>
               <v-flex xs12> 
-                <v-text-field prepend-icon="lock" name="password" label="Password" id="password" type="password" required v-model="password" :rules="passwordRules"></v-text-field>
+                <v-text-field prepend-inner-icon="lock"  name="password" label="Password" id="password" type="password" required v-model="password" :rules="passwordRules"></v-text-field>
               </v-flex>
             </v-layout>
           </v-container>
         </v-card-text>
         <v-card-actions>
-          <v-btn :loading="loading" :disabled="loading" color="grey" block outline @click="loader ='loading'" >LOGIN</v-btn>
+          <v-btn :loading="loading" :disabled="loading" block flat @click="loader ='loading'" class="info">로그인</v-btn>
+        </v-card-actions>
+        <v-card-actions>
+          <v-btn :loading="loading" :disabled="loading" class="blue--text"  block outline @click="loader ='loading'" >회원가입</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -81,6 +81,15 @@ import { mapMutations, mapState } from 'vuex';
 </script>
 
 <style scoped>
+  .center {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    transition: .5s ease;
+  }
+  .rounded-card{
+    border-radius:10px;
+  }
     .custom-loader {
     animation: loader 1s infinite;
     display: flex;

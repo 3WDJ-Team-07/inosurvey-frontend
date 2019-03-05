@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <v-app>
       <Navbar></Navbar> 
       <Navigation></Navigation>
       <v-content transition="slide-x-transition" class="ma-0 pa-0">
@@ -10,8 +9,6 @@
       </v-content>
       <Login></Login>
       <Footer></Footer>
-    </v-app>
-    <NotFound></NotFound>
   </v-app>
 </template>
 
@@ -20,7 +17,6 @@ import Navbar from '@/components/Navbar'
 import Navigation from '@/components/Navigation'
 import Login from '@/views/Login'
 import Footer from '@/components/Footer'
-import NotFound from '@/views/NotFound'
 
 export default {
     name: 'App',
@@ -29,7 +25,6 @@ export default {
       Navigation,
       Login,
       Footer,
-      NotFound
     },
     watch: {
       '$route': function () {
