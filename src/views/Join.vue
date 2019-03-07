@@ -28,7 +28,7 @@
             required
             placeholder="이름"
           ></v-text-field>
-          <v-radio-group v-model="row" row>
+          <v-radio-group row>
             <v-radio color="red" label="남성" value="radio-1"></v-radio>
             <v-radio label="여성" value="radio-2"></v-radio>
           </v-radio-group>
@@ -41,7 +41,7 @@
             required
           ></v-autocomplete>
         <v-card-actions>
-          <v-btn color="primary" large block text >Submit</v-btn>
+          <v-btn color="primary" large block text @click="onSubmit">Submit</v-btn>
         </v-card-actions>
         </v-card-text>
             
@@ -63,6 +63,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'Join',
     data() {

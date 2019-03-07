@@ -1,7 +1,7 @@
 import axios from 'axios'
 import router from '../routes'
 
-const DOMAIN = 'http://localhost:3000' // 백엔드에서 받아야 할 URL
+const DOMAIN = 'http://172.26.2.232:8000' // 백엔드에서 받아야 할 URL
 const UNAUTHORIZED = 401
 const onUnauthrorized = () => {
     router.push('/login') // 토큰 없을경우 리다이렉트 
@@ -25,5 +25,17 @@ const request = (method, url, data) => {
 export const board = {
     fetch(){
         return request('get','/boards')
+    }
+}
+
+export const dumi = {
+    dataSet(){
+        return request('get','/test')
+    }
+}
+
+export const auth = {
+    login(email, password) {
+        return request('post', '/login', {email, password})
     }
 }

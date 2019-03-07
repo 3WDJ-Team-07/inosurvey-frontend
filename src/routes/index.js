@@ -4,8 +4,15 @@ import Home from '@/views/Home'
 import Survey from '@/views/Survey'
 import Market from '@/views/Market'
 import Join from '@/views/Join'
+import apitest from '@/components/apitest'
 
 Vue.use(Router)
+
+// const requireLoginSession = (to, from, next) => {
+//   const isSession = 0
+//   const loginPath = `/login?rPath=${encodeURIComponent(to.path)}`
+//   isSession ? next() : next(loginPath)
+// } // 로그인 체크 ( beforeEnter로 검사하기 )
 
 export const router = new Router({
   mode: 'history',
@@ -30,6 +37,11 @@ export const router = new Router({
       path: '/join',
       name: 'Join',
       component: Join
+    },
+    {
+      path: '/apitest',
+      name: 'apitest',
+      component: apitest
     }
   ]
 })

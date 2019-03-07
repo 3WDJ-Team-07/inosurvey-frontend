@@ -9,6 +9,7 @@
       </v-content>
       <Login></Login>
       <Footer></Footer>
+      <apitest></apitest>
   </v-app>
 </template>
 
@@ -17,6 +18,7 @@ import Navbar from '@/components/Navbar'
 import Navigation from '@/components/Navigation'
 import Login from '@/views/Login'
 import Footer from '@/components/Footer'
+import apitest from '@/components/apitest'
 
 export default {
     name: 'App',
@@ -25,6 +27,7 @@ export default {
       Navigation,
       Login,
       Footer,
+      apitest
     },
     watch: {
       '$route': function () {

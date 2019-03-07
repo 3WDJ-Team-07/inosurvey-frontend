@@ -11,6 +11,9 @@ const mutations = {
   },
   SET_IS_RESPONSE_DIALOG(state, toggle){
     state.isResponseDialog = toggle
+  },
+  SET_IS_ADD_SURVEY(state, toggle){
+    state.isSurveyDialog = toggle
   }
 }
 

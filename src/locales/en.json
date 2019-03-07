@@ -50,26 +50,26 @@
     "cardFeatures": [
       {
         "title": "설문조사 만들기",
-        "text": "Every achievement begins with a vision. It is built on a foundation of creative concepts and dreams to become something bigger and better. At AlphaConstruction",
-        "img": "/static/laptop.png",
+        "text": "설문조사를 만들수있다",
+        "img": "/static/write.png",
         "day": "(2014)"
       },
       {
         "title": "설문결과 분석",
-        "text": "Our commitment to excellence and continous improvement, to building lasting relationships with our clients, and to the team members who create your visionasdf",
-        "img": "/static/laptop.png",
+        "text": "설문데이터 분석을 할수있다",
+        "img": "/static/chart.png",
         "day": "(2014)"
       },
       {
         "title": "설문 응답",
-        "text": "To build an everlasting environment of trust with our clients and team members that will foster customer loyalty by delivering superior service and quality projects.",
-        "img": "/static/laptop.png",
+        "text": "어플리케이션을 통해 설문응답을 할수있다",
+        "img": "/static/SurveyRequest.png",
         "day": "(2014)"
       },
       {
         "title": "마켓 플레이스",
-        "text": "Every achievement begins with a vision. It is built on a foundation of creative concepts and dreams to become something bigger and better. At AlphaConstruction",
-        "img": "/static/laptop.png",
+        "text": "설문거래와 상품거래가 가능하다.",
+        "img": "/static/market.png",
         "day": "(2014)"
       }
     ],

@@ -9,12 +9,12 @@
             <v-card color="white darken-2" class="white--text pa-3" data-aos="fade-right" data-aos-delay="200" >
               <v-layout>
                 <v-flex xs5 class="pa-4">
-                  <v-img class="roundedImg" :src="card.img" height="200px" contain></v-img>
+                  <v-img class="roundedImg" :src="card.img" width="200px" height="180px" contain></v-img>
                 </v-flex>
-                <v-flex xs7>
+                <v-flex xs7 class="mr-4">
                   <v-card-title primary-title class="black--text">
                     <div>
-                      <div class="headline font-weight-light">{{ card.title }}</div>
+                      <div class="headline font-weight-bold grey--text mb-4">{{ card.title }}</div>
                       <div>{{ card.text }}</div>
                       <div>{{ card.day }}</div>
                     </div>
