@@ -40,7 +40,7 @@ export default {
         ]),
         onAddClick(){
           this.SET_IS_ADD_SURVEY(false)
-          this.$router.replace("join")
+          this.$router.replace("/SurveyForm")
         }
     }
 }

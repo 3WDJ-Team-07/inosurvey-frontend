@@ -28,15 +28,15 @@
     "surveyFeatures": [
       {
         "hoverTitle": "설문 작성하기",
-        "mainText": "For the perfect meal",
-        "subText": "QW cooking utensils",
+        "mainText": "",
+        "subText": "나만의 설문조사 만들기",
         "img": "/static/respond.png",
         "color": "blue--text"
       },
       {
         "hoverTitle": "내 설문조사 보기",
-        "mainText": "For the perfect meal",
-        "subText": "QW cooking utensils",
+        "mainText": "",
+        "subText": "내가 만든 설문조사",
         "img": "/static/request.png",
         "color": "orange--text"
       }
