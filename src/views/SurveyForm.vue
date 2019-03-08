@@ -38,7 +38,7 @@ import FormBody from '@/components/survey/create/FormBody'
     },
     methods: {
       input(){
-        this.$router.replace("/SurveyAnalysis")
+        this.$router.replace("/SurveySend")
       }
     },
   }

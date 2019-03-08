@@ -5,7 +5,7 @@ import Survey from '@/views/Survey'
 import Market from '@/views/Market'
 import Join from '@/views/Join'
 import SurveyForm from '@/views/SurveyForm'
-import SurveyAnalysis from '@/views/SurveyAnalysis'
+import SurveySend from '@/views/SurveySend'
 
 import apitest from '@/components/apitest'
 
@@ -47,9 +47,9 @@ export const router = new Router({
       component: SurveyForm
     },
     {
-      path: '/SurveyAnalysis',
-      name: 'surveyAnalysis',
-      component: SurveyAnalysis
+      path: '/SurveySend',
+      name: 'surveySend',
+      component: SurveySend
     },
     {
       path: '/apitest',

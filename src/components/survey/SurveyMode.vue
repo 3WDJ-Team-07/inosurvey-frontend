@@ -4,7 +4,7 @@
     gradient="to bottom,  rgba(128, 128, 128, .9), rgba(128, 128, 128, .8), rgba(0, 0, 0, .6), rgba(0, 0, 0, .8)">
   <v-container fluid grid-list-md fill-height class="pa-5 mt-5">
     <v-layout row wrap align-center justify-center class="ml-5">
-      <v-flex d-flex xs12 sm6 md6 lg5 xl4 class="pa-4">
+      <v-flex d-flex xs12 sm6 md6 lg5 xl4 class="pa-3">
         <v-hover>
           <v-card slot-scope="{ hover }" color="grey lighten-4" max-width="600" class="rounded-card">
             <v-img :aspect-ratio="16/12" :src="Features[0].img">
@@ -14,12 +14,12 @@
             </v-img>
             <v-card-text class="pt-4">
               <div class="font-weight-light grey--text title mb-2">{{$t(Features[0].mainText)}}</div>
-              <h3 :class="Features[0].color" class="headline font-weight-thin">{{$t(Features[0].subText)}}</h3>
+              <h3 :class="Features[0].color" class="headline font-weight-thin pa-2">{{$t(Features[0].subText)}}</h3>
             </v-card-text>
           </v-card>
         </v-hover>
       </v-flex>
-      <v-flex d-flex xs12 sm6 md6 lg5 xl4 class="pa-4">
+      <v-flex d-flex xs12 sm6 md6 lg5 xl4 class="pa-3">
         <v-hover>
           <v-card slot-scope="{ hover }" color="grey lighten-4" max-width="600" class="rounded-card">
             <v-img :aspect-ratio="16/12" :src="Features[1].img">
@@ -29,7 +29,7 @@
             </v-img>
             <v-card-text class="pt-4">
               <div class="font-weight-light grey--text title mb-2">{{$t(Features[1].mainText)}}</div>
-              <h3 :class="Features[1].color" class="headline font-weight-thin">{{$t(Features[1].subText)}}</h3>
+              <h3 :class="Features[1].color" class="headline font-weight-thin pa-2">{{$t(Features[1].subText)}}</h3>
             </v-card-text>
           </v-card>
         </v-hover>
