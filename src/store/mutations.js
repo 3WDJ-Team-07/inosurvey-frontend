@@ -14,6 +14,9 @@ const mutations = {
   },
   SET_IS_ADD_SURVEY(state, toggle){
     state.isSurveyDialog = toggle
+  },
+  UPDATE_TITLE(state, title){
+    state.surveyTitle = title
   }
 }
 

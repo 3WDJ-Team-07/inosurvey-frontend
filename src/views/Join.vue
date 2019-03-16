@@ -5,10 +5,9 @@
       <v-flex xs12 sm12 md7 class="pa-5">
         <v-card tile flat color="#FAFAFA" height="100vh">
           <v-card-title primary-title>
-            <span class="display-1 font-weight-light">계정 만들기</span>
+            <span class="display-1">회원가입</span>
           </v-card-title>
-          <v-list-tile-title>이미 회원이신가요? <router-link to="">로그인</router-link></v-list-tile-title>
-          <v-divider class="mt-4"></v-divider>
+          <v-card-title>이미 회원이신가요? <router-link to="">로그인</router-link></v-card-title >
           <v-card-text>
              <v-card-text>
           <v-text-field
@@ -28,10 +27,6 @@
             required
             placeholder="이름"
           ></v-text-field>
-          <v-radio-group row>
-            <v-radio color="red" label="남성" value="radio-1"></v-radio>
-            <v-radio label="여성" value="radio-2"></v-radio>
-          </v-radio-group>
           <v-text-field
             required
             placeholder="79938"
@@ -41,7 +36,7 @@
             required
           ></v-autocomplete>
         <v-card-actions>
-          <v-btn color="primary" large block text @click="onSubmit">Submit</v-btn>
+          <v-btn color="primary" large block text>Submit</v-btn>
         </v-card-actions>
         </v-card-text>
             

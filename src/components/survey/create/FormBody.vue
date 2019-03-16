@@ -1,7 +1,7 @@
 <template>
     <v-container fluid grid-list-md>
     <v-layout row wrap>
-        <div class="headline">받아올 설문 타이틀</div> 
+        <div class="headline vue-friendly-iframe">asd</div> 
       <v-spacer></v-spacer>
     </v-layout>
   </v-container>

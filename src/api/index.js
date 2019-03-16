@@ -28,12 +28,6 @@ export const board = {
     }
 }
 
-export const dumi = {
-    dataSet(){
-        return request('get','/test')
-    }
-}
-
 export const auth = {
     login(email, password) {
         return request('post', '/login', {email, password})

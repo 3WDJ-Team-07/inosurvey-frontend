@@ -1,17 +1,18 @@
 <template>
   <v-fade-transition mode="out-in">
-    <v-img v-if="namespace" :key="$route.path" :src="heroImage" height="60vh"
+    <v-img :key="$route.path"  src="/static/market-hero.png" height="60vh"
     gradient="to top,  rgba(0, 0, 0, .8), rgba(0, 0, 0, .7)">
       <v-fade-transition mode="out-in">
-        <v-container v-if="isBooted" :key="$route.path" fill-height>
+        <v-container :key="$route.path" fill-height>
           <v-layout align-center>
             <v-fade-transition mode="out-in">
               <v-flex :key="$route.path" text-xs-center>
-                <h1 class="display-2 white--text font-weight-bold" v-html="title"/>
-                <div v-if="subTitle" class="subheading white--text" v-html="subTitle"/>
-                <v-btn v-if="namespace == 'Home'" fab flat class="mt-5 transparent">
-                  <v-icon x-large color="white">expand_more</v-icon>
-                </v-btn>
+                <h1 class="display-2 white--text font-weight-bold">
+                  {{$t('Services.jumbotronTitle')}}
+                </h1>
+                <div class="subheading white--text">
+                  {{$t('Services.jumbotronSubTitle')}}
+                </div>
               </v-flex>
             </v-fade-transition>
           </v-layout>
@@ -23,31 +24,8 @@
 
 <script>
   export default {
-    data: () => ({
-      isBooted: false
-    }),
     computed: {
-      isHome () {
-        return this.$route.path === '/'
-      },
-      namespace () {
-        return this.$route.name
-      },
-      title () {
-        return this.$t(`${this.namespace}.jumbotronTitle`)
-      },
-      subTitle () {
-        return this.$t(`${this.namespace}.jumbotronSubTitle`)
-      },
-      heroImage () {
-        return `/static/${this.namespace.toLowerCase()}-hero.png`
-      }
     },
-    mounted () {
-      setTimeout(() => {
-        this.isBooted = true
-      }, 200)
-    }
   }
 </script>
  <style scoped>

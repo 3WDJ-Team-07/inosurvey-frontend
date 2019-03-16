@@ -1,18 +1,53 @@
 <template>
-    <v-container fluid grid-list-md>
-    <v-layout row wrap>
-        <div class="headline">받아올 설문 타이틀</div> 
-      <v-spacer></v-spacer>
-    </v-layout>
-  </v-container>
+    <div>
+   <v-tabs grow color="blue"
+    icons-and-text hide-slider fixed-tabs height="120" >
+     <v-tab><img src="/static/desktop.png" alt="" width="150"></v-tab>
+     <v-tab><img src="/static/desktop.png" alt="" width="150"></v-tab>
+     <v-tab-item v-for="tab of tabs" :key="tab.index">
+        <v-card flat @click="text">
+          <v-card-text v-for="tab in tabs" :key="tab.index"
+          class="subheading borderBottom pa-4 cardHover"
+          @click="text"
+          >
+           {{ tab.name }}
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+   </v-tabs>
+  </div>
 </template>
 
 <script>
 export default {
-
+  data () {
+      return {
+      tabs: [
+        { name: '객관식' },
+        { name: '주관식' },
+        { name: 'tab2' },
+        { name: 'tab2' },
+        { name: 'tab2' },
+        { name: 'tab2' },
+      ]
+      }
+    },
+    methods: {
+      text(){
+        console.log('asdf')
+      }
+    },
 }
 </script>
 
-<style>
-
+<style scoped>
+  .borderBottom{
+    border-top: 1px solid lightgray;
+  }
+  .cardHover:hover{
+    background: lightgrey;
+  }
+  .center{
+    margin:0 auto;
+}
 </style>

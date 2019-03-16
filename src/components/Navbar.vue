@@ -7,7 +7,7 @@
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" @click="SET_IS_LOGIN(true)" flat outline class="subheading">Login</v-btn>
-    <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" to="/join" flat outline class="subheading">Join</v-btn>
+    <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'Join'}" flat outline class="subheading">Join</v-btn>
     <v-btn v-if="!$vuetify.breakpoint.mdAndUp" icon @click="toggleDrawer">
       <v-icon color="blue">menu</v-icon>
     </v-btn>

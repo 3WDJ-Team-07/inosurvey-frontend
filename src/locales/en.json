@@ -50,27 +50,27 @@
     "cardFeatures": [
       {
         "title": "설문조사 만들기",
-        "text": "설문조사를 만들수있다",
+        "text": "조사 하고자 하는 응답자의 연령대나 성별 등을 지정하여 원하는 정보를 얻을 수 있습니다.그리고 원하는 주제에 맞게 질문을 커스터마이징 해보세요!",
         "img": "/static/write.png",
-        "day": "(2014)"
+        "subtitle": ""
       },
       {
         "title": "설문결과 분석",
-        "text": "설문데이터 분석을 할수있다",
+        "text": "응답자의 기호,평가 등을 실시간으로 확인할 수 있습니다. 그래프,도표 등 당신이 원하는 형태로 정보를 정리하세요!",
         "img": "/static/chart.png",
-        "day": "(2014)"
+        "subtitle": ""
       },
       {
         "title": "설문 응답",
-        "text": "어플리케이션을 통해 설문응답을 할수있다",
+        "text": "간단한 설문조사부터 자세한 설문조사까지,응답수에 따라 코인형태의 보상을 받으세요.",
         "img": "/static/SurveyRequest.png",
-        "day": "(2014)"
+        "subtitle": ""
       },
       {
         "title": "마켓 플레이스",
-        "text": "설문거래와 상품거래가 가능하다.",
+        "text": "코인을 이용해 필요한 상품을 구매하고 연계 설문조사를 통해 2차 보상을 받으세요. 그리고 종료된 설문조사의 결과도 구매할 수 있습니다.",
         "img": "/static/market.png",
-        "day": "(2014)"
+        "subtitle": "설문마켓 / 상품마켓"
       }
     ],
     "testimonialsTitle": "Testimonials",
@@ -147,7 +147,7 @@
     ]
   },
   "Services": {
-    "jumbotronTitle": "ASCC - Alpha Software Compute Cloud",
+    "jumbotronTitle": "ASCC - Compute Cloud",
     "jumbotronSubTitle": "Launch applications when needed without upfront commitments.",
     "heading1": "Realtime Global Deployments",
     "headingText1": "Te dolor consul mei, etiam molestie indoctum usu ad, qui inermis eleifend an. Pro iriure alienum incorrupte ex, cu diceret moderatius mei. Te corrumpit posidonium sit, in cum nonumy utamur. Usu impedit patrioque vituperatoribus ei, cu voluptua nominati philosophia mel. Sea at legendos percipitur, nulla dicant convenire ne duo. Veniam epicuri vis cu, ea pri alii ceteros fierent.",

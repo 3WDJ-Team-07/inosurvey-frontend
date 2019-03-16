@@ -1,15 +1,40 @@
 <template>
 <v-fade-transition mode="out-in">
-    <v-img src="/static/main.png"  height="100vh"
-    gradient="to bottom,  rgba(128, 128, 128, .9), rgba(128, 128, 128, .8), rgba(0, 0, 0, .6), rgba(0, 0, 0, .8)">
-  <v-container fluid grid-list-md fill-height class="pa-5 mt-5">
-    <v-layout row wrap align-center justify-center class="ml-5">
+    <v-img 
+    src="/static/main.png"  
+    height="100vh"
+    gradient="to bottom,  rgba(128, 128, 128, .9), 
+    rgba(128, 128, 128, .8), rgba(0, 0, 0, .6), rgba(0, 0, 0, .8)"
+    >
+  <v-container
+   fluid grid-list-md 
+   fill-height 
+   class="pa-5 mt-5"
+   >
+    <v-layout
+     row wrap 
+     align-center 
+     justify-center 
+     class="ml-5"
+     >
       <v-flex d-flex xs12 sm6 md6 lg5 xl4 class="pa-3">
         <v-hover>
-          <v-card slot-scope="{ hover }" color="grey lighten-4" max-width="600" class="rounded-card">
+          <v-card 
+          slot-scope="{ hover }" 
+          color="grey lighten-4"
+           max-width="600" 
+           class="rounded-card"
+           >
             <v-img :aspect-ratio="16/12" :src="Features[0].img">
               <v-expand-transition>
-                <div v-if="hover" class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-1 white--text font-weight-thin" style="cursor:pointer;height:100%;" @click="SET_IS_ADD_SURVEY(true)">{{$t(Features[0].hoverTitle)}}</div>
+                <div
+                 v-if="hover" 
+                 class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-1 white--text font-weight-thin" 
+                 style="cursor:pointer;height:100%;" 
+                 @click="SET_IS_ADD_SURVEY(true)"
+                 >
+                  {{$t(Features[0].hoverTitle)}}
+                </div>
               </v-expand-transition>
             </v-img>
             <v-card-text class="pt-4">
@@ -19,12 +44,25 @@
           </v-card>
         </v-hover>
       </v-flex>
+
       <v-flex d-flex xs12 sm6 md6 lg5 xl4 class="pa-3">
         <v-hover>
-          <v-card slot-scope="{ hover }" color="grey lighten-4" max-width="600" class="rounded-card">
+          <v-card
+           slot-scope="{ hover }" 
+           color="grey lighten-4" 
+           max-width="600" 
+           class="rounded-card"
+           >
             <v-img :aspect-ratio="16/12" :src="Features[1].img">
               <v-expand-transition>
-                <div v-if="hover" class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-1 white--text font-weight-thin" style="cursor:pointer;height:100%;" @click="MySurveyRoute">{{$t(Features[1].hoverTitle)}}</div>
+                <div
+                 v-if="hover" 
+                 class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-1 white--text font-weight-thin" 
+                 style="cursor:pointer;height:100%;" 
+                 @click="MySurveyRoute"
+                 >
+                 {{$t(Features[1].hoverTitle)}}
+                </div>
               </v-expand-transition>
             </v-img>
             <v-card-text class="pt-4">

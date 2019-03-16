@@ -7,6 +7,7 @@ import i18n from './i18n'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import VueScrollTo from 'vue-scrollto'
+import VueFriendlyIframe from 'vue-friendly-iframe';
 
 Vue.use(VueScrollTo)
 Vue.config.productionTip = false
@@ -15,6 +16,7 @@ new Vue({
   created(){
     AOS.init();
   },
+  VueFriendlyIframe,
   router,
   store,
   i18n,

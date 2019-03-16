@@ -1,19 +1,37 @@
 <template>
   <v-fade-transition mode="out-in">
-    <v-img src="/static/main.png" v-if="namespace" :key="$route.path"  height="100vh"
-    gradient="to bottom,  rgba(128, 128, 128, .9), rgba(128, 128, 128, .8), rgba(0, 0, 0, .6), rgba(0, 0, 0, .8)">
+    <v-img 
+     src="/static/main.png"
+     :key="$route.path"  
+     height="100vh"
+     gradient="to bottom,  
+     rgba(128, 128, 128, .9), 
+     rgba(128, 128, 128, .8), 
+     rgba(0, 0, 0, .6), 
+     rgba(0, 0, 0, .8)">
       <v-fade-transition mode="out-in">
-        <v-container v-if="isBooted" :key="$route.path" fill-height>
+        <v-container :key="$route.path" fill-height>
           <v-layout align-center>
             <v-fade-transition mode="out-in">
               <v-flex :key="$route.path" text-xs-center>
-                <h1 class="display-2 white--text font-weight-bold" v-html="title"/>
-                <div v-if="subTitle" class="subheading white--text" v-html="subTitle"/>
-                <v-btn color="info" large class="headline font-weight-bold mt-4" >{{ $t('Home.btnText')}}</v-btn>
+                <h1 class="display-2 white--text font-weight-bold">
+                  {{$t('Home.jumbotronTitle')}}
+                </h1>
+                <div class="subheading white--text">
+                  {{$t('Home.jumbotronSubTitle')}}
+                </div>
+                <v-btn color="info" large class="headline font-weight-bold mt-4" >
+                  {{ $t('Home.btnText')}}
+                </v-btn>
               </v-flex>
             </v-fade-transition>
             <v-btn class="floating" absolute flat fab bottom right >
-              <v-icon class="grey--text" x-large v-scroll-to="{ el: '#element',offset:-100,duration:1500}">expand_more</v-icon>
+              <v-icon
+               class="grey--text" 
+               x-large 
+               v-scroll-to="{ el: '#element',offset:-100,duration:1500}">
+               expand_more
+              </v-icon>
             </v-btn>
           </v-layout>
         </v-container>
@@ -24,28 +42,6 @@
 
 <script>
   export default {
-    data: () => ({
-      isBooted: false
-    }),
-    computed: {
-      isHome () {
-        return this.$route.path === '/'
-      },
-      namespace () {
-        return this.$route.name
-      },
-      title () {
-        return this.$t(`${this.namespace}.jumbotronTitle`)
-      },
-      subTitle () {
-        return this.$t(`${this.namespace}.jumbotronSubTitle`)
-      },
-    },
-    mounted () {
-      setTimeout(() => {
-        this.isBooted = true
-      }, 200)
-    }
   }
 </script>
  <style scoped>

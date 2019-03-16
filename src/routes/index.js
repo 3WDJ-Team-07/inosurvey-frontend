@@ -5,9 +5,7 @@ import Survey from '@/views/Survey'
 import Market from '@/views/Market'
 import Join from '@/views/Join'
 import SurveyForm from '@/views/SurveyForm'
-import SurveySend from '@/views/SurveySend'
-
-import apitest from '@/components/apitest'
+import SurveyRequest from '@/views/SurveyRequest'
 
 Vue.use(Router)
 
@@ -47,14 +45,14 @@ export const router = new Router({
       component: SurveyForm
     },
     {
-      path: '/SurveySend',
-      name: 'surveySend',
-      component: SurveySend
+      path: '/SurveyRequest',
+      name: 'surveyRequest',
+      component: SurveyRequest
     },
     {
-      path: '/apitest',
-      name: 'apitest',
-      component: apitest
+      path: '/*',
+      name: 'notFound',
+      redirect: {name : 'Home'}
     }
   ]
 })

@@ -8,19 +8,40 @@
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12>
-                <v-text-field prepend-inner-icon="person" name="email"  label="Email" type="email" v-model="email" :rules="emailRules" required></v-text-field>
+                <v-text-field
+                 prepend-inner-icon="person" 
+                 name="email"  label="Email" 
+                 type="email" v-model="email" 
+                 :rules="emailRules" required>
+                </v-text-field>
               </v-flex>
               <v-flex xs12> 
-                <v-text-field prepend-inner-icon="lock"  name="password" label="Password" id="password" type="password" required v-model="password" :rules="passwordRules"></v-text-field>
+                <v-text-field
+                 prepend-inner-icon="lock"  
+                 name="password" label="Password" 
+                 id="password" type="password" 
+                 required v-model="password" 
+                 :rules="passwordRules">
+                </v-text-field>
               </v-flex>
             </v-layout>
           </v-container>
         </v-card-text>
         <v-card-actions>
-          <v-btn :loading="loading" :disabled="loading" block flat @click="loader ='loading'" class="info">로그인</v-btn>
+          <v-btn
+           :loading="loading" 
+           :disabled="loading" 
+           block flat 
+           @click="loader ='loading'" 
+           class="info">로그인</v-btn>
         </v-card-actions>
         <v-card-actions>
-          <v-btn :loading="loading" :disabled="loading" class="blue--text"  block outline @click="loader ='loading'" >회원가입</v-btn>
+          <v-btn
+           :loading="loading" 
+           :disabled="loading" 
+           class="blue--text"  
+           block outline 
+           @click="loader ='loading'" >회원가입</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
