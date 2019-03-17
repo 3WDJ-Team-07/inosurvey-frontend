@@ -17,6 +17,12 @@ const mutations = {
   },
   UPDATE_TITLE(state, title){
     state.surveyTitle = title
+  },
+  RETRIEVE_TOKEN(state, token){
+    state.token = token
+  },
+  DESTROY_TOKEN(state){
+    state.token = null
   }
 }
 

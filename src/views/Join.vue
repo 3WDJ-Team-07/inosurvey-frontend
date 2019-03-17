@@ -2,48 +2,88 @@
    <v-fade-transition mode="out-in">
     <v-container fluid mt-5><v-layout row wrap :key="$route.path">
 
-      <v-flex xs12 sm12 md7 class="pa-5">
+      <v-flex xs12 sm12 md6 class="pa-5">
         <v-card tile flat color="#FAFAFA" height="100vh">
           <v-card-title primary-title>
-            <span class="display-1">회원가입</span>
+            <div class="display-2 font-weight-bold">회원가입</div>
           </v-card-title>
-          <v-card-title>이미 회원이신가요? <router-link to="">로그인</router-link></v-card-title >
-          <v-card-text>
-             <v-card-text>
-          <v-text-field
-            placeholder="아이디"
-            required
-          ></v-text-field>
-          <v-text-field
-            placeholder="비밀번호"
-            counter="25"
-            required
-          ></v-text-field>
-          <v-text-field
-            placeholder="이메일"
-            required
-          ></v-text-field>
-          <v-text-field
-            required
-            placeholder="이름"
-          ></v-text-field>
-          <v-text-field
-            required
-            placeholder="79938"
-          ></v-text-field>
-          <v-autocomplete
-            placeholder="Select..."
-            required
-          ></v-autocomplete>
-        <v-card-actions>
-          <v-btn color="primary" large block text>Submit</v-btn>
-        </v-card-actions>
-        </v-card-text>
-            
-          </v-card-text>
+          <span class="ml-3 headline">INO-SURVEY와 함께해요!</span>
+          <v-card-text class="pa-5">
+            <v-form @submit.prevent="register">
+              <v-flex xs12 column>
+                <v-text-field
+                  placeholder="아이디"
+                  required
+                ></v-text-field>
+                <v-text-field
+                  v-model="password"
+                  placeholder="비밀번호"
+                  counter="25"
+                  required
+                ></v-text-field>
+                <v-text-field
+                  v-model="email"
+                  placeholder="이메일"
+                  required
+                ></v-text-field>
+                <v-text-field
+                  v-model="name"
+                  required
+                  placeholder="이름"
+                ></v-text-field>
+              </v-flex>
+              <v-layout>
+                <v-btn-toggle >
+                <v-btn depressed flat value="left" class="pl-5 pb-5 pr-5 pt-4 font-weight-bold title">
+                  <span>남성</span>
+                </v-btn>
+                <v-btn depressed flat value="justify" class="pl-5 pb-5 pr-5 pt-4 font-weight-bold title">
+                  <span>여성</span>
+                </v-btn>
+              </v-btn-toggle>
+                <v-flex xs6 class="ml-5">
+                <v-text-field
+                  required
+                  placeholder="태어난 연도"
+                ></v-text-field>
+                </v-flex>
+              </v-layout >
+              <v-layout class="mt-4 mb-4">
+                <v-select
+                          :items="items"
+                          label="지역선택"
+                          outline
+                          hide-details
+                          height=0
+                          append-icon="person"
+                          class="mr-3"
+                        ></v-select>
+                  <v-select
+                          :items="items"
+                          label="직업선택"
+                          outline
+                          height=0
+                          hide-details
+                          append-icon="person"
+                          class="mr-3"
+                        ></v-select>
+                  <v-select
+                          :items="items"
+                          label="학력선택"
+                          outline
+                          height=0
+                          append-icon="person"
+                          hide-details
+                        ></v-select>
+                </v-layout>
+          <v-card-actions >
+            <v-btn color="info" large block class="headline font-weight-bold mt-3">회원가입</v-btn>
+          </v-card-actions>
+        </v-form>
+       </v-card-text>
         </v-card>
       </v-flex>
-      <v-flex xs12 sm12 md5>
+      <v-flex xs12 sm12 md6>
         <v-card tile flat height="100vh" color="#FAFAFA">
           <v-card-text class="home-hero">
               <v-card-title primary-title >
@@ -63,8 +103,23 @@ export default {
     name: 'Join',
     data() {
         return {
-        
+          items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+          name: '',
+          email: '',
+          password: '',
         };
+    },
+    methods: {
+      register(){
+          this.$store.dispatch('REGISTER', {
+            name: this.name,
+            email: this.email,
+            password: this.password
+          })
+          //  .then(response => {
+          //    this.$router.push({name:'home'})
+          //  })  // 프로미스로 받아서 성공하면 리다이렉트 로직 
+      }
     },
     
 };

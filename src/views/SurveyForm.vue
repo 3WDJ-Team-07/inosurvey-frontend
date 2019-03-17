@@ -11,17 +11,17 @@
       </v-toolbar>
     <v-layout row wrap>
       <v-flex xs12>
-        <v-card  color="white" height="10vh" flat>
+        <v-card  color="#FAFAFA" height="10vh" flat >
             <FormNav></FormNav>
         </v-card>
       </v-flex>
       <v-flex xs3 md3 >
-        <v-card  color="white" height="80vh" max-width="400">
+        <v-card  color="#FAFAFA" height="80vh" max-width="400">
             <FormSide></FormSide>
         </v-card>
       </v-flex>
       <v-flex xs9>
-        <v-card  color="white" height="80vh">
+        <v-card  color="#FAFAFA" height="80vh">
           <FormBody></FormBody>
         </v-card>
       </v-flex>

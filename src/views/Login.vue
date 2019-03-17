@@ -6,42 +6,38 @@
         <img src="/static/logo.png" id="center" class="center pa-4">
         <v-card-text>
           <v-container grid-list-md>
-            <v-layout wrap>
-              <v-flex xs12>
-                <v-text-field
-                 prepend-inner-icon="person" 
-                 name="email"  label="Email" 
-                 type="email" v-model="email" 
-                 :rules="emailRules" required>
-                </v-text-field>
-              </v-flex>
-              <v-flex xs12> 
-                <v-text-field
-                 prepend-inner-icon="lock"  
-                 name="password" label="Password" 
-                 id="password" type="password" 
-                 required v-model="password" 
-                 :rules="passwordRules">
-                </v-text-field>
-              </v-flex>
-            </v-layout>
+              <v-form @submit.prevent="login">
+                <v-layout wrap>
+                    <v-flex xs12>
+                      <v-text-field
+                      prepend-inner-icon="person" 
+                      name="email"  label="Email" 
+                      type="email" v-model="email" 
+                      :rules="emailRules" required>
+                      </v-text-field>
+                    </v-flex>
+                    <v-flex xs12> 
+                      <v-text-field
+                      prepend-inner-icon="lock"  
+                      name="password" label="Password" 
+                      id="password" type="password" 
+                      required v-model="password" 
+                      :rules="passwordRules">
+                      </v-text-field>
+                    </v-flex>
+                </v-layout>
+              </v-form>
           </v-container>
         </v-card-text>
         <v-card-actions>
           <v-btn
-           :loading="loading" 
-           :disabled="loading" 
            block flat 
-           @click="loader ='loading'" 
            class="info">로그인</v-btn>
         </v-card-actions>
         <v-card-actions>
           <v-btn
-           :loading="loading" 
-           :disabled="loading" 
            class="blue--text"  
-           block outline 
-           @click="loader ='loading'" >회원가입</v-btn>
+           block outline >회원가입</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -52,12 +48,9 @@
 import { mapMutations, mapState } from 'vuex';
 
   export default {
-    name: 'Login',
+    name: 'login',
     data() {
       return {
-        loader: null,
-        loading: false,
-        valid: false,
             email: '',
             password: '',
             emailRules: [
@@ -72,14 +65,6 @@ import { mapMutations, mapState } from 'vuex';
             ]
       }
     },
-    watch: {
-      loader () {
-        const l = this.loader
-        this[l] = !this[l]
-        setTimeout(() => (this[l] = false), 2000)
-        this.loader = null
-      }
-    },
     computed: {
       ...mapState([
         'isLoginDialog',
@@ -89,14 +74,15 @@ import { mapMutations, mapState } from 'vuex';
       ...mapMutations([
         'SET_IS_LOGIN',
         ]),
-        submit() {
-            if (this.$refs.form.validate()) {
-                this.$store.dispatch('userJoin', {
-                    email: this.email,
-                    password: this.password
-                });
-            }
-        },
+        login(){
+          this.$store.dispatch('RETRIEVE_TOKEN', {
+            email: this.email,
+            password: this.password
+          })
+          //  .then(response => {
+          //    this.$router.push({name:'home'})
+          //  })  // 프로미스로 받아서 성공하면 리다이렉트 로직 
+        }
     },
   }
 </script>

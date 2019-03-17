@@ -6,8 +6,14 @@
       <v-btn :active-class="!isScrolling ? 'blue--text' : undefined" v-for="(item,i) in items" :key="i" :to="item.to" flat class="title"><span v-text="item.text"/></v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>
-    <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" @click="SET_IS_LOGIN(true)" flat outline class="subheading">Login</v-btn>
-    <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'Join'}" flat outline class="subheading">Join</v-btn>
+    <div v-if="!loggedIn">
+      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" @click="SET_IS_LOGIN(true)" flat outline class="subheading">Login</v-btn>
+    <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'join'}" flat outline class="subheading">Join</v-btn>
+    </div>
+    <div v-else>
+      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" @click="SET_IS_LOGIN(true)" flat outline class="subheading">MyPage</v-btn>
+      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" @click="SET_IS_LOGIN(true)" flat outline class="subheading">Loout</v-btn>
+    </div>
     <v-btn v-if="!$vuetify.breakpoint.mdAndUp" icon @click="toggleDrawer">
       <v-icon color="blue">menu</v-icon>
     </v-btn>
@@ -25,6 +31,9 @@
     computed: {
       items () {
         return this.$t('View.items')
+      },
+      loggedIn(){
+        return this.$store.getters.loggedIn
       }
     },
     methods: {

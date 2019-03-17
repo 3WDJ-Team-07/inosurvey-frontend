@@ -4,6 +4,7 @@ import Home from '@/views/Home'
 import Survey from '@/views/Survey'
 import Market from '@/views/Market'
 import Join from '@/views/Join'
+import Logout from '@/views/Logout'
 import SurveyForm from '@/views/SurveyForm'
 import SurveyRequest from '@/views/SurveyRequest'
 
@@ -21,23 +22,34 @@ export const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'home',
       component: Home
     },
     {
       path: '/survey',
-      name: 'Survey',
-      component: Survey
+      name: 'survey',
+      component: Survey,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path: '/market',
-      name: 'Market',
+      name: 'market',
       component: Market
     },
     {
       path: '/join',
-      name: 'Join',
-      component: Join
+      name: 'join',
+      component: Join,
+      meta:{
+        requiresVisitor:true
+      }
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: Logout
     },
     {
       path: '/SurveyForm',

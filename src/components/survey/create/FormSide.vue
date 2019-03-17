@@ -2,8 +2,8 @@
     <div>
    <v-tabs grow color="blue"
     icons-and-text hide-slider fixed-tabs height="120" >
-     <v-tab><img src="/static/desktop.png" alt="" width="150"></v-tab>
-     <v-tab><img src="/static/desktop.png" alt="" width="150"></v-tab>
+     <v-tab><v-img src="/static/desktop.png" alt="" width="150"></v-img></v-tab>
+     <v-tab><v-img src="/static/desktop.png" alt="" width="150"></v-img></v-tab>
      <v-tab-item v-for="tab of tabs" :key="tab.index">
         <v-card flat @click="text">
           <v-card-text v-for="tab in tabs" :key="tab.index"

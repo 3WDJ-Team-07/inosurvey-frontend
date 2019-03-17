@@ -11,17 +11,14 @@
       </v-toolbar>
     <v-layout row wrap>
       <v-flex xs12>
-        <v-card  color="white" height="10vh" flat>
             <FormNav></FormNav>
-        </v-card>
+            <v-divider></v-divider>
       </v-flex>
       <v-flex xs7>
-        <v-card  color="white" height="80vh">
-        </v-card>
+            <RequestTarget></RequestTarget>
       </v-flex>
       <v-flex xs5>
-        <v-card  color="white" height="80vh">
-        </v-card>
+          <RequestPay></RequestPay>
       </v-flex>
     </v-layout>
   </v-container>
@@ -29,10 +26,14 @@
 
 <script>
 import FormNav from '@/components/survey/create/FormNav'
+import RequestTarget from '@/components/survey/request/RequestTarget'
+import RequestPay from '@/components/survey/request/RequestPay'
 
   export default {
     components: {
-      FormNav
+      FormNav,
+      RequestTarget,
+      RequestPay
     },
     methods: {
       input(){
