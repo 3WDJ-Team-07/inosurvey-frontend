@@ -1,3 +1,5 @@
+/* 메인페이지 점보트론 */
+
 <template>
   <v-fade-transition mode="out-in">
     <v-img 

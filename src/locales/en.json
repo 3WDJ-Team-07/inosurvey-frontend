@@ -12,15 +12,15 @@
     "items": [
       {
         "to": "/",
-        "text": "HOME"
+        "text": "home"
       },
       {
         "to": "/survey",
-        "text": "SURVEY"
+        "text": "survey"
       },
       {
-        "to": "/market",
-        "text": "MARKET"
+        "to": "/surveyMarket",
+        "text": "market"
       }
     ]
   },

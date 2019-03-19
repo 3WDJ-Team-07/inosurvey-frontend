@@ -1,3 +1,5 @@
+/* 설문판매 점보트론 */
+
 <template>
   <v-fade-transition mode="out-in">
     <v-img :key="$route.path"  src="/static/market-hero.png" height="60vh"
@@ -24,8 +26,7 @@
 
 <script>
   export default {
-    computed: {
-    },
+
   }
 </script>
  <style scoped>

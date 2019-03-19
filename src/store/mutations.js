@@ -6,19 +6,19 @@ const mutations = {
   SET_IS_LOGIN(state, toggle){
     state.isLoginDialog = toggle
   },
-  SET_IS_REQUEST_DIALOG(state, toggle){
+  SET_IS_REQUEST_DIALOG(state, toggle) {
     state.isRequestDialog = toggle
   },
-  SET_IS_RESPONSE_DIALOG(state, toggle){
+  SET_IS_RESPONSE_DIALOG(state, toggle) {
     state.isResponseDialog = toggle
   },
-  SET_IS_ADD_SURVEY(state, toggle){
+  SET_IS_ADD_SURVEY(state, toggle) {
     state.isSurveyDialog = toggle
   },
-  UPDATE_TITLE(state, title){
+  UPDATE_TITLE(state, title) {
     state.surveyTitle = title
   },
-  RETRIEVE_TOKEN(state, token){
+  RETRIEVE_TOKEN(state, token) {
     state.token = token
   },
   DESTROY_TOKEN(state){

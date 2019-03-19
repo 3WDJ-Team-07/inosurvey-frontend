@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
 import Survey from '@/views/Survey'
-import Market from '@/views/Market'
+import SurveyMarket from '@/views/SurveyMarket'
 import Join from '@/views/Join'
 import Logout from '@/views/Logout'
 import SurveyForm from '@/views/SurveyForm'
@@ -35,9 +35,9 @@ export const router = new Router({
       }
     },
     {
-      path: '/market',
-      name: 'market',
-      component: Market
+      path: '/surveyMarket',
+      name: 'surveyMarket',
+      component: SurveyMarket
     },
     {
       path: '/join',

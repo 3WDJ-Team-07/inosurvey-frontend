@@ -5,7 +5,7 @@ const state = {
   isRequestDialog: false,
   isResponseDialog: false,
   isSurveyDialog: false,
-  surveyTitle: "" 
+  surveyTitle: ""
 }
 
 export default state

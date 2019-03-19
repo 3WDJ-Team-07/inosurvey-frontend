@@ -1,7 +1,9 @@
+/* 설문마켓 페이지 */
+
 <template>
   <span>
-    <MarketJumbotron></MarketJumbotron>
-    <MarketContext></MarketContext>
+    <MarketJumbotron/>
+    <MarketContext/>
   </span>
 </template>
 
@@ -10,6 +12,7 @@
   import MarketContext from '@/components/market/MarketContext'
 
   export default {
+    name: 'surveyMarket',
     components: {
       MarketJumbotron,
       MarketContext

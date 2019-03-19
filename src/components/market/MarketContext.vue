@@ -1,6 +1,7 @@
+/* 설문마켓 상품코너 */
+
 <template>
-    <div>
-    </div>
+    <div></div>
 </template>
 
 <script>

@@ -1,14 +1,16 @@
+/* 작은창 네비게이션  */
+
 <template>
   <v-navigation-drawer v-model="inputValue" temporary right fixed >
     <v-list>
       <v-list-tile>
-        <v-spacer />
+        <v-spacer/>
         <v-btn icon @click="toggleDrawer">
           <v-icon>clear</v-icon>
         </v-btn>
       </v-list-tile>
       <v-list-tile v-for="(item, i) in items" :key="i" :to="item.to">
-        <v-list-tile-title v-text="item.text" />
+        <v-list-tile-title v-text="item.text"/>
       </v-list-tile>
       <v-list-tile @click="SET_IS_LOGIN(true)">
         <v-list-tile-title >LOGIN</v-list-tile-title>
@@ -21,12 +23,11 @@
 </template>
 
 <script>
-  // Utilities
   import { mapState, mapMutations } from 'vuex'
 
   export default {
     computed: {
-      ...mapState(['drawer']),
+      ...mapState(['drawer']),  // drawer상태값 체크
       inputValue: {
         get () {
           return this.drawer
@@ -44,7 +45,7 @@
         'setDrawer',
         'toggleDrawer',
         'SET_IS_LOGIN'
-        ])
+      ])
     }
   }
 </script>
