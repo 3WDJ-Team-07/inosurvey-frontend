@@ -1,3 +1,5 @@
+/* 푸터 */
+
 <template>
   <v-footer height="auto">
     <v-container 

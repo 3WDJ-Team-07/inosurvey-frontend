@@ -1,3 +1,5 @@
+/* 네비게이션 */
+
 <template>
   <v-toolbar 
     v-scroll="onScroll" app :flat="!isScrolling"
