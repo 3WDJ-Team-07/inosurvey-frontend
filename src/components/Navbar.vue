@@ -12,7 +12,7 @@
     </div>
     <div v-else>
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" @click="SET_IS_LOGIN(true)" flat outline class="subheading">MyPage</v-btn>
-      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" @click="SET_IS_LOGIN(true)" flat outline class="subheading">Loout</v-btn>
+      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" to="/logout" flat outline class="subheading">Loout</v-btn>
     </div>
     <v-btn v-if="!$vuetify.breakpoint.mdAndUp" icon @click="toggleDrawer">
       <v-icon color="blue">menu</v-icon>

@@ -7,6 +7,7 @@ import Join from '@/views/Join'
 import Logout from '@/views/Logout'
 import SurveyForm from '@/views/SurveyForm'
 import SurveyRequest from '@/views/SurveyRequest'
+import MySurvey from '@/views/MySurvey'
 
 Vue.use(Router)
 
@@ -60,6 +61,11 @@ export const router = new Router({
       path: '/SurveyRequest',
       name: 'surveyRequest',
       component: SurveyRequest
+    },
+    {
+      path: '/mysurvey',
+      name: 'mysurvey',
+      component: MySurvey
     },
     {
       path: '/*',

@@ -98,7 +98,7 @@ import AddSurvey from '@/components/survey/AddSurvey'
         'SET_IS_ADD_SURVEY'
       ]),
       MySurveyRoute(){
-        this.$router.replace("/join")
+        this.$router.replace("/mysurvey")
       }
     }
   }

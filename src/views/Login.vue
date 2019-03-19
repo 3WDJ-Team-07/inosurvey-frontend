@@ -6,7 +6,7 @@
         <img src="/static/logo.png" id="center" class="center pa-4">
         <v-card-text>
           <v-container grid-list-md>
-              <v-form @submit.prevent="login">
+              <v-form @submit.prevent="login" id="check-login-form">
                 <v-layout wrap>
                     <v-flex xs12>
                       <v-text-field
@@ -31,8 +31,11 @@
         </v-card-text>
         <v-card-actions>
           <v-btn
+          type="submit"
            block flat 
-           class="info">로그인</v-btn>
+           class="info"
+           form="check-login-form"
+           >로그인</v-btn>
         </v-card-actions>
         <v-card-actions>
           <v-btn

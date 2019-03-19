@@ -9,9 +9,10 @@
           </v-card-title>
           <span class="ml-3 headline">INO-SURVEY와 함께해요!</span>
           <v-card-text class="pa-5">
-            <v-form @submit.prevent="register">
+            <v-form @submit.prevent="register" id="check-register-form">
               <v-flex xs12 column>
                 <v-text-field
+                  v-model="user_id"
                   placeholder="아이디"
                   required
                 ></v-text-field>
@@ -33,11 +34,11 @@
                 ></v-text-field>
               </v-flex>
               <v-layout>
-                <v-btn-toggle >
-                <v-btn depressed flat value="left" class="pl-5 pb-5 pr-5 pt-4 font-weight-bold title">
+                <v-btn-toggle v-model="sex_toggle" mandatory>
+                <v-btn depressed flat value="male" class="pl-5 pb-5 pr-5 pt-4 font-weight-bold title">
                   <span>남성</span>
                 </v-btn>
-                <v-btn depressed flat value="justify" class="pl-5 pb-5 pr-5 pt-4 font-weight-bold title">
+                <v-btn depressed flat value="female" class="pl-5 pb-5 pr-5 pt-4 font-weight-bold title">
                   <span>여성</span>
                 </v-btn>
               </v-btn-toggle>
@@ -50,7 +51,7 @@
               </v-layout >
               <v-layout class="mt-4 mb-4">
                 <v-select
-                          :items="items"
+                          :items="locale"
                           label="지역선택"
                           outline
                           hide-details
@@ -59,7 +60,7 @@
                           class="mr-3"
                         ></v-select>
                   <v-select
-                          :items="items"
+                          :items="job"
                           label="직업선택"
                           outline
                           height=0
@@ -68,7 +69,7 @@
                           class="mr-3"
                         ></v-select>
                   <v-select
-                          :items="items"
+                          :items="edu"
                           label="학력선택"
                           outline
                           height=0
@@ -77,7 +78,10 @@
                         ></v-select>
                 </v-layout>
           <v-card-actions >
-            <v-btn color="info" large block class="headline font-weight-bold mt-3">회원가입</v-btn>
+            <v-btn type="submit" 
+            form="check-register-form" 
+            color="info" large block 
+            class="headline font-weight-bold mt-3">회원가입</v-btn>
           </v-card-actions>
         </v-form>
        </v-card-text>
@@ -103,10 +107,14 @@ export default {
     name: 'Join',
     data() {
         return {
-          items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+          user_id: '',
+          password: '',
           name: '',
           email: '',
-          password: '',
+          sex_toggle: '',
+          locale: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+          job: ['Foo', 'asdfa', 'sdfaFizz', 'asdfaBuzz'],
+          edu: ['Fo12312o', 'B312312ar', '312312Fizz', 'Buzz'],
         };
     },
     methods: {
@@ -114,7 +122,12 @@ export default {
           this.$store.dispatch('REGISTER', {
             name: this.name,
             email: this.email,
-            password: this.password
+            user_id: this.user_id,
+            password: this.password,
+            sex_toggle: this.sex_toggle,
+            locale: this.locale,
+            job: this.job,
+            edu: this.edu
           })
           //  .then(response => {
           //    this.$router.push({name:'home'})
