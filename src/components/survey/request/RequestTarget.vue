@@ -8,7 +8,7 @@
     <v-layout row wrap>
       <div class="display-1 pb-4">타겟 설정</div>
     </v-layout>
-    <v-container fluid grid-list-md class="border_style pa-5" >
+    <v-card class="border_style pa-5" >
       <div class="title">1단계 대상설정</div>
       <v-layout row wrap class="pa-3" text-sm-center>
         <v-flex xs3>
@@ -52,15 +52,15 @@
           </v-card>
         </v-flex>
       </v-layout>
-    </v-container>
-    <v-container fluid grid-list-md class="border_style pa-5">
+    </v-card>
+    <v-card class="border_style pa-5">
       <div class="title">2단계 응답수 선택</div>
       <v-layout row wrap class="pa-2">
         <v-flex>
           <v-slider min="0" max="1000" label="Duration" thumb-label></v-slider>
         </v-flex>
       </v-layout>
-    </v-container>
+    </v-card>
   </v-container>
 </template>
 

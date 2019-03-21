@@ -1,3 +1,5 @@
+/* 네비게이션 */
+
 <template>
   <v-toolbar 
     v-scroll="onScroll" app :flat="!isScrolling"
@@ -13,17 +15,19 @@
       </v-btn>
     </v-toolbar-items>
     <v-spacer/>
-    <div v-if="!loggedIn">
+    <template v-if="!currentUser">
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" @click="SET_IS_LOGIN(true)" flat outline class="subheading">Login</v-btn>
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'join'}" flat outline class="subheading">Join</v-btn>
-    </div>
-    <div v-else>
-      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" @click="SET_IS_LOGIN(true)" flat outline class="subheading">MyPage</v-btn>
-      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" to="/logout" flat outline class="subheading">Loout</v-btn>
-    </div>
+    </template>
+    <template v-else>
+      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'myPage'}" flat outline class="subheading">MyPage</v-btn>
+      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" 
+      @click.prevent="logout" flat outline class="subheading">Logout</v-btn>
+    </template>
     <v-btn v-if="!$vuetify.breakpoint.mdAndUp" icon @click="toggleDrawer">
       <v-icon color="blue">menu</v-icon>
     </v-btn>
+    {{this.$store.state.currentUser}}
   </v-toolbar>
 </template>
 
@@ -40,8 +44,8 @@
       items () {
         return this.$t('View.items')
       },
-      loggedIn(){
-        return this.$store.getters.loggedIn  // 로그인 여부 체크
+      currentUser(){
+        return this.$store.getters.currentUser  // 로그인 여부 체크
       }
     },
     methods: {
@@ -53,6 +57,10 @@
         this.isScrolling = (window.pageYOffset ||
           document.documentElement.scrollTop || 0) > 100
       },
+      logout() {
+        this.$store.commit('LOGOUT')
+        //this.$store.push('')
+      }
     }
   }
 </script>
