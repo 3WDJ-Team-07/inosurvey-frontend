@@ -12,13 +12,13 @@
         <img src="/static/logo.png" id="center" class="logo_center pa-4">
         <v-card-text>
           <v-container grid-list-md>
-            <v-form @submit.prevent="login" id="check-login-form">
+            <v-form @submit.prevent="authenticate" id="check-login-form">
               <v-layout wrap>
-                <v-flex xs12>
+                <v-flex xs12> 
                   <v-text-field
                     prepend-inner-icon="person" 
                     name="email"  label="Email" 
-                    type="email" v-model="email" 
+                    type="email" v-model="form.email" 
                     :rules="emailRules" required>
                   </v-text-field>
                 </v-flex>
@@ -27,7 +27,7 @@
                     prepend-inner-icon="lock"  
                     name="password" label="Password" 
                     id="password" type="password" 
-                    required v-model="password" 
+                    required v-model="form.password" 
                     :rules="passwordRules">
                   </v-text-field>
                 </v-flex>
@@ -35,6 +35,11 @@
             </v-form>
           </v-container>
         </v-card-text>
+        <v-card-actions>
+          <v-btn color="error" v-if="authError" block flat >
+            <span class="caption">{{ authError }}</span>
+          </v-btn>
+        </v-card-actions>
         <v-card-actions>
           <v-btn
             type="submit" block flat 
@@ -45,7 +50,8 @@
         <v-card-actions>
           <v-btn
            class="blue--text"  
-           block outline>
+           block outline
+           @click="registerPage">
            회원가입
           </v-btn>
         </v-card-actions>
@@ -55,14 +61,17 @@
 </template>
 
 <script>
-	import { mapMutations, mapState } from 'vuex';
+  import { mapMutations, mapState } from 'vuex';
+  import { login } from '@/helpers/auth'
 
   export default {
     name: 'login',
     data() {
       return {
-        email: '',	// 이메일
-        password: '',	 // 패스워드
+        form: {
+          email: '',	 // 이메일
+          password: ''	 // 패스워드
+        },
         emailRules: [	 // 이메일 규칙
           v => !!v || '이메일을 입력하세요',
           v => /.+@.+/.test(v) || '이메일 형식으로 입력하세요' 
@@ -71,26 +80,37 @@
         passwordRules: [  // 패스워드 규칙
           v => !!v || '비밀번호를 입력하세요',
           v => v.length >= 6 || '6자 이상으로 입력해주세요'
-        ]
+        ],
+        error: null	 // 에러메시지
       }
     },
     computed: {
       ...mapState([ 
         'isLoginDialog', 	// 로딩 모달창 boolean값을 바인딩하여 계속 체크
-      ])
+      ]),
+      authError() {  // 로그인 에러 
+        return this.$store.getters.authError
+      }
     },
     methods: {
       ...mapMutations([
         'SET_IS_LOGIN', 	// 로딩 모달창 (true / false)
 			]),
-      login(){	// 로그인 요청
-        this.$store.dispatch('RETRIEVE_TOKEN', {
-          email: this.email,
-          password: this.password
-        })
-        // .then(response => {
-        //   this.$router.push({name:'home'})
-        // }) // 프로미스로 받아서 성공하면 리다이렉트 로직 
+      authenticate() {
+        this.$store.dispatch('LOGIN')
+
+        login(this.$data.form)
+          .then(response => {
+            this.$store.commit("LOGIN_SUCCESS", response)
+            this.$router.push({name:'home'})
+          })
+          .catch(error => {
+            this.$store.commit("LOGIN_FAILED", {error})  
+          })
+      },
+      registerPage(){
+        this.$router.push({name:'join'})
+        this.$store.state.isLoginDialog = false
       }
     },
   }

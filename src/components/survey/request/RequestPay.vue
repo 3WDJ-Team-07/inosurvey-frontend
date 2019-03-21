@@ -7,7 +7,7 @@
     <v-layout row wrap>
       <div class="display-1 pb-4">설문 견적</div>
     </v-layout>
-    <v-container fluid grid-list-md class="border_style">
+    <v-card fluid grid-list-md class="border_style pa-4">
       <table>
         <tr>
           <td>총요금</td>
@@ -27,7 +27,7 @@
         </tr>
       </table>
       <v-btn large color="info" block>확인 ( 결제 )</v-btn>
-    </v-container>
+    </v-card>
   </v-container>
 </template>
 

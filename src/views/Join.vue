@@ -21,11 +21,13 @@
 									<v-text-field
 										v-model="password"
 										placeholder="비밀번호"
+										type="password"
 										counter="25"
 										required>
 									</v-text-field>
 									<v-text-field
 										v-model="email"
+										type="email"
 										placeholder="이메일"
 										required>
 									</v-text-field>
@@ -58,19 +60,22 @@
 								</v-layout >
 								<v-layout class="mt-4 mb-4">
 									<v-select
-										:items="locale" label="지역선택"
+										v-model="locale"
+										:items="locale_item" label="지역선택"
 										outline height=0
 										hide-details class="mr-3"
 										append-icon="person"
 									></v-select>
 									<v-select
-										:items="job" label="직업선택"
+										v-model="job"
+										:items="job_item" label="직업선택"
 										outline height=0
 										hide-details class="mr-3"
 										append-icon="person"
 									></v-select>
 									<v-select
-										:items="edu" label="학력선택"
+										v-model="edu"
+										:items="edu_item" label="학력선택"
 										outline height=0
 										hide-details
 										append-icon="person"
@@ -113,19 +118,22 @@
 				name: '',       // 이름
 				email: '',      // 이메일
 				sex_toggle: '', // 성별
-				locale: [       // 지역
+				locale: '',		// 지역
+				job: '',		// 직업
+				edu: '',		// 학력
+				locale_item: [       // 지역
 					'Foo',
 					'Bar',
 					'Fizz',
 					'Buzz'
 				], 
-				job: [          // 직업 
+				job_item: [          // 직업 
 					'Foo',
 					'asdfa',
 					'sdfaFizz',
 					'asdfaBuzz'
 				],
-				edu: [          // 학력
+				edu_item: [          // 학력
 					'Fo12312o',
 					'B312312ar',
 					'312312Fizz',
@@ -136,19 +144,17 @@
 		methods: {
 			/* 회원가입 요청해 액션에 있는 REGISTER 실행 */
 			register(){
-				this.$store.dispatch('REGISTER', {
-					name: this.name,
-					email: this.email,
-					user_id: this.user_id,
-					password: this.password,
-					sex_toggle: this.sex_toggle,
-					locale: this.locale,
-					job: this.job,
-					edu: this.edu
-					})
-					//  .then(response => {
-					//    this.$router.push({name:'home'})
-					//  })  // 프로미스로 받아서 성공하면 리다이렉트 로직 
+				const user = new URLSearchParams()
+				user.append('name', this.name)
+				user.append('email', this.email)
+				user.append('user_id', this.user_id)
+				user.append('password', this.password)
+				user.append('sex_toggle', this.sex_toggle)
+				user.append('locale', this.locale)
+				user.append('job', this.job)
+				user.append('edu', this.edu)
+
+				this.$store.dispatch('REGISTER', user)
 			}
 		},  
 	};

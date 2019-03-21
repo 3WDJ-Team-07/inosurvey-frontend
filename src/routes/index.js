@@ -8,14 +8,9 @@ import Logout from '@/views/Logout'
 import SurveyForm from '@/views/SurveyForm'
 import SurveyRequest from '@/views/SurveyRequest'
 import MySurvey from '@/views/MySurvey'
+import MyPage from '@/views/MyPage'
 
 Vue.use(Router)
-
-// const requireLoginSession = (to, from, next) => {
-//   const isSession = 0
-//   const loginPath = `/login?rPath=${encodeURIComponent(to.path)}`
-//   isSession ? next() : next(loginPath)
-// } // 로그인 체크 ( beforeEnter로 검사하기 )
 
 export const router = new Router({
   mode: 'history',
@@ -31,7 +26,7 @@ export const router = new Router({
       name: 'survey',
       component: Survey,
       meta:{
-        requiresAuth:true
+        requiresAuth:false
       }
     },
     {
@@ -66,6 +61,11 @@ export const router = new Router({
       path: '/mysurvey',
       name: 'mysurvey',
       component: MySurvey
+    },
+    {
+      path: '/myPage',
+      name: 'myPage',
+      component: MyPage
     },
     {
       path: '/*',
