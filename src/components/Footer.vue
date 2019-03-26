@@ -16,7 +16,7 @@
         </v-flex>
         <v-flex xs12>
           <v-divider class="mb-2"/>
-          <div class="text-md-center">&copy;2018 — {{ $t('Footer.company') }}</div>
+          <div class="text-md-center">&copy;2019 — {{ $t('Footer.company') }}</div>
         </v-flex>
       </v-layout>
     </v-container>

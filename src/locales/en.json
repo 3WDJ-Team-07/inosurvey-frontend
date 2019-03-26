@@ -92,6 +92,36 @@
       }
     ]
   },
+  "Market": {
+    "jumbotronTitle": "설문마켓",
+    "jumbotronSubTitle": "설문조사 결과를 거래하는 공간",
+    "cardFeatures": [
+      {
+        "title": "대중교통 이용 실태조사",
+        "text": "대중교통 서비스 개선을 위한 설문조사입니다.",
+        "hover": "호벙러",
+        "hoversub":""
+      },
+      {
+        "title": "IT업계 직무 만족도 조사",
+        "text": "IT업계 근무환경 개선을 위한 설문조사입니다.",
+        "hover": "",
+        "hoversub":""
+      },
+      {
+        "title": "청소년 비속어 사용 실태조사",
+        "text": "교내 언어폭력 방지를 위한 설문조사입니다.",
+        "hover": "",
+        "hoversub":""
+      },
+      {
+        "title": "좋아하는 과자브랜드 조사",
+        "text": "신제품 출시를 위한 설문조사입니다.",
+        "hover": "",
+        "hoversub":""
+      }
+    ]
+  },
   "Projects": {
     "jumbotronTitle": "Building a Culture of Excellence",
     "jumbotronSubTitle": "Relentlessly advancing our clients\" visions, beyond their expectations",

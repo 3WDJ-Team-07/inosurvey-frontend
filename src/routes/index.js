@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/views/Home'
 import Survey from '@/views/Survey'
 import SurveyMarket from '@/views/SurveyMarket'
+import MarketDetail from '@/views/SurveyMarketDetail'
 import Join from '@/views/Join'
 import Logout from '@/views/Logout'
 import SurveyForm from '@/views/SurveyForm'
@@ -33,6 +34,11 @@ export const router = new Router({
       path: '/surveyMarket',
       name: 'surveyMarket',
       component: SurveyMarket
+    },
+    {
+      path: '/surveyMarketDetail',
+      name:'surveyMarketDetail',
+      component : MarketDetail
     },
     {
       path: '/join',
