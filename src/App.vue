@@ -17,7 +17,7 @@
 <script>
   import Navbar from '@/components/Navbar'
   import Navigation from '@/components/Navigation'
-  import Login from '@/views/Login'
+  import Login from '@/views/auth/Login'
   import Footer from '@/components/Footer'
 
   export default {

@@ -22,12 +22,14 @@
                 <div class="subheading white--text">
                   {{$t('Home.jumbotronSubTitle')}}
                 </div>
-                <v-btn color="info" large class="headline font-weight-bold mt-4" >
+                <v-btn color="info" router :to="{name : 'survey'}" 
+                large class="headline font-weight-bold mt-4" >
                   {{ $t('Home.btnText')}}
                 </v-btn>
+                <!-- <v-btn color="success" @click="TEST">test</v-btn> -->
               </v-flex>
             </v-fade-transition>
-            <v-btn class="floating" absolute flat fab bottom right >
+            <v-btn class="floating" absolute flat fab bottom right>
               <v-icon
                class="grey--text" 
                x-large 
@@ -43,7 +45,12 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex'
+
   export default {
+    methods: {
+      ...mapActions(['TEST'])
+    },
   }
 </script>
  <style scoped>

@@ -1,16 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
-import Survey from '@/views/Survey'
-import SurveyMarket from '@/views/SurveyMarket'
-import Join from '@/views/Join'
-import Logout from '@/views/Logout'
-import SurveyForm from '@/views/SurveyForm'
-import SurveyRequest from '@/views/SurveyRequest'
-import MySurvey from '@/views/MySurvey'
-import MyPage from '@/views/MyPage'
+import Survey from '@/views/surveyView/Survey'
+import SurveyMarket from '@/views/marketView/SurveyMarket'
+import Join from '@/views/auth/Join'
+import SurveyForm from '@/views/surveyView/SurveyForm'
+import SurveyRequest from '@/views/surveyView/SurveyRequest'
+import SurveyComplete from '@/views/surveyView/SurveyComplete'
+import MySurvey from '@/views/surveyView/MySurvey'
+import MyPage from '@/views/myPageView/MyPage'
+import DetailsRecord from '@/views/myPageView/DetailsRecord'
+import {store} from '../store'
 
 Vue.use(Router)
+
+const requireAuth = (to, from, next) => {
+  // const loginPath = `/?rPath=${encodeURIComponent(to.path)}`  // home으로 가게하면 될듯 ( 이부분 필요없을듯 )
+  store.getters.isAuth ? next() : next('/')
+}
 
 export const router = new Router({
   mode: 'history',
@@ -25,27 +32,17 @@ export const router = new Router({
       path: '/survey',
       name: 'survey',
       component: Survey,
-      meta:{
-        requiresAuth:false
-      }
     },
     {
       path: '/surveyMarket',
       name: 'surveyMarket',
-      component: SurveyMarket
+      component: SurveyMarket,
+      beforeEnter: requireAuth
     },
     {
       path: '/join',
       name: 'join',
       component: Join,
-      meta:{
-        requiresVisitor:true
-      }
-    },
-    {
-      path: '/logout',
-      name: 'logout',
-      component: Logout
     },
     {
       path: '/SurveyForm',
@@ -58,6 +55,11 @@ export const router = new Router({
       component: SurveyRequest
     },
     {
+      path: '/SurveyComplete',
+      name: 'surveyComplete',
+      component: SurveyComplete
+    },
+    {
       path: '/mysurvey',
       name: 'mysurvey',
       component: MySurvey
@@ -66,6 +68,11 @@ export const router = new Router({
       path: '/myPage',
       name: 'myPage',
       component: MyPage
+    },
+    {
+      path: '/detailsRecord',
+      name: 'detailsRecord',
+      component: DetailsRecord
     },
     {
       path: '/*',

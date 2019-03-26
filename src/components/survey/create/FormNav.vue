@@ -4,22 +4,40 @@
 */
 
 <template>
-  <v-container fluid grid-list-md >
-    <v-layout row wrap>
+  <div fluid grid-list-md>
+    <v-layout row wrap class="mt-3">
       <div 
         class="display-1 
-        font-weight-bold" 
+        font-weight-bold pt-3 ml-4"
         v-html="surveyTitle">
       </div> 
       <v-spacer/>
+      <v-layout row wrap justify-end>
+        <v-flex sm3>
+          <v-select
+            label="설문주제선택"
+            class="pr-4 pl-5 mt-2 "
+            hide-details
+            v-model="category"
+            :items="category_item"
+            append-icon="arrow_drop_down">
+          </v-select>
+        </v-flex>
+      </v-layout>
     </v-layout>
-  </v-container>
+  </div>
 </template>
 
 <script>
   import { mapState } from 'vuex'
 
   export default {
+    data(){
+      return{
+        category: null,
+        category_item: ['생활','제품','경제','교육','기타'], 
+      }
+    },
     computed:{
       ...mapState([
         'surveyTitle'  // 설문제목을 받는다

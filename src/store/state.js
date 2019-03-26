@@ -1,18 +1,13 @@
 
-const user = localStorage.getItem("user")
-
 const state = {
   drawer : null,
   isLoginDialog : false,
-  isRequestDialog: false,
-  isResponseDialog: false,
   isSurveyDialog: false,
+  isRegisterNullDialog: false,
+  isPaymentDialog: false,
   surveyTitle: "",
-  currentUser: user || null,
-  isLoggedIn: !!user,
+  token: null,  // test Token
   loading: false,
-  auth_error: null,
-  customers: []
 }
 
 export default state

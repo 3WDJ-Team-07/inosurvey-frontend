@@ -1,44 +1,36 @@
 import { set, toggle } from '@/utils/vuex'
+import { setAuthInHeader } from '../api'
 
 const mutations = {
   setDrawer: set('drawer'),
   toggleDrawer: toggle('drawer'),
+
   SET_IS_LOGIN(state, toggle){
     state.isLoginDialog = toggle
-  },
-  SET_IS_REQUEST_DIALOG(state, toggle) {
-    state.isRequestDialog = toggle
-  },
-  SET_IS_RESPONSE_DIALOG(state, toggle) {
-    state.isResponseDialog = toggle
   },
   SET_IS_ADD_SURVEY(state, toggle) {
     state.isSurveyDialog = toggle
   },
+  SET_IS_REGISTER_NULL(state, toggle) {
+    state.isRegisterNullDialog = toggle
+  },
+  SET_IS_PAYMENT_SURVEY(state, toggle) {
+    state.isPaymentDialog = toggle
+  },
   UPDATE_TITLE(state, title) {
     state.surveyTitle = title
   },
-  LOGIN(state) {
-    state.loading = true
-    state.auth_error = null
+  LOGIN(state, token) {
+    if(!token) return  // token정보가 없으면 바로 리턴 
+    state.token = token
+    localStorage.setItem('token', token)
+    setAuthInHeader(token)  // 리퀘스트 헤더 세팅
   },
-  LOGIN_SUCCESS(state, payload) {
-    state.auth_error = null
-    state.isLoggedIn = true
-    state.loading = false
-    state.currentUser = Object.assign({}, payload.user, {token: payload.access_token})
-    localStorage.setItem("user", JSON.stringify(state.currentUser))
-  },
-  LOGIN_FAILED(state, payload) {
-    state.loading = false
-    state.auth_error = payload.error
-  },
-  LOGOUT(state){
-    localStorage.removeItem("user")
-    state.isLoggedIn = false
-    state.currentUser = null
+  LOGOUT(state) {
+    state.token = null 
+    delete localStorage.token
+    setAuthInHeader(null)
   }
-
 }
 
 export default mutations

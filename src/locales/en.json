@@ -1,12 +1,12 @@
 {
   "Footer": {
-    "company": "INO-SURVEY",
+    "company": "永進専門大学 ナナイロトリ",
     "services": "Services",
     "projects": "Projects",
     "ourTeam": "Our Team",
     "community": "Commitment to the Community",
     "rights": "All Rights reserved.",
-    "text": "hicula lacinia malesuamhicada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus ecada. Nulla placerat augue vel ipsum ultrices."
+    "text": "FOOTERfooter lacinia malesuamhicada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin."
   },
   "View": {
     "items": [
@@ -30,14 +30,14 @@
         "hoverTitle": "설문 작성하기",
         "mainText": "",
         "subText": "나만의 설문조사 만들기",
-        "img": "/static/respond.png",
+        "img": "/static/create.png",
         "color": "blue--text"
       },
       {
-        "hoverTitle": "내 설문조사 보기",
+        "hoverTitle": "설문 리스트 보기",
         "mainText": "",
         "subText": "내가 만든 설문조사",
-        "img": "/static/request.png",
+        "img": "/static/mysurvey.png",
         "color": "orange--text"
       }
     ]
