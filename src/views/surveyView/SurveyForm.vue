@@ -5,15 +5,16 @@
 
 <template>
   <v-container fluid grid-list-md class="pt-5 mt-5">
-    <v-toolbar class="box_round_color" flat>
-      <v-btn flat color="info" class="font-weight-bold">설문 작성</v-btn>|
-      <v-btn flat  class=" font-weight-thin">설문 요청</v-btn>|
-      <v-btn flat  class=" font-weight-thin">설문 등록</v-btn>
+    <v-divider/>
+    <v-toolbar color="#FAFAFA" flat>
+      <v-btn flat color="info" class="subheading font-weight-bold">설문 작성</v-btn>|
+      <v-btn flat color="grey" class="subheading font-weight-bold">설문 요청</v-btn>|
+      <v-btn flat color="grey" class="subheading font-weight-bold">등록</v-btn>
       <v-spacer/>
-      <v-btn color="info" large @click="next_stage">다음
-        <v-icon class="ml-3">arrow_forward</v-icon>
-      </v-btn>
+      <v-btn color="info" class="pl-5 pr-5 subheading" large @click="next_stage">저장</v-btn>
+      <v-btn color="info" class="pl-5 pr-5 subheading" large @click="next_stage">다음</v-btn>
     </v-toolbar>
+    <v-divider/>
     <v-layout row wrap>
       <v-flex xs12>
         <v-card color="#FAFAFA" height="10vh" flat >
@@ -54,9 +55,3 @@
   }
 </script>
 
-<style scoped>
-  .box_round_color{
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-  }
-</style>

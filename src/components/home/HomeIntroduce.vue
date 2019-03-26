@@ -15,11 +15,13 @@
           data-aos-delay="200" >
           <v-card-text class="display-1 mt-2 mb-3 font-weight-black">응답자용</v-card-text>
           <v-img src="/static/respond.png" width="35%" class="center"></v-img>
-          <v-btn 
-            color="white" class="blue--text mt-5" large 
-            @click="SET_IS_RESPONSE_DIALOG(true)">
-            모든 서비스 보기
-          </v-btn>
+          <v-card-text class="pa-5">
+            <span class="headline font-weight-bold">
+              필요한정보를 가진 집단을 직접 선택해<br>
+              확실한 정보를 제공받으세요.<br>
+              원하는 양식으로 결과를 분석하세요.
+            </span>
+          </v-card-text>
         </v-card>
       </v-flex>
       <v-flex xs12 sm12 md6>
@@ -31,11 +33,13 @@
           data-aos-delay="300" >
           <v-card-text class="display-1 mt-2 mb-3 font-weight-black">요청자용</v-card-text>
           <v-img src="/static/request.png" width="35%" class="center"></v-img>
-          <v-btn 
-            color="white" class="grey--text mt-5" large 
-            @click="SET_IS_REQUEST_DIALOG(true)">
-            모든 서비스 보기
-          </v-btn>
+          <v-card-text class="pa-5">
+            <span class="headline font-weight-bold">
+              모바일 환경에서 편리하게 설문조사에<br>
+              참여하세요. 설문조사에 응답하며 데이터에<br>
+              대한 정당한 보상을 받으세요.
+            </span>
+          </v-card-text>
         </v-card>
       </v-flex>
       <v-flex md12 text-md-center text-xs-center>
@@ -49,34 +53,17 @@
           <v-card-text class="display-2">
             궁금하지않으세요?
           </v-card-text>
-          <v-btn color="primary" large to="/join">시작하기</v-btn>
+          <v-btn color="primary" large router :to="{name: 'survey'}">시작하기</v-btn>
         </v-card>
       </v-flex>
-      <ResponseDialog/>
-      <RequestDialog/>
     </v-layout>
   </v-fade-transition>
 </template>
 
 <script>
-  import ResponseDialog from '@/components/home/ResponseDialog'
-  import RequestDialog from '@/components/home/RequestDialog'
-  import { mapMutations } from 'vuex';
-
-  export default {
-    name: 'homeIntroduce',
-    components:{
-      ResponseDialog,
-      RequestDialog
-    },
-    methods:{
-      ...mapMutations([
-        'SET_IS_RESPONSE_DIALOG',
-        'SET_IS_REQUEST_DIALOG'
-      ]),
-    }
-  }
+ 
 </script>
+
  <style scoped>
   .center {
   display: block;

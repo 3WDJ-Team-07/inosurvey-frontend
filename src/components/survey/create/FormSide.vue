@@ -6,8 +6,8 @@
       grow color="blue"
       icons-and-text hide-slider 
       fixed-tabs height="120">
-      <v-tab><v-img src="/static/market.png" alt="" width="150"></v-img></v-tab>
-      <v-tab><v-img src="/static/write.png" alt="" width="150"></v-img></v-tab>
+      <v-tab><v-img src="/static/market.png" alt="" width="100"></v-img></v-tab>
+      <v-tab><v-img src="/static/write.png" alt="" width="100"></v-img></v-tab>
       <v-tab-item v-for="tab of tabs" :key="tab.index">
         <v-card flat @click="text">
           <v-card-text 
@@ -33,7 +33,7 @@
           { name: 'tab2' },
           { name: 'tab2' },
           { name: 'tab2' },
-        ]
+        ],
       }
     },
     methods: {
