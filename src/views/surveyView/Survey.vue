@@ -3,7 +3,7 @@
 <template>
   <v-fade-transition mode="out-in">
     <v-img 
-      src="/static/main.png" height="100vh"
+      height="100vh"
       gradient="to bottom,  rgba(128, 128, 128, .9), 
       rgba(128, 128, 128, .8), rgba(0, 0, 0, .6), rgba(0, 0, 0, .8)">
       <v-container

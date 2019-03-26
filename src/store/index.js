@@ -13,3 +13,7 @@ export const store =  new Vuex.Store({
   mutations,
   actions
 })
+
+// 웹이 구동될때 토큰이 있는지 없는지 체크 
+const {token} = localStorage 
+store.commit('LOGIN', token)

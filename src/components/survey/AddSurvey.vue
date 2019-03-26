@@ -4,19 +4,17 @@
 */
 
 <template>
-  <div class="text-xs-center">
-    <v-dialog v-model="isSurveyDialog" width="500">
-      <v-card>
-        <span class="headline right grey--text mr-2 mt-2">
-          <i class="far fa-times-circle"></i>
-        </span>
-        <v-card-title primary-title class="title">새로운 설문조사 작성하기</v-card-title>
-        <v-card-text>
-          <v-text-field name="name" label="설문제목" outline id="id" v-model="getTitle"></v-text-field>
+  <div>
+    <v-dialog v-model="isSurveyDialog" persistent width="500">
+      <v-card class="pb-5 pt-3 pl-3 pr-3">
+        <v-card-title primary-title class="title font-weight-black">새로운 설문조사 작성하기</v-card-title>
+        <v-card-text justify-end>
+          <v-text-field name="name" label="설문제목" outline id="id" v-model="getTitle" ref="input"></v-text-field>
+          <div style="float:right">
+            <v-btn color="grey" dark @click="SET_IS_ADD_SURVEY(false)">취소</v-btn>
+            <v-btn color="primary" @click="onAddClick" :disabled="!valid">완료</v-btn>
+          </div>
         </v-card-text>
-        <v-card-actions>
-          <v-btn color="primary" large block @click="onAddClick">완료</v-btn>
-        </v-card-actions>
       </v-card>
     </v-dialog>
   </div>
@@ -27,6 +25,11 @@
 
   export default {
     name: 'AddSurvey',
+    data() {
+      return {
+        valid: false
+      }
+    },
     computed: {
       ...mapState([
         'isSurveyDialog',  // 설문제목지정 모달창 체크 
@@ -39,6 +42,14 @@
           this.$store.commit('UPDATE_TITLE', value)
         }
       }
+    },
+    watch: {
+      getTitle(v) {  // getTitle을 바라보다가 길이가 0이 아닐때 disable을 풀어준다
+        this.valid = v.trim().length > 0
+      }
+    },
+    updated() {  // 모달을 열때 제목입력에 포커스를 맞춘다
+      this.$refs.input.focus()
     },
     methods: {
       ...mapMutations([

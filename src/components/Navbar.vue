@@ -15,9 +15,9 @@
       </v-btn>
     </v-toolbar-items>
     <v-spacer/>
-    <template v-if="!currentUser">
+    <template v-if="!isAuth">
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" @click="SET_IS_LOGIN(true)" flat outline class="subheading">Login</v-btn>
-      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'join'}" flat outline class="subheading">Join</v-btn>
+      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'join'}" flat outline class="subheading">sing up</v-btn>
     </template>
     <template v-else>
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'myPage'}" flat outline class="subheading">MyPage</v-btn>
@@ -32,7 +32,8 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
+  import { mapMutations, mapGetters } from 'vuex'
+  import { setAuthInHeader } from '../api';
 
   export default {
     data(){
@@ -41,25 +42,26 @@
       }
     },
     computed: {
+      ...mapGetters([  // isAuth Test Token
+        'isAuth'
+      ]),
       items () {
         return this.$t('View.items')
       },
-      currentUser(){
-        return this.$store.getters.currentUser  // 로그인 여부 체크
-      }
     },
     methods: {
       ...mapMutations([
-        'SET_IS_LOGIN',
-        'toggleDrawer',
+        'SET_IS_LOGIN',  // 로그인 모달
+        'LOGOUT',  // 로그아웃 
+        'toggleDrawer',  
       ]),
+      logout() {
+        this.LOGOUT()
+        this.$router.push('/')
+      },
       onScroll () {
         this.isScrolling = (window.pageYOffset ||
           document.documentElement.scrollTop || 0) > 100
-      },
-      logout() {
-        this.$store.commit('LOGOUT')
-        //this.$store.push('')
       }
     }
   }
