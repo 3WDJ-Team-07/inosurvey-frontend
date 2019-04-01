@@ -1,25 +1,33 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '@/views/Home'
-import Survey from '@/views/surveyView/Survey'
-import SurveyMarket from '@/views/marketView/SurveyMarket'
-import Join from '@/views/auth/Join'
-import SurveyForm from '@/views/surveyView/SurveyForm'
-import SurveyRequest from '@/views/surveyView/SurveyRequest'
-import SurveyComplete from '@/views/surveyView/SurveyComplete'
-import MySurvey from '@/views/surveyView/MySurvey'
-import MyPage from '@/views/myPageView/MyPage'
-import DetailsRecord from '@/views/myPageView/DetailsRecord'
-import {store} from '../store'
+import Vue              from 'vue'
+import Router           from 'vue-router'
+import Home             from '@/views/Home'
+import Survey           from '@/views/surveyView/Survey'
+import SurveyMarket     from '@/views/marketView/SurveyMarket'
+import Join             from '@/views/auth/Join'
+import SurveyForm       from '@/views/surveyView/SurveyForm'
+import SurveyRequest    from '@/views/surveyView/SurveyRequest'
+import SurveyComplete   from '@/views/surveyView/SurveyComplete'
+import MySurvey         from '@/views/surveyView/MySurvey'
+import MyPage           from '@/views/myPageView/MyPage'
+import DetailsRecord    from '@/views/myPageView/DetailsRecord'
+import store            from '../store'
+import swal             from 'sweetalert'
 
 Vue.use(Router)
 
+
 const requireAuth = (to, from, next) => {
-  // const loginPath = `/?rPath=${encodeURIComponent(to.path)}`  // home으로 가게하면 될듯 ( 이부분 필요없을듯 )
-  store.getters.isAuth ? next() : next('/')
+  store.getters.isAuth ? 
+    next() : 
+    swal(
+      "접근불가!",
+      "로그인후 이용 가능합니다.",
+      "error",
+      {button: "확인"}
+    );
 }
 
-export const router = new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -32,10 +40,11 @@ export const router = new Router({
       path: '/survey',
       name: 'survey',
       component: Survey,
+      //beforeEnter: requireAuth
     },
     {
-      path: '/surveyMarket',
-      name: 'surveyMarket',
+      path: '/surveymarket',
+      name: 'surveymarket',
       component: SurveyMarket,
       beforeEnter: requireAuth
     },
@@ -45,18 +54,18 @@ export const router = new Router({
       component: Join,
     },
     {
-      path: '/SurveyForm',
-      name: 'surveyForm',
+      path: '/surveyform',
+      name: 'surveyform',
       component: SurveyForm
     },
     {
-      path: '/SurveyRequest',
-      name: 'surveyRequest',
+      path: '/surveyrequest',
+      name: 'surveyrequest',
       component: SurveyRequest
     },
     {
-      path: '/SurveyComplete',
-      name: 'surveyComplete',
+      path: '/surveycomplete',
+      name: 'surveycomplete',
       component: SurveyComplete
     },
     {
@@ -65,19 +74,21 @@ export const router = new Router({
       component: MySurvey
     },
     {
-      path: '/myPage',
-      name: 'myPage',
+      path: '/mypage',
+      name: 'mypage',
       component: MyPage
     },
     {
-      path: '/detailsRecord',
-      name: 'detailsRecord',
+      path: '/detailsrecord',
+      name: 'detailsrecord',
       component: DetailsRecord
     },
     {
       path: '/*',
-      name: 'notFound',
+      name: 'notfound',
       redirect: {name : 'Home'}
     }
   ]
 })
+
+export default router

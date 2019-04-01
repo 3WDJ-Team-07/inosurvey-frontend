@@ -21,21 +21,21 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+  import { mapState, mapMutations } from 'vuex';
 
-export default {
-  name: 'registerNull',
-  computed: {
-    ...mapState([
-      'isRegisterNullDialog'
-    ])
-  },
-  methods: {
-    ...mapMutations([
-      'SET_IS_REGISTER_NULL'
-    ])
+  export default {
+    name: 'registerNull',
+    computed: {
+      ...mapState([
+        'isRegisterNullDialog'
+      ])
+    },
+    methods: {
+      ...mapMutations([
+        'SET_IS_REGISTER_NULL'
+      ])
+    }
   }
-}
 </script>
 
 <style scoped>

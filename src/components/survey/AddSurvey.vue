@@ -51,13 +51,16 @@
     updated() {  // 모달을 열때 제목입력에 포커스를 맞춘다
       this.$refs.input.focus()
     },
+    created(){
+      this.$store.state.surveyTitle = ''
+    },
     methods: {
       ...mapMutations([
         'SET_IS_ADD_SURVEY',
       ]),
       onAddClick(){  // 클릭시 모달창을 끄고 surveyForm으로 리다이렉트
         this.SET_IS_ADD_SURVEY(false)
-        this.$router.replace("/SurveyForm")
+        this.$router.replace("/surveyform")
       }
     }
   }

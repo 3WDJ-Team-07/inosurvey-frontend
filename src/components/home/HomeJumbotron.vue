@@ -29,7 +29,7 @@
                 <!-- <v-btn color="success" @click="TEST">test</v-btn> -->
               </v-flex>
             </v-fade-transition>
-            <v-btn class="floating" absolute flat fab bottom right>
+            <v-btn class="floating mb-5" absolute flat fab bottom right>
               <v-icon
                class="grey--text" 
                x-large 

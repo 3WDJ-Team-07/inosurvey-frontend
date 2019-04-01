@@ -4,7 +4,7 @@
   <v-layout row justify-center>
     <v-dialog v-model="isPaymentDialog" persistent max-width="450px">
       <v-card class="pr-5 pl-5 pt-4 pb-4 border_rounded">
-		<span 
+		    <span 
           class="headline right grey--text" 
           @click="SET_IS_PAYMENT_SURVEY(false)">
           <i class="fas fa-times"></i>
@@ -44,7 +44,7 @@ export default {
 		]),
 		payment(){
 			this.SET_IS_PAYMENT_SURVEY(false)
-			this.$router.push('/surveyComplete')
+			this.$router.push('/surveycomplete')
 		}
   }
 }

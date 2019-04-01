@@ -5,25 +5,13 @@
 
 <template>
   <div fluid grid-list-md>
-    <v-layout row wrap class="mt-3">
+    <v-layout column wrap class="mt-3">
       <div 
         class="display-1 
         font-weight-bold pt-3 ml-4"
         v-html="surveyTitle">
       </div> 
-      <v-spacer/>
-      <v-layout row wrap justify-end>
-        <v-flex sm3>
-          <v-select
-            label="설문주제선택"
-            class="pr-4 pl-5 mt-2 "
-            hide-details
-            v-model="category"
-            :items="category_item"
-            append-icon="arrow_drop_down">
-          </v-select>
-        </v-flex>
-      </v-layout>
+      <v-divider class="mt-2"></v-divider>
     </v-layout>
   </div>
 </template>
@@ -34,8 +22,7 @@
   export default {
     data(){
       return{
-        category: null,
-        category_item: ['생활','제품','경제','교육','기타'], 
+       
       }
     },
     computed:{

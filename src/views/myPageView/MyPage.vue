@@ -22,7 +22,7 @@
 						</div>
 					</v-card-title>
 					<v-card-actions>
-						<v-btn color="info" class="btn_center title font-weight-bold" large :to="{name: 'detailsRecord'}">더보기</v-btn>
+						<v-btn color="info" id="btn_center" class="title font-weight-bold" large :to="{name: 'detailsRecord'}">더보기</v-btn>
 					</v-card-actions>
 				</v-card>
     	</v-flex>
@@ -36,7 +36,7 @@
 						</div>
 					</v-card-title>
 					<v-card-actions>
-						<v-btn color="info" class="btn_center title font-weight-bold" large>더보기</v-btn>
+						<v-btn color="info" id="btn_center" class="title font-weight-bold" large>더보기</v-btn>
 					</v-card-actions>
 				</v-card>
     	</v-flex>
@@ -49,7 +49,7 @@
 						</div>
 					</v-card-title>
 					<v-card-actions>
-						<v-btn color="info" class="btn_center title font-weight-bold" large>더보기</v-btn>
+						<v-btn color="info" id="btn_center" class="title font-weight-bold" large>더보기</v-btn>
 					</v-card-actions>
 				</v-card>
     	</v-flex>
@@ -64,12 +64,12 @@ export default {
 </script>
 
 <style scoped>
+	#btn_center{
+		border-radius: 5%;
+		margin: 0 auto;
+		width: 80%;
+	}
 	.border_round{
 		border-radius: 5%;
-	}
-	.btn_center{
-		margin: 0 auto;
-		border-radius: 5%;
-		width: 80%;
 	}
 </style>

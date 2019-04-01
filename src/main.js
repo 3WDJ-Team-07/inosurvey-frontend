@@ -1,13 +1,15 @@
-import Vue from 'vue'
+import Vue                from 'vue'
+import App                from './App.vue'
+import router             from '@/routes/index'
+import store              from '@/store/index'
+import i18n               from './i18n'
+import AOS                from 'aos'
+import VueScrollTo        from 'vue-scrollto'
+import VueFriendlyIframe  from 'vue-friendly-iframe'
+import swal               from 'sweetalert';
+import 'vuetify/dist/vuetify.min.css'
 import './plugins/vuetify'
-import App from './App.vue'
-import {router} from '@/routes/index'
-import {store} from '@/store/index'
-import i18n from './i18n'
-import AOS from 'aos'
 import 'aos/dist/aos.css'
-import VueScrollTo from 'vue-scrollto'
-import VueFriendlyIframe from 'vue-friendly-iframe';
 
 Vue.use(VueScrollTo)
 Vue.config.productionTip = false
@@ -15,7 +17,8 @@ Vue.config.productionTip = false
 new Vue({
   created(){
     AOS.init();
-  },
+  },  // scroll
+  swal,  // alert
   VueFriendlyIframe,
   router,
   store,

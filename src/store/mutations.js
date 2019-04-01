@@ -1,5 +1,6 @@
 import { set, toggle } from '@/utils/vuex'
-import { setAuthInHeader } from '../api'
+// import { setAuthInHeader } from '../api/index'
+import axios from 'axios'
 
 const mutations = {
   setDrawer: set('drawer'),
@@ -17,19 +18,29 @@ const mutations = {
   SET_IS_PAYMENT_SURVEY(state, toggle) {
     state.isPaymentDialog = toggle
   },
+  SET_IS_QUESTION_BANK(state, toggle ){
+    state.isQuestionBank = toggle
+  },
   UPDATE_TITLE(state, title) {
     state.surveyTitle = title
+  },
+  SET_BOARDS(state, boards) {
+    state.boards = boards
   },
   LOGIN(state, token) {
     if(!token) return  // token정보가 없으면 바로 리턴 
     state.token = token
     localStorage.setItem('token', token)
-    setAuthInHeader(token)  // 리퀘스트 헤더 세팅
+    //setAuthInHeader(token)
+    if(token){
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    }
   },
   LOGOUT(state) {
     state.token = null 
-    delete localStorage.token
-    setAuthInHeader(null)
+    localStorage.removeItem('token')
+    //setAuthInHeader(null)
+    axios.defaults.headers.common['Authorization'] = null
   }
 }
 

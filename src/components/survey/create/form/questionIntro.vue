@@ -1,0 +1,42 @@
+<template>
+	<v-container grid-list-xs>
+		<v-layout column class="hoverEvent">
+			<v-flex xs12 class="ma-1">
+				<input class="form-control title" v-if="isEditTitle" type="text" v-model="input" ref="inputTitle" @blur="onSubmitTitle" @keyup.enter="onSubmitTitle">
+				<div v-else class="title" @click="onClickTitle">{{ input }}</div>
+			</v-flex>
+		</v-layout>	
+	</v-container>
+</template>
+
+<script>
+	import {mapState} from 'vuex'
+
+	export default {
+		data(){
+			return{
+				input: "소개글을 입력하세요",
+				isEditTitle: false
+			}
+		},
+		methods: {
+			onClickTitle(){
+				this.isEditTitle = true
+				this.$nextTick(() => this.$refs.inputTitle.focus())
+			},
+			onSubmitTitle(){
+				this.isEditTitle = false
+			}
+		},
+	}
+</script>
+
+<style scoped>
+	.hoverEvent{
+		transition: background-color 0.5s ease;
+	}
+  .hoverEvent:hover{
+    background-color: #EAEAEA;
+    cursor: pointer;
+  }
+</style>

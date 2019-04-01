@@ -17,8 +17,8 @@
                 <v-flex xs12> 
                   <v-text-field
                     prepend-inner-icon="person" 
-                    name="user_id"  label="아이디" 
-                    type="text" v-model="form.user_id"
+                    name="email"  label="아이디" 
+                    type="text" v-model="form.email"
                     required>
                   </v-text-field>
                 </v-flex>
@@ -37,7 +37,7 @@
         </v-card-text>
         <v-card-actions>
           <v-btn color="error" v-if="error" block flat >
-            <span class="caption">{{ error }}</span>
+            <span>{{ error }}</span>
           </v-btn>
         </v-card-actions>
         <v-card-actions>
@@ -69,7 +69,7 @@
     data() {
       return {
         form: {
-          user_id: '',	 // 이메일
+          email: '',	 // 이메일
           password: ''	 // 패스워드
         },
         emailRules: [	 // 이메일 규칙
@@ -97,19 +97,23 @@
         'LOGIN'  // 로그인 요청
       ]),
       registerPage(){
-        this.$router.push({name:'join'})
+        this.$router.push({name: 'join'})
         this.$store.state.isLoginDialog = false
       },
       onSubmit() {  
         this.LOGIN({
-          user_id: this.form.user_id,
+          email: this.form.email,
           password: this.form.password
         })
           .then(response => {
-            this.$router.push('/')
+            this.$router.push({name: 'home'})
+            this.$store.state.isLoginDialog = false
+            swal("환영합니다!", "로그인이 완료되었습니다.", "success",{
+              button: "확인"
+            });
           })
-          .catch(response => {
-            this.error = response.error  // 백엔드에서 에러메세지 받자 
+          .catch(_ => {
+            this.error = "아이디 또는 비밀번호가 틀렸습니다."
           })
       }
     },

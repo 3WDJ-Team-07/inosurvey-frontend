@@ -21,6 +21,13 @@
   import Footer from '@/components/Footer'
 
   export default {
+    data () {
+      return {
+        checkbox: true,
+        radioGroup: 1,
+        switch1: true
+      }
+    },
     name: 'app',
     components:{
       Navbar,
@@ -37,6 +44,19 @@
 </script>
 
 <style>
+  .form-control {
+    box-sizing: border-box;
+    background-color: #e2e4e6;
+    border: 1px solid #cdd2d4;
+    border-radius: 3px;
+    margin-bottom: 12px;
+    width: 70%;
+    padding: 6px 8px;
+    transition: background-color .3s;
+  }
+  .form-control:focus {
+    background-color: #fff;
+  }
   .page-enter-active, .page-leave-active {
     transition: opacity .5s;
   }

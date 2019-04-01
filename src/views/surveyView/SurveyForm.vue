@@ -21,16 +21,18 @@
           <FormNav/>
         </v-card>
       </v-flex>
-      <v-flex xs3 md3>
-        <v-card color="#FAFAFA" height="80vh" max-width="400">
+      <v-layout row wrap>
+      <v-flex xs3>
+        <v-card color="#FAFAFA" height="700px" max-width="400">
           <FormSide/>
         </v-card>
       </v-flex>
-      <v-flex xs9>
-        <v-card color="#FAFAFA" height="80vh">
-          <FormBody/>
-        </v-card>
-      </v-flex>
+        <v-flex sm8 class="ml-5 pl-5">
+          <v-card color="#FAFAFA" height="700px">
+            <FormBody/>
+          </v-card>
+        </v-flex>
+      </v-layout>
     </v-layout>
   </v-container>
 </template>
@@ -49,7 +51,7 @@
     },
     methods: {
       next_stage(){  // 요청페이지로 이동
-        this.$router.replace("/SurveyRequest")
+        this.$router.replace("/surveyrequest")
       }
     },
   }

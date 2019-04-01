@@ -53,7 +53,7 @@
           <v-card-text class="display-2">
             궁금하지않으세요?
           </v-card-text>
-          <v-btn color="primary" large router :to="{name: 'survey'}">시작하기</v-btn>
+          <v-btn color="primary" large router :to="{name: 'join'}">시작하기</v-btn>
         </v-card>
       </v-flex>
     </v-layout>

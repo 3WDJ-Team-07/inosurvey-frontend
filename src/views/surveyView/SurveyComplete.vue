@@ -37,7 +37,7 @@
     },
     methods: {
       mySurvey(){  // 설문등록페이지로 리다이렉트
-        this.$router.replace("/mySurvey")
+        this.$router.replace("/mysurvey")
       }
     }
   }

@@ -1,0 +1,50 @@
+{
+  "survey_title": "설문 타이틀",
+  "survey_description": "설문 소개",
+  "survey_maximumCount": 500,
+  "target": "asdasd",
+  "questions": [
+    {
+      "question_title": "질문 1",
+      "index": 1,
+      "type": "객관식",
+      "question_image": "www.image.com/asd.jpg",
+      "isActice": true,
+      "items": [
+        {
+          "value": "한끼",
+          "image" : "www.image.com/asd.jpg"
+        }
+      ]
+		},
+		{
+      "question_title": "질문 2",
+      "index": 2,
+      "type": "주관식",
+      "question_image": "",
+      "items": []
+    },
+    {
+      "question_title": "질문 3",
+      "index": 2,
+      "type": "주관식",
+      "question_image": "",
+      "items": []
+		},
+		{
+      "question_title": "질문 4",
+      "index": 2,
+      "type": "별",
+      "question_image": "",
+      "items": []
+    },
+    {
+      "question_title": "질문 5",
+      "index": 2,
+      "type": "객관식",
+      "question_image": "",
+      "items": []
+    }
+  ]
+}
+

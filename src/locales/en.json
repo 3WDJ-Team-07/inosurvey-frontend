@@ -19,7 +19,7 @@
         "text": "survey"
       },
       {
-        "to": "/surveyMarket",
+        "to": "/surveymarket",
         "text": "market"
       }
     ]
