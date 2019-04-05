@@ -1,28 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
-<<<<<<< HEAD
-import Survey from '@/views/Survey'
-import SurveyMarket from '@/views/SurveyMarket'
-import MarketDetail from '@/views/SurveyMarketDetail'
-import Join from '@/views/Join'
-import Logout from '@/views/Logout'
-import SurveyForm from '@/views/SurveyForm'
-import SurveyRequest from '@/views/SurveyRequest'
-import MySurvey from '@/views/MySurvey'
-import MyPage from '@/views/MyPage'
-=======
 import Survey from '@/views/surveyView/Survey'
 import SurveyMarket from '@/views/marketView/SurveyMarket'
+import Donation from '@/views/donationView/Donation'
 import Join from '@/views/auth/Join'
 import SurveyForm from '@/views/surveyView/SurveyForm'
 import SurveyRequest from '@/views/surveyView/SurveyRequest'
 import SurveyComplete from '@/views/surveyView/SurveyComplete'
 import MySurvey from '@/views/surveyView/MySurvey'
+import MarketDetail from '@/views/marketView/MarketDetail'
+import MarketSell from '@/views/marketView/MarketSell'
+import DonationDetail from '@/views/donationView/DonationDetail'
+import AddDonationBox from '@/views/donationView/AddDonationBox'
 import MyPage from '@/views/myPageView/MyPage'
 import DetailsRecord from '@/views/myPageView/DetailsRecord'
-import {store} from '../store'
->>>>>>> e25b5e93d113ee02c87ed7b170451682c1d75211
+import {
+  store
+} from '../store'
 
 Vue.use(Router)
 
@@ -34,8 +29,7 @@ const requireAuth = (to, from, next) => {
 export const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'home',
       component: Home
@@ -46,15 +40,16 @@ export const router = new Router({
       component: Survey,
     },
     {
-      path: '/surveyMarket',
-      name: 'surveyMarket',
+      path: '/surveymarket',
+      name: 'surveymarket',
       component: SurveyMarket,
-      beforeEnter: requireAuth
+
+      //beforeEnter: requireAuth
     },
     {
-      path: '/surveyMarketDetail',
-      name:'surveyMarketDetail',
-      component : MarketDetail
+      path: '/donation',
+      name: 'donation',
+      component: Donation
     },
     {
       path: '/join',
@@ -62,18 +57,18 @@ export const router = new Router({
       component: Join,
     },
     {
-      path: '/SurveyForm',
-      name: 'surveyForm',
+      path: '/Surveyform',
+      name: 'surveyform',
       component: SurveyForm
     },
     {
-      path: '/SurveyRequest',
-      name: 'surveyRequest',
+      path: '/Surveyrequest',
+      name: 'surveyrequest',
       component: SurveyRequest
     },
     {
-      path: '/SurveyComplete',
-      name: 'surveyComplete',
+      path: '/surveycomplete',
+      name: 'surveycomplete',
       component: SurveyComplete
     },
     {
@@ -82,19 +77,41 @@ export const router = new Router({
       component: MySurvey
     },
     {
-      path: '/myPage',
-      name: 'myPage',
+      path: '/detail',
+      name: 'surveymarketdetail',
+      component: MarketDetail
+    },
+    {
+      path: '/sell',
+      name: 'surveymarketsell',
+      component: MarketSell
+    },
+    {
+      path: '/donationdetail',
+      name: 'donationdetail',
+      component: DonationDetail
+    },
+    {
+      path: '/adddonationbox',
+      name: 'adddonationbox',
+      component: AddDonationBox
+    },
+    {
+      path: '/mypage',
+      name: 'mypage',
       component: MyPage
     },
     {
-      path: '/detailsRecord',
-      name: 'detailsRecord',
+      path: '/detailsrecord',
+      name: 'detailsrecord',
       component: DetailsRecord
     },
     {
       path: '/*',
       name: 'notFound',
-      redirect: {name : 'Home'}
+      redirect: {
+        name: 'Home'
+      }
     }
   ]
 })

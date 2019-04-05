@@ -2,11 +2,11 @@
   "Footer": {
     "company": "永進専門大学 ナナイロトリ",
     "services": "Services",
-    "projects": "Projects",
+    "projects": "INO-Survey",
     "ourTeam": "Our Team",
     "community": "Commitment to the Community",
     "rights": "All Rights reserved.",
-    "text": "FOOTERfooter lacinia malesuamhicada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin."
+    "text": "This is footer"
   },
   "View": {
     "items": [
@@ -19,8 +19,12 @@
         "text": "survey"
       },
       {
-        "to": "/surveyMarket",
+        "to": "/surveymarket",
         "text": "market"
+      },
+      {
+        "to": "/donation",
+        "text": "donation"
       }
     ]
   },
@@ -97,27 +101,51 @@
     "jumbotronSubTitle": "설문조사 결과를 거래하는 공간",
     "cardFeatures": [
       {
-        "title": "대중교통 이용 실태조사",
-        "text": "대중교통 서비스 개선을 위한 설문조사입니다.",
-        "hover": "호벙러",
-        "hoversub":""
+        "title": "직장인 피로도 설문조사",
+        "text": "20-40대 직장인의 피로도를 조사합니다.",
+        "hover": "호버",
+        "hoversub":"호버서브"
       },
       {
-        "title": "IT업계 직무 만족도 조사",
-        "text": "IT업계 근무환경 개선을 위한 설문조사입니다.",
+        "title": "건강보조식품 관련 설문조사",
+        "text": "건강포조식품의 효과를 알아봅니다.",
         "hover": "",
         "hoversub":""
       },
       {
-        "title": "청소년 비속어 사용 실태조사",
-        "text": "교내 언어폭력 방지를 위한 설문조사입니다.",
+        "title": "소아비만 설문조사",
+        "text": "소아비만 관련 설문조사입니다.",
         "hover": "",
         "hoversub":""
       },
       {
-        "title": "좋아하는 과자브랜드 조사",
-        "text": "신제품 출시를 위한 설문조사입니다.",
+        "title": "만성질환 설문조사",
+        "text": "장년층 만성질환 관련 설문조사입니다.",
         "hover": "",
+        "hoversub":""
+      }
+    ]
+  },
+  "Donation": {
+    "jumbotronTitle": "기부",
+    "jumbotronSubTitle": "당신의 아름다운 손길이 세상을 밝힙니다!",
+    "cardFeatures": [
+      {
+        "title": "굿네이버스",
+        "img": "/static/donation1.png",
+        "text": "소개1",
+        "hoversub":""
+      },
+      {
+        "title": "유니세프",
+        "img": "/static/donation2.png",
+        "text": "소개2",
+        "hoversub":""
+      },
+      {
+        "title": "대한의료재단",
+        "img": "/static/donation3.png",
+        "text": "소개3",
         "hoversub":""
       }
     ]
