@@ -2,10 +2,11 @@ import axios    from 'axios'
 import router   from '../routes/index'
 
 const DOMAIN = 'http://localhost:3000' // 백엔드에서 받아야 할 URL
-
 const UNAUTHORIZED = 401
+
+// 토큰 없을경우 리다이렉트 
 const onUnauthrorized = () => {
-  router.push('/') // 토큰 없을경우 리다이렉트 
+  router.push('/') 
 }
 
 const request = (method, url, data) => {
@@ -21,11 +22,12 @@ const request = (method, url, data) => {
     })
 }
 
-export const setAuthInHeader = token => {  // 토큰정보를 헤더에 담아 넘겨주기위해 선언
+// 토큰정보를 헤더에 담아 넘겨주기위해 선언
+export const setAuthInHeader = token => {  
   axios.defaults.headers.common['Authorization'] = token ? token : null;
 }
 
-/* Auth API */
+// 유저 가입에 필요한 Api
 export const auth = {
   register(user) {  // 회원가입
     return request('post','/register', user)
@@ -35,6 +37,7 @@ export const auth = {
   }
 }
 
+// 나중에 설문양식을 받아오는 Api
 export const board = {
   fetch(){
     return request('get', '/boards')
@@ -44,6 +47,14 @@ export const board = {
   }
 }
 
+// 질문은행 Api
+export const questionBank = {
+  fetch(){
+    return request('get','/questionBank')
+  }
+}
+
+// 백엔드 테스트 Api
 export const testApi = {
   testApi(){
     return request('get','/test')

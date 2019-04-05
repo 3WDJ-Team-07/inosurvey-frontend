@@ -12,9 +12,6 @@ const mutations = {
   SET_IS_ADD_SURVEY(state, toggle) {
     state.isSurveyDialog = toggle
   },
-  SET_IS_REGISTER_NULL(state, toggle) {
-    state.isRegisterNullDialog = toggle
-  },
   SET_IS_PAYMENT_SURVEY(state, toggle) {
     state.isPaymentDialog = toggle
   },
@@ -27,8 +24,12 @@ const mutations = {
   SET_BOARDS(state, boards) {
     state.boards = boards
   },
+  FETCH_QUESTION_BANK(state, banks) {
+    state.banks = banks
+  },
   LOGIN(state, token) {
-    if(!token) return  // token정보가 없으면 바로 리턴 
+    // token정보가 없으면 바로 리턴 
+    if(!token) return  
     state.token = token
     localStorage.setItem('token', token)
     //setAuthInHeader(token)

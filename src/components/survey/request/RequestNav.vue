@@ -15,18 +15,11 @@
   import { mapState } from 'vuex'
 
   export default {
-    data(){
-      return{
-      }
-    },
     computed:{
       ...mapState([
-        'surveyTitle'  // 설문제목을 받는다
+        // 설문제목을 받는다
+        'surveyTitle'  
       ])
     }
   }
 </script>
-
-<style>
-
-</style>

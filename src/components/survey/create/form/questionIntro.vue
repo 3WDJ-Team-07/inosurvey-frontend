@@ -1,8 +1,22 @@
+/* 설문폼 소개글 */
+
 <template>
-	<v-container grid-list-xs>
+	<v-container grid-list-xs class="blue-grey lighten-5">
 		<v-layout column class="hoverEvent">
 			<v-flex xs12 class="ma-1">
-				<input class="form-control title" v-if="isEditTitle" type="text" v-model="input" ref="inputTitle" @blur="onSubmitTitle" @keyup.enter="onSubmitTitle">
+        <v-textarea
+          v-if="isEditTitle"
+          v-model="input"
+          ref="inputTitle"
+          @blur="onSubmitTitle" 
+          @keyup.enter="onSubmitTitle"
+          solo
+          class="title"
+          name="input-7-4"
+          label="Solo textarea"
+          value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
+        ></v-textarea>
+				<!-- <input class="form-control title" v-if="isEditTitle" type="text" v-model="input" ref="inputTitle" @blur="onSubmitTitle" @keyup.enter="onSubmitTitle"> -->
 				<div v-else class="title" @click="onClickTitle">{{ input }}</div>
 			</v-flex>
 		</v-layout>	
@@ -20,6 +34,7 @@
 			}
 		},
 		methods: {
+			// 클릭시 input box, 포커스
 			onClickTitle(){
 				this.isEditTitle = true
 				this.$nextTick(() => this.$refs.inputTitle.focus())
@@ -36,7 +51,7 @@
 		transition: background-color 0.5s ease;
 	}
   .hoverEvent:hover{
-    background-color: #EAEAEA;
+    background-color: white;
     cursor: pointer;
   }
 </style>

@@ -32,9 +32,11 @@
     },
     computed: {
       ...mapState([
-        'isSurveyDialog',  // 설문제목지정 모달창 체크 
+        // 설문제목지정 모달창 체크 
+        'isSurveyDialog',  
       ]),
-      getTitle:{  // store에서 관리하기 위해 get/set 방식을 사용
+      // store에서 관리하기 위해 get/set 방식을 사용
+      getTitle:{  
         get(){
           return this.$store.state.surveyTitle 
         },
@@ -44,11 +46,13 @@
       }
     },
     watch: {
-      getTitle(v) {  // getTitle을 바라보다가 길이가 0이 아닐때 disable을 풀어준다
+      // getTitle을 바라보다가 길이가 0이 아닐때 disable을 풀어준다
+      getTitle(v) {  
         this.valid = v.trim().length > 0
       }
     },
-    updated() {  // 모달을 열때 제목입력에 포커스를 맞춘다
+    // 모달을 열때 제목입력에 포커스를 맞춘다
+    updated() {  
       this.$refs.input.focus()
     },
     created(){
@@ -58,7 +62,8 @@
       ...mapMutations([
         'SET_IS_ADD_SURVEY',
       ]),
-      onAddClick(){  // 클릭시 모달창을 끄고 surveyForm으로 리다이렉트
+      // 클릭시 모달창을 끄고 surveyForm으로 리다이렉트
+      onAddClick(){  
         this.SET_IS_ADD_SURVEY(false)
         this.$router.replace("/surveyform")
       }

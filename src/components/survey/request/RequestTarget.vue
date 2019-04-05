@@ -86,12 +86,12 @@
 </script>
 
 <style scoped>
-    .border_style{
-        border: 1px solid lightgray;
-    }
-    .img_center {
+  .border_style{
+    border: 1px solid lightgray;
+  }
+  .img_center {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    }
+  }
 </style>

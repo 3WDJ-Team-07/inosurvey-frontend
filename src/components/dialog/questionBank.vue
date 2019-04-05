@@ -1,11 +1,11 @@
-/* 설문 은행 모달창 */
+/* 설문은행 모달창 */
 
 <template>
   <v-layout row justify-center>
     <v-dialog v-model="isQuestionBank" persistent max-width="1400px">
       <v-card class="pr-5 pl-5 pt-4 pb-4" style="background:#FAFAFA">
 		    <span 
-          class="headline right grey--text" 
+          class="headline right grey--text mouse_pointer" 
           @click="SET_IS_QUESTION_BANK(false)">
           <i class="fas fa-times"></i>
         </span>
@@ -21,43 +21,13 @@
 									solo-inverted
 									block
 									flat
-								></v-text-field>
+							></v-text-field>
 						</v-flex>
-						<v-flex xs5 class="ma-3">
-							<v-card flat class="card_hover">
+						<v-flex sm8 md5 class="ma-3" v-for="bank in banks" :key="bank.id">
+							<v-card flat id="card_hover">
 								<v-card-title primary-title>
 									<div class="ma-3" >
-										<h3 class="headline mb-0">headline</h3>
-										<div>description</div>
-									</div>
-								</v-card-title>
-							</v-card>
-						</v-flex>
-						<v-flex xs5 class="ma-3">
-							<v-card flat class="card_hover">
-								<v-card-title primary-title>
-									<div class="ma-3" >
-										<h3 class="headline mb-0">headline</h3>
-										<div>description</div>
-									</div>
-								</v-card-title>
-							</v-card>
-						</v-flex>
-						<v-flex xs5 class="ma-3">
-							<v-card flat class="card_hover">
-								<v-card-title primary-title>
-									<div class="ma-3" >
-										<h3 class="headline mb-0">headline</h3>
-										<div>description</div>
-									</div>
-								</v-card-title>
-							</v-card>
-						</v-flex>
-						<v-flex xs5 class="ma-3">
-							<v-card flat class="card_hover">
-								<v-card-title primary-title>
-									<div class="ma-3" >
-										<h3 class="headline mb-0">headline</h3>
+										<h3 class="headline mb-0">{{bank.questions.survey_title}}</h3>
 										<div>description</div>
 									</div>
 								</v-card-title>
@@ -71,33 +41,36 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+	import { mapState, mapMutations, mapActions } from 'vuex';
 
-export default {
-  name: 'questionBank',
-  computed: {
-    ...mapState([
-      'isQuestionBank'
-    ])
-  },
-  methods: {
-    ...mapMutations([
-      'SET_IS_QUESTION_BANK'
-		]),
-		payment(){
-			this.SET_IS_QUESTION_BANK(false)
+	export default {
+    name: 'questionBank',
+		computed: {
+			// 설문은행 모달 상태값
+			...mapState([
+        'isQuestionBank',
+        'banks'
+			])
+    },
+		methods: {
+			// 설문은행 모달 상태값 변이
+			...mapMutations([
+				'SET_IS_QUESTION_BANK'
+      ]),
 		}
-  }
-}
+	}
 </script>
 
 <style scoped>
-	.card_hover{
+	#card_hover{
 		border: 2px solid #EAEAEA;
 		transition: border 0.5s ease;
 	}
-	.card_hover:hover{
+	#card_hover:hover{
 		border: 2px solid #2196F3;
+		cursor: pointer;
+	}
+	.mouse_pointer{
 		cursor: pointer;
 	}
 </style>

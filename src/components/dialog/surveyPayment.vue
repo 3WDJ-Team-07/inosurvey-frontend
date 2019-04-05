@@ -1,4 +1,4 @@
-/* 설문 결제 모달창 */
+/* 설문결제 모달창 */
 
 <template>
   <v-layout row justify-center>
@@ -29,25 +29,28 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+  import { mapState, mapMutations } from 'vuex';
 
-export default {
-  name: 'surveyPayment',
-  computed: {
-    ...mapState([
-      'isPaymentDialog'
-    ])
-  },
-  methods: {
-    ...mapMutations([
-      'SET_IS_PAYMENT_SURVEY'
-		]),
-		payment(){
-			this.SET_IS_PAYMENT_SURVEY(false)
-			this.$router.push('/surveycomplete')
-		}
+  export default {
+    name: 'surveyPayment',
+    computed: {
+      // 설문결제 모달 상태값
+      ...mapState([
+        'isPaymentDialog'
+      ])
+    },
+    methods: {
+      // 설문결제 모달 상태값 변이 
+      ...mapMutations([
+        'SET_IS_PAYMENT_SURVEY'
+      ]),
+      // 결제시 모달 닫기/이동
+      payment(){
+        this.SET_IS_PAYMENT_SURVEY(false)
+        this.$router.push('/surveycomplete')
+      }
+    }
   }
-}
 </script>
 
 <style scoped>

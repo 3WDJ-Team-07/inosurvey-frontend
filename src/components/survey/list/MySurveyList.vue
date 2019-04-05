@@ -45,22 +45,34 @@
         <v-btn 
           large color="info"
           class="subheading
-          font-weight-bold mt-4">
+          font-weight-bold mt-4"
+          @click="SET_IS_ADD_SURVEY(true)">
           새 설문 만들기
         </v-btn>
       </v-flex>
     </v-flex>
-    
+    <AddSurvey/>
   </v-container>
 </template>
 
 <script>
+  import AddSurvey from '@/components/survey/AddSurvey'
+  import {mapMutations} from 'vuex'
+
   export default {
     name: 'mySurvey',
+    components:{
+      AddSurvey
+    },
     methods: {
-      dfdf(){  // 툴팁 적용한 v-icon을 클릭했을때 동작
+      // 툴팁 적용한 v-icon을 클릭했을때 동작
+      dfdf(){  
         console.log('df')
-      }
+      },
+      ...mapMutations([
+        // 설문제목 모달창
+        'SET_IS_ADD_SURVEY'  
+      ]),
     }
   }
 </script>

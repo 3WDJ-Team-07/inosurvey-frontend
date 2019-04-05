@@ -1,5 +1,5 @@
 const getters = {
-  isAuth(state){  // test
+  isAuth(state){ 
     console.log(!!state.token)
     return !!state.token
   },

@@ -82,7 +82,8 @@
     },
     methods: {
       ...mapMutations([
-        'SET_IS_ADD_SURVEY'  // 설문제목 모달창
+        // 설문제목 모달창
+        'SET_IS_ADD_SURVEY'  
       ]),
       my_survey_list(){
         this.$router.replace("/mysurvey")
@@ -100,7 +101,7 @@
     position: absolute;
     width: 100%;
   }
-  .rounded-card{
-      border-radius:20px;
-    }
+  .rounded-card {
+    border-radius:20px;
+  }
 </style>

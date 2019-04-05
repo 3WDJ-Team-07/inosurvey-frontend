@@ -1,3 +1,5 @@
+/* 새질문 추가하기 */
+
 <template>
 	<v-container grid-list-xs fill-height>
 		<v-layout column justify-center align-center class="boxColor">
@@ -22,11 +24,11 @@
 				'ADD_BOARD',
 				'FETCH_BOARDS'
 			]),
-				addBoard() {
-					this.ADD_BOARD({title: this.input}).then(_=> {
-					this.FETCH_BOARDS()
-      	})
-		}	,
+			addBoard() {
+				this.ADD_BOARD({title: this.input}).then(_=> {
+				this.FETCH_BOARDS()
+    		})
+			},
 		}
 	}
 </script>

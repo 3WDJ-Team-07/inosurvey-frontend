@@ -1,6 +1,5 @@
 /* 설문요청페이지(결제)
-import { mapMutations } from 'vuex';
-		1. 테이블은 임시로 지정
+	1. 테이블은 임시로 지정
 */
 
 <template>

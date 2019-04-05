@@ -27,7 +27,8 @@
 
   export default {
     computed: {
-      ...mapState(['drawer']),  // drawer상태값 체크
+      // drawer상태값 체크
+      ...mapState(['drawer']),
       inputValue: {
         get () {
           return this.drawer

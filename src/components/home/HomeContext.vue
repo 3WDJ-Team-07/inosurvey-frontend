@@ -28,16 +28,16 @@
             <v-layout>
               <v-flex xs5 class="pa-5">
                 <v-avatar size="150" class="grey lighten-2" >
-                <v-img :src="card.img" contain></v-img>
+                  <v-img :src="card.img" contain></v-img>
                 </v-avatar>
-                </v-flex>
+              </v-flex>
               <v-flex xs7 class="mr-4">
                 <v-card-title class="black--text">
-                <div>
-                  <div class="headline font-weight-bold grey--text mb-4">{{ card.title }}</div>
-                  <div class="caption font-weight-black">{{ card.subtitle }}</div>
-                 <div>{{ card.text }}</div>
-                </div>
+                  <div>
+                    <div class="headline font-weight-bold grey--text mb-4">{{ card.title }}</div>
+                    <div class="caption font-weight-black">{{ card.subtitle }}</div>
+                    <div>{{ card.text }}</div>
+                  </div>
                 </v-card-title>
               </v-flex>
             </v-layout>
@@ -51,6 +51,7 @@
 <script>
   export default {
     computed: {
+      // locales 언어 설정
       cardFeatures () {
         return this.$t('Home.cardFeatures')
       },
@@ -60,6 +61,3 @@
     }
   }
 </script>
-
-<style scoped>
-</style>

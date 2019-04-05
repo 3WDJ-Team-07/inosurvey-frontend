@@ -1,9 +1,11 @@
+/* 설문폼 제목글 */
+
 <template>
-	<v-container grid-list-xs>
+	<v-container grid-list-xs class="blue lighten-3">
 		<v-layout column class="hoverEvent">
 			<v-flex xs12 class="ma-1">
 				<input class="form-control headline" v-if="isEditTitle" type="text" v-model="getTitle" ref="inputTitle" @blur="onSubmitTitle" @keyup.enter="onSubmitTitle">
-				<div v-else class="headline" @click="onClickTitle" v-html="surveyTitle"/>
+				<div v-else class="display-1" @click="onClickTitle" v-html="surveyTitle"/>
 			</v-flex>
 		</v-layout>	
 	</v-container>
@@ -19,10 +21,12 @@
 			}
 		},
 		computed:{
+			// 설문제목을 받는다
 			...mapState([
-				'surveyTitle'  // 설문제목을 받는다
+				'surveyTitle'  
 			]),
-			getTitle:{  // store에서 관리하기 위해 get/set 방식을 사용
+			// store에서 관리하기 위해 get/set 방식을 사용
+			getTitle:{  
         get(){
           return this.$store.state.surveyTitle 
         },

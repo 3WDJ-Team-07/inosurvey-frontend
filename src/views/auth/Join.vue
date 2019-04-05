@@ -117,21 +117,16 @@
         	</v-card>
       	</v-flex>
     	</v-layout>
-			<registerNull/>
 		</v-container>
   </v-fade-transition>
 </template>
 
 <script>
-	import registerNull from '@/components/dialog/registerNull'
 	import { mapMutations } from 'vuex'
 	import swal from 'sweetalert'
 
 	export default {
 		name: 'join',
-		components: {
-			registerNull
-		},
 		data() {
 			return {
 				user_id: '',  // 아이디
@@ -183,10 +178,7 @@
 			register(){  // 회원가입 요청해 액션에 있는 REGISTER 실행
 				if(!this.user_id || !this.password || !this.nickname || !this.email ||	
 				!this.gender || !this.job_id || !this.age || !this.is_donator){
-					//this.SET_IS_REGISTER_NULL(true)
-					swal("모두 입력하지 않았습니다!","모든입력란을 채워주세요","error",{
-						button:"확인",
-					});
+					swal("모두 입력하지 않았습니다!","모든입력란을 채워주세요","error",{button:"확인"});
 				}
 				else{
 					const user = new URLSearchParams()
@@ -198,7 +190,6 @@
 					user.append('job_id', this.job_id)
 					user.append('age', this.age)
 					user.append('is_donator', this.is_donator)
-
 					this.$store.dispatch('REGISTER', user)
 						.then( () => {
 							swal("회원가입이 완료되었습니다!","로그인 해주세요","success",{
@@ -217,5 +208,5 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-}
+	}
 </style>

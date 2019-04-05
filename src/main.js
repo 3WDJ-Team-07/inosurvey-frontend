@@ -7,9 +7,9 @@ import AOS                from 'aos'
 import VueScrollTo        from 'vue-scrollto'
 import VueFriendlyIframe  from 'vue-friendly-iframe'
 import swal               from 'sweetalert';
-import 'vuetify/dist/vuetify.min.css'
-import './plugins/vuetify'
-import 'aos/dist/aos.css'
+import                         'vuetify/dist/vuetify.min.css'
+import                         './plugins/vuetify'
+import                         'aos/dist/aos.css'
 
 Vue.use(VueScrollTo)
 Vue.config.productionTip = false

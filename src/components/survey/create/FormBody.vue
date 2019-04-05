@@ -10,7 +10,6 @@
       <AddQuestion/>
       <v-spacer/>
     </v-layout>
-    
   </v-container>
 </template>
 

@@ -41,7 +41,8 @@
       }
     },
     computed: {
-      ...mapGetters([  // isAuth Test Token
+      // isAuth Test Token
+      ...mapGetters([  
         'isAuth'
       ]),
       items () {

@@ -60,16 +60,12 @@
   </v-fade-transition>
 </template>
 
-<script>
- 
-</script>
-
  <style scoped>
   .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  transition: .5s ease;
-}
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    transition: .5s ease;
+  }
  </style>

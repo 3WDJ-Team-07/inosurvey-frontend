@@ -48,14 +48,18 @@
   import {mapActions} from 'vuex'
 
   export default {
-    methods: {
-      ...mapActions(['TEST'])
+  methods: {
+    // Api Call Test Actions
+    ...mapActions([
+      'TEST'
+      ])
     },
   }
 </script>
+
  <style scoped>
- .floating{
-   left:49%;
-   bottom: 5%;
- }
+  .floating{
+    left:49%;
+    bottom: 5%;
+  }
  </style>

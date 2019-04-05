@@ -11,7 +11,7 @@
       <v-btn flat color="grey" class="subheading font-weight-bold">설문 요청</v-btn>|
       <v-btn flat color="grey" class="subheading font-weight-bold">등록</v-btn>
       <v-spacer/>
-      <v-btn color="info" class="pl-5 pr-5 subheading" large @click="next_stage">저장</v-btn>
+      <!-- <v-btn color="info" class="pl-5 pr-5 subheading" large @click="next_stage">저장</v-btn> -->
       <v-btn color="info" class="pl-5 pr-5 subheading" large @click="next_stage">다음</v-btn>
     </v-toolbar>
     <v-divider/>
@@ -22,12 +22,12 @@
         </v-card>
       </v-flex>
       <v-layout row wrap>
-      <v-flex xs3>
+      <v-flex xs3 class="ml-5">
         <v-card color="#FAFAFA" height="700px" max-width="400">
           <FormSide/>
         </v-card>
       </v-flex>
-        <v-flex sm8 class="ml-5 pl-5">
+        <v-flex sm8 class="ml-5">
           <v-card color="#FAFAFA" height="700px">
             <FormBody/>
           </v-card>
