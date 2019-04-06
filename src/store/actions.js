@@ -14,10 +14,10 @@ const actions = {
       })
   },
   // 로그인 Action
-  LOGIN(context, {email, password}) {
-    return api.auth.login(email, password)
+  LOGIN(context, {user_id, password}) {
+    return api.auth.login(user_id, password)
       .then(response => {
-        context.commit('LOGIN', response.accessToken)
+        context.commit('LOGIN', response.access_token)
       })
   },
   

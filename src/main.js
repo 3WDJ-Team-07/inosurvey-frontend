@@ -5,7 +5,6 @@ import store              from '@/store/index'
 import i18n               from './i18n'
 import AOS                from 'aos'
 import VueScrollTo        from 'vue-scrollto'
-import VueFriendlyIframe  from 'vue-friendly-iframe'
 import swal               from 'sweetalert';
 import                         'vuetify/dist/vuetify.min.css'
 import                         './plugins/vuetify'
@@ -19,7 +18,6 @@ new Vue({
     AOS.init();
   },  // scroll
   swal,  // alert
-  VueFriendlyIframe,
   router,
   store,
   i18n,

@@ -3,7 +3,7 @@
 <template>
   <v-layout row justify-center>
     <v-dialog v-model="isQuestionBank" persistent max-width="1400px">
-      <v-card class="pr-5 pl-5 pt-4 pb-4" style="background:#FAFAFA">
+      <v-card class="pr-5 pl-5 pt-4 pb-4 scroll_css" style="background:#FAFAFA; min-height:700px;max-height:700px;">
 		    <span 
           class="headline right grey--text mouse_pointer" 
           @click="SET_IS_QUESTION_BANK(false)">
@@ -16,23 +16,36 @@
 						</v-flex>
 						<v-flex xs12>
 							<v-text-field
-									prepend-icon="search"
-									label="질문검색"
-									solo-inverted
-									block
-									flat
+                v-model="filter"
+								prepend-icon="search"
+								label="질문검색"
+								solo-inverted
+								block
+								flat
 							></v-text-field>
 						</v-flex>
-						<v-flex sm8 md5 class="ma-3" v-for="bank in banks" :key="bank.id">
+						<v-flex sm8 md5 class="ma-3" v-for="(bank,index) in getPlayers" :key="bank.id">
 							<v-card flat id="card_hover">
 								<v-card-title primary-title>
-									<div class="ma-3" >
-										<h3 class="headline mb-0">{{bank.questions.survey_title}}</h3>
-										<div>description</div>
-									</div>
+										<!-- <h3 class="headline mb-0" v-html="bank.questions.survey_title"></h3> -->
+									<span class="pa-3" style="line-height:30px; font-size:20px;">
+                    {{bank.questions.survey_title.split('()')[0]}}
+                    <select class="pa-1 pr-2 pl-2 selectbox subheading" style='border:1px solid lightgrey'>
+                      <!-- <option v-for="(check, index) in bank.checks" :key="index" value='volvo'>{{ check.name }}</option> -->
+                      <option v-for="(value, index) in bank.questions.values" :key="index" value='volvo'>{{ value }}</option>
+                    </select>
+                    {{bank.questions.survey_title.split('()')[1]}}
+                  </span>
+									<!-- <h3 class="headline" style="float:left;">{{bank.title.split('()')[0]}}</h3> -->
+									<!-- <h3 class="headline" style="float:left;">{{bank.title.split('()')[1]}}</h3> -->
 								</v-card-title>
 							</v-card>
 						</v-flex>
+            <v-flex v-if="getPlayers.length === 0" sm8 md5>
+              <div class="display-2 grey--text font-weight-thin" style="width:800px;">
+                <span style="line-height:350px;">찾으시는 질문이 없습니다..</span>
+              </div>
+            </v-flex>
 					</v-layout>
 				</v-container>
       </v-card>
@@ -45,12 +58,91 @@
 
 	export default {
     name: 'questionBank',
+    data(){
+      return{
+        filter:'',
+        // banks: [
+        //   {title: 'blabla () blablablablabl',checks: [
+        //   {name : '국민은행', value:0},
+        //   {name : '신한은행', value:1},
+        //   {name : '기업은행', value:2},
+        //   {name : '하나은행', value:3},
+        // ]},
+        //   {title: 'asd () zㅁㄴㅇㅁㄴx',checks: [
+        //   {name : 'asd', value:0},
+        //   {name : '신한은행', value:1},
+        //   {name : 'asd', value:2},
+        //   {name : '하나은행', value:3},
+        // ]},
+        //   {title: 'blaas dasbla () bczxaczxlablzablablabl',checks: [
+        //   {name : '국민은행', value:0},
+        //   {name : '신한은행', value:1},
+        //   {name : 'asd', value:2},
+        //   {name : 'asd', value:3},
+        // ]},
+        //   {title: 'dsdas  dasd () ffffffffffffffffff',checks: [
+        //   {name : '국민은asd행', value:0},
+        //   {name : 'asd', value:1},
+        //   {name : '기업은행', value:2},
+        //   {name : '하나은행', value:3},
+        // ]},
+        //   {title: 'blaas dasbla () bczxaczxlablzablablabl',checks: [
+        //   {name : '국민은행', value:0},
+        //   {name : '신한은행', value:1},
+        //   {name : 'asd', value:2},
+        //   {name : 'asd', value:3},
+        // ]},
+        //   {title: 'blaas dasbla () bczxaczxlablzablablabl',checks: [
+        //   {name : '국민은행', value:0},
+        //   {name : '신한은행', value:1},
+        //   {name : 'asd', value:2},
+        //   {name : 'asd', value:3},
+        // ]},
+        //   {title: 'blaas dasbla () bczxaczxlablzablablabl',checks: [
+        //   {name : '국민은행', value:0},
+        //   {name : '신한은행', value:1},
+        //   {name : 'asd', value:2},
+        //   {name : 'asd', value:3},
+        // ]},
+        //   {title: 'blaas dasbla () bczxaczxlablzablablabl',checks: [
+        //   {name : '국민은행', value:0},
+        //   {name : '신한은행', value:1},
+        //   {name : 'asd', value:2},
+        //   {name : 'asd', value:3},
+        // ]},
+        //   {title: 'blaas dasbla () bczxaczxlablzablablabl',checks: [
+        //   {name : '국민은행', value:0},
+        //   {name : '신한은행', value:1},
+        //   {name : 'asd', value:2},
+        //   {name : 'asd', value:3},
+        // ]},,
+        //   {title: 'blaas dasbla () bczxaczxlablzablablabl',checks: [
+        //   {name : '국민은행', value:0},
+        //   {name : '신한은행', value:1},
+        //   {name : 'asd', value:2},
+        //   {name : 'asd', value:3},
+        // ]},,
+        //   {title: 'blaas dasbla () bczxaczxlablzablablabl',checks: [
+        //   {name : '국민은행', value:0},
+        //   {name : '신한은행', value:1},
+        //   {name : 'asd', value:2},
+        //   {name : 'asd', value:3},
+        // ]},
+        // ],
+      }
+    },
 		computed: {
 			// 설문은행 모달 상태값
 			...mapState([
         'isQuestionBank',
         'banks'
-			])
+      ]),
+      getPlayers() {
+        var banks = this.banks.filter((bank) => {
+          return bank.questions.survey_title.toLowerCase().includes(this.filter.toLowerCase())
+        })
+        return banks
+      }
     },
 		methods: {
 			// 설문은행 모달 상태값 변이
@@ -73,4 +165,7 @@
 	.mouse_pointer{
 		cursor: pointer;
 	}
+  .scroll_css{
+    overflow-y: auto;
+  }
 </style>

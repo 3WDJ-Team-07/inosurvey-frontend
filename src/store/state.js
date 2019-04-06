@@ -13,3 +13,12 @@ const state = {
 }
 
 export default state
+
+
+function createOptions(_options){
+  const options = []
+  _options.forEach((opt) => {
+     options.push(`<option value="${opt}">${opt}</option>`)
+  })
+  return `<select style="width:100px;border:1px solid grey">${options.join('')}</select>`
+  }

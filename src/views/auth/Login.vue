@@ -18,7 +18,7 @@
                   <v-text-field
                     prepend-inner-icon="person" 
                     name="email"  label="아이디" 
-                    type="text" v-model="form.email"
+                    type="text" v-model="form.user_id"
                     required>
                   </v-text-field>
                 </v-flex>
@@ -69,7 +69,7 @@
     data() {
       return {
         form: {
-          email: '',	 // 이메일
+          user_id: '',	 // 이메일
           password: ''	 // 패스워드
         },
         emailRules: [	 // 이메일 규칙
@@ -105,13 +105,13 @@
       },
       onSubmit() {  
         this.LOGIN({
-          email: this.form.email,
+          user_id: this.form.user_id,
           password: this.form.password
         })
           .then(response => {
-            this.$router.push({name: 'home'})
             this.$store.state.isLoginDialog = false
             swal("환영합니다!", "로그인이 완료되었습니다.", "success",{ button: "확인" });
+            this.$router.push({name: 'home'})
           })
           .catch(_ => {
             this.error = "아이디 또는 비밀번호가 틀렸습니다."

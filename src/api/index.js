@@ -1,7 +1,7 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
-const DOMAIN = 'http://localhost:3000' // 백엔드에서 받아야 할 URL
+const DOMAIN = 'http://172.26.2.198:8000' // 백엔드에서 받아야 할 URL
 const UNAUTHORIZED = 401
 
 // 토큰 없을경우 리다이렉트 
@@ -30,10 +30,10 @@ export const setAuthInHeader = token => {
 // 유저 가입에 필요한 Api
 export const auth = {
   register(user) {  // 회원가입
-    return request('post','/register', user)
+    return request('post','/api/user/register', user)
   },
-  login(email, password) {  // 로그인
-    return request('post', '/login', {email, password})
+  login(user_id, password) {  // 로그인
+    return request('post', '/api/user/login', {user_id, password})
   }
 }
 
@@ -50,7 +50,7 @@ export const board = {
 // 질문은행 Api
 export const questionBank = {
   fetch(){
-    return request('get','/questionBank')
+    return request('get','/api/survey/questionBank')
   }
 }
 

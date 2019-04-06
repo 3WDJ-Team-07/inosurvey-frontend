@@ -177,7 +177,7 @@
    	  ]),
 			register(){  // 회원가입 요청해 액션에 있는 REGISTER 실행
 				if(!this.user_id || !this.password || !this.nickname || !this.email ||	
-				!this.gender || !this.job_id || !this.age || !this.is_donator){
+				!this.gender || !this.job_id || !this.age ){
 					swal("모두 입력하지 않았습니다!","모든입력란을 채워주세요","error",{button:"확인"});
 				}
 				else{
@@ -194,7 +194,8 @@
 						.then( () => {
 							swal("회원가입이 완료되었습니다!","로그인 해주세요","success",{
 								button:"확인",
-							});
+              });
+              this.$router.push({name: 'home'})
 						})
 				}
 			},
