@@ -2,21 +2,19 @@
 
 <template>
   <v-fade-transition mode="out-in">
-    <v-img :key="$route.path"  src="/static/market-hero.png" height="60vh"
-    gradient="to top,  rgba(0, 0, 0, .8), rgba(0, 0, 0, .7)">
+    <v-img src="/static/market-hero.png" height="35vh"
+    gradient="to top,  rgba(0, 0, 0, .3), rgba(0, 0, 0, .5)">
       <v-fade-transition mode="out-in">
-        <v-container :key="$route.path" fill-height>
-          <v-layout align-center>
-            <v-fade-transition mode="out-in">
-              <v-flex :key="$route.path" text-xs-center>
-                <h1 class="display-2 white--text font-weight-bold">
-                  {{$t('Services.jumbotronTitle')}}
-                </h1>
-                <div class="subheading white--text">
-                  {{$t('Services.jumbotronSubTitle')}}
-                </div>
+        <v-container fill-height>
+          <v-layout align-center row wrap>
+              <v-flex xs9 pl-5>
+                <h1 class="display-2 white--text font-weight-bold"> {{$t('Market.jumbotronTitle')}}</h1>
+                <div class="subheading white--text">{{$t('Market.jumbotronSubTitle')}}</div>
               </v-flex>
-            </v-fade-transition>
+               <v-flex xs3 pl-5>
+                <div><v-btn color="info">설문판매</v-btn></div>
+                <div><v-btn color="grey" class="white--text" normal>상품등록</v-btn></div>
+              </v-flex>
           </v-layout>
         </v-container>
       </v-fade-transition>
@@ -24,12 +22,9 @@
   </v-fade-transition>
 </template>
 
-<script>
-  export default {
-
-  }
-</script>
 
 <style scoped>
-
+  .v-btn{
+    min-width: 150px;
+  }
 </style>

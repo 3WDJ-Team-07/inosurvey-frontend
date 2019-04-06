@@ -12,6 +12,7 @@ import MyPage           from '@/views/myPageView/MyPage'
 import DetailsRecord    from '@/views/myPageView/DetailsRecord'
 import store            from '../store'
 import swal             from 'sweetalert'
+import MarketDetail     from '@/views/SurveyMarketDetail'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ const router = new Router({
       name: 'surveymarket',
       component: SurveyMarket,
       beforeEnter: requireAuth
+    },
+    {
+      path: '/surveyMarketDetail',
+      name:'surveyMarketDetail',
+      component : MarketDetail
     },
     {
       path: '/join',
