@@ -12,7 +12,7 @@
       <v-btn flat color="grey" class="subheading font-weight-bold">등록</v-btn>
       <v-spacer/>
       <!-- <v-btn color="info" class="pl-5 pr-5 subheading" large @click="next_stage">저장</v-btn> -->
-      <v-btn color="info" class="pl-5 pr-5 subheading" large @click="next_stage">다음</v-btn>
+      <v-btn color="info" class="pl-5 pr-5 subheading" :disabled="isSuccessFormData" large @click="next_stage">다음</v-btn>
     </v-toolbar>
     <v-divider/>
     <v-layout row wrap>
@@ -41,6 +41,7 @@
   import FormNav from '@/components/survey/create/FormNav'
   import FormSide from '@/components/survey/create/FormSide'
   import FormBody from '@/components/survey/create/FormBody'
+  import {mapGetters} from 'vuex'
 
   export default {
     name: 'surveyForm',
@@ -48,6 +49,11 @@
       FormNav,
       FormSide,
       FormBody
+    },
+    computed: {
+      ...mapGetters([
+        'isSuccessFormData'
+      ])
     },
     methods: {
       next_stage(){  // 요청페이지로 이동

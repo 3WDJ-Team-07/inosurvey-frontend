@@ -25,12 +25,12 @@ const actions = {
   FETCH_BOARDS({commit}){
     return api.board.fetch()
     .then(data => {
-      commit('SET_BOARDS', data.list)
+      commit('SET_BOARDS', data)
     })
   },
   // 설문양식 추가 Action
-  ADD_BOARD (_, {title}) {
-    return api.board.create(title)
+  ADD_BOARD (_, {type}) {
+    return api.board.create(type)
   },
 
   // 질문은행 Action

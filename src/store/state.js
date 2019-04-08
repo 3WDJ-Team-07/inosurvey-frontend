@@ -9,6 +9,7 @@ const state = {
   loading: false,               // 로딩
   boards: [],                   // 보드목록
   banks: [],                    // 설문은행
+  isSuccessFormData: true,      // 폼 데이터  
   isSaleDialog:false,
   isPurchaseDialog:false,
 }

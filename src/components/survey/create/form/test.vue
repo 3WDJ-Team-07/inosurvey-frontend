@@ -1,6 +1,6 @@
 <template>
-	<v-container grid-list-sm class="hoverEvent mt-4">
-		<v-layout column class="pa-5" justify-center>
+	<v-container grid-list-sm class="mt-4">
+		<v-layout column class="pa-5 hoverEvent" justify-center>
 				<v-form ref="form">
           <span class="title font-weight-bold pl-5 ml-2">질문번호 </span>
 					<input type="text" v-if="!inputQuestion" v-model="QuestionTitle" class="form-control title ml-4" name="name" label="label">

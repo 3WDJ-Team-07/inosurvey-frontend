@@ -1,7 +1,7 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
-const DOMAIN = 'http://172.26.2.198:8000' // 백엔드에서 받아야 할 URL
+const DOMAIN = 'http://172.26.3.28:8000' // 백엔드에서 받아야 할 URL
 const UNAUTHORIZED = 401
 
 // 토큰 없을경우 리다이렉트 
@@ -42,8 +42,8 @@ export const board = {
   fetch(){
     return request('get', '/boards')
   },
-  create(title) {
-    return request('post', '/boards', {title})
+  create(type) {
+    return request('post', '/boards',{type})
   }
 }
 

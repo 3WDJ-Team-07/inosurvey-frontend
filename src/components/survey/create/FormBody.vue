@@ -5,7 +5,7 @@
     <v-layout row wrap>
       <questionTitle/>
       <questionIntro/>
-      <test/>
+      <!-- <test/> -->
       <question/>
       <AddQuestion/>
       <v-spacer/>
@@ -18,7 +18,7 @@
   import questionIntro from '@/components/survey/create/form/questionIntro'
   import question from '@/components/survey/create/form/question'
   import AddQuestion from '@/components/survey/create/form/AddQuestion'
-  import test from '@/components/survey/create/form/test'
+  // import test from '@/components/survey/create/form/test'
 
   export default {
     name: 'formbody',
@@ -27,7 +27,7 @@
       questionIntro,
       question,
       AddQuestion,
-      test
+      // test
     }
   }
 </script>

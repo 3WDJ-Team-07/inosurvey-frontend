@@ -27,12 +27,12 @@
               </v-card>
             </v-expansion-panel-content>
           </v-expansion-panel>
-          <v-card-text class=" border_bottom pa-4 card_transition" @click="text">객관식</v-card-text>
-          <v-card-text class=" border_bottom pa-4 card_transition" @click="2">주관식</v-card-text>
-          <v-card-text class=" border_bottom pa-4 card_transition" @click="3">확인란</v-card-text>
-          <v-card-text class=" border_bottom pa-4 card_transition" @click="4">별 등급</v-card-text>
-          <v-card-text class=" border_bottom pa-4 card_transition" @click="5">의견란</v-card-text>
-          <v-card-text class=" border_bottom pa-4 card_transition" @click="6">이미지선택 </v-card-text>
+          <v-card-text class=" border_bottom pa-4 card_transition" @click="addBoard">객관식</v-card-text>
+          <v-card-text class=" border_bottom pa-4 card_transition" @click="addBoard">주관식</v-card-text>
+          <v-card-text class=" border_bottom pa-4 card_transition" @click="addBoard">확인란</v-card-text>
+          <v-card-text class=" border_bottom pa-4 card_transition" @click="addBoard">별 등급</v-card-text>
+          <v-card-text class=" border_bottom pa-4 card_transition" @click="addBoard">의견란</v-card-text>
+          <v-card-text class=" border_bottom pa-4 card_transition" @click="addBoard">이미지선택 </v-card-text>
         </v-card>
       </v-tab-item>
     </v-tabs>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-  import questionBank from '@/components/dialog/questionBank'
+  import questionBank from '@/components/dialog/quebank/questionBank'
   import { mapMutations, mapActions } from 'vuex'
 
   export default {
@@ -59,12 +59,20 @@
       ]),
       // 질문은행 나열
       ...mapActions([
-        'FETCH_QUESTION_BANK'
+        'FETCH_QUESTION_BANK',
+        'ADD_BOARD',
+        'FETCH_BOARDS'
       ]),
       BankBtn_Click(){
         this.SET_IS_QUESTION_BANK(true)
         this.FETCH_QUESTION_BANK()
-      }
+      },
+      addBoard() {
+				// this.ADD_BOARD({type:'singleCheck'})
+        //   .then(_=> {
+				//     this.FETCH_BOARDS()
+    		//   })
+			},
     }
   }
 </script>

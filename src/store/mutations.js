@@ -24,6 +24,9 @@ const mutations = {
   SET_IS_SURVEY_PURCHASE(state, toggle){
     state.isPurchaseDialog = toggle
   },
+  FORM_DATE_REQUEST(state){
+    state.isSuccessFormData = false
+  },
   UPDATE_TITLE(state, title) {
     state.surveyTitle = title
   },

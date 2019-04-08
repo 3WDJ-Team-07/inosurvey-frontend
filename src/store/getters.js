@@ -3,6 +3,9 @@ const getters = {
     console.log(!!state.token)
     return !!state.token
   },
+  isSuccessFormData(state){ 
+    return state.isSuccessFormData
+  },
 }
 
 export default getters

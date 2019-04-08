@@ -25,9 +25,11 @@
 				'FETCH_BOARDS'
 			]),
 			addBoard() {
-				this.ADD_BOARD({title: this.input}).then(_=> {
-				this.FETCH_BOARDS()
-    		})
+        this.FETCH_BOARDS()
+        // this.ADD_BOARD({type:'singleCheck'})
+        //   .then(_=> {
+				//     this.FETCH_BOARDS()
+    		//   })
 			},
 		}
 	}
