@@ -15,6 +15,7 @@
           <v-card-text class="black--text pa-3 text-md-center">{{ $t('Footer.text')}}</v-card-text>
         </v-flex>
         <v-flex xs12>
+          <v-divider class="mb-2"/>
           <div class="text-md-center">&copy;2019 — {{ $t('Footer.company') }}</div>
         </v-flex>
       </v-layout>

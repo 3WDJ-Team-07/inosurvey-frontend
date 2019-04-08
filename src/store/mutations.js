@@ -18,6 +18,12 @@ const mutations = {
   SET_IS_QUESTION_BANK(state, toggle ){
     state.isQuestionBank = toggle
   },
+  SET_IS_SURVEY_SALE(state, toggle){
+    state.isSaleDialog = toggle
+  },
+  SET_IS_SURVEY_PURCHASE(state, toggle){
+    state.isPurchaseDialog = toggle
+  },
   UPDATE_TITLE(state, title) {
     state.surveyTitle = title
   },

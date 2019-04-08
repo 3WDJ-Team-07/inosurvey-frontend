@@ -12,7 +12,11 @@ import MyPage           from '@/views/myPageView/MyPage'
 import DetailsRecord    from '@/views/myPageView/DetailsRecord'
 import store            from '../store'
 import swal             from 'sweetalert'
-import MarketDetail     from '@/views/SurveyMarketDetail'
+import Donation         from '@/views/donationView/Donation'
+import MarketDetail     from '@/views/marketView/MarketDetail'
+import MarketSell       from '@/views/marketView/MarketSell'
+import DonationDetail   from '@/views/donationView/DonationDetail'
+import AddDonationBox   from '@/views/donationView/AddDonationBox'
 
 Vue.use(Router)
 
@@ -31,8 +35,7 @@ const requireAuth = (to, from, next) => {
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'home',
       component: Home
@@ -50,9 +53,9 @@ const router = new Router({
       beforeEnter: requireAuth
     },
     {
-      path: '/surveyMarketDetail',
-      name:'surveyMarketDetail',
-      component : MarketDetail
+      path: '/donation',
+      name: 'donation',
+      component: Donation
     },
     {
       path: '/join',
@@ -78,6 +81,26 @@ const router = new Router({
       path: '/mysurvey',
       name: 'mysurvey',
       component: MySurvey
+    },
+    {
+      path: '/detail',
+      name: 'surveymarketdetail',
+      component: MarketDetail
+    },
+    {
+      path: '/sell',
+      name: 'surveymarketsell',
+      component: MarketSell
+    },
+    {
+      path: '/donationdetail',
+      name: 'donationdetail',
+      component: DonationDetail
+    },
+    {
+      path: '/adddonationbox',
+      name: 'adddonationbox',
+      component: AddDonationBox
     },
     {
       path: '/mypage',

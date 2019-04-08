@@ -1,30 +1,46 @@
 /* 설문판매 점보트론 */
 
 <template>
-  <v-fade-transition mode="out-in">
-    <v-img src="/static/market-hero.png" height="35vh"
+<div>
+    <v-img src="/static/market-hero.png" height="40vh"
     gradient="to top,  rgba(0, 0, 0, .3), rgba(0, 0, 0, .5)">
-      <v-fade-transition mode="out-in">
         <v-container fill-height>
           <v-layout align-center row wrap>
               <v-flex xs9 pl-5>
                 <h1 class="display-2 white--text font-weight-bold"> {{$t('Market.jumbotronTitle')}}</h1>
-                <div class="subheading white--text">{{$t('Market.jumbotronSubTitle')}}</div>
+                <div class="title white--text mt-1 ml-1">{{$t('Market.jumbotronSubTitle')}}</div>
               </v-flex>
-               <v-flex xs3 pl-5>
-                <div><v-btn color="info">설문판매</v-btn></div>
-                <div><v-btn color="grey" class="white--text" normal>상품등록</v-btn></div>
+               <v-flex xs3 pl-4>
+                <div><v-btn color="info" @click="SET_IS_SURVEY_SALE(true)">설문판매</v-btn></div>
               </v-flex>
           </v-layout>
         </v-container>
-      </v-fade-transition>
     </v-img>
-  </v-fade-transition>
+    <surveySale/>
+    </div>
 </template>
 
+<script>
+  import { mapMutations } from 'vuex'
+  import surveySale from '@/components/dialog/surveySale'
 
-<style scoped>
-  .v-btn{
-    min-width: 150px;
-  }
-</style>
+	export default {
+    name:'maketJumbotron',
+    components: {
+      surveySale
+    },
+    methods: {
+      ...mapMutations([
+        'SET_IS_SURVEY_SALE'
+      ])
+    }
+	}
+</script>
+ <style scoped>
+.v-btn{
+  min-width: 200px;
+}
+.display-2, title{
+  text-shadow: 2px 2px 4px #00000048;
+}
+ </style>
