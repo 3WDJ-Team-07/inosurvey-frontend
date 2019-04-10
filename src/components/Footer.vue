@@ -1,7 +1,7 @@
 /* 푸터 */
 
 <template>
-  <v-footer height="auto" color="#FAFAFA" class="mb-5">
+  <v-footer height="auto" color="#FAFAFA" class="mb-2">
     <v-container 
       fill-height 
       grid-list-lg
@@ -12,7 +12,7 @@
         align-center 
         wrap>
         <v-flex sm6>
-          <v-card-text class="black--text pa-3 text-md-center">{{ $t('Footer.text')}}</v-card-text>
+          <v-card-text class="black--text pa-1 text-md-center">{{ $t('Footer.text')}}</v-card-text>
         </v-flex>
         <v-flex xs12>
           <v-divider class="mb-2"/>

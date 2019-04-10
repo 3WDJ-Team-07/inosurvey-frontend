@@ -7,10 +7,12 @@ import i18n from './i18n'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import VueScrollTo from 'vue-scrollto'
-import VueFriendlyIframe from 'vue-friendly-iframe';
+import VueFriendlyIframe from 'vue-friendly-iframe'
+import Progress from 'vue-multiple-progress'
 
-Vue.use(VueScrollTo)
+Vue.use(VueScrollTo,Progress)
 Vue.config.productionTip = false
+Vue.component('vm-progress', Progress)
 
 new Vue({
   created(){

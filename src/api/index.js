@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {router} from '../routes'
 
-const DOMAIN = 'http://172.26.2.38:8000' // 백엔드에서 받아야 할 URL
+const DOMAIN = 'http://172.26.3.29:8000'
 
 const UNAUTHORIZED = 401
 const onUnauthrorized = () => {
@@ -39,6 +39,14 @@ export const auth = {
 
 export const testApi = {
   testApi(){
-    return request('get','/test')
+    return request('get','/api/donation/index')
   }
 }
+
+
+// //모금함 등록Api
+// export const addboxApi = {
+//   addboxApi(box){
+//     return request('post','/api/donation/create',box)
+//   }
+// }

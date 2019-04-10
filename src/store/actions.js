@@ -1,4 +1,6 @@
 import * as api from '../api'
+import axios from 'axios'
+import { router } from '../routes';
 
 const actions = {
   REGISTER(context, user) {
@@ -17,6 +19,19 @@ const actions = {
       .then(({access_token}) => {
         context.commit('LOGIN', access_token)
       })
+  },
+  ADDDONATION(_,box){
+    axios.post('http://172.26.3.29:8000/api/donation/create',box,
+    box,
+    {
+      headers:{
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then((response) =>{ 
+      console.log(response);
+      
+    })
   },
   TEST(){
     api.testApi.testApi()

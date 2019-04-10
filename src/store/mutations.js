@@ -26,6 +26,7 @@ const mutations = {
   UPDATE_TITLE(state, title) {
     state.surveyTitle = title
   },
+  
   LOGIN(state, token) {
     if(!token) return  // token정보가 없으면 바로 리턴 
     state.token = token
