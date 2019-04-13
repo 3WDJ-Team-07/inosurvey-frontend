@@ -1,4 +1,4 @@
-/* 스타 레이팅 */
+/* 확인란문제 */
 
 <template>
   <div>
@@ -7,14 +7,17 @@
     <label v-else class="headline ml-4">[ {{question.question_title}} ]</label>
     <v-divider class="pa-3 mt-4"/>
     <div>
-      <v-layout row wrap justify-center>
-        <star-rating
-        :increment="1"
-        :max-rating="5"
-        inactive-color="red"
-        active-color="gold"
-        :star-size="100"
-        ></star-rating>
+      <v-layout row wrap class="pl-5">
+        <item 
+          v-if="question.type=='multiple'
+          && question.question_bank==false"
+          v-for="(multipleValue, index) in question.items"
+          :key="index"
+          :inputQuestion="inputQuestion"
+          :multipleValue="multipleValue"
+          :questionIndex="question.index"
+          :itemIndex="index"
+        />
       </v-layout>
       <v-divider class="pa-5"></v-divider>
     </div>
@@ -22,16 +25,16 @@
 </template>
 
 <script>
-	import StarRating from 'vue-star-rating'
+  import item from './item'
 
   export default {
     props:{
       question: {type:Object},
       inputQuestion: {type:Boolean},
     },
-    components: {
-      StarRating
-    },
+    components:{
+      item
+    }
   }
 </script>
 

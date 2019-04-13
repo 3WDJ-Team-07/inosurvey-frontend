@@ -1,11 +1,9 @@
 /* 상품작성 폼(바디) */
 
 <template>
-  <v-container fluid grid-list-md class="scroll_style">
+  <v-container fluid grid-list-md ref="formColor" class="scroll_style">
     <v-layout row wrap>
-      <questionTitle/>
-      <questionIntro/>
-      <!-- <test/> -->
+      <formHead/>
       <question/>
       <AddQuestion/>
       <v-spacer/>
@@ -14,27 +12,45 @@
 </template>
 
 <script>
-  import questionTitle from '@/components/survey/create/form/questionTitle'
-  import questionIntro from '@/components/survey/create/form/questionIntro'
+  import formHead from '@/components/survey/create/form/formHead'
   import question from '@/components/survey/create/form/question'
   import AddQuestion from '@/components/survey/create/form/AddQuestion'
-  // import test from '@/components/survey/create/form/test'
+  import {mapState} from 'vuex'
+  import {EventBus} from '@/utils/bus'
 
   export default {
+
     name: 'formbody',
     components:{
-      questionTitle,
-      questionIntro,
+      formHead,
       question,
       AddQuestion,
-      // test
-    }
+    },
+    data(){
+      return{
+        responseColor:'#ffffff'
+      }
+    },
+    mounted(){
+      EventBus.$on("ColorEventBus", value => {
+        this.responseColor=value
+        this.$refs.formColor.style.background = this.responseColor
+      })
+    },
+    computed:{
+			// 설문제목을 받는다
+			...mapState([
+        'surveyTitle',
+			]),
+		},
   }
 </script>
 
 <style scoped>
   .scroll_style{
-    overflow-y: auto;
-    height: 700px;
+     overflow-y:auto;
+     height:800px;
+     background:'';
+     transition: all 1s;
   }
 </style>

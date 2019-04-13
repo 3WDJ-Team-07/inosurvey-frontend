@@ -21,13 +21,6 @@
   import Footer from '@/components/Footer'
 
   export default {
-    data () {
-      return {
-        checkbox: true,
-        radioGroup: 1,
-        switch1: true
-      }
-    },
     name: 'app',
     components:{
       Navbar,

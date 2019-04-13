@@ -2,7 +2,10 @@
 
 <template>
   <v-layout row justify-center>
-    <v-dialog v-model="isQuestionBank" persistent max-width="1400px">
+    <v-dialog 
+    v-model="isQuestionBank" 
+    persistent max-width="1400px"
+    >
       <v-card class="pr-5 pl-5 pt-4 pb-4 scroll_css" style="background:#FAFAFA; min-height:700px;max-height:700px;">
 		    <span 
           class="headline right grey--text mouse_pointer" 
@@ -16,16 +19,17 @@
 						</v-flex>
 						<v-flex xs12>
 							<v-text-field
-                v-model="filter"
-								prepend-icon="search"
-								label="질문검색"
-								solo-inverted
-								block
-								flat
+              v-model="filter"
+							prepend-icon="search"
+							label="질문검색"
+							solo-inverted block flat
 							></v-text-field>
 						</v-flex>
-            <!-- questionCard components -->
-            <questionCard v-for="(bank, index) in getPlayers" :key="bank.id" :bank="bank" />
+            <!-- 질문 카드 컴포넌트 -->
+            <questionCard
+              v-for="(bank, index) in getPlayers" 
+              :key="bank.id" :bank="bank" 
+            />
             <v-flex v-if="getPlayers.length === 0" sm8 md5>
               <div class="display-2 grey--text font-weight-thin" style="width:800px;">
                 <span style="line-height:350px;">찾으시는 질문이 없습니다..</span>
@@ -53,11 +57,9 @@
       }
     },
 		computed: {
-			// 설문은행 모달 상태값
-			...mapState([
-        'isQuestionBank',
-        'banks' 
-      ]),
+      // 설문은행 모달 상태값, 추가한 질문
+			...mapState(['isQuestionBank','banks']),
+      // 설문조회기능
       getPlayers() {
         var banks = this.banks.filter((bank) => {
           return bank.questions.survey_title.toLowerCase().includes(this.filter.toLowerCase())
@@ -67,9 +69,7 @@
     },
 		methods: {
 			// 설문은행 모달 상태값 변이
-			...mapMutations([
-				'SET_IS_QUESTION_BANK'
-      ]),
+			...mapMutations(['SET_IS_QUESTION_BANK'])
 		}
 	}
 </script>

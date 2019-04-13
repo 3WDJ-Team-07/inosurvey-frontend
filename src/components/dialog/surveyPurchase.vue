@@ -4,10 +4,10 @@
   <v-layout row justify-center>
     <v-dialog v-model="isPurchaseDialog" hide-overlay persistent max-width="350px">
       <v-card color="info" class="pa-3 border_rounded">
-		<span 
-          class="pr-1 pt-1 right white--text" 
-          @click="SET_IS_SURVEY_PURCHASE(false)">
-          <i class="fas fa-times"></i>
+		    <span 
+        class="pr-1 pt-1 right white--text" 
+        @click="SET_IS_SURVEY_PURCHASE(false)">
+        <i class="fas fa-times"></i>
         </span>
         <v-layout column align-center>
           <v-card-text class="subheading font-weight-bold  white--text">
@@ -26,7 +26,7 @@
 import { mapState, mapMutations } from 'vuex';
 
 export default {
-    name: 'surveyPurchase',
+  name: 'surveyPurchase',
   computed: {
     ...mapState([
       'isPurchaseDialog'
@@ -37,8 +37,8 @@ export default {
       'SET_IS_SURVEY_PURCHASE'
 		]),
 		purchase(){
-            this.SET_IS_SURVEY_PURCHASE(false);
-            this.$router.replace("surveymarket")
+      this.SET_IS_SURVEY_PURCHASE(false);
+      this.$router.replace("surveymarket")
 		}
   }
 }
@@ -54,5 +54,4 @@ export default {
     .subheading{
         line-height: 1.5em
     }
-
 </style>

@@ -23,12 +23,12 @@
       </v-flex>
       <v-layout row wrap>
       <v-flex xs3 class="ml-5">
-        <v-card color="#FAFAFA" height="700px" max-width="400">
+        <v-card color="#FAFAFA" height="800px" max-width="400">
           <FormSide/>
         </v-card>
       </v-flex>
         <v-flex sm8 class="ml-5">
-          <v-card color="#FAFAFA" height="700px">
+          <v-card color="#FAFAFA" height="800px">
             <FormBody/>
           </v-card>
         </v-flex>
@@ -41,7 +41,7 @@
   import FormNav from '@/components/survey/create/FormNav'
   import FormSide from '@/components/survey/create/FormSide'
   import FormBody from '@/components/survey/create/FormBody'
-  import {mapGetters} from 'vuex'
+  import {mapGetters, mapActions} from 'vuex'
 
   export default {
     name: 'surveyForm',
@@ -50,15 +50,17 @@
       FormSide,
       FormBody
     },
+    created() {
+      this.INPUT_FORM_DATA()
+    },
     computed: {
-      ...mapGetters([
-        'isSuccessFormData'
-      ])
+      ...mapGetters(['isSuccessFormData'])
     },
     methods: {
+      ...mapActions(['INPUT_FORM_DATA']),
       next_stage(){  // 요청페이지로 이동
         this.$router.replace("/surveyrequest")
-      }
+      },
     },
   }
 </script>

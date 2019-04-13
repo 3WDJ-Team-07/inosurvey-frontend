@@ -6,11 +6,7 @@
 <template>
   <div fluid grid-list-md>
     <v-layout column wrap class="mt-3">
-      <div 
-        class="display-1 
-        font-weight-bold pt-3 ml-4"
-        v-html="surveyTitle">
-      </div> 
+      <div class="display-1 font-weight-bold pt-3 ml-4" v-html="formTitle"></div> 
       <v-divider class="mt-2"></v-divider>
     </v-layout>
   </div>
@@ -21,10 +17,7 @@
 
   export default {
     computed:{
-       // 설문제목을 받는다
-      ...mapState([
-        'surveyTitle' 
-      ])
+      ...mapState(['formTitle'])
     }
   }
 </script>

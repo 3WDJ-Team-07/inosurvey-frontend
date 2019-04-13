@@ -9,7 +9,7 @@
       <v-card class="pb-5 pt-3 pl-3 pr-3">
         <v-card-title primary-title class="title font-weight-black">새로운 설문조사 작성하기</v-card-title>
         <v-card-text justify-end>
-          <v-text-field name="name" label="설문제목" outline id="id" v-model="getTitle" ref="input"></v-text-field>
+          <v-text-field name="name" label="설문제목" outline id="id" v-model="getTitle" ref="input" @keyup.enter="onAddClick"></v-text-field>
           <div style="float:right">
             <v-btn color="grey" dark @click="SET_IS_ADD_SURVEY(false)">취소</v-btn>
             <v-btn color="primary" @click="onAddClick" :disabled="!valid">완료</v-btn>
@@ -38,7 +38,7 @@
       // store에서 관리하기 위해 get/set 방식을 사용
       getTitle:{  
         get(){
-          return this.$store.state.surveyTitle 
+          return this.$store.state.formTitle 
         },
         set(value){
           this.$store.commit('UPDATE_TITLE', value)

@@ -26,7 +26,7 @@
                 large class="headline font-weight-bold mt-4" >
                   {{ $t('Home.btnText')}}
                 </v-btn>
-                <!-- <v-btn color="success" @click="TEST">test</v-btn> -->
+                <v-btn color="success" @click="TEST">test</v-btn>
               </v-flex>
             </v-fade-transition>
             <v-btn class="floating mb-5" absolute flat fab bottom right>

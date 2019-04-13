@@ -21,16 +21,63 @@ const actions = {
       })
   },
   
-  // 설문양식 Action
-  FETCH_BOARDS({commit}){
-    return api.board.fetch()
-    .then(data => {
-      commit('SET_BOARDS', data)
+  // // 설문리스트를 추가 ACTION
+  // ADD_QUESTIONS(context,{type,title,item}){
+  //   return api.questions.addQuestion()
+  //   .then(response => {
+  //     var QuestionList = response
+  //     QuestionList.type = type
+  //     QuestionList.title = title
+  //     QuestionList.item = item
+  //     context.commit('SET_QUESTION', QuestionList)
+  //   })
+  // },
+
+  // INPUT_FORM_DATA(context,{type,title,item}){
+  //   return api.questions.addQuestion(type,title,item)
+  //   .then(response => {
+  //     context.commit('INPUT_FORM', response)
+  //   })
+  // },
+
+  // 전체폼데이터
+  INPUT_FORM_DATA(context){
+    return api.surveyForm.inputForm()
+    .then(response => {
+      context.commit('INPUT_FORM', response)
     })
   },
-  // 설문양식 추가 Action
-  ADD_BOARD (_, {type}) {
-    return api.board.create(type)
+  
+  // 질문데이터 넣기
+  INPUT_QUESTION(context, {index,type,question_title,question_image,question_bank,items}){
+    return api.surveyForm.inputQuestion(index,type,question_title,question_image,question_bank,items)
+    .then(response => {
+      response.index = index
+      response.type = type
+      response.question_title = question_title
+      response.question_image = question_image
+      response.question_bank = question_bank
+      response.items = items
+      context.commit('INPUT_QUESTION', response)
+    })
+  },
+
+  // INPUT_ITEMS(context, payload){
+  //   return api.surveyForm.inputItem(payload)
+  //   .then(response => {
+  //     response.items = payload.items
+  //     context.commit('INPUT_ITEMS', payload)
+  //   })
+  // },
+
+  INPUT_ITEMS(context, payload){
+    return api.surveyForm.inputItem(payload)
+    .then(response => {
+      console.log(payload)
+      console.log(response)
+      response.items = payload.items
+      context.commit('INPUT_ITEMS', payload)
+    })
   },
 
   // 질문은행 Action

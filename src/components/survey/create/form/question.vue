@@ -2,41 +2,77 @@
 
 <template>
 	<v-container grid-list-sm class=" mt-4">
-		<v-layout column class="pa-5 hoverEvent" justify-center v-for="question in boards" :key="question.id">
-      {{question}}
-      <v-form ref="form">
-          <span class="title font-weight-bold pl-5 ml-2">질문 {{ question.id }} .</span>
-					<input type="text" v-if="!inputQuestion" v-model="QuestionTitle" class="form-control title ml-4" name="name" label="label">
-          <label v-else class="headline ml-4">[ {{QuestionTitle}} ]</label>
-					<v-divider class="pa-3 mt-4"/>
-					<v-layout row wrap>
-						<v-flex sm12>
-              <Single :inputQuestion="inputQuestion"/>
-              <Subjective/>
-              <Multiple :inputQuestion="inputQuestion"/>
-              <StarRating/>
-              <Opinion/>
-					</v-flex>
-				</v-layout>
+    <v-layout 
+      column class="pa-5 hoverEvent" justify-center 
+      v-for="(question,index) in form.list" :key="index"
+      @mouseover="hover = true" @mouseleave="hover = false"
+      :class="{ active: hover }"
+    >
+      <pre>{{question}}</pre>  
+      <span v-if="hover==true" class="headline">
+        <i class="fas fa-times grey--text" style="float:right;" @click="removeQuestion(index)"></i>
+      </span>
+      <span v-else class="mb-4"></span>
+      <v-form v-if="question.question_bank == false">
+        <v-layout row wrap>
+          <v-flex sm12>
+            <Single 
+            v-if="question.type == 'single'"
+            :inputQuestion="inputQuestion"
+            :question="question"
+            />  
+            <Subjective 
+            v-if="question.type == 'subjective'"
+            :question="question"
+            />
+            <Multiple 
+            v-if="question.type == 'multiple'" 
+            :inputQuestion="inputQuestion"
+            :question="question"
+            />
+            <StarRating 
+            v-if="question.type == 'starRating'"
+            :question="question"
+            />
+            <Opinion 
+            v-if="question.type == 'opinion'"
+            :question="question"
+            />
+          </v-flex>
+        </v-layout>
       </v-form>
-		</v-layout>
-    <span v-if="boards.length !== 0">
+      <v-form v-if="question.question_bank == true">
+        <v-layout row wrap>
+          <v-flex sm12>
+            <Bank 
+              v-if="question.type == 'single' 
+              && question.question_bank == true" 
+              :inputQuestion="inputQuestion"
+              :question="question"/>
+          </v-flex>
+        </v-layout>
+      </v-form>
+    </v-layout>
+    <!-- 여기서 오류나는데 정상동작 -->
+    <span v-if="formLength !== 0">
       <div class="mt-3 mb-5" style="float:right">
         <v-btn color="grey" @click="UpdateValues" dark>수정</v-btn>
         <v-btn color="info" @click="SaveValues" dark >확인</v-btn>
       </div>
-      <v-btn class="title font-weight-black" :disabled="!inputQuestion" color="success" @click="FORM_DATE_REQUEST" large block>저장</v-btn>
+      <v-btn class="title font-weight-black" :disabled="!inputQuestion" color="success" @click="SubmitForm" large block>저장</v-btn>
     </span>
 	</v-container>
 </template>
 
 <script>
-  import {mapState, mapActions, mapMutations} from 'vuex'
-  import Single from './questionType/Single'
+  import {mapState, mapActions, mapMutations, mapGetters} from 'vuex'
+  import Single from './questionType/single/Single'
   import Subjective from './questionType/Subjective'
-  import Multiple from './questionType/Multiple'
+  import Multiple from './questionType/multiple/Multiple'
   import StarRating from './questionType/StarRating'
   import Opinion from './questionType/Opinion'
+  import Bank from './questionType/Bank'
+  import {EventBus} from '@/utils/bus'
 
 	export default {
     components:{
@@ -44,42 +80,53 @@
       Subjective,
       Multiple,
       StarRating,
-      Opinion
+      Opinion,
+      Bank
     },
 		data(){
 			return{
         loading: false,
-        // 추가
-        QuestionTitle:'' || "질문제목을 지정해주세요.",  // 질문제목
-        inputQuestion:false
+        hover: false,
+        inputQuestion:false,
+        bgColor:'#ffffff'
 			}
 		},
 		computed:{
 			...mapState([
-        'boards',
-        'isSuccessFormData'
-			])
-		},
+        'isSuccessFormData',
+        'form',
+        'formTitle',
+        'formIntro'
+        ]),
+      ...mapGetters([
+        'formLength'
+      ])
+    },
+    mounted(){
+      EventBus.$on("ColorEventBus", value => this.bgColor = value)
+    },
 		methods: {
-			...mapActions([
-        'FETCH_BOARDS',
-      ]),
       ...mapMutations([
-        'FORM_DATE_REQUEST'
+        'FORM_DATE_REQUEST',
+        'REMOVE_QUESTION',
+        'INPUT_FORM_HEAD'
       ]),
-			fetchData(){
-				this.loading = true
-				this.FETCH_BOARDS()
-				 .finally(_ => {
-					 this.loading = false
-				 })
-      },
-      sumbitForm() {},
       SaveValues(){
         this.inputQuestion = true
       },
       UpdateValues(){
         this.inputQuestion = false
+      },
+      removeQuestion(index){
+        this.REMOVE_QUESTION(index)
+      },
+      SubmitForm(){
+        this.INPUT_FORM_HEAD({
+          formTitle: this.formTitle,
+          formIntro: this.formIntro,
+          bgcolor: this.bgColor || '#ffffff'
+        })
+        this.FORM_DATE_REQUEST()
       }
 		},
 	}
@@ -96,4 +143,16 @@
   ul li {
     list-style: none;
   }
+  .list-enter-active, .list-leave-active {
+  transition: all 1s;
+  }
+  .list-enter {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  .list-leave-to{
+    opacity: 0;
+    transform: scale(0);
+  }
+
 </style>
