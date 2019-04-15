@@ -1,5 +1,3 @@
-/* 설문마켓 판매페이지..... */
-
 <template>
   <v-fade-transition mode="out-in">
     <v-container pt-5 mt-5>

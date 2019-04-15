@@ -1,4 +1,3 @@
-/* 설문마켓 설문상세 */
 <template>
   <v-container fluid grid-list-md  class="font-weight-bold">
     <v-layout>
@@ -58,13 +57,3 @@
     </v-layout>
   </v-container>
 </template>
-
-<script>
-export default {
-
-}
-</script>
-
-<style>
-
-</style>

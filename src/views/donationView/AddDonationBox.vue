@@ -26,9 +26,7 @@
   
   export default {
     name: 'adddonationbox',
-    components: {
-      DonationJumbotron
-    },
+    components: { DonationJumbotron },
     methods:{
       boxregister(){
         this.$router.replace("donation");

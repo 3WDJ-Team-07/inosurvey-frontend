@@ -46,16 +46,16 @@
 </template>
 
 <script>
-  import questionBank from '@/components/dialog/quebank/questionBank'
+  import questionBank                           from '@/components/dialog/quebank/questionBank'
   import { mapState, mapMutations, mapActions } from 'vuex'
-  import Swatches from 'vue-swatches'
+  import Swatches                               from 'vue-swatches'
+  import { EventBus }                           from '@/utils/bus'
   import "vue-swatches/dist/vue-swatches.min.css"
-  import {EventBus} from '@/utils/bus'
 
   export default {
     components: {
       questionBank,
-      Swatches 
+      Swatches,
     },
     data(){
       return{
@@ -63,14 +63,14 @@
         loading: false,
       }
     },
-    updated(){
+    updated() {
       EventBus.$emit('ColorEventBus',this.color)
     },
     computed: {
       ...mapState(['form'])
     },
     methods: {
-      BankBtn_Click(){
+      BankBtn_Click() {
         this.SET_IS_QUESTION_BANK(true)
         this.FETCH_QUESTION_BANK()
       },

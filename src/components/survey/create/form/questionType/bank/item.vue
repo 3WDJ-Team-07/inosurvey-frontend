@@ -32,9 +32,14 @@
   import { mapActions, mapMutations } from 'vuex';
 
   export default {
-    props:['bankItem','inputQuestion','questionIndex','itemIndex'],
-    data(){
-      return{
+    props: [
+      'bankItem',
+      'inputQuestion',
+      'questionIndex',
+      'itemIndex'
+    ],
+    data() {
+      return {
         bankValues: { value: '' || "질문을 지정해주세요." },
       }
     },
@@ -52,7 +57,7 @@
           itemIndex: itemIndex
         })
       }
-    },
+    }
   }
 </script>
 

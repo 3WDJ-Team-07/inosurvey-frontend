@@ -31,10 +31,10 @@
 
   export default {
     name: 'surveyPayment',
-    props:['total','responseNumber'],
+    props: ['total','responseNumber'],
     data() {
       return {
-        questionNumberPay:10, // 문제당 요금,
+        questionNumberPay:10, // 문제당 요금
       }
     },
     computed: {

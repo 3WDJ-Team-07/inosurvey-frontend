@@ -1,12 +1,11 @@
 const getters = {
-  isAuth(state){ 
-    console.log(!!state.token)
+  isAuth(state) { 
     return !!state.token
   },
-  isSuccessFormData(state){ 
+  isSuccessFormData(state) { 
     return state.isSuccessFormData
   },
-  formLength(state){
+  formLength(state) {
     return typeof state.form.list !== 'undefined' && typeof state.form.list === 'object' &&Object.keys(state.form.list).length
   }
 }

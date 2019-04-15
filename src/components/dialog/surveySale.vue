@@ -44,13 +44,13 @@
 import { mapState, mapMutations } from 'vuex';
 
 export default {
-    name: 'surveySale',
+  name: 'surveySale',
   computed: {
     ...mapState(['isSaleDialog'])
   },
   methods: {
     ...mapMutations(['SET_IS_SURVEY_SALE']),
-		sale(){
+		sale() {
       this.SET_IS_SURVEY_SALE(false);
       this.$router.push('sell')
 		}

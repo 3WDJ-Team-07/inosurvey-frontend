@@ -11,8 +11,6 @@
 
   export default {
     name: 'marketDetail',
-    components: {
-      MarketDetail
-    }
+    components: { MarketDetail }
   }
 </script>

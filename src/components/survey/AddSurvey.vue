@@ -1,8 +1,3 @@
-/* 설문제목을 정하는 모달창 
-    1. 모달창을 끄는 버튼
-    2. 다른 곳을 누르면 false된 상태에라서 버튼 클릭안되는 문제점
-*/
-
 <template>
   <div>
     <v-dialog v-model="isSurveyDialog" persistent width="500">
@@ -31,18 +26,11 @@
       }
     },
     computed: {
-      ...mapState([
-        // 설문제목지정 모달창 체크 
-        'isSurveyDialog',  
-      ]),
+      ...mapState(['isSurveyDialog']),
       // store에서 관리하기 위해 get/set 방식을 사용
       getTitle:{  
-        get(){
-          return this.$store.state.formTitle 
-        },
-        set(value){
-          this.$store.commit('UPDATE_TITLE', value)
-        }
+        get(){ return this.$store.state.formTitle },
+        set(value){ this.$store.commit('UPDATE_TITLE', value) }
       }
     },
     watch: {
@@ -51,18 +39,14 @@
         this.valid = v.trim().length > 0
       }
     },
-    // 모달을 열때 제목입력에 포커스를 맞춘다
+    created() {
+      this.$store.state.formTitle = ''
+    },
     updated() {  
       this.$refs.input.focus()
     },
-    created(){
-      this.$store.state.surveyTitle = ''
-    },
     methods: {
-      ...mapMutations([
-        'SET_IS_ADD_SURVEY',
-      ]),
-      // 클릭시 모달창을 끄고 surveyForm으로 리다이렉트
+      ...mapMutations(['SET_IS_ADD_SURVEY']),
       onAddClick(){  
         this.SET_IS_ADD_SURVEY(false)
         this.$router.replace("/surveyform")

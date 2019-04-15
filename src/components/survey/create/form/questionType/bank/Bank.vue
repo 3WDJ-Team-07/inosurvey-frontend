@@ -1,9 +1,3 @@
-/* 질문은행 질문 
-   아이템을 받으면 아이템을가지고
-   첫번째 보여주는 문제를 for문으로 
-   반복해서 보여준다 
-*/
-
 <template>
   <div>
     <span class="title font-weight-bold pl-5 ml-2">질문 {{ question.index }} .</span>
@@ -38,12 +32,6 @@
             >indeterminate_check_box</v-icon>
           </div>
         </li>
-        <!-- <item v-for="(bankItem, index) in question.items"
-        :bankItem="bankItem"
-        :itemIndex = "index"
-        :inputQuestion = "inputQuestion"
-        :questionIndex="question.index">
-        </item> -->
       </ul>
     </div>
     <v-divider class="pa-4 mt-5"></v-divider>
@@ -51,18 +39,19 @@
 </template>
 
 <script>
-  import {mapState, mapActions, mapMutations} from 'vuex'
-  // import item from './item'
+  import { mapState, mapActions, mapMutations } from 'vuex'
 
   export default {
-    props:['question','inputQuestion'],
-    // components:{item},
-    data(){
+    props: [
+      'question',
+      'inputQuestion'
+    ],
+    data() {
       return{
         BankValues: { value: '' || "질문을 지정해주세요." },
       }
     },
-    created(){
+    created() {
       this.INPUT_ITEMS({
         items: this.BankValues,
         questionIndex: this.question.index

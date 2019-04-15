@@ -123,19 +123,19 @@
 
 <script>
 	import { mapMutations } from 'vuex'
-	import swal from 'sweetalert'
+	import swal             from 'sweetalert'
 
 	export default {
 		name: 'join',
 		data() {
 			return {
-				user_id: '',  // 아이디
-				password: '',  // 패스워드
-				nickname: '',  // 이름
-				email: '',  // 이메일
-				gender: 0,  // 성별
-				job_id: 0,  // 직업
-				age: 0,  // 연령대
+				user_id: '',    // 아이디
+				password: '',   // 패스워드
+				nickname: '',   // 이름
+				email: '',      // 이메일
+				gender: 0,      // 성별
+				job_id: 0,      // 직업
+				age: 0,         // 연령대
 				is_donator: 0,  // 기부단체 or 일반회원
 				job_item: [
 					{ name: '서비스/상담', value: 1},
@@ -157,12 +157,11 @@
 					{ name: '2000년도생', value: 2000},
 					{ name: '2010년도생', value: 2010},
 				],
-				emailRules: [	 // 이메일 규칙
+				emailRules: [
           v => !!v || '이메일을 입력하세요', 
           v => /.+@.+/.test(v) || '이메일 형식으로 입력하세요' 
-          // 전자 메일 주소의 유효성을 검사하기 위해 내용이 기본 RegExp와 일치하는지 확인
         ],
-        passwordRules: [  // 패스워드 규칙
+        passwordRules: [
           v => !!v || '비밀번호를 입력하세요',
           v => v.length >= 6 || '6자 이상으로 입력해주세요'
         ],
@@ -172,10 +171,8 @@
 			this.$refs.input.focus()
 		},
 		methods: {
-			...mapMutations([
-      	'SET_IS_REGISTER_NULL'
-   	  ]),
-			register(){  // 회원가입 요청해 액션에 있는 REGISTER 실행
+			...mapMutations(['SET_IS_REGISTER_NULL']),
+			register(){
 				if(!this.user_id || !this.password || !this.nickname || !this.email ||	
 				!this.gender || !this.job_id || !this.age ){
 					swal("모두 입력하지 않았습니다!","모든입력란을 채워주세요","error",{button:"확인"});
@@ -191,12 +188,12 @@
 					user.append('age', this.age)
 					user.append('is_donator', this.is_donator)
 					this.$store.dispatch('REGISTER', user)
-						.then( () => {
-							swal("회원가입이 완료되었습니다!","로그인 해주세요","success",{
-								button:"확인",
-              });
-              this.$router.push({name: 'home'})
-						})
+					.then( () => {
+						swal("회원가입이 완료되었습니다!","로그인 해주세요","success",{
+							button:"확인",
+            });
+            this.$router.push({name: 'home'})
+					})
 				}
 			},
 		},  

@@ -1,5 +1,3 @@
-/* 작은창 네비게이션  */
-
 <template>
   <v-navigation-drawer v-model="inputValue" temporary right fixed >
     <v-list>
@@ -27,7 +25,6 @@
 
   export default {
     computed: {
-      // drawer상태값 체크
       ...mapState(['drawer']),
       inputValue: {
         get () {

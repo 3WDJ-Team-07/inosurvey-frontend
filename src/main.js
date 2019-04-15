@@ -14,10 +14,8 @@ Vue.use(VueScrollTo)
 Vue.config.productionTip = false
 
 new Vue({
-  created(){
-    AOS.init();
-  },  // scroll
-  swal,  // alert
+  created(){AOS.init()}, // scroll
+  swal, // alert
   router,
   store,
   i18n,

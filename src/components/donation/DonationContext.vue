@@ -35,10 +35,10 @@ export default {
         return this.$t('Donation.cardFeatures')
       }
     },
-    methods:{
-      toDetail(){
-      this.$router.push("donationdetail")
-    }
+    methods: {
+      toDetail() {
+        this.$router.push("donationdetail")
+      }
     }
   }
 </script>

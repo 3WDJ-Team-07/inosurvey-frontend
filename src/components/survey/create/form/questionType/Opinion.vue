@@ -1,4 +1,3 @@
-/* 자유 의견란 */
 <template>
   <div>
     <span class="title font-weight-bold pl-5 ml-2">질문 {{question.index}}.</span>
@@ -21,14 +20,10 @@
 </template>
 
 <script>
-export default {
-  props:{
-    question: {type:Object},
-    inputQuestion: {type:Boolean},
-  },
-}
+  export default {
+    props:{
+      question: {type:Object},
+      inputQuestion: {type:Boolean},
+    },
+  }
 </script>
-
-<style>
-
-</style>

@@ -1,5 +1,3 @@
-/* 설문마켓 설문상세 */
-
 <template>
   <div>
     <v-container fluid grid-list-md pt-4 mt-5>
@@ -43,9 +41,9 @@
 </template>
 
 <script>
-  import DetailBody from '@/components/market/DetailBody'
+  import DetailBody       from '@/components/market/DetailBody'
   import { mapMutations } from 'vuex'
-  import surveyPurchase from '@/components/dialog/surveyPurchase'
+  import surveyPurchase   from '@/components/dialog/surveyPurchase'
 
   export default {
       name: 'marketdetail',
@@ -54,9 +52,7 @@
         surveyPurchase
       },
       methods: {
-        ...mapMutations([
-          'SET_IS_SURVEY_PURCHASE'
-        ])
+        ...mapMutations(['SET_IS_SURVEY_PURCHASE'])
     }
   }
 </script>

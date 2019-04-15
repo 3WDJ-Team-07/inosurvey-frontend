@@ -1,5 +1,3 @@
-/* 내 설문보기 페이지 */
-
 <template>
   <v-container grid-list-md class="pt-5 mt-5" >
     <v-flex sm9 class="center_card">
@@ -56,23 +54,17 @@
 </template>
 
 <script>
-  import AddSurvey from '@/components/survey/AddSurvey'
+  import AddSurvey      from '@/components/survey/AddSurvey'
   import {mapMutations} from 'vuex'
 
   export default {
     name: 'mySurvey',
-    components:{
-      AddSurvey
-    },
+    components:{ AddSurvey },
     methods: {
-      // 툴팁 적용한 v-icon을 클릭했을때 동작
       dfdf(){  
         console.log('df')
       },
-      ...mapMutations([
-        // 설문제목 모달창
-        'SET_IS_ADD_SURVEY'  
-      ]),
+      ...mapMutations(['SET_IS_ADD_SURVEY']),
     }
   }
 </script>

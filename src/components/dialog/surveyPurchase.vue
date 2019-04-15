@@ -29,15 +29,13 @@ import { mapState, mapMutations } from 'vuex';
 export default {
   name: 'surveyPurchase',
   computed: {
-    ...mapState([
-      'isPurchaseDialog'
-    ])
+    ...mapState(['isPurchaseDialog'])
   },
   methods: {
     ...mapMutations([
       'SET_IS_SURVEY_PURCHASE'
 		]),
-		purchase(){
+		purchase() {
       this.SET_IS_SURVEY_PURCHASE(false);
       this.$router.replace("surveymarket")
 		}
@@ -52,7 +50,7 @@ export default {
 	.border_rounded{
 		border-radius: 20px;
 	}
-    .subheading{
-        line-height: 1.5em
-    }
+  .subheading{
+    line-height: 1.5em
+  }
 </style>

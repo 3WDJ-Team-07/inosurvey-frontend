@@ -1,4 +1,4 @@
-/* 설문모드를 정하는 페이지(설문작성/내설문보기) */
+/* 설문모드를 정하는 페이지 (설문작성/내설문보기) */
 
 <template>
   <v-fade-transition mode="out-in">
@@ -68,23 +68,19 @@
   
 <script>
   import { mapMutations } from 'vuex'
-  import AddSurvey from '@/components/survey/AddSurvey'
+  import AddSurvey        from '@/components/survey/AddSurvey'
 
   export default {
     name: 'surveyMode',
-    components:{
-      AddSurvey
-    },
+    components:{ AddSurvey },
     computed: {
       Features() {
         return this.$t('Survey.surveyFeatures')
       }
     },
     methods: {
-      ...mapMutations([
-        // 설문제목 모달창
-        'SET_IS_ADD_SURVEY'  
-      ]),
+      // 설문제목 모달창
+      ...mapMutations(['SET_IS_ADD_SURVEY']),
       my_survey_list(){
         this.$router.replace("/mysurvey")
       }

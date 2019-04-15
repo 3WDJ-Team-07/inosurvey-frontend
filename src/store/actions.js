@@ -20,8 +20,8 @@ const actions = {
       })
   },
 
-  // 전체폼데이터
-  INPUT_FORM_DATA(context){
+  // 전체폼 데이터
+  INPUT_FORM_DATA(context) {
     return api.surveyForm.inputForm()
     .then(response => {
       context.commit('INPUT_FORM', response)
@@ -29,7 +29,7 @@ const actions = {
   },
   
   // 질문데이터 넣기
-  INPUT_QUESTION(context, {index,type,question_title,question_image,question_bank,items}){
+  INPUT_QUESTION(context, {index,type,question_title,question_image,question_bank,items}) {
     return api.surveyForm.inputQuestion(index,type,question_title,question_image,question_bank,items)
     .then(response => {
       response.index = index
@@ -43,24 +43,24 @@ const actions = {
   },
 
   // 질문은행 Action
-  FETCH_QUESTION_BANK({commit}){
+  FETCH_QUESTION_BANK({commit}) {
     return api.questionBank.fetch()
     .then(data => {
       commit('FETCH_QUESTION_BANK',data)
     })
   },
 
-  // 완성된 설문폼 보내기 // 결제하기 누를때 같이 로직 구성
-  REQUEST_SURVEY_FORM({state}){
+  // 완성된 설문폼 보내기
+  REQUEST_SURVEY_FORM({state}) {
     return api.formRequest.requestFormData(state.form)
   },
 
-  REQUEST_IMG_SELECT(_, fileData){
+  REQUEST_IMG_SELECT(_, fileData) {
     return api.surveyForm.imageSelect(fileData)
   },
 
   // 테스트 Action
-  TEST(){
+  TEST() {
     api.testApi.testApi()
       .then(response => {
         console.log(response)

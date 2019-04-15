@@ -1,5 +1,3 @@
-/* 객관식 */
-
 <template>
   <div>
     <span class="title font-weight-bold pl-5 ml-2">질문 {{question.index}}.</span>
@@ -25,24 +23,26 @@
 </template>
 
 <script>
-  import { mapActions, mapMutations } from 'vuex';
-  import item from './item'
+  import { mapMutations } from 'vuex';
+  import item             from './item'
 
   export default {
-    props:['question','inputQuestion'],
-    components:{item},
-    data(){
-      return{
+    props: [
+      'question',
+      'inputQuestion'
+    ],
+    components: { item },
+    data() {
+      return {
         SingleValues: { value: '' || "질문을 지정해주세요." }
       }
     },
-    created(){
+    created() {
       this.INPUT_ITEMS({
         items: this.SingleValues,
         questionIndex: this.question.index
       })
     },
-    
     methods: {
       ...mapMutations(['INPUT_ITEMS']),
     },

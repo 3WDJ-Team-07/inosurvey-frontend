@@ -43,14 +43,12 @@
 </template>
 
 <script>
-	import { mapState, mapMutations, mapActions } from 'vuex';
-  import questionCard from './questionCard'
+	import { mapState, mapMutations } from 'vuex';
+  import questionCard               from './questionCard'
 
 	export default {
     name: 'questionBank',
-    components:{
-      questionCard
-    },
+    components:{ questionCard },
     data(){
       return{
         filter:''

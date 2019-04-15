@@ -1,5 +1,3 @@
-/* 이미지선택 */
-
 <template>
   <div>
     <span class="title font-weight-bold pl-5 ml-2">질문 {{question.index}}.</span>
@@ -23,27 +21,30 @@
 </template>
 
 <script>
-import item from './item'
-import {mapMutations} from 'vuex'
+  import item           from './item'
+  import {mapMutations} from 'vuex'
 
-export default {
-  props:['question','inputQuestion'],
-  components:{item},
-  data(){
-    return{
-      ImageValues: { value: '' || "내용을 지정해주세요", image:'' }
-    }
-  },
-  created(){
-    this.INPUT_ITEMS({
-      items: this.ImageValues,
-      questionIndex: this.question.index
-    })
-  },
-  methods: {
-    ...mapMutations(['INPUT_ITEMS']),
-  },  
-}
+  export default {
+    props: [
+      'question',
+      'inputQuestion'
+    ],
+    components: { item },
+    data() {
+      return{
+        ImageValues: { value: '' || "내용을 지정해주세요", image:'' }
+      }
+    },
+    created() {
+      this.INPUT_ITEMS({
+        items: this.ImageValues,
+        questionIndex: this.question.index
+      })
+    },
+    methods: {
+      ...mapMutations(['INPUT_ITEMS']),
+    },  
+  }
 </script>
 
 <style scoped>

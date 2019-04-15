@@ -1,8 +1,3 @@
-/* 설문요청페이지(타겟설정)
-		1. 타겟지정 카드를 임시로 여러개 지정함 (후에는 반복문을 통해 리펙토링 필요)
-		2. Duration 값 지정
-*/
-
 <template>
   <v-container fluid grid-list-md>
     <v-layout row wrap>
@@ -62,10 +57,10 @@
         </v-flex>
       </v-layout>
     </v-card>
-    <v-card class="border_style pa-5">
+    <v-card class="border_style pl-5 pr-5">
       <div> <v-chip class="title ml-3 pa-1 mb-2" dark>2단계</v-chip><span class="title font-weight-bold"> 응답수 선택</span></div>
       <v-layout row wrap class="pa-2">
-        <v-flex pa-5>
+        <v-flex pl-5 pr-5 pb-3 pt-5>
           <v-slider
             v-model="responseNumber"
             always-dirty
@@ -80,13 +75,45 @@
         </v-flex>
       </v-layout>
     </v-card>
+    <v-card class="border_style pl-5 pr-5 pb-5">
+      <div> <v-chip class="title ml-3 pa-1 mb-2" dark>3단계</v-chip><span class="title font-weight-bold"> 마감일 선택</span></div>
+        <v-flex pl-5 pr-5 pt-5>
+          <v-menu
+            ref="menu"
+            v-model="menu"
+            :close-on-content-click="false"
+            :nudge-right="250"
+            :nudge-top="250"
+            lazy
+            offset-y
+            min-width="300px"
+          >
+            <template v-slot:activator>
+              <v-text-field
+                v-model="date"
+                label="Deadline"
+                prepend-icon="event"
+                readonly
+              ></v-text-field>
+            </template>
+            <v-date-picker
+              landscape
+              ref="picker"
+              v-model="date"
+              max="2024-12-31"
+              :min="todayData"
+              @change="save"
+            ></v-date-picker>
+          </v-menu>
+        </v-flex>
+    </v-card>
     <pre>{{form}}</pre>
   </v-container>
 </template>
 
 <script>
-  import {mapState} from 'vuex'
-  import {EventBus} from '@/utils/bus'
+  import {mapState, mapMutations} from 'vuex'
+  import {EventBus}               from '@/utils/bus'
 
 	export default {
 		data() {
@@ -129,18 +156,43 @@
 					{ name: '생산/제조', value: 9},
 				],
         items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
-        responseNumber: 100  // 응답수
+        responseNumber: 100,  // 응답수,
+        date: null,
+        menu: false
 			}
     },
-    computed:{
-      ...mapState(['form'])
+    watch: {
+      menu(val) {
+        val && setTimeout(() => (this.$refs.picker.activePicker = 'YEAR'))
+      }
     },
-    updated(){
+    computed: {
+      ...mapState(['form']),
+      todayData(){
+        var today = new Date()
+        var dd = today.getDate()
+        var mm = today.getMonth()+1
+        var yyyy = today.getFullYear()
+        if(dd<10) dd='0'+dd
+        if(mm<10) mm='0'+mm
+        return yyyy+'-'+mm+'-'+dd
+      }
+    },
+    updated() {
       EventBus.$emit('responseNumber',this.responseNumber)
       EventBus.$emit('gender',this.gender)
       EventBus.$emit('age',this.age)
       EventBus.$emit('job',this.job)
-    }
+    },
+    methods: {
+      ...mapMutations(['INPUT_SURVEY_DEADLINE']),
+      save (date) {
+        this.$refs.menu.save(date)
+        this.INPUT_SURVEY_DEADLINE({
+          closed_at: this.date
+        })
+      }
+    },
 	}
 </script>
 

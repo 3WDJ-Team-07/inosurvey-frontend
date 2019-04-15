@@ -22,8 +22,8 @@
 
 <script>
   export default {
-    methods:{
-      addbox(){
+    methods: {
+      addbox() {
         this.$router.push("adddonationbox");
       }
     }

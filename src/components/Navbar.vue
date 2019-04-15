@@ -42,17 +42,15 @@
     },
     computed: {
       // isAuth Test Token
-      ...mapGetters([  
-        'isAuth'
-      ]),
+      ...mapGetters(['isAuth']),
       items () {
         return this.$t('View.items')
       },
     },
     methods: {
       ...mapMutations([
-        'SET_IS_LOGIN',  // 로그인 모달
-        'LOGOUT',  // 로그아웃 
+        'SET_IS_LOGIN', 
+        'LOGOUT',
         'toggleDrawer',  
       ]),
       logout() {
@@ -71,8 +69,7 @@
         });
       },
       onScroll () {
-        this.isScrolling = (window.pageYOffset ||
-          document.documentElement.scrollTop || 0) > 60
+        this.isScrolling = (window.pageYOffset || document.documentElement.scrollTop || 0) > 60
       }
     }
   }

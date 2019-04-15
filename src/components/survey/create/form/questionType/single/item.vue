@@ -30,12 +30,17 @@
 </template>
 
 <script>
-  import { mapActions, mapMutations } from 'vuex';
+  import { mapMutations } from 'vuex';
 
   export default {
-    props:['singleValue','inputQuestion','questionIndex','itemIndex'],
-    data(){
-      return{
+    props: [
+      'singleValue',
+      'inputQuestion',
+      'questionIndex',
+      'itemIndex'
+    ],
+    data() {
+      return {
         SingleValues: { value: '' || "질문을 지정해주세요." },
       }
     },

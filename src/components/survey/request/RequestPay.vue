@@ -1,7 +1,3 @@
-/* 설문요청페이지(결제)
-	1. 테이블은 임시로 지정
-*/
-
 <template>
   <v-container fluid grid-list-md>
     <v-layout row wrap>
@@ -51,17 +47,15 @@
 
 <script>
   import { mapMutations } from 'vuex'
-  import surveyPayment from '@/components/dialog/surveyPayment'
-  import { EventBus } from '@/utils/bus'
+  import surveyPayment    from '@/components/dialog/surveyPayment'
+  import { EventBus }     from '@/utils/bus'
 
 	export default {
     name: 'requestPay',
-    components: {
-      surveyPayment
-    },
+    components: { surveyPayment },
 		data(){
 			return{
-        responseNumber:50,  // 응답자수
+        responseNumber:50,    // 응답자수
         questionNumberPay:10, // 문제당 요금,
         gender:0,
         age:0,
@@ -69,8 +63,8 @@
 			}
     },
     // 이상하게 마운트될때 값을 바꿔줘야 v-model 값이 변동가능 
-    mounted(){
-      this.responseNumber=100
+    mounted() {
+      this.responseNumber = 100
     },
     computed: {
       total(){

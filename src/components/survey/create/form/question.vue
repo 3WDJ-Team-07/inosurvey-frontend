@@ -60,30 +60,33 @@
         </v-layout>
       </v-form>
     </v-layout>
-    <!-- 여기서 오류나는데 정상동작 -->
     <span v-if="formLength !== 0">
       <div class="mt-3 mb-5" style="float:right">
         <v-btn color="grey" @click="UpdateValues" dark>수정</v-btn>
         <v-btn color="info" @click="SaveValues" dark >확인</v-btn>
       </div>
-      <v-btn class="title font-weight-black" :disabled="!inputQuestion" color="success" @click="SubmitForm" large block>저장</v-btn>
+      <v-btn 
+      class="title font-weight-black" 
+      :disabled="!inputQuestion" 
+      color="success" @click="SubmitForm" 
+      large block>저장</v-btn>
     </span>
 	</v-container>
 </template>
 
 <script>
   import {mapState, mapActions, mapMutations, mapGetters} from 'vuex'
-  import Single from './questionType/single/Single'
-  import Subjective from './questionType/Subjective'
-  import Multiple from './questionType/multiple/Multiple'
-  import StarRating from './questionType/StarRating'
-  import Opinion from './questionType/Opinion'
+  import Single      from './questionType/single/Single'
+  import Subjective  from './questionType/Subjective'
+  import Multiple    from './questionType/multiple/Multiple'
+  import StarRating  from './questionType/StarRating'
+  import Opinion     from './questionType/Opinion'
   import ImageSelect from './questionType/imageSelect/ImageSelect'
-  import Bank from './questionType/bank/Bank'
-  import {EventBus} from '@/utils/bus'
+  import Bank        from './questionType/bank/Bank'
+  import {EventBus}  from '@/utils/bus'
 
 	export default {
-    components:{
+    components: {
       Single,
       Subjective,
       Multiple,
@@ -92,8 +95,8 @@
       ImageSelect,
       Bank
     },
-		data(){
-			return{
+		data() {
+			return {
         loading: false,
         hover: false,
         inputQuestion:false,
@@ -101,18 +104,16 @@
         SingleValues:''
 			}
 		},
-		computed:{
+		computed: {
 			...mapState([
         'isSuccessFormData',
         'form',
         'formTitle',
         'formIntro'
         ]),
-      ...mapGetters([
-        'formLength'
-      ])
+      ...mapGetters(['formLength'])
     },
-    mounted(){
+    mounted() {
       EventBus.$on("ColorEventBus", value => this.bgColor = value)
     },
 		methods: {
@@ -122,16 +123,16 @@
         'INPUT_FORM_HEAD'
       ]),
       ...mapActions(['INPUT_ITEMS']),
-      SaveValues(){
+      SaveValues() {
         this.inputQuestion = true
       },
-      UpdateValues(){
+      UpdateValues() {
         this.inputQuestion = false
       },
-      removeQuestion(index){
+      removeQuestion(index) {
         this.REMOVE_QUESTION(index)
       },
-      SubmitForm(){
+      SubmitForm() {
         this.INPUT_FORM_HEAD({
           formTitle: this.formTitle,
           formIntro: this.formIntro,

@@ -16,10 +16,7 @@
 
   export default {
     computed:{
-      ...mapState([
-        // 설문제목을 받는다
-        'formTitle'  
-      ])
+      ...mapState(['formTitle'])
     }
   }
 </script>

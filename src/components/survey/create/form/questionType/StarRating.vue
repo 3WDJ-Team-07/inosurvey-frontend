@@ -1,5 +1,3 @@
-/* 스타 레이팅 */
-
 <template>
   <div>
     <span class="title font-weight-bold pl-5 ml-2">질문 {{question.index}}.</span>
@@ -16,7 +14,7 @@
         :star-size="100"
         ></star-rating>
       </v-layout>
-      <v-divider class="pa-5"></v-divider>
+      <v-divider class="pa-5"/>
     </div>
   </div>
 </template>
@@ -29,12 +27,6 @@
       question: {type:Object},
       inputQuestion: {type:Boolean},
     },
-    components: {
-      StarRating
-    },
+    components: { StarRating },
   }
 </script>
-
-<style>
-
-</style>

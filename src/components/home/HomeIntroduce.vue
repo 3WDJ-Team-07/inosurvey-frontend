@@ -1,5 +1,3 @@
-/* 메인페이지( 응답자, 요청자 ) */
-
 <template>
   <v-fade-transition mode="out-in">
     <v-layout

@@ -1,17 +1,17 @@
 <template>
   <div>
-    <!-- slot 부모 -->
+    <!-- slot parent -->
     <div @click="launchFilePicker()">
       <slot name="activator"></slot>
     </div>
-    <!-- 스타일을 숨기고 ref로 지정 -->
+    <!-- style hidden ref로 지정 -->
     <input 
       type="file"
       ref="file"
       :name="uploadFieldName"
       @change="onFileChange($event.target.name, $event.target.files)"
       style="display:none">
-    <!-- 오류 모달 -->
+    <!-- error modal -->
     <v-dialog v-model="errorDialog" max-width="300">
       <v-card>
         <v-card-text class="subheading">{{errorText}}</v-card-text>
@@ -25,17 +25,16 @@
 
 <script>
   import { mapActions, mapMutations } from 'vuex'
-  import {EventBus} from '@/utils/bus'
+  import { EventBus }                 from '@/utils/bus'
 
   export default {
     name: 'image-input',
-    data(){
-      return{
+    data() {
+      return {
         errorDialog: null,
         errorText: '',
         uploadFieldName: 'file',
         maxSize: 1024,
-        imageUrlPath:'',
         questionIndex:0,
         itemIndex:0
       }
@@ -43,13 +42,10 @@
     props: {
       value: Object,
     },
-    // created(){
-      
-    // },
     methods: {
       ...mapActions(['REQUEST_IMG_SELECT']),
       ...mapMutations(['INPUT_FORM_S3IMG']),
-      launchFilePicker(){
+      launchFilePicker() {
         this.$refs.file.click();
       },
       onFileChange(fieldName, file) {
@@ -75,12 +71,10 @@
             // FormData에 파일 추가 및 파일을 이미지 URL로 변환
             let formData = new FormData()
             formData.append("file", imageFile)
-            // 부모한테 FormData, 이미지 URL 보냄
             this.REQUEST_IMG_SELECT(formData)
             .then(response => {
               let imageURL = response
-              this.$emit('input', { formData, imageURL })
-              this.imageUrlPath = response
+              this.$emit('input', { formData, imageURL })  // 부모한테 FormData, 이미지 URL 보냄
               return response
             }).then((response) => {
               this.INPUT_FORM_S3IMG({

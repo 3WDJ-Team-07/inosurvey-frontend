@@ -31,9 +31,14 @@
   import { mapMutations, mapActions } from 'vuex';
 
   export default {
-    props:['multipleValue','inputQuestion','questionIndex','itemIndex'],
-    data(){
-      return{
+    props: [
+      'multipleValue',
+      'inputQuestion',
+      'questionIndex',
+      'itemIndex'
+    ],
+    data() {
+      return {
         multipleValues: { value: '' || "질문을 지정해주세요." }
       }
     },

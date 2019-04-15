@@ -1,5 +1,3 @@
-/* 메인페이지( 서비스소개 ) */
-
 <template>
   <div>
     <v-container 

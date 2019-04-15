@@ -1,5 +1,3 @@
-/* 상품작성 폼(바디) */
-
 <template>
   <v-container fluid grid-list-md ref="formColor" class="scroll_style">
     <v-layout row wrap>
@@ -12,11 +10,11 @@
 </template>
 
 <script>
-  import formHead from '@/components/survey/create/form/formHead'
-  import question from '@/components/survey/create/form/question'
+  import formHead    from '@/components/survey/create/form/formHead'
+  import question    from '@/components/survey/create/form/question'
   import AddQuestion from '@/components/survey/create/form/AddQuestion'
-  import {mapState} from 'vuex'
-  import {EventBus} from '@/utils/bus'
+  import {mapState}  from 'vuex'
+  import {EventBus}  from '@/utils/bus'
 
   export default {
 
@@ -26,24 +24,22 @@
       question,
       AddQuestion,
     },
-    data(){
+    data() {
       return{
-        responseColor:'#ffffff'
+        responseColor: '#ffffff'
       }
     },
-    beforeCreate(){
-      // 시작되기전에 생성하지않으면 오류 이벤트버스 반응이 
-      // 마운트되는 속도보다 빨라서 undefind
+    beforeCreate() {
+      // 시작되기전에 생성하지않으면 오류 이벤트버스 반응이 마운트되는 속도보다 빨라서 undefind
       this.responseColor = '#ffffff' 
     },
-    mounted(){
+    beforeMount() {
       EventBus.$on("ColorEventBus", value => {
-        this.responseColor=value
+        this.responseColor = value
         this.$refs.formColor.style.background = this.responseColor
       })
     },
-    computed:{
-			// 설문제목을 받는다
+    computed: {
 			...mapState(['surveyTitle',]),
 		},
   }
@@ -53,7 +49,6 @@
   .scroll_style{
      overflow-y:auto;
      height:800px;
-     background:'';
      transition: all 1s;
   }
 </style>

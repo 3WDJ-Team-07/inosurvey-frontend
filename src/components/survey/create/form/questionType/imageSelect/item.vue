@@ -30,22 +30,25 @@
 </template>
 
 <script>
-  import { mapActions, mapMutations } from 'vuex';
-  import ImageInput from './ImageInput'
-  import {EventBus} from '@/utils/bus'
+  import { mapMutations } from 'vuex';
+  import ImageInput       from './ImageInput'
+  import { EventBus }     from '@/utils/bus'
 
   export default {
-    props:['ImageValue','inputQuestion','questionIndex','itemIndex'],
-    components:{
-      ImageInput
-    },
-    data(){
-      return{
+    props: [
+      'ImageValue',
+      'inputQuestion',
+      'questionIndex',
+      'itemIndex'
+    ],
+    components: { ImageInput },
+    data() {
+      return {
         ImageValues: { value: '' || "내용을 지정해주세요.", image: ''},
         avatar: null,
       }
     },
-    updated(){
+    updated() {
       EventBus.$emit('questionIndex', this.questionIndex)
       EventBus.$emit('itemIndex', this.itemIndex)
     },
@@ -57,7 +60,7 @@
           questionIndex: this.questionIndex
         })
       },
-      removeSingleChoice(itemIndex){
+      removeSingleChoice(itemIndex) {
         this.REMOVE_ITEM({
           questionIndex: this.questionIndex,
           itemIndex: itemIndex
@@ -66,6 +69,3 @@
     }
   }
 </script>
-
-<style scoped>
-</style>

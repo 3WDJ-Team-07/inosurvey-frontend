@@ -1,5 +1,3 @@
-/* 확인란문제 */
-
 <template>
   <div>
     <span class="title font-weight-bold pl-5 ml-2">질문 {{question.index}}.</span>
@@ -23,18 +21,21 @@
 </template>
 
 <script>
-  import item from './item'
+  import item             from './item'
   import { mapMutations } from 'vuex';
 
   export default {
-    props:['question','inputQuestion'],
-    components:{item},
-    data(){
+    props: [
+      'question',
+      'inputQuestion'
+    ],
+    components: { item },
+    data() {
       return {
         MultipleValues: { value: '' || "질문을 지정해주세요." }
       }
     },
-    mounted(){
+    mounted() {
       this.INPUT_ITEMS({
         items: this.MultipleValues,
         questionIndex: this.question.index

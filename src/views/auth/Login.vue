@@ -85,20 +85,11 @@
       }
     },
     computed: {
-      ...mapState([ 
-        // 로딩 모달창 boolean값을 바인딩하여 계속 체크
-        'isLoginDialog', 	
-      ]),
+      ...mapState(['isLoginDialog']),
     },
     methods: {
-      ...mapMutations([
-        // 로딩 모달창 (true / false)
-        'SET_IS_LOGIN', 	
-      ]),
-      ...mapActions([
-        // 로그인 요청
-        'LOGIN'  
-      ]),
+      ...mapMutations(['SET_IS_LOGIN']),
+      ...mapActions(['LOGIN']),
       registerPage(){
         this.$router.push({name: 'join'})
         this.$store.state.isLoginDialog = false
@@ -108,14 +99,14 @@
           user_id: this.form.user_id,
           password: this.form.password
         })
-          .then(response => {
-            this.$store.state.isLoginDialog = false
-            swal("환영합니다!", "로그인이 완료되었습니다.", "success",{ button: "확인" });
-            this.$router.push({name: 'home'})
-          })
-          .catch(_ => {
-            this.error = "아이디 또는 비밀번호가 틀렸습니다."
-          })
+        .then(response => {
+          this.$store.state.isLoginDialog = false
+          swal("환영합니다!", "로그인이 완료되었습니다.", "success",{ button: "확인" });
+          this.$router.push({name: 'home'})
+        })
+        .catch(_ => {
+          this.error = "아이디 또는 비밀번호가 틀렸습니다."
+        })
       }
     },
   }

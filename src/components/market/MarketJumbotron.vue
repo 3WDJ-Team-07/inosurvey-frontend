@@ -1,5 +1,3 @@
-/* 설문판매 점보트론 */
-
 <template>
   <div>
     <v-img src="/static/market-hero.png" height="40vh" gradient="to top,  rgba(0, 0, 0, .3), rgba(0, 0, 0, .5)">
@@ -21,25 +19,22 @@
 
 <script>
   import { mapMutations } from 'vuex'
-  import surveySale from '@/components/dialog/surveySale'
+  import surveySale       from '@/components/dialog/surveySale'
 
 	export default {
     name:'maketJumbotron',
-    components: {
-      surveySale
-    },
+    components: { surveySale },
     methods: {
-      ...mapMutations([
-        'SET_IS_SURVEY_SALE'
-      ])
+      ...mapMutations(['SET_IS_SURVEY_SALE'])
     }
 	}
 </script>
+
  <style scoped>
-.v-btn{
-  min-width: 200px;
-}
-.display-2, title{
-  text-shadow: 2px 2px 4px #00000048;
-}
+  .v-btn{
+    min-width: 200px;
+  }
+  .display-2, title{
+    text-shadow: 2px 2px 4px #00000048;
+  }
  </style>

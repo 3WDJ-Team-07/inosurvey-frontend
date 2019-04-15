@@ -1,5 +1,3 @@
-/* 설문폼 제목글 */
-
 <template>
   <v-container style="margin:0;padding:0;">
     <v-container grid-list-xs class="blue lighten-3">
@@ -42,37 +40,37 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex'
+	import { mapState } from 'vuex'
 
 	export default {
-		data(){
-			return{
+		data() {
+			return {
         isEditTitle: false,
         isEditIntro: false
 			}
 		},
-		computed:{
+		computed: {
 			...mapState(['formTitle','formIntro']),
-			getTitle:{
-        get(){ return this.$store.state.formTitle },
-        set(value){ this.$store.commit('UPDATE_TITLE', value) }
+			getTitle: {
+        get() { return this.$store.state.formTitle },
+        set(value) { this.$store.commit('UPDATE_TITLE', value) }
       },
       getIntro:{ 
-        get(){ return this.$store.state.formIntro },
-        set(value){ this.$store.commit('UPDATE_INTRO', value) }
+        get() { return this.$store.state.formIntro },
+        set(value) { this.$store.commit('UPDATE_INTRO', value) }
       }
 		},
 		methods: {
-			onClickTitle(){
+			onClickTitle() {
 				this.isEditTitle = true
 				this.$nextTick(() => this.$refs.inputTitle.focus())
       },
-      onClickIntro(){
+      onClickIntro() {
 				this.isEditIntro = true
 				this.$nextTick(() => this.$refs.inputIntro.focus())
 			},
-			onSubmitTitle(){ this.isEditTitle = false },
-			onSubmitIntro(){ this.isEditIntro = false }
+			onSubmitTitle() { this.isEditTitle = false },
+			onSubmitIntro() { this.isEditIntro = false }
 		},
 	}
 </script>

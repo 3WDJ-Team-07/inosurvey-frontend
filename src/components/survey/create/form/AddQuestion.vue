@@ -1,5 +1,3 @@
-/* 새질문 추가하기 */
-
 <template>
 	<v-container grid-list-xs fill-height>
 		<v-layout column align-center class="boxColor">
@@ -12,7 +10,6 @@
           display-1 font-weight-bold"
         ><v-icon large class="mr-3">add_circle_outline</v-icon>새 질문
         </v-btn>
-        <pre>{{form}}</pre>
 			</v-flex>
 		</v-layout>	
     <v-snackbar color="primary" v-model="loading" bottom multi-line right>
@@ -22,11 +19,11 @@
 </template>
 
 <script>
-  import { mapState, mapMutations ,mapActions } from 'vuex';
+  import { mapState, mapActions } from 'vuex';
 
 	export default {
-    data(){
-      return{
+    data() {
+      return {
         loading: false,
       }
     },
@@ -49,7 +46,6 @@
           })
           this.loading=false
         }, 1000)
-        
       }
 		}
 	}

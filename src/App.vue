@@ -1,5 +1,3 @@
-/* 마스터 페이지 */
-
 <template>
   <v-app>
     <Navbar/>
@@ -15,25 +13,25 @@
 </template>
 
 <script>
-  import Navbar from '@/components/Navbar'
+  import Navbar     from '@/components/Navbar'
   import Navigation from '@/components/Navigation'
-  import Login from '@/views/auth/Login'
-  import Footer from '@/components/Footer'
+  import Login      from '@/views/auth/Login'
+  import Footer     from '@/components/Footer'
 
   export default {
     name: 'app',
-    components:{
+    components: {
       Navbar,
       Navigation,
       Login,
-      Footer,
+      Footer
     },
     watch: {
       '$route'() {
         this.$vuetify.goTo(0)
       }
     }
-  };
+  }
 </script>
 
 <style>
