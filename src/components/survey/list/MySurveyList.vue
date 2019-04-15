@@ -1,5 +1,3 @@
-/* 내 설문보기 페이지 */
-
 <template>
   <v-container grid-list-md class="pt-5 mt-5" >
     <v-flex sm9 class="center_card">
@@ -26,14 +24,14 @@
               <v-tooltip bottom>
                 <v-icon 
                   class="mr-5" slot="activator" 
-                  size="50" @click="dfdf">home
+                  size="50" @click="dfdf">insert_chart
                 </v-icon>
                 <span>분석</span>
               </v-tooltip>
               <v-tooltip bottom>
                 <v-icon 
                   slot="activator" size="50" 
-                  @click="dfdf">home
+                  @click="dfdf">delete
                 </v-icon>
                 <span>삭제</span>
               </v-tooltip>
@@ -45,22 +43,28 @@
         <v-btn 
           large color="info"
           class="subheading
-          font-weight-bold mt-4">
+          font-weight-bold mt-4"
+          @click="SET_IS_ADD_SURVEY(true)">
           새 설문 만들기
         </v-btn>
       </v-flex>
     </v-flex>
-    
+    <AddSurvey/>
   </v-container>
 </template>
 
 <script>
+  import AddSurvey      from '@/components/survey/AddSurvey'
+  import {mapMutations} from 'vuex'
+
   export default {
     name: 'mySurvey',
+    components:{ AddSurvey },
     methods: {
-      dfdf(){  // 툴팁 적용한 v-icon을 클릭했을때 동작
+      dfdf(){  
         console.log('df')
-      }
+      },
+      ...mapMutations(['SET_IS_ADD_SURVEY']),
     }
   }
 </script>

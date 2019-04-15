@@ -20,14 +20,13 @@
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'join'}" flat outline class="subheading">sign up</v-btn>
     </template>
     <template v-else>
-      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'myPage'}" flat outline class="subheading">MyPage</v-btn>
+      <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'mypage'}" flat outline class="subheading">MyPage</v-btn>
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" 
       @click.prevent="logout" flat outline class="subheading">Logout</v-btn>
     </template>
     <v-btn v-if="!$vuetify.breakpoint.mdAndUp" icon @click="toggleDrawer">
       <v-icon color="blue">menu</v-icon>
     </v-btn>
-    {{this.$store.state.currentUser}}
   </v-toolbar>
 </template>
 
@@ -42,26 +41,35 @@
       }
     },
     computed: {
-      ...mapGetters([  // isAuth Test Token
-        'isAuth'
-      ]),
+      // isAuth Test Token
+      ...mapGetters(['isAuth']),
       items () {
         return this.$t('View.items')
       },
     },
     methods: {
       ...mapMutations([
-        'SET_IS_LOGIN',  // 로그인 모달
-        'LOGOUT',  // 로그아웃 
+        'SET_IS_LOGIN', 
+        'LOGOUT',
         'toggleDrawer',  
       ]),
       logout() {
-        this.LOGOUT()
-        this.$router.push('/')
+        swal({
+          text: "로그아웃 하시겠습니까?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            swal("로그아웃 되었습니다!");
+            this.LOGOUT()
+            this.$router.push({name:'home'})
+          }
+        });
       },
       onScroll () {
-        this.isScrolling = (window.pageYOffset ||
-          document.documentElement.scrollTop || 0) > 100
+        this.isScrolling = (window.pageYOffset || document.documentElement.scrollTop || 0) > 60
       }
     }
   }

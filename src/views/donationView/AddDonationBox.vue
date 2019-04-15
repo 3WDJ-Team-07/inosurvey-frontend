@@ -1,5 +1,3 @@
-/* 기부페이지 모금함 상세 */
-
 <template>
   <div>
     <v-container fluid grid-list-md pt-4 mt-5>
@@ -39,21 +37,17 @@
     </v-container>
   </div>    
 </template>
-<script>
-import AddDonationBody from '@/components/donation/AddDonationBody'
 
-export default {
-  name: 'adddonationbox',
-  components: {
-    AddDonationBody
-  },
-  methods:{
-    add(){
-      this.$router.replace("donation")
+<script>
+  import AddDonationBody from '@/components/donation/AddDonationBody'
+
+  export default {
+    name: 'adddonationbox',
+    components: { AddDonationBody },
+    methods:{
+      add(){
+        this.$router.replace("donation")
+      }
     }
   }
-}
 </script>
-
-<style>
-</style>

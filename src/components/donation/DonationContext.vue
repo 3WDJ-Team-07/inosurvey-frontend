@@ -26,33 +26,36 @@
 </template>
 
 <script>
-import {mapActions,mapState} from 'vuex'
+  import { mapActions, mapState } from 'vuex'
 
-export default {
-  computed: {
-    ...mapState([ 'donationBox' ])
-  },
-  created(){
-    this.fetchDonation()
-  },
-  methods: {
-    ...mapActions([ 'FETCH_DONATION' ]),
-    fetchDonation(){ this.FETCH_DONATION() },
-    toDetail(id,title,content,started_at,closed_at,current_amount,target_amount){
-      //id만 넘기는걸로 수정 필요
-      this.$router.push({name: 'donationdetail', 
-      params:
-      {
-        id:id,title:title,content:content,started_at:started_at,
-        closed_at:closed_at,current_amount:current_amount,target_amount:target_amount
-      }})
+  export default {
+    computed: {
+      ...mapState([ 'donationBox' ])
+    },
+    created() {
+      this.fetchDonation()
+    },
+    methods: {
+      ...mapActions(['FETCH_DONATION']),
+      fetchDonation() {
+        this.FETCH_DONATION()
+      },
+      toDetail(id,title,content,started_at,closed_at,current_amount,target_amount){
+        //id만 넘기는걸로 수정 필요
+        this.$router.push({
+          name: 'donationdetail', 
+          params: {
+            id: id, title: title, content: content, started_at: started_at,
+            closed_at: closed_at, current_amount: current_amount, target_amount: target_amount
+          }
+        })
+      }
     }
   }
-}
 </script>
 
 <style>
-.rounded-card{
-  border-radius:20px;
-}
+  .rounded-card{
+    border-radius:20px;
+  }
 </style>

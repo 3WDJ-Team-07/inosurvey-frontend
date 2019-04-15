@@ -23,25 +23,23 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+  import { mapState, mapMutations } from 'vuex';
 
-export default {
-  name: 'surveyPurchase',
-  computed: {
-    ...mapState([
-    'isPurchaseDialog'
-    ])
-  },
-  methods: {
-    ...mapMutations([
-    'SET_IS_SURVEY_PURCHASE'
-		]),
-		purchase(){
-      this.SET_IS_SURVEY_PURCHASE(false);
-      this.$router.replace("surveymarket")
-		}
+  export default {
+    name: 'surveyPurchase',
+    computed: {
+      ...mapState(['isPurchaseDialog'])
+    },
+    methods: {
+      ...mapMutations([
+      'SET_IS_SURVEY_PURCHASE'
+      ]),
+      purchase(){
+        this.SET_IS_SURVEY_PURCHASE(false);
+        this.$router.replace("surveymarket")
+      }
+    }
   }
-}
 </script>
 
 <style scoped>

@@ -1,24 +1,23 @@
-import Vue from 'vue'
-import './plugins/vuetify'
-import App from './App.vue'
-import {router} from '@/routes/index'
-import {store} from '@/store/index'
-import i18n from './i18n'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import VueScrollTo from 'vue-scrollto'
-import VueFriendlyIframe from 'vue-friendly-iframe'
-import Progress from 'vue-multiple-progress'
+import Vue                from 'vue'
+import App                from './App.vue'
+import router             from '@/routes/index'
+import store              from '@/store/index'
+import i18n               from './i18n'
+import AOS                from 'aos'
+import VueScrollTo        from 'vue-scrollto'
+import swal               from 'sweetalert';
+import Progress           from 'vue-multiple-progress'
+import                         'vuetify/dist/vuetify.min.css'
+import                         './plugins/vuetify'
+import                         'aos/dist/aos.css'
 
 Vue.use(VueScrollTo,Progress)
 Vue.config.productionTip = false
 Vue.component('vm-progress', Progress)
 
 new Vue({
-  created(){
-    AOS.init();
-  },
-  VueFriendlyIframe,
+  created(){AOS.init()}, // scroll
+  swal, // alert
   router,
   store,
   i18n,

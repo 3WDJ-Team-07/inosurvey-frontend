@@ -1,4 +1,3 @@
-/* 모금함 상세 페이지 (수정필) */
 <template>
   <v-container fluid grid-list-md  class="font-weight-bold">
     <v-layout>
@@ -70,17 +69,14 @@
 </template>
 
 <script>
-import {mapActions,mapState} from 'vuex'
-export default {
-  computed: {
-    ...mapState([ 'donationBox' ]),
-    donatorInfo () {
-      return this.$t('Donation.donatorInfo')
+  import { mapActions, mapState } from 'vuex'
+  
+  export default {
+    computed: {
+      ...mapState(['donationBox']),
+      donatorInfo () {
+        return this.$t('Donation.donatorInfo')
+      }
     }
   }
-}
 </script>
-
-<style>
-
-</style>

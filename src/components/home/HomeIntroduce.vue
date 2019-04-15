@@ -1,5 +1,3 @@
-/* 메인페이지( 응답자, 요청자 ) */
-
 <template>
   <v-fade-transition mode="out-in">
     <v-layout
@@ -60,16 +58,12 @@
   </v-fade-transition>
 </template>
 
-<script>
- 
-</script>
-
  <style scoped>
   .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  transition: .5s ease;
-}
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    transition: .5s ease;
+  }
  </style>

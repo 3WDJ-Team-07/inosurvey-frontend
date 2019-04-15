@@ -1,4 +1,3 @@
-/* 모금함 등록 페이지 */
 <template>
   <v-container fluid grid-list-md  class="font-weight-bold">
     <v-layout>
@@ -51,41 +50,42 @@
 </template>
 
 <script>
-export default {
-  data(){
-    return{
-      title:'',
-      titleRules: [
-        //모금함 이름 규격
-        v => !!v || '모금함 이름을 작성해주세요.',
-        v => v.length <= 30 || '모금함 이름은 30자 이내여야합니다.'
-      ],
-      file:'',
-      content:'',
-      closed_at:'',
-      target_amount:''
+  export default {
+    data() {
+      return {
+        title:'',
+        titleRules: [
+          //모금함 이름 규격
+          v => !!v || '모금함 이름을 작성해주세요.',
+          v => v.length <= 30 || '모금함 이름은 30자 이내여야합니다.'
+        ],
+        file:'',
+        content:'',
+        closed_at:'',
+        target_amount:''
       }
-  },methods:{
-    fileUpload(){
-      this.file = this.$refs.file.files[0];
     },
-    adddonation(){
-      let box = new FormData();
-      box.append('title',this.title)
-      box.append('file',this.file)
-      box.append('content',this.content)
-      box.append('closed_at',this.closed_at)
-      box.append('target_amount',this.target_amount)
-			this.$store.dispatch('ADDDONATION',box)
-      this.$router.push({name:'donation'})
+    methods: {
+      fileUpload() {
+        this.file = this.$refs.file.files[0]
+      },
+      adddonation() {
+        let box = new FormData()
+        box.append('title',this.title)
+        box.append('file',this.file)
+        box.append('content',this.content)
+        box.append('closed_at',this.closed_at)
+        box.append('target_amount',this.target_amount)
+        this.$store.dispatch('ADDDONATION',box)
+        this.$router.push({name:'donation'})
+      },
     },
-  },
-}
+  }
 </script>
 
 <style>
-.image {
-  width: 15%;
-  margin-bottom: 10px;
-}
+  .image {
+    width: 15%;
+    margin-bottom: 10px;
+  }
 </style>

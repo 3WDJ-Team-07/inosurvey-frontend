@@ -9,7 +9,8 @@
 
 <script>
   import DonationJumbotron from '@/components/donation/DonationJumbotron'
-  import DonationContext from '@/components/donation/DonationContext'
+  import DonationContext   from '@/components/donation/DonationContext'
+  
   export default {
     name: 'donation',
     components: {

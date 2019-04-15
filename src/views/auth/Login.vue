@@ -17,7 +17,7 @@
                 <v-flex xs12> 
                   <v-text-field
                     prepend-inner-icon="person" 
-                    name="user_id"  label="아이디" 
+                    name="email"  label="아이디" 
                     type="text" v-model="form.user_id"
                     required>
                   </v-text-field>
@@ -37,7 +37,7 @@
         </v-card-text>
         <v-card-actions>
           <v-btn color="error" v-if="error" block flat >
-            <span class="caption">{{ error }}</span>
+            <span>{{ error }}</span>
           </v-btn>
         </v-card-actions>
         <v-card-actions>
@@ -75,7 +75,7 @@
         emailRules: [	 // 이메일 규칙
           v => !!v || '이메일을 입력하세요', 
           v => /.+@.+/.test(v) || '이메일 형식으로 입력하세요' 
-          // 전자 메일 주소의 유효성을 검사하기 위해 내용이 기본 RegExp와 일치하는지 확인
+          
         ],
         passwordRules: [  // 패스워드 규칙
           v => !!v || '비밀번호를 입력하세요',
@@ -85,19 +85,13 @@
       }
     },
     computed: {
-      ...mapState([ 
-        'isLoginDialog', 	// 로딩 모달창 boolean값을 바인딩하여 계속 체크
-      ]),
+      ...mapState(['isLoginDialog']),
     },
     methods: {
-      ...mapMutations([
-        'SET_IS_LOGIN', 	// 로딩 모달창 (true / false)
-      ]),
-      ...mapActions([
-        'LOGIN'  // 로그인 요청
-      ]),
+      ...mapMutations(['SET_IS_LOGIN']),
+      ...mapActions(['LOGIN']),
       registerPage(){
-        this.$router.push({name:'join'})
+        this.$router.push({name: 'join'})
         this.$store.state.isLoginDialog = false
       },
       onSubmit() {  
@@ -105,12 +99,14 @@
           user_id: this.form.user_id,
           password: this.form.password
         })
-          .then(response => {
-            this.$router.push('/')
-          })
-          .catch(response => {
-            this.error = response.error  // 백엔드에서 에러메세지 받자 
-          })
+        .then(response => {
+          this.$store.state.isLoginDialog = false
+          swal("환영합니다!", "로그인이 완료되었습니다.", "success",{ button: "확인" });
+          this.$router.push({name: 'home'})
+        })
+        .catch(_ => {
+          this.error = "아이디 또는 비밀번호가 틀렸습니다."
+        })
       }
     },
   }

@@ -1,7 +1,3 @@
-/*  설문등록 완료 페이지 
-    
-*/
-
 <template>
   <v-container fluid grid-list-md class="pt-5 mt-5">
     <v-divider/>
@@ -15,11 +11,15 @@
     <v-divider/>
     <v-layout column wrap align-center style="margin-top:180px;"> 
       <div>
-            <span class="display-3 font-weight-bold">" {{surveyTitle}} "</span>
-            <span class="display-1 font-weight-bold"> 가 등록되었습니다 !</span>
+        <span class="display-3 font-weight-bold">" {{formTitle}} "</span>
+        <span class="display-1 font-weight-bold"> 가 등록되었습니다 !</span>
       </div>
       <div>
-          <v-btn large class="title pr-5 pl-5 font-weight-bold" @click="mySurvey" color="info">내가 만든 설문보기</v-btn>
+        <v-btn 
+        large @click="mySurvey" color="info"
+        class="title pr-5 pl-5 font-weight-bold" 
+        >내가 만든 설문보기
+        </v-btn>
       </div>
     </v-layout>
   </v-container>
@@ -31,13 +31,11 @@
   export default {
     name: 'surveyComplete',
     computed:{
-      ...mapState([
-        'surveyTitle'  // 설문제목을 받는다
-      ])
+      ...mapState(['formTitle'])
     },
     methods: {
-      mySurvey(){  // 설문등록페이지로 리다이렉트
-        this.$router.replace("/mySurvey")
+      mySurvey(){  
+        this.$router.replace("/mysurvey")
       }
     }
   }

@@ -1,7 +1,3 @@
-/*  설문요청 페이지 
-    1. 툴바 공통화 작업
-*/
-
 <template>
   <v-container fluid grid-list-md class="pt-5 mt-5">
     <v-divider/>
@@ -29,9 +25,9 @@
 </template>
 
 <script>
-  import RequestNav from '@/components/survey/request/RequestNav'
+  import RequestNav    from '@/components/survey/request/RequestNav'
   import RequestTarget from '@/components/survey/request/RequestTarget'
-  import RequestPay from '@/components/survey/request/RequestPay'
+  import RequestPay    from '@/components/survey/request/RequestPay'
 
   export default {
     name: 'surveyRequest',

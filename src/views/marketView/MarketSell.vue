@@ -1,4 +1,3 @@
-/* 설문마켓 판매페이지..... */
 <template>
   <div>
     <v-container fluid grid-list-md pt-4 mt-5>
@@ -42,19 +41,14 @@
 </template>
 
 <script>
-import SellBody from '@/components/market/SellBody'
-export default {
-  name: 'marketsell',
-  components: {
-    SellBody
-  },
-  methods:{
-    sell(){
-      this.$router.replace("surveymarket")
+  import SellBody from '@/components/market/SellBody'
+  export default {
+    name: 'marketsell',
+    components: { SellBody },
+    methods:{
+      sell(){
+        this.$router.replace("surveymarket")
+      }
     }
   }
-}
 </script>
-
-<style>
-</style>

@@ -1,5 +1,3 @@
-/* 내 설문보기 페이지 */
-
 <template>
   <v-container>
     <MySurveyList/>
@@ -11,9 +9,7 @@
 
   export default {
     name: 'mySurvey',
-    components: {
-      MySurveyList
-    }
+    components: { MySurveyList }
   }
 </script>
 

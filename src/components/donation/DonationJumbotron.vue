@@ -1,5 +1,3 @@
-/* 기부 점보트론 */
-
 <template>
   <v-fade-transition mode="out-in">
     <v-img src="/static/donation-hero.png" height="40vh"
@@ -12,10 +10,10 @@
                 {{$t('Donation.jumbotronTitle')}}
               </h1>
               <div class="title white--text mt-1"> {{$t('Donation.jumbotronSubTitle')}}</div>
-              </v-flex>
-              <v-flex xs3 pl-4>
-                <div><v-btn color="#333333" class="white--text" @click="addbox">모금함 등록</v-btn></div>
-              </v-flex>
+            </v-flex>
+            <v-flex xs3 pl-4>
+              <div><v-btn color="#333333" class="white--text" @click="addbox">모금함 등록</v-btn></div>
+            </v-flex>
           </v-layout>
         </v-container>
       </v-fade-transition>
@@ -27,11 +25,12 @@
   export default {
     methods:{
       addbox(){
-      this.$router.push("adddonationbox");
+        this.$router.push("adddonationbox");
       }
     }
   }
 </script>
+
 <style scoped>
   .v-btn{
     min-width: 200px;

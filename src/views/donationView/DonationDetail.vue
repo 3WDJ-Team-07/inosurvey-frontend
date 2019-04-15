@@ -1,4 +1,3 @@
-/* 기부페이지 모금함 상세 */
 <template>
   <div>
     <v-container fluid grid-list-md pt-4 mt-5>
@@ -35,27 +34,23 @@
   </div>    
 </template>
 <script>
-import DonationBoxBody from '@/components/donation/DonationBoxBody'
-import {mapActions,mapState} from 'vuex'
+  import DonationBoxBody          from '@/components/donation/DonationBoxBody'
+  import { mapActions, mapState } from 'vuex'
 
-export default {
-  name: 'donationdetail',
-  components: {
-    DonationBoxBody
-  },
-  computed: {
-    ...mapState([ 'donationBox' ])
-  },
-  created(){
-    this.fetchDonation()
-  },
-  methods: {
-    ...mapActions([ 'FETCH_DONATION' ]),
-    fetchDonation(){ this.FETCH_DONATION() }
+  export default {
+    name: 'donationdetail',
+    components: { DonationBoxBody },
+    computed: {
+      ...mapState([ 'donationBox' ])
+    },
+    created() {
+      this.fetchDonation()
+    },
+    methods: {
+      ...mapActions([ 'FETCH_DONATION' ]),
+      fetchDonation() {
+        this.FETCH_DONATION()
+      }
+    }
   }
-}
-
 </script>
-
-<style>
-</style>

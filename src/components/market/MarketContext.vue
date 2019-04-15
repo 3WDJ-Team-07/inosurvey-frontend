@@ -1,5 +1,3 @@
-/* 설문마켓 상품코너 */
-
 <template>
   <v-fade-transition mode="out-in">
     <v-container fluid grid-list-xl>
@@ -22,14 +20,14 @@
 </template>
 
 <script>
-export default {
-  computed: {
-    cardFeatures () {
-      return this.$t('Market.cardFeatures')
-    }
-  },
-  methods:{
-    toDetail(){
+  export default {
+    computed: {
+      cardFeatures () {
+        return this.$t('Market.cardFeatures')
+      }
+    },
+    methods: {
+      toDetail() {
       this.$router.push("detail")
     }
   }

@@ -4,7 +4,7 @@
       <div 
         class="display-1 
         font-weight-bold pt-2 ml-4 pb-4"
-        v-html="surveyTitle">
+        v-html="formTitle">
       </div> 
       <v-spacer/>
     </v-layout>
@@ -15,18 +15,8 @@
   import { mapState } from 'vuex'
 
   export default {
-    data(){
-      return{
-      }
-    },
     computed:{
-      ...mapState([
-        'surveyTitle'  // 설문제목을 받는다
-      ])
+      ...mapState(['formTitle'])
     }
   }
 </script>
-
-<style>
-
-</style>
