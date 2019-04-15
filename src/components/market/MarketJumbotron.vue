@@ -36,9 +36,7 @@
       surveySale
     },
     methods: {
-      ...mapMutations([
-        'SET_IS_SURVEY_SALE'
-      ])
+      ...mapMutations([ 'SET_IS_SURVEY_SALE' ])
     }
 	}
 </script>

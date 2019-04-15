@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {router} from '../routes'
 
-const DOMAIN = 'http://172.26.3.29:8000'
+const DOMAIN = 'http://172.26.3.177:8000'
 
 const UNAUTHORIZED = 401
 const onUnauthrorized = () => {
@@ -37,16 +37,9 @@ export const auth = {
   }
 }
 
-export const testApi = {
-  testApi(){
+// 기부 - 모금함 정보 불러오기
+export const donation = {
+  donationCard(){
     return request('get','/api/donation/index')
   }
 }
-
-
-// //모금함 등록Api
-// export const addboxApi = {
-//   addboxApi(box){
-//     return request('post','/api/donation/create',box)
-//   }
-// }

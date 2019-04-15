@@ -7,14 +7,14 @@
         <v-flex pa-3 xs12 sm12 md6 xl6
           v-for="card in cardFeatures"
           :key="card.title" @click="toDetail"> 
-            <v-card class="card pt-4" height="160px" style="cursor:pointer;">
-              <div class="pt-4">
+          <v-card class="card pt-4" height="160px" style="cursor:pointer;">
+            <div class="pt-4">
               <div class="card-title headline font-weight-bold mb-3">{{ card.title }}</div>
               <div class="card-text body-2 font-weight-black">{{ card.text }}</div>
               <div class="card-hover headline font-weight-bold mb-3">{{ card.hover }}</div>
               <div class="card-hoversub body-2 font-weight-black">{{ card.hoversub }}</div>
-              </div>
-            </v-card>
+            </div>
+          </v-card>
         </v-flex>
       </v-layout>
     </v-container>

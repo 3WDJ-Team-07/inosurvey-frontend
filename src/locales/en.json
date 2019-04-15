@@ -133,20 +133,17 @@
       {
         "title": "굿네이버스",
         "img": "/static/donation1.png",
-        "text": "소개1",
-        "hoversub":""
+        "text": "소개1"
       },
       {
         "title": "유니세프",
         "img": "/static/donation2.png",
-        "text": "소개2",
-        "hoversub":""
+        "text": "소개2"
       },
       {
         "title": "대한의료재단",
         "img": "/static/donation3.png",
-        "text": "소개3",
-        "hoversub":""
+        "text": "소개3"
       }
     ],
     "donatorInfo": [
