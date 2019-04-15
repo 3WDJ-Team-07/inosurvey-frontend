@@ -87,7 +87,7 @@ export const router = new Router({
       component: MarketSell
     },
     {
-      path: '/donationdetail',
+      path: '/donationdetail/:id',
       name: 'donationdetail',
       component: DonationDetail
     },

@@ -26,7 +26,9 @@ const mutations = {
   UPDATE_TITLE(state, title) {
     state.surveyTitle = title
   },
-  
+  FETCH_DONATION(state, data){
+    state.donationBox = data
+  },
   LOGIN(state, token) {
     if(!token) return  // token정보가 없으면 바로 리턴 
     state.token = token

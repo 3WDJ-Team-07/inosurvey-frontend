@@ -26,6 +26,7 @@ const actions = {
     {
       headers:{
         'Content-Type': 'multipart/form-data'
+        // 이미지 보낼때
       }
     })
     .then((response) =>{ 
@@ -33,9 +34,10 @@ const actions = {
       
     })
   },
-  TEST(){
-    api.testApi.testApi()
+  FETCH_DONATION(context){
+    api.donation.donationCard()
       .then(response => {
+        context.commit('FETCH_DONATION',response)
         console.log(response)
       })
       .catch(error => {

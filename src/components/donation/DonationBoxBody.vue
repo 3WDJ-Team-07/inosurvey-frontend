@@ -1,20 +1,23 @@
-/* 설문마켓 설문상세 */
+/* 모금함 상세 페이지 (수정필) */
 <template>
   <v-container fluid grid-list-md  class="font-weight-bold">
     <v-layout>
       <v-flex>
         <v-card flat height="48vh" fill-height>
           <div>
-            <span class="headline font-weight-bold">모금함 1 소개....</span>
+            <span class="title font-weight-bold">
+              {{$route.params.content}}
+            </span>
             <span class="grey--text ml-5">기부처 1 소개</span>
           </div>
           <div>
             <i class="far fa-calendar-alt fa-lg ma-2"></i>
-            <span>2019.01.01 ~ 2019.02.28</span>
+            <span>{{$route.params.started_at}} ~ {{$route.params.closed_at}}</span>
           </div>
           <div>
             <i class="fas fa-coins fa-lg ma-2"></i>
-            <span>8000</span> / <span>30000</span>   이노
+            <span>{{$route.params.current_amount}}</span> / 
+            <span>{{$route.params.target_amount}}</span>   이노
           </div>
           <v-flex xs4>
             <vm-progress
@@ -50,7 +53,7 @@
       <v-flex >
         <v-card flat height="20vh" fill-height>
           <div v-for="donator in donatorInfo"
-          :key="donator.name">
+           :key="donator.name">
             <div class="subheading font-weight-bold mb-2">
               <span class="mr-4">{{ donator.name }}</span>
               <span class="mx-4">
@@ -60,15 +63,17 @@
               <span class="mx-4">{{ donator.date }}</span>
             </div>
           </div>
-          </v-card>
+        </v-card>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+import {mapActions,mapState} from 'vuex'
 export default {
   computed: {
+    ...mapState([ 'donationBox' ]),
     donatorInfo () {
       return this.$t('Donation.donatorInfo')
     }
