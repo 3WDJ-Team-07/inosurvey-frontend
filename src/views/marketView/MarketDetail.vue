@@ -6,7 +6,9 @@
           <v-card color="#FAFAFA" height="10vh" flat >
             <div fluid grid-list-md>
               <v-layout row wrap>
-                <div class="display-1 font-weight-bold pt-3 ml-5 xs-2">직장인 피로도 설문조사</div>
+                <div class="display-1 font-weight-bold pt-3 ml-5 xs-2">
+                  직장인 피로도 설문조사
+                </div>
                 <v-layout row wrap justify-end>
                   <v-flex sm3>
                     <v-btn large color="info" @click="SET_IS_SURVEY_PURCHASE(true)">구매하기</v-btn>
@@ -34,10 +36,8 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <div class="purchase_dialog justify-end">
-      <surveyPurchase/>
-    </div>
-  </div>
+    <surveyPurchase/>
+  </div>    
 </template>
 
 <script>
@@ -56,11 +56,3 @@
     }
   }
 </script>
-
-<style scoped>
-  .purchase_dialog{
-    position: absolute;
-    bottom:0;
-    right:0;
-  }
-</style>

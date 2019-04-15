@@ -10,8 +10,9 @@ import                         'vuetify/dist/vuetify.min.css'
 import                         './plugins/vuetify'
 import                         'aos/dist/aos.css'
 
-Vue.use(VueScrollTo)
+Vue.use(VueScrollTo,Progress)
 Vue.config.productionTip = false
+Vue.component('vm-progress', Progress)
 
 new Vue({
   created(){AOS.init()}, // scroll

@@ -5,7 +5,7 @@ const DOMAIN = 'http://172.26.3.177:8000'
 const UNAUTHORIZED = 401
 
 // 토큰 없을경우 리다이렉트 
-const onUnauthrorized = () => {router.push('/')}
+const onUnauthrorized = () => { router.push('/') }
 
 const serverRequest = (method, url, data) => {
   return axios({ method, url: DOMAIN+url, data })
@@ -68,9 +68,9 @@ export const formRequest = {
   }
 }
 
-// 백엔드 테스트 Api
-export const testApi = {
-  testApi(){
-    return serverRequest('get','/test')
+// 기부 - 모금함 정보 불러오기
+export const donation = {
+  donationCard(){
+    return request('get','/api/donation/index')
   }
 }

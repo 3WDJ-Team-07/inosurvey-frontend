@@ -23,7 +23,7 @@
             <v-chip color="info" text-color="white">연령대 - 20대, 30대, 40대</v-chip>
           </div>
         </v-card>
-      </v-flex> 
+      </v-flex>
     </v-layout>
     <v-layout>
       <v-flex>
@@ -45,10 +45,9 @@
             </div>
             <div class="mt-3">
               <v-textarea
-              outline
-              label="질문2 답변칸"
-              value="생각을 자유롭게 서술하세요" 
-              disabled>
+                label="질문2 답변칸"
+                value="생각을 자유롭게 서술하세요"
+                outline disabled>
               </v-textarea>
             </div>
           </div>

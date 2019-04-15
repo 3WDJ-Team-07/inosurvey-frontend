@@ -95,6 +95,11 @@ const mutations = {
   FETCH_QUESTION_BANK(state, banks) {
     state.banks = banks
   },
+
+  /* donation fetch */
+  FETCH_DONATION(state, data){
+    state.donationBox = data
+  }
 }
 
 export default mutations

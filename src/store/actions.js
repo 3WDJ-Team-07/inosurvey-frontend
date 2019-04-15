@@ -1,4 +1,6 @@
 import * as api from '../api'
+import axios from 'axios'
+import { router } from '../routes';
 
 const actions = {
   // 회원가입 Action
@@ -59,15 +61,19 @@ const actions = {
     return api.surveyForm.imageSelect(fileData)
   },
 
-  // 테스트 Action
-  TEST() {
-    api.testApi.testApi()
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+  ADDDONATION(_,box){
+    axios.post('http://172.26.3.29:8000/api/donation/create',box,
+    box,
+    {
+      headers:{ 'Content-Type': 'multipart/form-data' } // 이미지 보낼때
+    })
+  }, 
+
+  FETCH_DONATION(context){
+    api.donation.donationCard()
+    .then(response => {
+      context.commit('FETCH_DONATION',response)
+    })
   },
 }
 
