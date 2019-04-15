@@ -26,14 +26,14 @@
               <v-tooltip bottom>
                 <v-icon 
                   class="mr-5" slot="activator" 
-                  size="50" @click="dfdf">home
+                  size="50" @click="dfdf">insert_chart
                 </v-icon>
                 <span>분석</span>
               </v-tooltip>
               <v-tooltip bottom>
                 <v-icon 
                   slot="activator" size="50" 
-                  @click="dfdf">home
+                  @click="dfdf">delete
                 </v-icon>
                 <span>삭제</span>
               </v-tooltip>

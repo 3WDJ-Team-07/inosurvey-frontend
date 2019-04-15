@@ -1,6 +1,7 @@
 import { set, toggle } from '@/utils/vuex'
 // import { setAuthInHeader } from '../api/index'
 import axios from 'axios'
+import Vue from 'vue'
 
 const mutations = {
   setDrawer: set('drawer'),
@@ -62,11 +63,20 @@ const mutations = {
     state.form.survey_description = formIntro
     state.form.bgcolor = bgcolor
   },
+  INPUT_FORM_TARGET(state, {gender,age,job,responseNumber}){
+    state.form.target.gender = gender
+    state.form.target.age = age
+    state.form.target.job = job
+    state.form.target.responseNumber = responseNumber
+  },
+  INPUT_FORM_S3IMG(state, {imgUrl,questionIndex,itemIndex}){
+    state.form.list[questionIndex-1].items[itemIndex].image = imgUrl
+  },
   REMOVE_ITEM(state, {questionIndex, itemIndex}){
-    console.log(questionIndex)
-    console.log(itemIndex)
-    console.log(state.form.list[questionIndex-1].items[itemIndex])
     state.form.list[questionIndex-1].items.splice(itemIndex-1,1)
+  },
+  REMOVE_ITEM(state, {questionIndex, itemIndex}){
+    Vue.delete(state.form.list[questionIndex-1].items, itemIndex)
   },
   // 새로운값으로 설정
   SET_QUESTION(state, QuestionList){

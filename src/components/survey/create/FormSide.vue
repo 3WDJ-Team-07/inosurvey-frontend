@@ -34,11 +34,14 @@
           <v-card-text class="border_bottom pa-4 card_transition" @click="add_multiple_question">확인란</v-card-text>
           <v-card-text class="border_bottom pa-4 card_transition" @click="add_star_question">별 등급</v-card-text>
           <v-card-text class="border_bottom pa-4 card_transition" @click="add_opinion_question">의견란</v-card-text>
-          <v-card-text class="border_bottom pa-4 card_transition" @click="">이미지선택 </v-card-text>
+          <v-card-text class="border_bottom pa-4 card_transition" @click="add_image_question">이미지선택</v-card-text>
         </v-card>
       </v-tab-item>
     </v-tabs>
     <questionBank/>
+    <v-snackbar color="primary" v-model="loading" bottom multi-line right>
+      <span class="subgeading pa-3">질문 만드는 중</span><v-btn flat>Close</v-btn>
+    </v-snackbar>
   </div>
 </template>
 
@@ -57,7 +60,7 @@
     data(){
       return{
         color:'#ffffff',
-        value: ['' || "질문을 지정해주세요."],
+        loading: false,
       }
     },
     updated(){
@@ -74,59 +77,94 @@
       ...mapActions(['FETCH_QUESTION_BANK','INPUT_QUESTION']),
       ...mapMutations(['SET_IS_QUESTION_BANK']),  // 질문은행 모달 상태값 변이
       add_single_question() {
-        let index = this.form.list.length + 1
-        this.INPUT_QUESTION({
-          index : index,
-          type: 'single',
-          question_title:'' || '질문제목을 지정해주세요',
-          question_image: null,
-          question_bank: false,
-          items: this.value
-        })
+        this.loading=true
+        setTimeout(() => {
+          let index = this.form.list.length + 1
+          this.INPUT_QUESTION({
+            index : index,
+            type: 1,
+            question_title:'' || '질문제목을 지정해주세요',
+            question_image: null,
+            question_bank: false,
+            items: []
+          })
+          this.loading=false
+        }, 1000)
       },
       add_subject_question() {
+        this.loading=true
+        setTimeout(() => {
         let index = this.form.list.length + 1
-        this.INPUT_QUESTION({
-          index : index,
-          type: 'subjective',
-          question_title:'' || '질문제목을 지정해주세요',
-          question_image: null,
-          question_bank: false,
-          items: ""
-        })
+          this.INPUT_QUESTION({
+            index : index,
+            type: 2,
+            question_title:'' || '질문제목을 지정해주세요',
+            question_image: null,
+            question_bank: false,
+            items: ""
+          })
+        this.loading=false
+        }, 1000)
       },
       add_multiple_question() {
+        this.loading=true
+        setTimeout(() => {
         let index = this.form.list.length + 1
-        this.INPUT_QUESTION({
-          index : index,
-          type: 'multiple',
-          question_title:'' || '질문제목을 지정해주세요',
-          question_image: null,
-          question_bank: false,
-          items: this.value
-        }) 
+          this.INPUT_QUESTION({
+            index : index,
+            type: 3,
+            question_title:'' || '질문제목을 지정해주세요',
+            question_image: null,
+            question_bank: false,
+            items: []
+          }) 
+        this.loading=false
+        }, 1000)
       },
       add_star_question() {
+        this.loading=true
+        setTimeout(() => {
         let index = this.form.list.length + 1
-        this.INPUT_QUESTION({
-          index : index,
-          type: 'starRating',
-          question_title:'' || '질문제목을 지정해주세요',
-          question_image: null,
-          question_bank: false,
-          items: ""
-        }) 
+          this.INPUT_QUESTION({
+            index : index,
+            type: 4,
+            question_title:'' || '질문제목을 지정해주세요',
+            question_image: null,
+            question_bank: false,
+            items: ""
+          }) 
+        this.loading=false
+        }, 1000)
       },
       add_opinion_question() {
+        this.loading=true
+        setTimeout(() => {
         let index = this.form.list.length + 1
-        this.INPUT_QUESTION({
-          index : index,
-          type: 'opinion',
-          question_title:'' || '질문제목을 지정해주세요',
-          question_image: null,
-          question_bank: false,
-          items: ""
-        }) 
+          this.INPUT_QUESTION({
+            index : index,
+            type: 5,
+            question_title:'' || '당신의 의견을 말해주세요',
+            question_image: null,
+            question_bank: false,
+            items: ""
+          }) 
+        this.loading=false
+        }, 1000)
+      },
+      add_image_question() {
+        this.loading=true
+        setTimeout(() => {
+        let index = this.form.list.length + 1
+          this.INPUT_QUESTION({
+            index : index,
+            type: 6,
+            question_title:'' || '질문제목을 지정해주세요',
+            question_image: null,
+            question_bank: false,
+            items: []
+          }) 
+        this.loading=false
+        }, 1000)
       }
     }
   }

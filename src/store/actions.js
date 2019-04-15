@@ -5,7 +5,6 @@ const actions = {
   REGISTER(_, user) {
     return api.auth.register(user)
       .then(response => {
-        console.log(response)
         // 프로미스로 받아서 성공하면 리다이렉트 로직
         this.$router.push({name:'home'})  
       })
@@ -20,25 +19,6 @@ const actions = {
         context.commit('LOGIN', response.access_token)
       })
   },
-  
-  // // 설문리스트를 추가 ACTION
-  // ADD_QUESTIONS(context,{type,title,item}){
-  //   return api.questions.addQuestion()
-  //   .then(response => {
-  //     var QuestionList = response
-  //     QuestionList.type = type
-  //     QuestionList.title = title
-  //     QuestionList.item = item
-  //     context.commit('SET_QUESTION', QuestionList)
-  //   })
-  // },
-
-  // INPUT_FORM_DATA(context,{type,title,item}){
-  //   return api.questions.addQuestion(type,title,item)
-  //   .then(response => {
-  //     context.commit('INPUT_FORM', response)
-  //   })
-  // },
 
   // 전체폼데이터
   INPUT_FORM_DATA(context){
@@ -62,30 +42,21 @@ const actions = {
     })
   },
 
-  // INPUT_ITEMS(context, payload){
-  //   return api.surveyForm.inputItem(payload)
-  //   .then(response => {
-  //     response.items = payload.items
-  //     context.commit('INPUT_ITEMS', payload)
-  //   })
-  // },
-
-  INPUT_ITEMS(context, payload){
-    return api.surveyForm.inputItem(payload)
-    .then(response => {
-      console.log(payload)
-      console.log(response)
-      response.items = payload.items
-      context.commit('INPUT_ITEMS', payload)
-    })
-  },
-
   // 질문은행 Action
   FETCH_QUESTION_BANK({commit}){
     return api.questionBank.fetch()
     .then(data => {
       commit('FETCH_QUESTION_BANK',data)
     })
+  },
+
+  // 완성된 설문폼 보내기 // 결제하기 누를때 같이 로직 구성
+  REQUEST_SURVEY_FORM({state}){
+    return api.formRequest.requestFormData(state.form)
+  },
+
+  REQUEST_IMG_SELECT(_, fileData){
+    return api.surveyForm.imageSelect(fileData)
   },
 
   // 테스트 Action

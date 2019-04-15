@@ -4,21 +4,19 @@
   <div>
     <span class="title font-weight-bold pl-5 ml-2">질문 {{question.index}}.</span>
     <input type="text" v-if="!inputQuestion" v-model="question.question_title" class="form-control title ml-4" name="name" label="label">
-    <label v-else class="headline ml-4">[ {{question.question_title}} ]</label>
+    <label v-else class="headline ml-4 font-weight-bold">[ {{question.question_title}} ]</label>
     <v-divider class="pa-3 mt-4"/>
 		<div>
 			<ul>
         <li>
           <item 
-            v-if="question.type=='single'
-            && question.question_bank==false"
-            v-for="(singleValue, index) in question.items"
-            :key="index"
-            :inputQuestion="inputQuestion"
-            :singleValue="singleValue"
-            :itemIndex="index"
-            :questionIndex="question.index"
-          />
+          v-for="(singleValue, index) in question.items"
+          :key="index"
+          :itemIndex = "index"
+          :singleValue = "singleValue"
+          :inputQuestion = "inputQuestion"
+          :questionIndex="question.index"
+          ></item>
         </li>
       </ul>
     </div>
@@ -27,12 +25,26 @@
 </template>
 
 <script>
+  import { mapActions, mapMutations } from 'vuex';
   import item from './item'
 
   export default {
     props:['question','inputQuestion'],
-    components:{
-      item
+    components:{item},
+    data(){
+      return{
+        SingleValues: { value: '' || "질문을 지정해주세요." }
+      }
+    },
+    created(){
+      this.INPUT_ITEMS({
+        items: this.SingleValues,
+        questionIndex: this.question.index
+      })
+    },
+    
+    methods: {
+      ...mapMutations(['INPUT_ITEMS']),
     },
   }
 </script>

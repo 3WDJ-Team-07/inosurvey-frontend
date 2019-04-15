@@ -13,7 +13,7 @@
     <v-divider/>
     <v-layout column wrap align-center style="margin-top:180px;"> 
       <div>
-        <span class="display-3 font-weight-bold">" {{surveyTitle}} "</span>
+        <span class="display-3 font-weight-bold">" {{formTitle}} "</span>
         <span class="display-1 font-weight-bold"> 가 등록되었습니다 !</span>
       </div>
       <div>
@@ -31,7 +31,7 @@
     computed:{
       ...mapState([
         // 설문제목을 받는다
-        'surveyTitle'  
+        'formTitle'  
       ])
     },
     methods: {

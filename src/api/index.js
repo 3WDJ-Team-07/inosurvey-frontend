@@ -36,7 +36,7 @@ export const auth = {
   }
 }
 
-// 설문양식을 받아오는 Api (url명 바꿀필요)
+// 설문양식을 받아오는 Api
 export const surveyForm = {
   inputForm() {
     return localRequest('get', '/static/form.json')
@@ -49,12 +49,22 @@ export const surveyForm = {
   inputItem(payload){
     return localRequest('get','/static/question.json',payload)
   },
+  imageSelect(fileData){
+    return serverRequest('post','/api/survey/image-data',fileData)
+  }
 }
 
 // 질문은행 Api
 export const questionBank = {
   fetch(){
     return serverRequest('get','/api/survey/question-bank')
+  }
+}
+
+// 설문폼 백엔드 등록 
+export const formRequest = {
+  requestFormData(form){
+    return serverRequest('post','/api/survey/create', form)
   }
 }
 

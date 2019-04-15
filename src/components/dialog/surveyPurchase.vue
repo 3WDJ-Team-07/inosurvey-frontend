@@ -5,13 +5,14 @@
     <v-dialog v-model="isPurchaseDialog" hide-overlay persistent max-width="350px">
       <v-card color="info" class="pa-3 border_rounded">
 		    <span 
-        class="pr-1 pt-1 right white--text" 
-        @click="SET_IS_SURVEY_PURCHASE(false)">
+          class="pr-1 pt-1 right white--text" 
+          @click="SET_IS_SURVEY_PURCHASE(false)"
+        >
         <i class="fas fa-times"></i>
         </span>
         <v-layout column align-center>
           <v-card-text class="subheading font-weight-bold  white--text">
-           <span>직장인 피로도 설문조사</span>를 <span>60</span>이노에 구매하시겠습니까?
+            <span>직장인 피로도 설문조사</span>를 <span>60</span>이노에 구매하시겠습니까?
           </v-card-text>
 				</v-layout>
         <v-card-actions class="pb-4">

@@ -4,7 +4,7 @@
       <div 
         class="display-1 
         font-weight-bold pt-2 ml-4 pb-4"
-        v-html="surveyTitle">
+        v-html="formTitle">
       </div> 
       <v-spacer/>
     </v-layout>
@@ -18,7 +18,7 @@
     computed:{
       ...mapState([
         // 설문제목을 받는다
-        'surveyTitle'  
+        'formTitle'  
       ])
     }
   }

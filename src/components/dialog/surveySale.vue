@@ -4,7 +4,7 @@
   <v-layout row justify-center>
     <v-dialog v-model="isSaleDialog" persistent max-width="450px">
       <v-card class="pr-5 pl-5 pt-4 pb-4 border_rounded">
-		<span 
+		    <span 
           class="headline right grey--text" 
           @click="SET_IS_SURVEY_SALE(false)">
           <i class="fas fa-times"></i>
@@ -46,18 +46,13 @@ import { mapState, mapMutations } from 'vuex';
 export default {
     name: 'surveySale',
   computed: {
-    ...mapState([
-      'isSaleDialog'
-    ])
+    ...mapState(['isSaleDialog'])
   },
   methods: {
-    ...mapMutations([
-      'SET_IS_SURVEY_SALE'
-		]),
+    ...mapMutations(['SET_IS_SURVEY_SALE']),
 		sale(){
       this.SET_IS_SURVEY_SALE(false);
       this.$router.push('sell')
-      
 		}
   }
 }

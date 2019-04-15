@@ -15,6 +15,9 @@
         <pre>{{form}}</pre>
 			</v-flex>
 		</v-layout>	
+    <v-snackbar color="primary" v-model="loading" bottom multi-line right>
+      <span class="subgeading pa-3">질문 만드는 중</span><v-btn flat>Close</v-btn>
+    </v-snackbar>
 	</v-container>
 </template>
 
@@ -24,7 +27,7 @@
 	export default {
     data(){
       return{
-        SingleValues: [ '' || "질문을 지정해주세요." ],
+        loading: false,
       }
     },
     computed: {
@@ -33,15 +36,20 @@
 		methods: {
       ...mapActions(['INPUT_QUESTION']),
 			add_single_question() { 
-        let index = this.form.list.length + 1
-        this.INPUT_QUESTION({
-          index : index,
-          type: 'single',
-          question_title: '' || '질문제목을 지정해주세요',
-          question_image: null,
-          question_bank: false,
-          items: this.SingleValues
-        })
+        this.loading=true
+        setTimeout(() => {
+          let index = this.form.list.length + 1
+          this.INPUT_QUESTION({
+            index : index,
+            type: 1,
+            question_title: '' || '질문제목을 지정해주세요',
+            question_image: null,
+            question_bank: false,
+            items: []
+          })
+          this.loading=false
+        }, 1000)
+        
       }
 		}
 	}

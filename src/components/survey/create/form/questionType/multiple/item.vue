@@ -1,27 +1,28 @@
 <template>
   <v-flex xs6 class="pb-4">
-    <span class="subheading">{{itemIndex+1}} .</span>
-    <input class="mr-4" type="checkbox">
-    <input v-if="!inputQuestion" 
-      v-model="multipleModel" 
-      type="text" label="질문을 입력하세요."
+    <span 
+      class="mr-4 font-weight-bold 
+      pr-2 pl-2 pt-1 pb-1 border_style">
+      <span class="subheading">{{itemIndex+1}}</span>
+    </span>
+    <input 
+      v-if="!inputQuestion" 
+      v-model="multipleValue.value" 
+      type="text"
       class="form-control subheading"
     >
-    <label v-else class="title">{{multipleModel}}</label>
+    <label v-else class="title font-weight-bold">{{multipleValue.value}}</label>
     <v-icon 
       v-if="!inputQuestion"
-      :disabled="multipleValue.index==10"
-      color="red" 
-      class="ml-2" 
+      color="red" class="ml-2" 
       @click="addNewMultipleChoice" 
       style="line-height:20px;"
     >add_box</v-icon>
     <v-icon 
       v-if="!inputQuestion"
-      :disabled="multipleValue.index == 0"
       color="green" 
-      @click="removeMultipleChoice(multipleValue.index)" 
       style="line-height:20px;"
+      @click="removeMultipleChoice(itemIndex)" 
     >indeterminate_check_box</v-icon>
   </v-flex>
 </template>
@@ -33,29 +34,31 @@
     props:['multipleValue','inputQuestion','questionIndex','itemIndex'],
     data(){
       return{
-        item : "질문을 입력해주세요",
-        multipleModel: this.multipleValue
+        multipleValues: { value: '' || "질문을 지정해주세요." }
       }
     },
     methods: {
-      ...mapMutations(['REMOVE_ITEM']),
-      ...mapActions(['INPUT_ITEMS']),
+      ...mapMutations(['INPUT_ITEMS','REMOVE_ITEM']),
       addNewMultipleChoice() {
         this.INPUT_ITEMS({
-          items: this.item,
+          items: this.multipleValues,
           questionIndex: this.questionIndex
         })
       },
-      removeMultipleChoice(index) {
+      removeMultipleChoice(itemIndex) {
         this.REMOVE_ITEM({
           questionIndex: this.questionIndex,
-          itemIndex: this.itemIndex
+          itemIndex: itemIndex
         })
       },
     },
   }
 </script>
 
-<style>
-
+<style scoped>
+  .border_style{
+    border:1px solid grey;
+    border-radius:50%;
+    margin-left: 3px;
+  }
 </style>

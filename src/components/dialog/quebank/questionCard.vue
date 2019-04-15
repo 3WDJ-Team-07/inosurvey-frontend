@@ -47,12 +47,8 @@
       ...mapState(['form'])
     },
     methods: {
-      ...mapActions([
-        'INPUT_QUESTION'
-      ]),
-      ...mapMutations([
-        'SET_IS_QUESTION_BANK'
-      ]),
+      ...mapActions(['INPUT_QUESTION']),
+      ...mapMutations(['SET_IS_QUESTION_BANK']),
       // 직접입력을 클릭할시 입력란작성가능
       value_click(){
         if(this.$refs.select.value == "직접입력"){
@@ -70,9 +66,11 @@
         this.$refs.select.options[0].selected = true
       },
       value_save(){
+        let index = this.form.list.length + 1
         // 입력하고 등록누를때 선택된 타이틀값 반환
         this.INPUT_QUESTION({
-          type:'single', 
+          index : index,
+          type: 1, 
           question_title:this.bank.questions.survey_title.split('()')[0]+ this.inputValue +this.bank.questions.survey_title.split('()')[1],
           question_image:'',
           question_bank:true,
@@ -86,7 +84,7 @@
           let index = this.form.list.length + 1
           this.INPUT_QUESTION({
             index : index,
-            type:'single', 
+            type: 1, 
             question_title:this.bank.questions.survey_title.split('()')[0]+ this.$refs.select.value +this.bank.questions.survey_title.split('()')[1],
             question_image:'',
             question_bank:true,

@@ -31,6 +31,11 @@
         responseColor:'#ffffff'
       }
     },
+    beforeCreate(){
+      // 시작되기전에 생성하지않으면 오류 이벤트버스 반응이 
+      // 마운트되는 속도보다 빨라서 undefind
+      this.responseColor = '#ffffff' 
+    },
     mounted(){
       EventBus.$on("ColorEventBus", value => {
         this.responseColor=value
@@ -39,9 +44,7 @@
     },
     computed:{
 			// 설문제목을 받는다
-			...mapState([
-        'surveyTitle',
-			]),
+			...mapState(['surveyTitle',]),
 		},
   }
 </script>

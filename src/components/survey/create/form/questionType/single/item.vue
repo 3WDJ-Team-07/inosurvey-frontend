@@ -1,28 +1,30 @@
 <template>
-  <div class="ma-3" >
-    <span class="subheading">{{itemIndex+1}} .</span>
-    <input class="ml-5 mr-4" type="radio">
+  <div class="ma-3">
+    <span 
+      class="mr-4 font-weight-bold 
+      pr-2 pl-2 pt-1 pb-1 border_style">
+      <span class="subheading">{{itemIndex+1}}</span>
+    </span>
     <input 
       v-if="!inputQuestion" 
-      :placeholder="singleValue"
-      v-model="item"
+      v-model="singleValue.value"
       type="text" 
       class="form-control subheading" 
     >
-    <label v-else class="title">{{singleValue}}</label>
+    <label v-else class="title font-weight-bold">{{singleValue.value}}</label>
     <v-icon 
       v-if="!inputQuestion"
       color="red" large
-      class="ml-4" 
+      ref="AddBtn"
       @click="addNewSingleChoice" 
       style="line-height:20px;"
     >add_box</v-icon>
     <v-icon 
       v-if="!inputQuestion"
-      :disabled="singleValue.itemIndex == 0"
       color="green" large
+      ref="RemoveBtn"
       style="line-height:20px;"
-      @click="removeSingleChoice()"
+      @click="removeSingleChoice(itemIndex)"
     >indeterminate_check_box</v-icon>
   </div>
 </template>
@@ -34,28 +36,31 @@
     props:['singleValue','inputQuestion','questionIndex','itemIndex'],
     data(){
       return{
-        item : "질문을 입력해주세요",
+        SingleValues: { value: '' || "질문을 지정해주세요." },
       }
     },
     methods: {
-      ...mapMutations(['REMOVE_ITEM']),
-      ...mapActions(['INPUT_ITEMS']),
+      ...mapMutations(['REMOVE_ITEM','INPUT_ITEMS']),
       addNewSingleChoice() {
         this.INPUT_ITEMS({
-          items: "질문을 입력해주세요",
+          items: this.SingleValues,
           questionIndex: this.questionIndex
         })
       },
-      removeSingleChoice(){
+      removeSingleChoice(itemIndex){
         this.REMOVE_ITEM({
           questionIndex: this.questionIndex,
-          itemIndex: this.itemindex
+          itemIndex: itemIndex
         })
       }
     },
   }
 </script>
 
-<style>
-
+<style scoped>
+  .border_style{
+    border:1px solid grey;
+    border-radius:50%;
+    margin-left: 3px;
+  }
 </style>

@@ -8,7 +8,6 @@
       @mouseover="hover = true" @mouseleave="hover = false"
       :class="{ active: hover }"
     >
-      <pre>{{question}}</pre>  
       <span v-if="hover==true" class="headline">
         <i class="fas fa-times grey--text" style="float:right;" @click="removeQuestion(index)"></i>
       </span>
@@ -17,25 +16,33 @@
         <v-layout row wrap>
           <v-flex sm12>
             <Single 
-            v-if="question.type == 'single'"
+            v-if="question.type == 1"
             :inputQuestion="inputQuestion"
             :question="question"
             />  
             <Subjective 
-            v-if="question.type == 'subjective'"
+            v-if="question.type == 2"
+            :inputQuestion="inputQuestion"
             :question="question"
             />
             <Multiple 
-            v-if="question.type == 'multiple'" 
+            v-if="question.type == 3" 
             :inputQuestion="inputQuestion"
             :question="question"
             />
             <StarRating 
-            v-if="question.type == 'starRating'"
+            v-if="question.type == 4"
+            :inputQuestion="inputQuestion"
             :question="question"
             />
             <Opinion 
-            v-if="question.type == 'opinion'"
+            v-if="question.type == 5"
+            :inputQuestion="inputQuestion"
+            :question="question"
+            />
+            <ImageSelect
+            v-if="question.type == 6"
+            :inputQuestion="inputQuestion"
             :question="question"
             />
           </v-flex>
@@ -45,7 +52,7 @@
         <v-layout row wrap>
           <v-flex sm12>
             <Bank 
-              v-if="question.type == 'single' 
+              v-if="question.type == 1 
               && question.question_bank == true" 
               :inputQuestion="inputQuestion"
               :question="question"/>
@@ -71,7 +78,8 @@
   import Multiple from './questionType/multiple/Multiple'
   import StarRating from './questionType/StarRating'
   import Opinion from './questionType/Opinion'
-  import Bank from './questionType/Bank'
+  import ImageSelect from './questionType/imageSelect/ImageSelect'
+  import Bank from './questionType/bank/Bank'
   import {EventBus} from '@/utils/bus'
 
 	export default {
@@ -81,6 +89,7 @@
       Multiple,
       StarRating,
       Opinion,
+      ImageSelect,
       Bank
     },
 		data(){
@@ -88,7 +97,8 @@
         loading: false,
         hover: false,
         inputQuestion:false,
-        bgColor:'#ffffff'
+        bgColor:'#ffffff',
+        SingleValues:''
 			}
 		},
 		computed:{
@@ -111,6 +121,7 @@
         'REMOVE_QUESTION',
         'INPUT_FORM_HEAD'
       ]),
+      ...mapActions(['INPUT_ITEMS']),
       SaveValues(){
         this.inputQuestion = true
       },

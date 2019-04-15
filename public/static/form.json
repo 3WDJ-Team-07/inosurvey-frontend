@@ -1,7 +1,12 @@
 {
   "survey_title": "",
   "survey_description": "",
-  "target": "",
+  "target": {
+    "gender":0,
+    "age":[],
+    "job":[],
+    "responseNumber":0
+  },
   "bgcolor":"",
   "list":[]
 }

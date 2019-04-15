@@ -16,7 +16,12 @@
             <v-card-text>성별</v-card-text>
             <v-img src="/static/market.png" class="img_center"></v-img>
             <v-select
-              :items="items" label="무관"
+              :items="gender_item"
+              v-model="gender"
+              label="무관"
+              item-text="name"
+              item-value="value"
+              append-icon="arrow_drop_down"
               solo hide-details>
 						</v-select>
           </v-card>
@@ -26,7 +31,14 @@
 						<v-card-text>연령</v-card-text>
 						<v-img src="/static/write.png" class="img_center"></v-img>
 						<v-select
-              :items="items" label="무관"
+              :items="age_item"
+              v-model="age"
+              label="무관"
+              item-text="name"
+              multiple
+              color="green"
+              item-value="value"
+              append-icon="arrow_drop_down"
               solo hide-details>
 						</v-select>
           </v-card>
@@ -36,7 +48,14 @@
             <v-card-text>직업</v-card-text>
             <v-img src="/static/market.png" class="img_center"></v-img>
             <v-select
-              :items="items" label="무관"
+              :items="job_item"
+              v-model="job"
+              label="무관"
+              item-text="name"
+              item-value="value"
+              multiple
+              color="green"
+              append-icon="arrow_drop_down"
               solo  hide-details>
 						</v-select>
           </v-card>
@@ -47,40 +66,80 @@
       <div> <v-chip class="title ml-3 pa-1 mb-2" dark>2단계</v-chip><span class="title font-weight-bold"> 응답수 선택</span></div>
       <v-layout row wrap class="pa-2">
         <v-flex pa-5>
-          <v-range-slider
-            :tick-labels="age"
-            always-dirty min="0" max="7"
-            v-model="ageModel"
-            thumb-label thumb-size="30" ticks="always">
-            <template v-slot:thumb-label="props">
-              <span>
-                {{ season(props.value) }}
-              </span>
-            </template>
-          </v-range-slider>
+          <v-slider
+            v-model="responseNumber"
+            always-dirty
+            thumb-label="always" 
+            hint="응답수는 비용에 비례합니다."
+            class="title"
+            max="1000"
+            tick-size="20"
+            thumb-size="50">
+          </v-slider>
+          <v-text-field style="float:right;width:80px;" v-model="responseNumber"></v-text-field>
         </v-flex>
       </v-layout>
-      <v-btn color="success" @click="asd">text</v-btn>
     </v-card>
+    <pre>{{form}}</pre>
   </v-container>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
+  import {EventBus} from '@/utils/bus'
+
 	export default {
 		data() {
 			return{
+				gender: 0,  // 성별
+				age: 0,  // 연령대
+				job: 0,  // 직업
+        gender_item: [
+          {name: '무관', value: 0},
+          {name: '남성', value: 1},
+          {name: '여성', value: 2}
+        ],
+        // age_item: [
+        //   { name: '1950년도생', value: 1950},
+				// 	{ name: '1960년도생', value: 1960},
+				// 	{ name: '1970년도생', value: 1970},
+				// 	{ name: '1980년도생', value: 1980},
+				// 	{ name: '1990년도생', value: 1990},
+				// 	{ name: '2000년도생', value: 2000},
+				// 	{ name: '2010년도생', value: 2010}
+        // ],
+        age_item: [
+          { name: '10대', value: 10},
+					{ name: '20대', value: 20},
+					{ name: '30대', value: 30},
+					{ name: '40대', value: 40},
+					{ name: '50대', value: 50},
+					{ name: '60대', value: 60},
+					{ name: '70대', value: 70}
+        ],
+        job_item: [
+					{ name: '서비스/상담', value: 1},
+					{ name: '금융/무역', value: 2},
+					{ name: '연구/개발', value: 3},
+					{ name: 'IT/인터넷', value: 4},
+					{ name: '건설', value: 5},
+					{ name: '사무/경영', value: 6},
+					{ name: '의료', value: 7},
+					{ name: '교육', value: 8},
+					{ name: '생산/제조', value: 9},
+				],
         items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
-        age: ['10','20','30','40','50','60','70','80'],  // 연령대 별로 나타내기
-        ageModel: ['0','7']  // 연령대 배열간 숫자
+        responseNumber: 100  // 응답수
 			}
     },
-    methods: {
-      season (val) {
-        return this.age[val]
-      },
-      asd(){
-        console.log(this.age[this.ageModel[0]],this.age[this.ageModel[1]])  // 
-      },
+    computed:{
+      ...mapState(['form'])
+    },
+    updated(){
+      EventBus.$emit('responseNumber',this.responseNumber)
+      EventBus.$emit('gender',this.gender)
+      EventBus.$emit('age',this.age)
+      EventBus.$emit('job',this.job)
     }
 	}
 </script>
