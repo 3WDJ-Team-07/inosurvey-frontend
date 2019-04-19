@@ -23,6 +23,12 @@ const mutations = {
     //setAuthInHeader(null)
   },
 
+  /* userInfomation */
+  USER_INFO(state, response) {
+    state.userinfo = response
+    console.log(state.userinfo)
+  },
+
   /* Modal */
   SET_IS_LOGIN(state, toggle) {
     state.isLoginDialog = toggle

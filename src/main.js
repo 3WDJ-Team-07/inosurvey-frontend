@@ -16,6 +16,10 @@ Vue.config.productionTip = false
 Vue.component('vm-progress', Progress)
 
 new Vue({
+  beforeCreate() {
+    let token = localStorage.getItem('token')
+    this.$store.dispatch('USER_INFO', { access_token: token })
+  },
   created(){AOS.init()}, // scroll
   swal, // alert
   router,

@@ -1,8 +1,9 @@
 /* 설문모드를 정하는 페이지 (설문작성/내설문보기) */
 
 <template>
-  <v-fade-transition mode="out-in">
-    <v-img 
+  <div>
+    <v-img
+      v-if="this.$route.name == 'survey'" 
       height="100vh"
       gradient="to bottom,  rgba(128, 128, 128, .9), 
       rgba(128, 128, 128, .8), rgba(0, 0, 0, .6), rgba(0, 0, 0, .8)">
@@ -63,7 +64,12 @@
         <AddSurvey/>
       </v-container>
     </v-img>
-  </v-fade-transition>
+    <div v-else>
+      <router-view
+      :result = "this.result"
+      />
+    </div>
+  </div>
 </template>
   
 <script>
@@ -72,6 +78,11 @@
 
   export default {
     name: 'surveyMode',
+    data(){ 
+      return {
+        result : 'test'
+      }
+    },
     components:{ AddSurvey },
     computed: {
       Features() {
@@ -82,7 +93,7 @@
       // 설문제목 모달창
       ...mapMutations(['SET_IS_ADD_SURVEY']),
       my_survey_list(){
-        this.$router.replace("/mysurvey")
+        this.$router.push({ name: 'mysurvey' })
       }
     }
   }

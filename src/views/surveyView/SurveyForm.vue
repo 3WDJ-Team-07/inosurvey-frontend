@@ -7,7 +7,7 @@
       <v-btn flat color="grey" class="subheading font-weight-bold">등록</v-btn>
       <v-spacer/>
       <v-btn 
-        color="info" 
+        color="info" id="element"
         class="pl-5 pr-5 subheading" 
         :disabled="!isSuccessFormData" 
         large @click="next_stage"
@@ -68,9 +68,9 @@
     },
     methods: {
       ...mapActions(['INPUT_FORM_DATA']),
-      next_stage(){
+      next_stage() {
         this.$router.replace("/surveyrequest")
-      },
+      }
     },
   }
 </script>

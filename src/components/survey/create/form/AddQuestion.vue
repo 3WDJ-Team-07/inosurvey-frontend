@@ -13,6 +13,10 @@
 			</v-flex>
 		</v-layout>	
     <v-snackbar color="primary" v-model="loading" bottom multi-line right>
+      <v-progress-circular
+        indeterminate
+        color="white"
+      ></v-progress-circular>
       <span class="subgeading pa-3">질문 만드는 중</span><v-btn flat>Close</v-btn>
     </v-snackbar>
 	</v-container>
@@ -54,5 +58,8 @@
 <style scoped>
   .boxColor{
     background-color: #EAEAEA;
+  }
+  .v-progress-circular{
+    margin: 1rem
   }
 </style>

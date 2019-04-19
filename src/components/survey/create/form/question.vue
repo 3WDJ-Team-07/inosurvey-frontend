@@ -63,12 +63,13 @@
     <span v-if="formLength !== 0">
       <div class="mt-3 mb-5" style="float:right">
         <v-btn color="grey" @click="UpdateValues" dark>수정</v-btn>
-        <v-btn color="info" @click="SaveValues" dark >확인</v-btn>
+        <v-btn color="info" @click="SaveValues" dark>확인</v-btn>
       </div>
       <v-btn 
       class="title font-weight-black" 
       :disabled="!inputQuestion" 
       color="success" @click="SubmitForm" 
+      v-scroll-to="{ el: '#element',offset:-100,duration:1000}"
       large block>저장</v-btn>
     </span>
 	</v-container>

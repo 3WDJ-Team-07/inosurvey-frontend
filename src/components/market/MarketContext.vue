@@ -1,8 +1,8 @@
 <template>
   <v-fade-transition mode="out-in">
-    <v-container fluid grid-list-xl>
-      <v-layout text-xs-center row wrap class="pa-4">
-        <v-flex pa-3 xs12 sm12 md6 xl6
+    <v-container grid-list-xl>
+      <v-layout justify-center text-xs-center row wrap class="pa-4">
+        <v-flex pa-3 xs12 sm12 md5 xl5
           v-for="card in cardFeatures"
           :key="card.title" @click="toDetail"> 
           <v-card class="card pt-4" height="160px" style="cursor:pointer;">

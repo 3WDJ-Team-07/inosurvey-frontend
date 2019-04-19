@@ -30,12 +30,12 @@
 
   export default {
     name: 'surveyComplete',
-    computed:{
+    computed: {
       ...mapState(['formTitle'])
     },
     methods: {
-      mySurvey(){  
-        this.$router.replace("/mysurvey")
+      mySurvey() {  
+        this.$router.push({ name: 'mysurvey' })
       }
     }
   }

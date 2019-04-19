@@ -6,20 +6,29 @@ const actions = {
   // 회원가입 Action
   REGISTER(_, user) {
     return api.auth.register(user)
-      .then(response => {
-        // 프로미스로 받아서 성공하면 리다이렉트 로직
-        this.$router.push({name:'home'})  
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    .then(response => {
+      // 프로미스로 받아서 성공하면 리다이렉트 로직
+      this.$router.push({name:'home'})  
+    })
+    .catch(error => {
+      console.log(error)
+    })
   },
+
   // 로그인 Action
   LOGIN(context, {user_id, password}) {
     return api.auth.login(user_id, password)
-      .then(response => {
-        context.commit('LOGIN', response.access_token)
-      })
+    .then(response => {
+      context.commit('LOGIN', response.access_token)
+    })
+  },
+
+  // 유저 정보 
+  USER_INFO(context, { access_token: token }){
+    return api.userInformation.userInformation({ access_token: token })
+    .then(response => {
+      context.commit('USER_INFO', response.user)
+    })
   },
 
   // 전체폼 데이터

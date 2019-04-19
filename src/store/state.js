@@ -1,6 +1,7 @@
 
 const state = {
-  drawer : null,                // 사이드 네비게이션
+  userinfo: {},                 // 유저객체
+  drawer: null,                 // 사이드 네비게이션
   isLoginDialog : false,        // 로그인 모달 
   isSurveyDialog: false,        // 설문제목 모달
   isQuestionBank: false,        // 설문은행 모달
@@ -14,7 +15,7 @@ const state = {
   form: [],                     // 설문폼
   donationBox:[],               // 모금함 정보
   isSaleDialog: false,
-  isPurchaseDialog: false,
+  isPurchaseDialog: false
 }
 
 export default state

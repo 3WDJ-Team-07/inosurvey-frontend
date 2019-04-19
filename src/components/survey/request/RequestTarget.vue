@@ -68,6 +68,7 @@
             hint="응답수는 비용에 비례합니다."
             class="title"
             max="1000"
+            min="1"
             tick-size="20"
             thumb-size="50">
           </v-slider>
