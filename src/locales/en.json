@@ -98,71 +98,11 @@
   },
   "Market": {
     "jumbotronTitle": "설문마켓",
-    "jumbotronSubTitle": "설문조사 결과를 거래하는 공간",
-    "cardFeatures": [
-      {
-        "title": "직장인 피로도 설문조사",
-        "text": "20-40대 직장인의 피로도를 조사합니다.",
-        "hover": "500명 / 60이노 / 2019.01.01~2019.02.28",
-        "hoversub":"연령 20대, 30대 / 성별 : 무관 / 지역 : 무관"
-      },
-      {
-        "title": "건강보조식품 관련 설문조사",
-        "text": "건강포조식품의 효과를 알아봅니다.",
-        "hover": "200명 / 50이노 / 2019.01.01~2019.02.28",
-        "hoversub":"연령 : 무관 / 성별 : 무관 / 지역 : 무관"
-      },
-      {
-        "title": "소아비만 설문조사",
-        "text": "소아비만 관련 설문조사입니다.",
-        "hover": "500명 / 100이노 / 2019.01.01~2019.02.28",
-        "hoversub":"연령 20대, 30대 / 성별 : 무관 / 지역 : 무관"
-      },
-      {
-        "title": "만성질환 설문조사",
-        "text": "장년층 만성질환 관련 설문조사입니다.",
-        "hover": "500명 / 60이노 / 2019.01.01~2019.02.28",
-        "hoversub":"연령 20대, 30대 / 성별 : 무관 / 지역 : 무관"
-      }
-    ]
+    "jumbotronSubTitle": "설문조사 결과를 거래하는 공간"
   },
   "Donation": {
     "jumbotronTitle": "기부",
-    "jumbotronSubTitle": "당신의 아름다운 손길이 세상을 밝힙니다!",
-    "cardFeatures": [
-      {
-        "title": "굿네이버스",
-        "img": "/static/donation1.png",
-        "text": "소개1"
-      },
-      {
-        "title": "유니세프",
-        "img": "/static/donation2.png",
-        "text": "소개2"
-      },
-      {
-        "title": "대한의료재단",
-        "img": "/static/donation3.png",
-        "text": "소개3"
-      }
-    ],
-    "donatorInfo": [
-      {
-        "name":"기부자1",
-        "sum":"500",
-        "date":"2019.03.12"
-      },
-      {
-        "name":"기부자2",
-        "sum":"40",
-        "date":"2019.02.04"
-      },
-      {
-        "name":"기부자3",
-        "sum":"70",
-        "date":"2019.02.01"
-      }
-    ]
+    "jumbotronSubTitle": "당신의 아름다운 손길이 세상을 밝힙니다!"
   },
   "Projects": {
     "jumbotronTitle": "Building a Culture of Excellence",

@@ -13,6 +13,7 @@ const state = {
   banks: [],                    // 설문은행
   form: [],                     // 설문폼
   donationBox:[],               // 모금함 정보
+  saleSurvey:[],
   isSaleDialog: false,
   isPurchaseDialog: false,
 }
