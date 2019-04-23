@@ -3,7 +3,6 @@
       <v-img :src="card.file" class="white--text" height="200px"></v-img>
       <v-card-text class="pt-2" >
         <div class="headline font-weight-bold mb-3">{{card.id}}.{{ card.title }}</div>
-        <!-- <div class="sub-heading font-weight-black pb-2 px-3">{{ card.content }}</div> -->
       </v-card-text>
     </v-card>
 </template>
@@ -18,7 +17,6 @@
       toDetail(){
         EventBus.$emit('cardItem', this.card)
         EventBus.$emit('indexItem', this.index)
-        // this.$router.replace({name:'donationdetail'});
       }
     }
   }

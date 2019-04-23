@@ -97,3 +97,10 @@ export const donation = {
     return serverRequest('get','/api/donation/index')
   }
 }
+
+// 설문마켓 - 판매 설문 정보 불러오기
+export const market = {
+  marketCard(){
+    return serverRequest('get','/api/survey/index')
+  }
+}

@@ -39,7 +39,10 @@
       console.log(this.donationBox)
     },
     methods: {
-      ...mapActions(['FETCH_DONATION', 'FETCH_DONATION_TEST']),
+      ...mapActions([
+        'FETCH_DONATION', 
+        'FETCH_DONATION_TEST'
+      ]),
     }
   }
 </script>
