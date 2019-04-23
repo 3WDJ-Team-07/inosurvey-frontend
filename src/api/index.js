@@ -1,7 +1,7 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
-const DOMAIN = 'http://172.26.3.9:8000'
+const DOMAIN = 'http://172.26.1.251:8000'
 const UNAUTHORIZED = 401
 
 // 토큰 없을경우 리다이렉트 
@@ -70,13 +70,29 @@ export const questionBank = {
 
 // 설문폼 백엔드 등록 
 export const formRequest = {
-  requestFormData(form) {
-    return serverRequest('post','/api/survey/create', form)
+  requestFormData(form, user_id) {
+    return serverRequest('post','/api/survey/create', {form, user_id})
+  },
+  requestImgUrl(img) {
+    return serverRequest('post','/api/survey/image-delete', img)
+  }
+}
+
+// 유저아이디 값을 보내서 해당유저가 만든 설문조사 조회
+export const mySurvey = {
+  mySurveyFormTest() {
+    return localRequest('get','/static/allform.json')
+  },
+  mySurveyForm(id) {
+    return serverRequest('post', '/api/user/user-surveies', id)
   }
 }
 
 // 기부 - 모금함 정보 불러오기
 export const donation = {
+  donationFetch() {
+    return localRequest('get','/static/donation.json')
+  },
   donationCard() {
     return serverRequest('get','/api/donation/index')
   }

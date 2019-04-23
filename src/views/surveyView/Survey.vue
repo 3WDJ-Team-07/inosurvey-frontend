@@ -64,11 +64,11 @@
         <AddSurvey/>
       </v-container>
     </v-img>
-    <div v-else>
-      <router-view
-      :result = "this.result"
-      />
-    </div>
+    <div v-else-if="this.$route.name == 'mysurvey'"><router-view :result = "this.result"/></div>
+    <div v-else-if="this.$route.name == 'surveyform'"><router-view/></div>
+    <div v-else-if="this.$route.name == 'surveyrequest'"><router-view/></div>
+    <div v-else-if="this.$route.name == 'surveycomplete'"><router-view/></div>
+    <div v-else-if="this.$route.name == 'analysis'"><router-view/></div>
   </div>
 </template>
   

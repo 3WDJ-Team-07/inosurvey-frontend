@@ -85,6 +85,9 @@ const mutations = {
   INPUT_SURVEY_DEADLINE(state, {closed_at}){
     state.form.closed_at = closed_at
   },
+  INPUT_SURVEY_SALE_BOOLEAN(state, {is_sale}){
+    state.form.is_sale = is_sale
+  },
   SET_QUESTION(state, QuestionList){
     state.form.push(QuestionList)
   },
@@ -100,6 +103,11 @@ const mutations = {
   /* surveybank fetch */
   FETCH_QUESTION_BANK(state, banks) {
     state.banks = banks
+  },
+
+  /* mysurvey fetch */
+  FETCH_MY_SURVEY_FORM(state, myform) {
+    state.mySurveyForm = myform
   },
 
   /* donation fetch */

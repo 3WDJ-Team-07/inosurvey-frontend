@@ -69,7 +69,7 @@
     methods: {
       ...mapActions(['INPUT_FORM_DATA']),
       next_stage() {
-        this.$router.replace("/surveyrequest")
+        this.$router.push({name: 'surveyrequest'})
       }
     },
   }

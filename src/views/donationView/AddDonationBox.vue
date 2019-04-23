@@ -5,7 +5,7 @@
         <v-flex xs12>
           <v-card color="#FAFAFA" height="10vh" flat >
             <div fluid grid-list-md>
-                <div class="display-1 font-weight-bold pt-3 ml-5 xs-2">
+                <div class="display-1 font-weight-bold mt-4 pt-3 ml-5 xs-2">
                   모금함 등록
                 </div>
             </div>

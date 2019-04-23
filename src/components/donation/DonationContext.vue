@@ -7,12 +7,17 @@
         text-xs-center
         row wrap
         class="pa-4 pl-5 pr-5">
-          <DonationCard 
-            v-for="(card,index) in donationBox"
-            :key = "index"
-            :card = "card"
-            :index =" index"
-          />
+        <v-flex pa-3 xs4 v-for="(card,index) in donationBox" :key="index"> 
+            <router-link 
+            :to="{
+              name: 'donationdetail', 
+              params: { donation_id: card.id }
+            }">
+              <DonationCard
+              :card = "card"
+              :index = "index"/>
+            </router-link>
+        </v-flex>
       </v-layout>
     </v-container>
   </v-fade-transition>    
@@ -29,13 +34,12 @@
       ...mapState([ 'donationBox' ])
     },
     created() {
-      this.fetchDonation()
+      // this.FETCH_DONATION_TEST()
+      this.FETCH_DONATION()
+      console.log(this.donationBox)
     },
     methods: {
-      ...mapActions(['FETCH_DONATION']),
-      fetchDonation() {
-        this.FETCH_DONATION()
-      }
+      ...mapActions(['FETCH_DONATION', 'FETCH_DONATION_TEST']),
     }
   }
 </script>

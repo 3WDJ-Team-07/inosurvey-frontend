@@ -1,5 +1,4 @@
 <template>
-  <v-flex pa-3 xs4 @click="toDetail()"> 
     <v-card class="rounded-card">
       <v-img :src="card.file" class="white--text" height="200px"></v-img>
       <v-card-text class="pt-2" >
@@ -7,7 +6,6 @@
         <!-- <div class="sub-heading font-weight-black pb-2 px-3">{{ card.content }}</div> -->
       </v-card-text>
     </v-card>
-  </v-flex>
 </template>
 
 <script>
@@ -20,14 +18,14 @@
       toDetail(){
         EventBus.$emit('cardItem', this.card)
         EventBus.$emit('indexItem', this.index)
-        this.$router.replace({name:'donationdetail'});
+        // this.$router.replace({name:'donationdetail'});
       }
     }
   }
 </script>
 
 <style scoped>
-.rounded-card {
+  .rounded-card {
     border-radius: 20px;
     cursor: pointer;
   }

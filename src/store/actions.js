@@ -62,12 +62,35 @@ const actions = {
   },
 
   // 완성된 설문폼 보내기
-  REQUEST_SURVEY_FORM({state}) {
-    return api.formRequest.requestFormData(state.form)
+  REQUEST_SURVEY_FORM({state}, {user_id: user_id}) {
+    return api.formRequest.requestFormData(state.form, {user_id: user_id})
   },
 
   REQUEST_IMG_SELECT(_, fileData) {
     return api.surveyForm.imageSelect(fileData)
+  },
+
+  // 나의 설문조사 조회
+  FETCH_MY_SURVEY_FORM_TEST(context) {
+    return api.mySurvey.mySurveyFormTest()
+    .then(response => {
+      context.commit('FETCH_MY_SURVEY_FORM', response)
+    })
+  },
+
+  // Amazon s3 image remove
+  REQUEST_IMG_URL(_, {file: requestUrl}) {
+    return api.formRequest.requestImgUrl({ file: requestUrl })
+    .then(response => {
+      console.log(response)
+    })
+  },
+
+  FETCH_MY_SURVEY_FORM(context, {id: user_id}) {
+    return api.mySurvey.mySurveyForm({ id: user_id })
+    .then(response => {
+      context.commit('FETCH_MY_SURVEY_FORM', response.serveies)
+    })
   },
 
   ADDDONATION(_,box){
@@ -78,10 +101,17 @@ const actions = {
     })
   }, 
 
-  FETCH_DONATION(context){
+  FETCH_DONATION_TEST(context) {
+    api.donation.donationFetch()
+    .then(response => {
+      context.commit('FETCH_DONATION', response)
+    })
+  },
+
+  FETCH_DONATION(context) {
     api.donation.donationCard()
     .then(response => {
-      context.commit('FETCH_DONATION',response)
+      context.commit('FETCH_DONATION',response.donation)
     })
   },
 }

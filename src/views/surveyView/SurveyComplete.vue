@@ -29,7 +29,7 @@
 	import { mapState } from 'vuex'
 
   export default {
-    name: 'surveyComplete',
+    name: 'surveycomplete',
     computed: {
       ...mapState(['formTitle'])
     },

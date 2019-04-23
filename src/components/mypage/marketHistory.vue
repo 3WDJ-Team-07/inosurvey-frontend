@@ -10,7 +10,7 @@
       :items="surveyInfo"
       :search="search"
       :pagination.sync="pagination"
-      class="elevation-1"
+      class="elevation-1 click_event"
     >
       <template v-slot:items="props">
         <td class="pa-5 title font-weight-bold">{{ props.item.name }}</td>
@@ -29,8 +29,13 @@
     </v-data-table>
     </v-flex>
     </v-layout>
-   <div class="text-xs-center pt-5">
-      <v-pagination v-model="pagination.page" :length="pages"></v-pagination>
+    <div class="text-xs-center pt-5">
+      <v-pagination 
+      v-model="pagination.page" 
+      :length="pages"
+      prev-icon="mdi-menu-left"
+      next-icon="mdi-menu-right"
+      ></v-pagination>
     </div>
   </div>
 </template>
@@ -112,3 +117,9 @@
     }
   }
 </script>
+
+<style scoped>
+  .click_event {
+    cursor: pointer;
+  }
+</style>

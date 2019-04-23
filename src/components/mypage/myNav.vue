@@ -1,20 +1,20 @@
 <template>
   <v-card style="border-radius: 20px;" class="font-weight-bold">
-    <v-card-title class="hover_style" @click="surveyPage">
+    <v-card-title class="hover_style" @click="surveyPage" ref="survey">
       <div 
       class="headline 
       center_sorting 
       font-weight-bold pa-3">
       응답 설문 내역</div>
     </v-card-title>
-    <v-card-title class="hover_style" @click="marketPage">
+    <v-card-title class="hover_style" @click="marketPage" ref="market">
       <div 
       class="headline 
       center_sorting 
       font-weight-bold pa-3">
       구매 설문 내역</div>
     </v-card-title>
-    <v-card-title class="hover_style" @click="walletPage">
+    <v-card-title class="hover_style" @click="walletPage" ref="wallet">
       <div 
       class="headline 
       center_sorting 
@@ -49,7 +49,7 @@ export default {
     transition: background 0.3s ease;
     border-bottom: 1px solid lightgrey;
   }
-  .hover_style:hover {
+  .hover_style:hover{
     background: #EEEEEE;
   }
 </style>

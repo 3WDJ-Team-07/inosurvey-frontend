@@ -13,7 +13,8 @@ const state = {
   isSuccessFormData: false,     // 저장하면버튼활성화
   banks: [],                    // 설문은행
   form: [],                     // 설문폼
-  donationBox:[],               // 모금함 정보
+  donationBox: [],              // 모금함 정보
+  mySurveyForm: [],             // 내작성한 모든설문조사 
   isSaleDialog: false,
   isPurchaseDialog: false
 }

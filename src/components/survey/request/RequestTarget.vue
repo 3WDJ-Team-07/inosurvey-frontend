@@ -77,8 +77,16 @@
       </v-layout>
     </v-card>
     <v-card class="border_style pl-5 pr-5 pb-5">
-      <div> <v-chip class="title ml-3 pa-1 mb-2" dark>3단계</v-chip><span class="title font-weight-bold"> 마감일 선택</span></div>
-        <v-flex pl-5 pr-5 pt-5>
+      <v-layout row wrap>
+        <v-flex xs6>
+          <div><v-chip class="title ml-3 pa-1 mb-2" dark>3단계</v-chip><span class="title font-weight-bold"> 마감일 선택</span></div>
+        </v-flex>
+        <v-flex xs6>
+          <div><v-chip class="title ml-3 pa-1 mb-2" dark>4단계</v-chip><span class="title font-weight-bold"> 판매여부 선택</span></div>
+        </v-flex>
+      </v-layout>
+      <v-layout row wrap>
+        <v-flex xs6 pl-5 pr-5 pt-5>
           <v-menu
             ref="menu"
             v-model="menu"
@@ -107,6 +115,19 @@
             ></v-date-picker>
           </v-menu>
         </v-flex>
+        <v-flex xs6 pl-5 pr-5 pt-5>
+          <div v-if="isToggled == 1">
+            <v-btn class="subheading" color="primary" block round large :class="{toggled: isToggled}" @click="isToggled = 0">
+            <span>판매합니다.</span>
+            </v-btn>
+          </div>
+          <div v-if="isToggled == 0">
+            <v-btn class="subheading" depressed color="grey lighten-3" block round large :class="{toggled: isToggled}" @click="isToggled = 1">
+            <span>판매하지 않습니다.</span>
+            </v-btn>
+          </div>
+        </v-flex>
+      </v-layout>
     </v-card>
     <pre>{{form}}</pre>
   </v-container>
@@ -119,6 +140,7 @@
 	export default {
 		data() {
 			return{
+        isToggled: 0,
 				gender: 0,  // 성별
 				age: 0,  // 연령대
 				job: 0,  // 직업
@@ -184,9 +206,12 @@
       EventBus.$emit('gender',this.gender)
       EventBus.$emit('age',this.age)
       EventBus.$emit('job',this.job)
+      this.INPUT_SURVEY_SALE_BOOLEAN({
+        is_sale: this.isToggled
+      })
     },
     methods: {
-      ...mapMutations(['INPUT_SURVEY_DEADLINE']),
+      ...mapMutations(['INPUT_SURVEY_DEADLINE', 'INPUT_SURVEY_SALE_BOOLEAN']),
       save (date) {
         this.$refs.menu.save(date)
         this.INPUT_SURVEY_DEADLINE({

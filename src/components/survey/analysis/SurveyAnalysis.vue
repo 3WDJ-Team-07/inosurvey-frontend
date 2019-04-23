@@ -74,7 +74,7 @@
   import VueApexCharts from 'vue-apexcharts'
 
   export default {
-    name: 'analysis',
+    name: 'surveyanalysis',
     components:{
       'apexchart': VueApexCharts
     },

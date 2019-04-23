@@ -37,7 +37,8 @@ const requireAuth = (to, from, next) => {
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [{
+  routes: [
+    {
       path: '/',
       name: 'home',
       component: Home
@@ -76,13 +77,29 @@ const router = new Router({
       beforeEnter: requireAuth,
       children: [
         {
+          path: 'surveyform',
+          name: 'surveyform',
+          component: SurveyForm
+        },
+        {
+          path: 'surveyrequest',
+          name: 'surveyrequest',
+          component: SurveyRequest
+        },
+        {
+          path: 'surveycomplete',
+          name: 'surveycomplete',
+          component: SurveyComplete
+        },
+        {
           path: 'mysurvey',
           name: 'mysurvey',
           component: MySurvey,
           children: [
             {
-              path: 'analysis',
+              path: 'analysis/:form_id',
               name: 'analysis',
+              props: true,
               component: SurveyAnalysis
             }
           ]
@@ -90,31 +107,10 @@ const router = new Router({
       ]
     },
     {
-      path: '/surveyform',
-      name: 'surveyform',
-      component: SurveyForm
-    },
-    {
-      path: '/surveyrequest',
-      name: 'surveyrequest',
-      component: SurveyRequest
-    },
-    {
-      path: '/surveycomplete',
-      name: 'surveycomplete',
-      component: SurveyComplete
-    },
-    
-    {
       path: '/surveymarket',
       name: 'surveymarket',
       component: SurveyMarket,
       beforeEnter: requireAuth
-    },
-    {
-      path: '/donation',
-      name: 'donation',
-      component: Donation
     },
     {
       path: '/detail',
@@ -127,14 +123,22 @@ const router = new Router({
       component: MarketSell
     },
     {
-      path: '/donationdetail',
-      name: 'donationdetail',
-      component: DonationDetail
-    },
-    {
-      path: '/adddonationbox',
-      name: 'adddonationbox',
-      component: AddDonationBox
+      path: '/donation',
+      name: 'donation',
+      component: Donation,
+      children:[
+        {
+          path: 'donationdetail/:donation_id',
+          name: 'donationdetail',
+          props: true,
+          component: DonationDetail
+        },
+        {
+          path: 'adddonationbox',
+          name: 'adddonationbox',
+          component: AddDonationBox
+        },
+      ]
     },
     {
       path: '/*',
