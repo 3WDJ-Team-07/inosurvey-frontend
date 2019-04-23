@@ -12,7 +12,9 @@
               <div class="title white--text mt-1"> {{$t('Donation.jumbotronSubTitle')}}</div>
             </v-flex>
             <v-flex xs3 pl-4>
-              <div><v-btn color="#333333" class="white--text" @click="addbox">모금함 등록</v-btn></div>
+              <router-link :to="{ name: 'adddonationbox' }">
+                <v-btn color="#333333" class="white--text">모금함 등록</v-btn>
+              </router-link>
             </v-flex>
           </v-layout>
         </v-container>

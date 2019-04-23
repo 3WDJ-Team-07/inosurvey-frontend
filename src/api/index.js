@@ -36,41 +36,64 @@ export const auth = {
   }
 }
 
+// 유저 정보를 받는 Api
+export const userInformation = {
+  userInformation({ access_token: token }) {
+    return serverRequest('post','/api/user/check', { access_token: token })
+  }
+}
+
 // 설문양식을 받아오는 Api
 export const surveyForm = {
   inputForm() {
     return localRequest('get', '/static/form.json')
   },
   inputQuestion(index,type,question_title,question_image,question_bank,items) {
-    return localRequest('get', '/static/question.json',{
+    return localRequest('get', '/static/question.json', {
       index,type,question_title,question_image,question_bank,items
     })
   },
-  inputItem(payload){
+  inputItem(payload) {
     return localRequest('get','/static/question.json',payload)
   },
-  imageSelect(fileData){
+  imageSelect(fileData) {
     return serverRequest('post','/api/survey/image-data',fileData)
   }
 }
 
 // 질문은행 Api
 export const questionBank = {
-  fetch(){
+  fetch() {
     return serverRequest('get','/api/survey/question-bank')
   }
 }
 
 // 설문폼 백엔드 등록 
 export const formRequest = {
-  requestFormData(form){
-    return serverRequest('post','/api/survey/create', form)
+  requestFormData(form, user_id) {
+    return serverRequest('post','/api/survey/create', {form, user_id})
+  },
+  requestImgUrl(img) {
+    return serverRequest('post','/api/survey/image-delete', img)
+  }
+}
+
+// 유저아이디 값을 보내서 해당유저가 만든 설문조사 조회
+export const mySurvey = {
+  mySurveyFormTest() {
+    return localRequest('get','/static/allform.json')
+  },
+  mySurveyForm(id) {
+    return serverRequest('post', '/api/user/user-surveies', id)
   }
 }
 
 // 기부 - 모금함 정보 불러오기
 export const donation = {
-  donationCard(){
+  donationFetch() {
+    return localRequest('get','/static/donation.json')
+  },
+  donationCard() {
     return serverRequest('get','/api/donation/index')
   }
 }

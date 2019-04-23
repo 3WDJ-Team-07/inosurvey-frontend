@@ -39,7 +39,7 @@
     },
     computed: {
       // 설문결제 모달 상태값
-      ...mapState(['isPaymentDialog','form'])
+      ...mapState(['isPaymentDialog','form','userinfo'])
     },
     methods: {
       // 설문결제 모달 상태값 변이 
@@ -47,9 +47,9 @@
       ...mapActions(['REQUEST_SURVEY_FORM']),
       // 결제시 모달 닫기/이동
       payment(){
-        this.REQUEST_SURVEY_FORM()
+        this.REQUEST_SURVEY_FORM({ user_id: this.userinfo.id})
         this.SET_IS_PAYMENT_SURVEY(false)
-        this.$router.push('/surveycomplete')
+        this.$router.push('surveycomplete')
       }
     }
   }

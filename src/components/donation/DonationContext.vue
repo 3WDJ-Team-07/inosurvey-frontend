@@ -2,16 +2,22 @@
 
 <template>
   <v-fade-transition mode="out-in">
-    <v-container fluid grid-list-xl  class="mt-3 mb-3">
+    <v-container grid-list-xl  class="mt-4">
       <v-layout
-        fill-height row wrap
+        text-xs-center
+        row wrap
         class="pa-4 pl-5 pr-5">
-          <DonationCard class="text-xs-center"
-          v-for="(card,index) in donationBox"
-          :key="index"
-          :card = "card"
-          :index =" index"
-          />
+        <v-flex pa-3 xs4 v-for="(card,index) in donationBox" :key="index"> 
+            <router-link 
+            :to="{
+              name: 'donationdetail', 
+              params: { donation_id: card.id }
+            }">
+              <DonationCard
+              :card = "card"
+              :index = "index"/>
+            </router-link>
+        </v-flex>
       </v-layout>
     </v-container>
   </v-fade-transition>    
@@ -19,7 +25,8 @@
 
 <script>
   import { mapActions, mapState } from 'vuex'
-  import DonationCard from '@/components/donation/DonationCard'
+  import DonationCard             from '@/components/donation/DonationCard'
+
   export default {
     name: 'DonationContext',
     components: { DonationCard },
@@ -27,14 +34,15 @@
       ...mapState([ 'donationBox' ])
     },
     created() {
-      this.fetchDonation()
+      // this.FETCH_DONATION_TEST()
+      this.FETCH_DONATION()
+      console.log(this.donationBox)
     },
     methods: {
-      ...mapActions(['FETCH_DONATION']),
-      fetchDonation() {
-        this.FETCH_DONATION()
-      }
+      ...mapActions([
+        'FETCH_DONATION', 
+        'FETCH_DONATION_TEST'
+      ]),
     }
   }
 </script>
-

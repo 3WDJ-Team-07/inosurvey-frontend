@@ -39,8 +39,13 @@
       </v-tab-item>
     </v-tabs>
     <questionBank/>
-    <v-snackbar color="primary" v-model="loading" bottom multi-line right>
-      <span class="subgeading pa-3">질문 만드는 중</span><v-btn flat>Close</v-btn>
+    <v-snackbar outline color="primary" v-model="loading" bottom multi-line right>
+      <v-progress-circular
+        indeterminate
+        color="white"
+      ></v-progress-circular>  
+      <span class="subgeading pa-3">질문 만드는 중
+      </span><v-btn flat>Close</v-btn>
     </v-snackbar>
   </div>
 </template>
@@ -191,4 +196,7 @@
 		height: 50px;
 		border-radius: 5px;
 	}
+  .v-progress-circular{
+    margin: 1rem
+  }
 </style>

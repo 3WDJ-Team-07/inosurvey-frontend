@@ -29,13 +29,13 @@
 	import { mapState } from 'vuex'
 
   export default {
-    name: 'surveyComplete',
-    computed:{
+    name: 'surveycomplete',
+    computed: {
       ...mapState(['formTitle'])
     },
     methods: {
-      mySurvey(){  
-        this.$router.replace("/mysurvey")
+      mySurvey() {  
+        this.$router.push({ name: 'mysurvey' })
       }
     }
   }

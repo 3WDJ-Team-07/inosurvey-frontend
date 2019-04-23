@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex';
+  import { mapMutations, mapActions } from 'vuex';
   import ImageInput       from './ImageInput'
   import { EventBus }     from '@/utils/bus'
 
@@ -46,14 +46,17 @@
       return {
         ImageValues: { value: '' || "내용을 지정해주세요.", image: ''},
         avatar: null,
+        requestUrl: ''
       }
     },
     updated() {
       EventBus.$emit('questionIndex', this.questionIndex)
       EventBus.$emit('itemIndex', this.itemIndex)
+      console.log( (this.avatar.imageURL).split('amazonaws.com/')[1] )
     },
     methods: {
       ...mapMutations(['REMOVE_ITEM','INPUT_ITEMS']),
+      ...mapActions(['REQUEST_IMG_URL']),
       addNewSingleChoice() {
         this.INPUT_ITEMS({
           items: this.ImageValues,
@@ -64,6 +67,9 @@
         this.REMOVE_ITEM({
           questionIndex: this.questionIndex,
           itemIndex: itemIndex
+        })
+        this.REQUEST_IMG_URL({
+          file: (this.avatar.imageURL).split('amazonaws.com/')[1]
         })
       }
     }

@@ -49,7 +49,7 @@
       ...mapMutations(['SET_IS_ADD_SURVEY']),
       onAddClick(){  
         this.SET_IS_ADD_SURVEY(false)
-        this.$router.replace("/surveyform")
+        this.$router.push({name: 'surveyform'})
       }
     }
   }

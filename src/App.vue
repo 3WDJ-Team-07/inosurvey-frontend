@@ -35,6 +35,9 @@
 </script>
 
 <style>
+  *{
+    text-decoration: none;
+  }
   .form-control {
     box-sizing: border-box;
     background-color: #e2e4e6;

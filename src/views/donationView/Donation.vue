@@ -2,8 +2,13 @@
 
 <template>
   <span>
-    <DonationJumbotron/> 
-    <DonationContext/> 
+    <div v-if="this.$route.name == 'donation'">
+      <DonationJumbotron/> 
+      <DonationContext/> 
+    </div>
+    <div v-else>
+      <router-view/>
+    </div>
   </span>
 </template>
 

@@ -40,7 +40,7 @@
       })
     },
     computed: {
-			...mapState(['surveyTitle',]),
+			...mapState(['surveyTitle']),
 		},
   }
 </script>

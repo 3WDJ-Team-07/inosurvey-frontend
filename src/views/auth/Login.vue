@@ -103,6 +103,8 @@
           this.$store.state.isLoginDialog = false
           swal("환영합니다!", "로그인이 완료되었습니다.", "success",{ button: "확인" });
           this.$router.push({name: 'home'})
+          let token = localStorage.getItem('token')
+          this.$store.dispatch('USER_INFO', { access_token: token })
         })
         .catch(_ => {
           this.error = "아이디 또는 비밀번호가 틀렸습니다."

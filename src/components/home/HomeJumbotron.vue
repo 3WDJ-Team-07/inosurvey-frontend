@@ -21,7 +21,7 @@
                   {{$t('Home.jumbotronSubTitle')}}
                 </div>
                 <v-btn color="info" router :to="{name : 'survey'}" 
-                large class="headline font-weight-bold mt-4" >
+                large class="title font-weight-bold mt-4 pl-5 pr-5 pa-4">
                   {{ $t('Home.btnText')}}
                 </v-btn>
               </v-flex>
