@@ -62,7 +62,7 @@ const actions = {
   },
 
   ADDDONATION(_,box){
-    axios.post('http://172.26.3.29:8000/api/donation/create',box,
+    axios.post('http://172.26.2.188:8000/api/donation/create',box,
     box,
     {
       headers:{ 'Content-Type': 'multipart/form-data' } // 이미지 보낼때
@@ -72,7 +72,16 @@ const actions = {
   FETCH_DONATION(context){
     api.donation.donationCard()
     .then(response => {
-      context.commit('FETCH_DONATION',response)
+      context.commit('FETCH_DONATION',response.donation)
+    })
+  },
+
+
+  FETCH_MARKET(context){
+    api.market.marketCard()
+    .then(response => {
+      context.commit('FETCH_MARKET',response.surveies)
+      console.log(response)
     })
   },
 }

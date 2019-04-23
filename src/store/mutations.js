@@ -99,6 +99,11 @@ const mutations = {
   /* donation fetch */
   FETCH_DONATION(state, data){
     state.donationBox = data
+  },
+
+  /* market fetch */
+  FETCH_MARKET(state, data){
+    state.saleSurvey = data
   }
 }
 

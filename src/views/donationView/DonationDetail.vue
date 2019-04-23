@@ -3,11 +3,13 @@
     <v-container fluid grid-list-md pt-4 mt-5>
       <v-layout row wrap>
         <v-flex xs12>
+          <pre>as{{card}}</pre>
+          <pre>ds{{index}}</pre>
           <v-card color="#FAFAFA" height="10vh" flat >
             <div fluid grid-list-md>
               <v-layout row wrap>
                 <div  class="display-1 font-weight-bold pt-3 ml-5 xs-2">
-                {{$route.params.title}} <!-- 수정 필 새로고침시 없어짐 - 라우팅시 받아왔기 때문 -->
+                {{card.title}} <!-- 수정 필 새로고침시 없어짐 - 라우팅시 받아왔기 때문 -->
                 </div>
               </v-layout>
             </div>
@@ -36,16 +38,27 @@
 <script>
   import DonationBoxBody          from '@/components/donation/DonationBoxBody'
   import { mapActions, mapState } from 'vuex'
+  import { EventBus }             from '@/utils/bus'
 
   export default {
     name: 'donationdetail',
+    data() {
+      return {
+        card: [],
+        index: 0
+      }
+    },
     components: { DonationBoxBody },
     computed: {
       ...mapState([ 'donationBox' ])
+
     },
     created() {
       this.fetchDonation()
-    },
+       EventBus.$on('cardItem', response => this.card = response )
+      EventBus.$on('indexItem', response => this.index = response )
+
+  },
     methods: {
       ...mapActions([ 'FETCH_DONATION' ]),
       fetchDonation() {

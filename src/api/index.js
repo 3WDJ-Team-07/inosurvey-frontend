@@ -1,7 +1,7 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
-const DOMAIN = 'http://172.26.3.177:8000'
+const DOMAIN = 'http://172.26.1.251:8000'
 const UNAUTHORIZED = 401
 
 // 토큰 없을경우 리다이렉트 
@@ -71,6 +71,13 @@ export const formRequest = {
 // 기부 - 모금함 정보 불러오기
 export const donation = {
   donationCard(){
-    return request('get','/api/donation/index')
+    return serverRequest('get','/api/donation/index')
+  }
+}
+
+// 설문마켓 - 판매 설문 정보 불러오기
+export const market = {
+  marketCard(){
+    return serverRequest('get','/api/survey/index')
   }
 }

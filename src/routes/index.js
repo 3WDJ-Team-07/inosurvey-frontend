@@ -50,7 +50,7 @@ const router = new Router({
       path: '/surveymarket',
       name: 'surveymarket',
       component: SurveyMarket,
-      beforeEnter: requireAuth
+      // beforeEnter: requireAuth
     },
     {
       path: '/donation',
@@ -93,7 +93,7 @@ const router = new Router({
       component: MarketSell
     },
     {
-      path: '/donationdetail/:id',
+      path: '/donationdetail',
       name: 'donationdetail',
       component: DonationDetail
     },
