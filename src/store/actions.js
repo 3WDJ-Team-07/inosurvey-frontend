@@ -24,7 +24,7 @@ const actions = {
   },
 
   // 유저 정보 
-  USER_INFO(context, { access_token: token }){
+  USER_INFO(context, { access_token: token }) {
     return api.userInformation.userInformation({ access_token: token })
     .then(response => {
       context.commit('USER_INFO', response.user)
@@ -62,8 +62,8 @@ const actions = {
   },
 
   // 완성된 설문폼 보내기
-  REQUEST_SURVEY_FORM({state}, {user_id: user_id}) {
-    return api.formRequest.requestFormData(state.form, {user_id: user_id})
+  REQUEST_SURVEY_FORM({state}) {
+    return api.formRequest.requestFormData(state.form)
   },
 
   REQUEST_IMG_SELECT(_, fileData) {
@@ -72,9 +72,11 @@ const actions = {
 
   // 나의 설문조사 조회
   FETCH_MY_SURVEY_FORM_TEST(context) {
+    context.state.loading = true
     return api.mySurvey.mySurveyFormTest()
     .then(response => {
       context.commit('FETCH_MY_SURVEY_FORM', response)
+      context.state.loading = false
     })
   },
 
@@ -87,9 +89,11 @@ const actions = {
   },
 
   FETCH_MY_SURVEY_FORM(context, {id: user_id}) {
+    context.state.loading = true
     return api.mySurvey.mySurveyForm({ id: user_id })
     .then(response => {
       context.commit('FETCH_MY_SURVEY_FORM', response.serveies)
+      context.state.loading = false
     })
   },
 

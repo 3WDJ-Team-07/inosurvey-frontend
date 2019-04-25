@@ -88,6 +88,9 @@ const mutations = {
   INPUT_SURVEY_SALE_BOOLEAN(state, {is_sale}){
     state.form.is_sale = is_sale
   },
+  INPUT_SURVEY_USER_ID(state, {user_id}){
+    state.form.user_id = user_id
+  },
   SET_QUESTION(state, QuestionList){
     state.form.push(QuestionList)
   },

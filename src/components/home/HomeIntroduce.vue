@@ -1,4 +1,4 @@
-<template>
+<template lang="html">
   <v-fade-transition mode="out-in">
     <v-layout
       row wrap 

@@ -1,8 +1,9 @@
 <template>
-  <v-container fluid grid-list-md  class="font-weight-bold">
+  <v-container fluid grid-list-md>
     <v-layout>
       <v-flex>
-        <v-card flat fill-height>
+        <v-card flat >
+          <v-flex xs10>
           <div class="mb-4">
             <span class="headline font-weight-bold">
               {{donationItems.content}}
@@ -10,38 +11,48 @@
           </div>
           <div>
             <i class="far fa-calendar-alt fa-2x ma-2"></i>
-            <span class="subheading"> {{donationItems.started_at}}
+            <span class="subheading">
+              <span class="font-weight-bold">마감날짜</span> 
+               : {{donationItems.started_at}}
                ~ {{donationItems.closed_at}}
             </span>
           </div>
           <div>
             <i class="fas fa-coins fa-2x ma-2 mb-5"></i>
-            <span class="subheading">{{donationItems.current_amount}} / {{donationItems.target_amount}} 이노</span>
+            <span class="subheading">
+              <span class="font-weight-bold">목표금액</span> 
+              : {{donationItems.current_amount}} 
+              / {{donationItems.target_amount}} 이노</span>
           </div>
-          <v-flex xs4>
-            <vm-progress
-            :percentage="rate"
-            :text-inside="true"
-            :stroke-width="22"
-            color="info">
-            </vm-progress>
+          <v-progress-linear
+              color="teal"
+              height="30"
+              :value="rate"
+              style="font-size:20px;"
+            >
+              <span style="color:white; margin-left:6px;">{{ rate }}</span>
+            </v-progress-linear>
+            <!-- <v-progress-circular
+              class="mr-5"
+              :rotate="360"
+              :size="100"
+              :width="15"
+              :value="rate"
+              color="teal"
+            >
+              {{ rate }}
+            </v-progress-circular> -->
           </v-flex>
-          <v-flex xs5>
+          <v-flex xs12>
             <v-card class="pa-4 mt-2" flat>
-              <div>
-                <span class="headline font-weight-bold mr-4">내 보유 이노</span>
-                <span class="title">7500이노</span>
-              </div>
               <v-layout row wrap>
-                <v-flex xs8 mt-4>
-                  <input type="text" class="form-control">
-                  <span class="title font-weight-bold ml-3">이노</span>
-                </v-flex>
-                <v-flex xs3>
-                  <v-btn large color="info title font-weight-bold mt-3">기부하기</v-btn>
-                </v-flex>
+                <span class="headline font-weight-bold mr-4">내 보유 이노</span>
+                <span class="headline">{{inocoin.current_ino || '0'}} 이노</span>
               </v-layout>
-            </v-card>
+            </v-card> 
+            <v-flex xs4>
+              <v-btn large block color="info" class="pt-4 pb-5 title font-weight-bold">기부하기</v-btn>
+            </v-flex>
           </v-flex>
         </v-card>
       </v-flex>
@@ -67,14 +78,37 @@
 </template>
 
 <script>
+  import { userInformation }  from '@/api/index'
+  import { mapState } from 'vuex'
+
   export default {
     props: ['donationItems'],
+    data() {
+      return {
+        inocoin:{}
+      }
+    },
+    created() {
+      this.fetchCoin()
+    },
     computed: {
+      ...mapState(['userinfo']),
       donatorInfo () {
         return this.$t('Donation.donatorInfo')
       },
-      rate(){
-        return (this.donationItems.current_amount / this.donationItems.target_amount*100).toFixed(1)
+      rate() {
+        return (this.donationItems.current_amount / this.donationItems.target_amount*100).toFixed(1) + ' %'
+      }
+    },
+    methods: {
+      fetchCoin() {
+        return userInformation.userCoin({ id: this.userinfo.id })
+        .then(response => {
+          this.inocoin = response
+        })
+        .catch(error => {
+          console.log(error)
+        })
       }
     },
   }

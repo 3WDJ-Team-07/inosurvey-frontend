@@ -47,7 +47,7 @@
       ...mapActions(['REQUEST_SURVEY_FORM']),
       // 결제시 모달 닫기/이동
       payment(){
-        this.REQUEST_SURVEY_FORM({ user_id: this.userinfo.id})
+        this.REQUEST_SURVEY_FORM()
         this.SET_IS_PAYMENT_SURVEY(false)
         this.$router.push('surveycomplete')
       }

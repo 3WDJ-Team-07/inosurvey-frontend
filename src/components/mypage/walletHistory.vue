@@ -1,13 +1,12 @@
-<template>
+<template lang="html">
   <div>
     <v-layout row wrap justify-space-around>
       <v-flex xs2>
         <myNav/>
       </v-flex>
       <v-flex xs9>
-        <div class="display-2 pr-5 pl-5 pt-5 pb-4 mt-4 font-weight-bold">가용이노 7500 이노</div>
-        <div class="pb-3 title font-weight-bold">총적립 이노 7500 이노</div>
-        <div class="title font-weight-bold">기사용된 이노 7500 이노</div>
+        <div class="display-2 pr-5 pl-5 pt-5 pb-4 mt-4 font-weight-bold">가용이노 {{inocoin.current_ino}} 이노</div>
+        <div class="pb-3 title font-weight-bold">총적립 이노 {{inocoin.total_ino}} 이노</div>
       </v-flex>
     <v-layout row wrap justify-end class="mr-5 pt-4 pr-4">
       <v-flex xs9>
@@ -35,13 +34,17 @@
 </template>
 
 <script>
-  import myNav from './myNav'
+  import myNav               from './myNav'
+  import { userInformation } from '@/api/index'
+  import { mapState }        from 'vuex'
 
   export default {
+    name: 'wallethistory',
     components:{ myNav },
     data () {
       return {
         search: '',
+        inocoin:{},
         pagination: {},
         headers: [
           {
@@ -116,6 +119,7 @@
       }
     },
     computed: {
+      ...mapState(['userinfo']),
       pages () {
         if (this.pagination.rowsPerPage == null ||
           this.pagination.totalItems == null
@@ -123,6 +127,20 @@
 
         return Math.ceil(this.pagination.totalItems / this.pagination.rowsPerPage)
       }
-    }
+    },
+    mounted() {
+      this.fetchCoin()
+    },
+    methods: {
+      fetchCoin() {
+        return userInformation.userCoin( { id: this.userinfo.id } )
+        .then(response => {
+          this.inocoin = response
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      }
+    },
   }
 </script>

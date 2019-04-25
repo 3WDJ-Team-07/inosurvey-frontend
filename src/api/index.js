@@ -1,7 +1,7 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
-const DOMAIN = 'http://172.26.1.251:8000'
+const DOMAIN = 'http://172.26.1.205:8000'
 const UNAUTHORIZED = 401
 
 // 토큰 없을경우 리다이렉트 
@@ -32,7 +32,7 @@ export const auth = {
     return serverRequest('post','/api/user/register', user)
   },
   login(user_id, password) {
-    return serverRequest('post', '/api/user/login', {user_id, password})
+    return serverRequest('post','/api/user/login', {user_id, password})
   }
 }
 
@@ -40,6 +40,9 @@ export const auth = {
 export const userInformation = {
   userInformation({ access_token: token }) {
     return serverRequest('post','/api/user/check', { access_token: token })
+  },
+  userCoin(id) {
+    return serverRequest('post','/api/user/wallet', id)
   }
 }
 
@@ -70,11 +73,11 @@ export const questionBank = {
 
 // 설문폼 백엔드 등록 
 export const formRequest = {
-  requestFormData(form, user_id) {
-    return serverRequest('post','/api/survey/create', {form, user_id})
+  requestFormData(form) {
+    return serverRequest('post','/api/survey/create', form)
   },
   requestImgUrl(img) {
-    return serverRequest('post','/api/survey/image-delete', img)
+    return serverRequest('post','/api/survey/image-delete', {img})
   }
 }
 
@@ -84,7 +87,7 @@ export const mySurvey = {
     return localRequest('get','/static/allform.json')
   },
   mySurveyForm(id) {
-    return serverRequest('post', '/api/user/user-surveies', id)
+    return serverRequest('post', '/api/user/surveies', id)
   }
 }
 
@@ -95,12 +98,15 @@ export const donation = {
   },
   donationCard() {
     return serverRequest('get','/api/donation/index')
+  },
+  fetchListItem(id) {
+    return serverRequest('post','/api/donation/show', id)
   }
 }
 
 // 설문마켓 - 판매 설문 정보 불러오기
 export const market = {
-  marketCard(){
+  marketCard() {
     return serverRequest('get','/api/survey/index')
   }
 }
