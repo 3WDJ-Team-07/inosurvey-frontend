@@ -6,7 +6,7 @@
       <v-layout
         text-xs-center
         row wrap
-        class="pa-4 pl-5 pr-5">
+        class="pa-4">
         <v-flex pa-3 xs4 v-for="(card,index) in donationBox" :key="index"> 
             <router-link 
             :to="{
@@ -34,14 +34,12 @@
       ...mapState([ 'donationBox' ])
     },
     created() {
-      // this.FETCH_DONATION_TEST()
       this.FETCH_DONATION()
       console.log(this.donationBox)
     },
     methods: {
       ...mapActions([
-        'FETCH_DONATION', 
-        'FETCH_DONATION_TEST'
+        'FETCH_DONATION'
       ]),
     }
   }

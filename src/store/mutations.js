@@ -118,6 +118,10 @@ const mutations = {
   /* market fetch */
   FETCH_MARKET(state, data){
     state.saleSurvey = data
+  },
+
+  FETCH_SELL(state, data){
+    state.sellSurvey = data
   }
 }
 

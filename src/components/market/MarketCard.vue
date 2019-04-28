@@ -1,6 +1,4 @@
 <template>
-  <v-flex pa-3 xs12 sm12 md6 xl6
-    @click="toDetail()">
     <v-card class="card pt-4" height="160px" style="cursor:pointer;">
       <div class="pt-3">
         <div class="card-title headline font-weight-bold mb-3">
@@ -14,10 +12,9 @@
           <i class="far fa-calendar-alt font-weight-bold px-4"> {{ card.started_at | substr }}~{{card.closed_at | substr}}</i>
           <i class="fas fa-coins px-4"> ??? 이노</i>
         </div>
-        <div class="card-hoversub body-2 font-weight-black">{{card.target.age}}</div>
+        <div class="card-hoversub body-2 font-weight-black"></div>
       </div>
     </v-card>
-  </v-flex>
 </template>
 
 <script>
@@ -31,14 +28,8 @@
           return date.substr(0,10)
         }
       }
-
-    },
-    methods: {
-      toDetail() {
-      this.$router.push("detail")
     }
   }
-}
 </script>
 
 <style>

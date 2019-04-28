@@ -1,4 +1,4 @@
-<template>
+<template lang="html">
   <div>
     <v-container fluid grid-list-md pt-4 mt-5>
       <v-layout row wrap>
@@ -7,7 +7,7 @@
             <div fluid grid-list-md>
               <v-layout row wrap>
                 <div class="display-1 font-weight-bold pt-3 ml-5 xs-2">
-                  직장인 피로도 설문조사
+                  {{marketItems.title}}
                 </div>
                 <v-layout row wrap justify-end>
                   <v-flex sm3>
@@ -31,28 +31,57 @@
         </v-flex>
         <v-flex xs10>
           <v-card height="80vh" class="pa-4">
-            <DetailBody/>
+            <MarketDetailBody
+            :market_id = "market_id"
+            :marketItems = "this.marketItems"
+            />
           </v-card>
         </v-flex>
       </v-layout>
     </v-container>
-    <surveyPurchase/>
+    <surveyPurchase
+    :market_id = "market_id"
+    :marketItems = "this.marketItems"
+    />
   </div>    
 </template>
 
 <script>
-  import DetailBody       from '@/components/market/DetailBody'
-  import { mapMutations } from 'vuex'
-  import surveyPurchase   from '@/components/dialog/surveyPurchase'
+  import MarketDetailBody     from '@/components/market/MarketDetailBody'
+  import surveyPurchase       from '@/components/dialog/surveyPurchase'
+  import { mapMutations }     from 'vuex'
+  import axios                from 'axios'
 
   export default {
       name: 'marketdetail',
+      props:['market_id'],
       components: {
-        DetailBody,
+        MarketDetailBody,
         surveyPurchase
       },
+      data(){
+        return{
+          marketItems:{}
+        }
+      },
+      created(){
+      this.fetchList()
+    },
       methods: {
-        ...mapMutations(['SET_IS_SURVEY_PURCHASE'])
+        ...mapMutations(['SET_IS_SURVEY_PURCHASE']),
+        fetchList(){
+          axios.post('http://172.26.2.12:8000/api/market/show',{id:this.market_id})
+          .then(response=>{
+            this.marketItems = response.data.list
+            console.log(this.marketItems);
+            
+          })
+          .catch(error =>{
+            console.log(error)
+          })
+
+        }
     }
+    
   }
 </script>

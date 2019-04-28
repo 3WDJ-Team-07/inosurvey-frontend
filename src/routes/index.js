@@ -74,7 +74,7 @@ const router = new Router({
       path: '/survey',
       name: 'survey',
       component: Survey,
-      beforeEnter: requireAuth,
+      // beforeEnter: requireAuth,
       children: [
         {
           path: 'surveyform',
@@ -110,17 +110,21 @@ const router = new Router({
       path: '/surveymarket',
       name: 'surveymarket',
       component: SurveyMarket,
-      beforeEnter: requireAuth
-    },
-    {
-      path: '/detail',
-      name: 'surveymarketdetail',
-      component: MarketDetail
-    },
-    {
-      path: '/sell',
-      name: 'surveymarketsell',
-      component: MarketSell
+      // beforeEnter: requireAuth,
+      children:[
+        {
+          path:'detail/:market_id',
+          name:'surveymarketdetail',
+          props: true,
+          component:MarketDetail
+        },
+        {
+          path:'sell/:sell_id',
+          name:'surveymarketsell',
+          props:true,
+          component:MarketSell
+        }
+      ]
     },
     {
       path: '/donation',

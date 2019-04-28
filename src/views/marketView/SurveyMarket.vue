@@ -1,8 +1,11 @@
 <template>
-  <span>
+  <div v-if="this.$route.name == 'surveymarket'">
     <MarketJumbotron/>
     <MarketContext/>
-  </span>
+  </div>
+  <div v-else>
+    <router-view/>
+  </div>
 </template>
 
 <script>

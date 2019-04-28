@@ -102,7 +102,24 @@
   },
   "Donation": {
     "jumbotronTitle": "기부",
-    "jumbotronSubTitle": "당신의 아름다운 손길이 세상을 밝힙니다!"
+    "jumbotronSubTitle": "당신의 아름다운 손길이 세상을 밝힙니다!",
+    "donatorInfo":[
+      {
+        "name":"기부자1",
+        "sum":"200",
+        "date":"2019-04-22"
+      },
+      {
+        "name":"기부자2",
+        "sum":"150",
+        "date":"2019-04-22"
+      },
+      {
+        "name":"기부자3",
+        "sum":"460",
+        "date":"2019-04-22"
+      }
+    ]
   },
   "Projects": {
     "jumbotronTitle": "Building a Culture of Excellence",
