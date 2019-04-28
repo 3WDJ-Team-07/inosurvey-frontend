@@ -1,13 +1,12 @@
 /* 기부 페이지 (수정필) */
 
 <template>
-  <v-fade-transition mode="out-in">
-    <v-container grid-list-xl  class="mt-4">
+  <span>
+    <v-container grid-list-xl  class="mt-4" v-if="!this.$store.state.loading">
       <v-layout
-        text-xs-center
         row wrap
         class="pa-4 pl-5 pr-5">
-        <v-flex pa-3 xs4 v-for="(card,index) in donationBox" :key="index"> 
+        <v-flex pa-4 xs4 v-for="(card,index) in donationBox" :key="index"> 
             <router-link 
             :to="{
               name: 'donationdetail', 
@@ -20,23 +19,24 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </v-fade-transition>    
+    <Spinner2 v-else/>
+  </span>    
 </template>
 
 <script>
   import { mapActions, mapState } from 'vuex'
   import DonationCard             from '@/components/donation/DonationCard'
+  import Spinner2                  from '@/components/Spinner2'
 
   export default {
     name: 'DonationContext',
-    components: { DonationCard },
+    components: { DonationCard, Spinner2 },
     computed: {
       ...mapState([ 'donationBox' ])
     },
     created() {
       // this.FETCH_DONATION_TEST()
       this.FETCH_DONATION()
-      console.log(this.donationBox)
     },
     methods: {
       ...mapActions([

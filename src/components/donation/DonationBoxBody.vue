@@ -25,23 +25,13 @@
               / {{donationItems.target_amount}} 이노</span>
           </div>
           <v-progress-linear
-              color="teal"
+              color="info"
               height="30"
               :value="rate"
               style="font-size:20px;"
             >
               <span style="color:white; margin-left:6px;">{{ rate }}</span>
             </v-progress-linear>
-            <!-- <v-progress-circular
-              class="mr-5"
-              :rotate="360"
-              :size="100"
-              :width="15"
-              :value="rate"
-              color="teal"
-            >
-              {{ rate }}
-            </v-progress-circular> -->
           </v-flex>
           <v-flex xs12>
             <v-card class="pa-4 mt-2" flat>

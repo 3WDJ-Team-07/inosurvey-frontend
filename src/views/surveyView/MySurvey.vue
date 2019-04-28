@@ -18,32 +18,46 @@
                 </v-flex>
                 <v-flex xs3>
                   <div class="pb-2 mr-5 pr-2"><v-icon large style="line-height:20px;">person</v-icon><span class="ml-3">{{form.respondent_count}} / {{form.respondent_number}} 명</span></div>
-                  <div class="pb-2 ml-4 mt-4"><v-icon large style="line-height:20px;">event</v-icon><span class="ml-3">{{form.started_at}} ~ {{form.closed_at}}</span></div>
+                  <div class="pb-2 ml-4 mt-4"><v-icon large style="line-height:20px;">event</v-icon><span class="ml-3">{{form.started_at.substring(10,0)}} ~ {{form.closed_at.substring(10,0)}}</span></div>
                 </v-flex>
                 <v-flex xs5>
                   <v-tooltip bottom>
                     <v-icon 
-                      class="mr-5" slot="activator" 
+                      class="mr-5"
+                      @click="surveySales(index)" 
+                      slot="activator" 
                       size="65">shopping_cart
                     </v-icon>
                     <span>설문판매</span>
                   </v-tooltip>
                   <router-link 
+                    v-if="form.respondent_count == 0"
                     :to="{
                       name: 'analysis', 
                       params: { form_id: index }
                     }">
                     <v-tooltip bottom>
                       <v-icon 
-                        class="mr-5" slot="activator" 
-                        size="65" @click="pageRedirect">insert_chart
+                        class="mr-5" 
+                        slot="activator" 
+                        size="65">insert_chart
                       </v-icon>
                       <span>분석</span>
                     </v-tooltip>
                   </router-link>
+                  <v-tooltip bottom v-else>
+                      <v-icon 
+                        class="mr-5" 
+                        color="#BDBDBD"
+                        slot="activator"
+                        @click="noRedirectAnalysis"
+                        size="65">insert_chart
+                      </v-icon>
+                    <span>분석</span>
+                  </v-tooltip>
                   <v-tooltip bottom>
                     <v-icon 
-                      slot="activator" size="65" 
+                      slot="activator" size="65" @click="surveyRemove"
                     >delete
                     </v-icon>
                     <span>삭제</span>
@@ -66,17 +80,19 @@
       </div>
       <Spinner v-else/>
     </div>
+    <div v-if="this.$route.name == 'analysis'"><router-view/></div>
   </v-container>
 </template>
 
 <script>
   import AddSurvey                              from '@/components/survey/AddSurvey'
   import { mapState, mapMutations, mapActions } from 'vuex'
-  import Spinner from '@/components/Spinner'
+  import Spinner                                from '@/components/Spinner'
+	import swal                                   from 'sweetalert'
 
   export default {
-    props: ['result'],
-    name: 'mySurvey',
+    props: ['form_id'],
+    name: 'mysurvey',
     components: { AddSurvey, Spinner },
     computed: {
       ...mapState([ 'mySurveyForm', 'userinfo' ]),
@@ -89,10 +105,51 @@
     },
     methods: {
       ...mapMutations(['SET_IS_ADD_SURVEY']),
-      ...mapActions(['FETCH_MY_SURVEY_FORM_TEST', 'FETCH_MY_SURVEY_FORM']),
-      pageRedirect() {
-        this.$router.push({ name: 'analysis'})
-      }
+      ...mapActions([
+        'FETCH_MY_SURVEY_FORM_TEST',
+        'FETCH_MY_SURVEY_FORM',
+        'REMOVE_MY_SURVEY'
+      ]),
+      surveySales(index) {
+        if(this.mySurveyForm[index].respondent_number > 
+        this.mySurveyForm[index].respondent_count || 
+        this.mySurveyForm[index].closed_at >
+        this.mySurveyForm[index].started_at){
+          swal(
+            "조건이 충족되지 않았습니다",
+            "이대로 판매를 하시겠습니까 ?",
+          {
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then(response => {
+            if(response) {
+              console.log('설문 판매하기')
+            }
+          })
+        }else {
+          console.log('설문 판매하기')
+        }
+      },
+      noRedirectAnalysis() {
+        swal(
+          "확인불가",
+          "아무도 응답을 하지않았습니다",
+          "error",
+          {
+          button:"확인"
+          }
+        );
+      },
+      surveyRemove() {
+       swal({
+          text: "정말 삭제하시겠어요?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+      },
     }
   }
 </script>

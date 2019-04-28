@@ -6,7 +6,7 @@
 
 <style scoped>
   #main {
-    height: 51vh;
+    height: 60vh;
   }
   .loader {
     color: rgba(46, 154, 254, 0.5);

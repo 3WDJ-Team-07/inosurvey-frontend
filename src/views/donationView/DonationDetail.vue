@@ -1,6 +1,7 @@
 <template>
   <div>
-    <v-container fluid grid-list-md pt-5 mt-5>
+    <v-container fluid grid-list-md pt-5 mt-5
+    v-if="!this.$store.state.loading">
       <v-layout row wrap justify-center>
         <v-flex xs12>
           <v-card color="#FAFAFA" height="10vh" flat>
@@ -32,25 +33,22 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <Spinner v-else/>
   </div>    
 </template>
 <script>
   import DonationBoxBody   from '@/components/donation/DonationBoxBody'
   import { donation }      from '@/api/index'
-
+  import Spinner           from '@/components/Spinner'
 
   export default {
     props: ['donation_id'],
     name: 'donationdetail',
-    components: { DonationBoxBody },
+    components: { DonationBoxBody, Spinner },
     data() {
       return {
         card: [],
         index: 0,
-      }
-    },
-    data() {
-      return {
         donationItems:{}
       }
     },
@@ -59,9 +57,11 @@
     },
     methods: {
       fetchList() {
+        this.$store.state.loading = true
         return donation.fetchListItem({ id: this.donation_id })
         .then(response => {
           this.donationItems = response.donations
+          this.$store.state.loading = false
         })
         .catch(error => {
           console.log(error)

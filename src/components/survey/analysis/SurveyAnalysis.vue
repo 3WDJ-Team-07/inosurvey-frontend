@@ -4,10 +4,12 @@
       <v-flex xs12>
         <div class="display-1 font-weight-bold pa-3">설문조사1</div>
       </v-flex>
-      <!-- <v-flex xs12>
-        <div class="display-1 font-weight-bold mt-3 mr-5 ml-5" style="float:right;">설문조사1</div>
-        <div class="display-1 font-weight-bold mt-3" style="float:right;">설문조사1</div>
-      </v-flex> -->
+      <v-flex xs12>
+        <div class="mt-3">
+          <v-btn class="font-weight-bold" flat style="float:right;">PDF파일 변환</v-btn>
+          <v-btn class="font-weight-bold" flat style="float:right;">엑셀파일 변환</v-btn>
+        </div>
+      </v-flex>
     </v-layout>
     <v-layout row wrap>
       <v-flex xs3 class="border_style">
@@ -17,12 +19,26 @@
       </v-flex>
       <v-flex xs9 class="border_style pa-4"> 
         <v-card height="180px" flat style="background-color:#FAFAFA;">
+          <v-progress-circular
+              style="float:right; margin-right:100px;"
+              class=""
+              :rotate="360"
+              :size="120"
+              :width="20"
+              value="45"
+              color="teal"
+            >
+              45.3%
+            </v-progress-circular>
           <div class="title font-weight-bold pa-4">설문조사1 소개</div>
           <div class="title font-weight-bold pa-4">연령 50대 </div>
           <div class="title font-weight-bold pa-3">
             <v-icon large style="line-height:20px;">event</v-icon>
+            
             <span class="ml-3 left_class">2019.02.18 ~ 2019.03.15</span>
-            <div class="mr-5 pr-4" style="float:right;"><v-icon large style="line-height:20px;">person</v-icon><span class="ml-3">225 / 500 명</span></div>
+            <div class="mr-5 pr-4" style="float:right;"><v-icon large style="line-height:20px;">person</v-icon>
+            <span class="ml-3">225 / 500 명</span></div>
+            
           </div>
         </v-card>
       </v-flex>
@@ -37,7 +53,7 @@
             row wrap class="pb-5"
             justify-space-between 
             >
-              <div class="headline font-weight-bold">Q1. 질문 1</div>
+              <div class="headline font-weight-bold" style="border-top:7px solid #42A5F5; padding-top:10px;">Q1. 질문 1</div>
               <div class="headline font-weight-bold">
                 <v-speed-dial v-model="fab" direction="left">
                   <template v-slot:activator>
@@ -74,7 +90,8 @@
   import VueApexCharts from 'vue-apexcharts'
 
   export default {
-    name: 'surveyanalysis',
+    props: ['form_id'],
+    name:'analysis',
     components:{
       'apexchart': VueApexCharts
     },
@@ -118,6 +135,11 @@
       this.chartOptions.xaxis.categories = ['매우좋다', '좋다', '보통', '안좋다', '매우안좋다']
       this.series[0].data = [3,7,3,2,5]
     },
+    computed: {
+      // rate() {
+      //   return (this.donationItems.current_amount / this.donationItems.target_amount*100).toFixed(1) + ' %'
+      // }
+    },
     methods: {
       barChart() {
         this.chartOptions.plotOptions.bar.horizontal = false
@@ -139,7 +161,7 @@
       radarChart() {
         this.chartOptions.chart.type = 'radar'
       }
-    }
+    },
   }
 </script>
 

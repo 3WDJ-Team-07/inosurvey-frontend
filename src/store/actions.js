@@ -54,10 +54,12 @@ const actions = {
   },
 
   // 질문은행 Action
-  FETCH_QUESTION_BANK({commit}) {
+  FETCH_QUESTION_BANK(context) {
+    context.state.loading = true
     return api.questionBank.fetch()
     .then(data => {
-      commit('FETCH_QUESTION_BANK',data)
+      context.commit('FETCH_QUESTION_BANK',data)
+      context.state.loading = false
     })
   },
 
@@ -80,20 +82,20 @@ const actions = {
     })
   },
 
-  // Amazon s3 image remove
-  REQUEST_IMG_URL(_, {file: requestUrl}) {
-    return api.formRequest.requestImgUrl({ file: requestUrl })
-    .then(response => {
-      console.log(response)
-    })
-  },
-
   FETCH_MY_SURVEY_FORM(context, {id: user_id}) {
     context.state.loading = true
     return api.mySurvey.mySurveyForm({ id: user_id })
     .then(response => {
       context.commit('FETCH_MY_SURVEY_FORM', response.serveies)
       context.state.loading = false
+    })
+  },
+
+  // Amazon s3 image remove
+  REQUEST_IMG_URL(_, {file: requestUrl}) {
+    return api.formRequest.requestImgUrl({ file: requestUrl })
+    .then(response => {
+      console.log(response)
     })
   },
 
@@ -106,24 +108,29 @@ const actions = {
   }, 
 
   FETCH_DONATION_TEST(context) {
+    context.state.loading = true
     api.donation.donationFetch()
     .then(response => {
       context.commit('FETCH_DONATION', response)
+      context.state.loading = false
     })
   },
 
   FETCH_DONATION(context) {
+    context.state.loading = true
     api.donation.donationCard()
     .then(response => {
       context.commit('FETCH_DONATION',response.donation)
+      context.state.loading = false
     })
   },
 
   FETCH_MARKET(context){
+    context.state.loading = true
     api.market.marketCard()
     .then(response => {
       context.commit('FETCH_MARKET',response.surveies)
-      console.log(response)
+      context.state.loading = false
     })
   },
 }

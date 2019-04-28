@@ -1,6 +1,6 @@
 /* 회원가입 페이지 */
 
-<template>
+<template lang="html">
   <v-fade-transition mode="out-in">
     <v-container fluid mt-5>
 			<v-layout row wrap :key="$route.path">
@@ -81,7 +81,7 @@
 											class="mr-3"
 											v-model="age" 
 											:items="age_item" 
-											label="연령대"
+											label="출생연도"
 											item-text="name"
 											item-value="value"
 											outline height=0
