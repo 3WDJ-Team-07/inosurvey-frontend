@@ -48,6 +48,9 @@ const mutations = {
   SET_IS_SURVEY_PURCHASE(state, toggle) {
     state.isPurchaseDialog = toggle
   },
+  SET_IS_DONATE(state, toggle) {
+    state.isDonateDialog = toggle
+  },
 
   /* Form input */
   FORM_DATE_REQUEST(state) {

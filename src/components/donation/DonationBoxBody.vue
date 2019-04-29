@@ -37,11 +37,17 @@
             <v-card class="pa-4 mt-2" flat>
               <v-layout row wrap>
                 <span class="headline font-weight-bold mr-4">내 보유 이노</span>
-                <span class="headline">{{inocoin.current_ino || '0'}} 이노</span>
+                <v-progress-circular
+                  v-if="loading"
+                  indeterminate
+                  color="primary"
+                ></v-progress-circular>
+                <span v-else class="headline">{{inocoin.current_ino}}</span>
+                <span class="headline">&nbsp;&nbsp;이노</span>
               </v-layout>
             </v-card> 
             <v-flex xs4>
-              <v-btn large block color="info" class="pt-4 pb-5 title font-weight-bold">기부하기</v-btn>
+              <v-btn large block color="info" class="pt-4 pb-5 title font-weight-bold" @click="SET_IS_DONATE(true)">기부하기</v-btn>
             </v-flex>
           </v-flex>
         </v-card>
@@ -63,19 +69,26 @@
           </div>
         </v-card>
       </v-flex>
+      <donate 
+      :donationItems="donationItems"
+      :inocoin = "inocoin"
+      />
     </v-layout>
   </v-container>
 </template>
 
 <script>
-  import { userInformation }  from '@/api/index'
-  import { mapState } from 'vuex'
+  import { userInformation }        from '@/api/index'
+  import { mapState, mapMutations } from 'vuex'
+  import donate                     from '@/components/dialog/donate'
 
   export default {
     props: ['donationItems'],
+    components: { donate },
     data() {
       return {
-        inocoin:{}
+        inocoin: {},
+        loading: false
       }
     },
     created() {
@@ -91,10 +104,13 @@
       }
     },
     methods: {
+      ...mapMutations([ 'SET_IS_DONATE' ]),
       fetchCoin() {
+        this.loading = true
         return userInformation.userCoin({ id: this.userinfo.id })
         .then(response => {
           this.inocoin = response
+          this.loading = false
         })
         .catch(error => {
           console.log(error)
