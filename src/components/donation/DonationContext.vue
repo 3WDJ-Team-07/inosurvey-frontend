@@ -35,13 +35,11 @@
       ...mapState([ 'donationBox' ])
     },
     created() {
-      // this.FETCH_DONATION_TEST()
       this.FETCH_DONATION()
     },
     methods: {
       ...mapActions([
-        'FETCH_DONATION', 
-        'FETCH_DONATION_TEST'
+        'FETCH_DONATION'
       ]),
     }
   }

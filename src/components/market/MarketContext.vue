@@ -1,14 +1,18 @@
 <template>
   <span>
-    <v-container fluid grid-list-xl
-    v-if="!this.$store.state.loading">
-      <v-layout text-xs-center row wrap class="pa-4">
-        <MarketCard
-        v-for="(card,index) in saleSurvey"
-          :key="index"
-          :card="card"
-          :index="index"
-        />
+    <v-container fluid grid-list-xl v-if="!this.$store.state.loading">
+      <v-layout text-xs-center row wrap class="pa-5">
+        <v-flex pa-3 xs6  v-for="(card,index) in saleSurvey" :key="index" >
+          <router-link 
+            :to="{
+              name: 'surveymarketdetail', 
+              params:{ market_id: card.id}
+            }">
+              <MarketCard
+              :card="card"
+              :index="index"/>
+          </router-link>
+        </v-flex>
       </v-layout>
     </v-container>
     <Spinner2 v-else/>
@@ -25,7 +29,6 @@
     components: { MarketCard, Spinner2 },
     computed: {
       ...mapState([ 'saleSurvey' ]),
-
     },
     created() {
       this.fetchMarket()

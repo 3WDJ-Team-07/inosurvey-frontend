@@ -1,5 +1,6 @@
 <template>
-    <v-card class="rounded-card">
+  <v-layout row wrap justify-center>
+    <v-card class="rounded-card" style="width:90%;">
       <v-img :src="card.image" class="white--text" height="250px"></v-img>
        <v-card-text
           style="position: relative;"
@@ -19,7 +20,7 @@
       </v-card-text>
       <v-card-text class="pr-5 pl-4">
         <div class="headline font-weight-bold mb-3">{{card.id}}. {{ card.title }}</div>
-        <div class="caption">{{card.content}}</div>
+        <div>{{card.content}}</div>
          <v-progress-linear
           color="info"
           height="20"
@@ -29,6 +30,7 @@
         </v-progress-linear>
       </v-card-text>
     </v-card>
+  </v-layout>
 </template>
 
 <script>

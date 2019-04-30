@@ -11,7 +11,7 @@
       </span>
       <v-layout column align-center>
         <v-card-text class="subheading font-weight-bold  white--text">
-          <span>직장인 피로도 설문조사</span>를 <span>60</span>이노에 구매하시겠습니까?
+          <span>{{marketItems.title}}</span>를 <span>60</span>이노에 구매하시겠습니까?
         </v-card-text>
 			</v-layout>
         <v-card-actions class="pb-4">
@@ -27,6 +27,7 @@
 
   export default {
     name: 'surveyPurchase',
+    props:['marketItems'],
     computed: {
       ...mapState(['isPurchaseDialog'])
     },
@@ -36,7 +37,7 @@
       ]),
       purchase(){
         this.SET_IS_SURVEY_PURCHASE(false);
-        this.$router.replace("surveymarket")
+        this.$router.replace({name:'surveymarket'})
       }
     }
   }

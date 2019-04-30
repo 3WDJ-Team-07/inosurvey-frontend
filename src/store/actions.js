@@ -106,7 +106,7 @@ const actions = {
   },
 
   ADDDONATION(_,box){
-    axios.post('http://172.26.2.188:8000/api/donation/create',box,
+    axios.post('http://172.26.2.12:8000/api/donation/create',box,
     box,
     {
       headers:{ 'Content-Type': 'multipart/form-data' } // 이미지 보낼때
@@ -137,6 +137,19 @@ const actions = {
     .then(response => {
       context.commit('FETCH_MARKET',response.surveies)
       context.state.loading = false
+      context.commit('FETCH_MARKET',response.list)
+      console.log(response)
+      
+    })
+  },
+
+  //판매할 설문 리스트
+  FETCH_SELL(context, {id: user_id}){
+    api.market.marketSell({id: user_id})
+    .then(response => {
+      context.commit('FETCH_SELL',response.list)
+      console.log(response)
+
     })
   },
 }

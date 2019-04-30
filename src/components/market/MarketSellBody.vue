@@ -1,4 +1,4 @@
-/* 설문마켓 설문상세 */
+/* 설문마켓 판매 설문 ---- 마켓 설문 상세 (MarketDetailBody와 유사! MarketSell에서 데이터 넘겨 받아서 바인딩)*/
 <template>
   <v-container>
     <v-layout fluid grid-list-md  class="font-weight-bold pt-3">
