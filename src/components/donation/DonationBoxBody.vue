@@ -42,7 +42,7 @@
                   indeterminate
                   color="primary"
                 ></v-progress-circular>
-                <span v-else class="headline">{{inocoin.current_ino}}</span>
+                <span v-else class="headline">{{coin || '0'}}</span>
                 <span class="headline">&nbsp;&nbsp;이노</span>
               </v-layout>
             </v-card> 
@@ -101,6 +101,10 @@
       },
       rate() {
         return (this.donationItems.current_amount / this.donationItems.target_amount*100).toFixed(1) + ' %'
+      },
+      coin() {
+        var regexp = /\B(?=(\d{3})+(?!\d))/g;
+        return this.inocoin.current_ino.toString().replace(regexp, ',')
       }
     },
     methods: {

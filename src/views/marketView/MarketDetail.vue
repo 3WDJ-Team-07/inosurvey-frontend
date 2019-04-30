@@ -70,7 +70,7 @@
       methods: {
         ...mapMutations(['SET_IS_SURVEY_PURCHASE']),
         fetchList(){
-          axios.post('http://172.26.2.12:8000/api/market/show',{id:this.market_id})
+          axios.post('http://172.26.2.186:8000/api/market/show',{id:this.market_id})
           .then(response=>{
             this.marketItems = response.data.list
             console.log(this.marketItems);

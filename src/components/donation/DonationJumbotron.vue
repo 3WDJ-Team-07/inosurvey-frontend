@@ -13,7 +13,7 @@
             </v-flex>
             <v-flex xs3 pl-4>
               <router-link :to="{ name: 'adddonationbox' }">
-                <v-btn color="#333333" class="white--text">모금함 등록</v-btn>
+                <v-btn color="#333333" large class="white--text">모금함 등록</v-btn>
               </router-link>
             </v-flex>
           </v-layout>

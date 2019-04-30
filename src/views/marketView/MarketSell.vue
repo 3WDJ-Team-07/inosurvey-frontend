@@ -59,7 +59,7 @@
       },
       // 백엔드에서 설문 아이디 주고 데이터 받아와야됨 -- 설문 상세에서 썼던 함수 써도 무방할듯
       fetchList(){
-        axios.post('http://172.26.2.12:8000/api/market/show',{id:sell_id})
+        axios.post('http://172.26.2.186:8000/api/market/show',{id:sell_id})
         .then(response=>{
           this.selltItems = response.data.list
           console.log(this.sellItems);

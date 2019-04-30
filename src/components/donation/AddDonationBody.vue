@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex>
         <v-form @submit.prevent="adddonation" id="add-donation-form" enctype="multipart/form-data">
-          <v-card flat height="12vh" fill-height>
+          <v-card flat height="15vh" fill-height>
             <v-layout row wrap>
               <v-flex xs5>
                 <v-text-field
@@ -14,33 +14,61 @@
                   required>
                 </v-text-field>
               </v-flex>
-              <v-layout row wrap justify-end>
-                <v-flex sm3>
-                  <v-btn large color="info" type="submit" form="add-donation-form">등록하기</v-btn>
-                </v-flex>
-              </v-layout>
             </v-layout>
           </v-card>
-          <v-card flat height="28vh" fill-height>
+          <v-card flat height="30vh" fill-height>
             <div>
-              <input type="file" id="file" ref="file" @change="fileUpload()">
+              <!-- <input type="file" id="file" ref="file" @change="fileUpload()"> -->
+              <v-avatar size="250px" tile class="grey lighten-3 ml-3">
+              <span>사진을 넣어주세요</span>
+            </v-avatar>
             </div>
           </v-card>
-          <v-card flat  height="22vh" fill-height>
+          <v-card flat  height="20vh" fill-height>
             <v-flex xs5>
-              <v-textarea  v-model="content" solo label="모금함 설명">
+              <v-textarea v-model="content" solo label="모금함에 대해 설명해주세요">
               </v-textarea>
             </v-flex>
           </v-card>
-          <v-card flat height="10vh" fill-height>
+          <v-card flat height="5vh" fill-height>
             <v-layout>
               <v-flex xs2>
                 <v-text-field v-model="closed_at" label="모금마감일" required></v-text-field>
+                <!-- <v-menu
+                  ref="menu"
+                  v-model="menu"
+                  :close-on-content-click="false"
+                  :nudge-right="250"
+                  :nudge-top="250"
+                  lazy
+                  offset-y
+                  min-width="300px"
+                >
+                  <template v-slot:activator>
+                    <v-text-field
+                      v-model="date"
+                      label="Deadline"
+                      prepend-icon="event"
+                      readonly
+                    ></v-text-field>
+                  </template>
+                  <v-date-picker
+                    landscape
+                    ref="picker"
+                    v-model="date"
+                    max="2024-12-31"
+                    :min="todayData"
+                    @change="save"
+                  ></v-date-picker>
+                </v-menu> -->
               </v-flex>
-              <v-flex xs2>
+              <v-flex xs2 class="ml-4 mr-4">
                 <v-text-field v-model="target_amount" label="목표 모금액" required></v-text-field>
               </v-flex>
-              <v-flex xs1 class="mt-4">이노</v-flex>
+              <v-flex xs3 class="mt-4">이노</v-flex>
+              <v-flex xs7>
+                <v-btn large color="info" block type="submit" class="pt-4 pb-5 title font-weight-bold" form="add-donation-form">등록하기</v-btn>
+              </v-flex>
             </v-layout>
           </v-card>
         </v-form>
