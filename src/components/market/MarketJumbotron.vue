@@ -1,7 +1,7 @@
 <template>
 <div>
   <v-img src="/static/market-hero.png" height="40vh"
-    gradient="to top,  rgba(0, 0, 0, .3), rgba(0, 0, 0, .5)">
+    gradient="to top,  rgba(0, 0, 0, .3), rgba(0, 0, 0, .1)">
       <v-container fill-height>
         <v-layout align-center row wrap>
           <v-flex xs9 pl-5>
@@ -13,21 +13,20 @@
             </div>
           </v-flex>
           <v-flex xs3 pl-4>
-            
-              <v-btn color="info" @click="SET_IS_SURVEY_SALE(true)">설문판매</v-btn>
-
+            <v-btn color="info" @click="SET_IS_SURVEY_SALE(true)">설문판매</v-btn>
           </v-flex>
         </v-layout>
       </v-container>
     </v-img>
-    <surveySale :sellSurvey="sellSurvey" :userinfo="userinfo"/>
+    <surveySale
+    :sellSurvey="sellSurvey"
+    :userinfo="userinfo"
+    />
   </div>
 </template>
-
 <script>
-  import { mapMutations, mapState, mapActions } from 'vuex'
-  import surveySale       from '@/components/dialog/surveySale'
-
+  import { mapMutations, mapState, mapActions }   from 'vuex'
+  import surveySale                               from '@/components/dialog/surveySale'
 	export default {
     name:'maketJumbotron',
     components: { surveySale },
@@ -43,7 +42,6 @@
         id: this.userinfo.id  
       })
     },
-    
 	}
 </script>
 

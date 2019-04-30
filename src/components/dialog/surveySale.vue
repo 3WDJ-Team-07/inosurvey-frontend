@@ -1,4 +1,5 @@
-/* 설문판매 모달창 */
+/* 판매할 설문 리스트 모달창 */
+// 리스트가 바로 뜨지 않고 마켓 페이지가 다시 로딩 되었을때 뜨는 문제점 해결해야됨
 <template lang="html">
   <v-layout row>
     <v-dialog v-model="isSaleDialog" persistent max-width="450px">
@@ -14,16 +15,19 @@
           </v-card-title>
           <v-card-text>
             <div v-for="(survey) in sellSurvey" class="title">
-              <input type="radio" v-bind:value="survey.id" name="sellSurvey" v-model="pickedSurvey" class="ml-3 mr-3 mb-3">
+              <input
+              type="radio"  name="sellSurvey"
+              v-bind:value="survey.id" v-model="pickedSurvey"
+              class="ml-3 mr-3 mb-3">
               {{survey.title}}
             </div>
-            selectedSurvey ID : {{pickedSurvey}}
           </v-card-text>
         </v-layout>
         <v-card-actions class="pr-4 pl-4 pb-4">
-          <!-- 설문의 id값 marketsell에 넘겨주기
-          !!!!!! missing param 경고 뜸 -->
-          <router-link :to="{ name : 'surveymarketsell', params: { sell_id: pickedSurvey} }" >
+          <!-- router !!!!!! missing param 경고 해결하기 -->
+          <router-link
+          :to="{ name : 'surveymarketsell',
+          params: { sell_id: pickedSurvey } }" >
             <v-btn color="info" large @click="sale">판매하기</v-btn>
           </router-link>
         </v-card-actions>
@@ -36,7 +40,7 @@
   import { mapState, mapMutations } from 'vuex';
   export default {
     name: 'surveySale',
-    // marketJumbotron에서 데이터 받아오기
+    // marketJumbotron에서 데이터 받아 오고 있음
     props:['sellSurvey','userinfo'],
     data(){
       return {
@@ -46,14 +50,8 @@
     computed: {
       ...mapState(['isSaleDialog']),
     },
-    // created(){
-    //   this.FETCH_SELL({
-    //     id: this.userinfo.id 
-    //   })
-    // },
     methods: {
       ...mapMutations(['SET_IS_SURVEY_SALE']),
-      // ...mapActions(['FETCH_SELL']),
       sale(){
         this.SET_IS_SURVEY_SALE(false);
       }

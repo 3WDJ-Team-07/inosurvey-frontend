@@ -15,16 +15,24 @@
         <v-flex xs2 md2>
           <v-card height="80vh" max-width="300" class="pt-5 text-xs-center">
             <v-card flat height="12vh" fill-height>
-              <div class="headline font-weight-bold">모금함 이름</div>
+              <div class="headline font-weight-bold">
+                모금함 이름
+              </div>
             </v-card>
             <v-card flat  height="28vh" fill-height>
-              <div class="headline font-weight-bold">소개 이미지</div>
+              <div class="headline font-weight-bold">
+                소개 이미지
+              </div>
             </v-card>
             <v-card flat  height="22vh" fill-height>
-              <div class="headline font-weight-bold">모금함 설명</div>
+              <div class="headline font-weight-bold">
+                모금함 설명
+              </div>
             </v-card>
             <v-card flat height="10vh" fill-height>
-              <div class="headline font-weight-bold">모금함 정보</div>
+              <div class="headline font-weight-bold">
+                모금함 정보
+              </div>
             </v-card>
           </v-card>
         </v-flex>
@@ -40,7 +48,6 @@
 
 <script>
   import AddDonationBody from '@/components/donation/AddDonationBody'
-
   export default {
     name: 'adddonationbox',
     components: { AddDonationBody },

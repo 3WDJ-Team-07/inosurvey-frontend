@@ -1,7 +1,7 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
-const DOMAIN = 'http://172.26.2.12:8000'
+const DOMAIN = 'http://172.26.4.86:8000'
 const UNAUTHORIZED = 401
 
 // 토큰 없을경우 리다이렉트 
@@ -102,5 +102,8 @@ export const market = {
   },
   marketSell(id){
     return serverRequest('post','/api/market/sellable-forms',id)
+  },
+  updateMarketCard(id){
+    return serverRequest('post','/api/market/create',id)
   }
 }
