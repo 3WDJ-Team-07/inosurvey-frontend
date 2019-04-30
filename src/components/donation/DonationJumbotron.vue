@@ -1,7 +1,7 @@
 <template>
   <v-fade-transition mode="out-in">
     <v-img src="/static/donation-hero.png" height="40vh"
-      gradient="to top,  rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)">
+      gradient="to top,  rgba(0, 0, 0, .3), rgba(0, 0, 0, .1)">
       <v-fade-transition mode="out-in">
         <v-container fill-height>
           <v-layout align-center row wrap>

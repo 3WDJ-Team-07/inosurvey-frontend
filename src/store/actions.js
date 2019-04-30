@@ -94,7 +94,7 @@ const actions = {
   },
 
   ADDDONATION(_,box){
-    axios.post('http://172.26.2.12:8000/api/donation/create',box,
+    axios.post('http://172.26.2.186:8000/api/donation/create',box,
     box,
     {
       headers:{ 'Content-Type': 'multipart/form-data' } // 이미지 보낼때
@@ -124,6 +124,14 @@ const actions = {
       context.commit('FETCH_SELL',response.list)
       console.log(response)
 
+    })
+  },
+
+  //t설문 업뎃
+  UPDATE_MARKET(_, {id: sell_id}){
+    api.market.updateMarketCard({id: sell_id})
+    .then(response => {
+      console.log("3333",response)
     })
   },
 }

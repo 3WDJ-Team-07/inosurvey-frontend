@@ -11,7 +11,10 @@
                 </div>
                 <v-layout row wrap justify-end>
                   <v-flex sm3>
-                    <v-btn large color="info" @click="SET_IS_SURVEY_PURCHASE(true)">구매하기</v-btn>
+                    <v-btn large color="info"
+                      @click="SET_IS_SURVEY_PURCHASE(true)">
+                      구매하기
+                    </v-btn>
                   </v-flex>
                 </v-layout>
               </v-layout>
@@ -20,12 +23,17 @@
           <v-divider/>
         </v-flex>
         <v-flex xs2 md2>
-          <v-card height="80vh" max-width="300" class="pt-5 text-xs-center">
+          <v-card height="80vh" max-width="300"
+          class="pt-5 text-xs-center">
             <v-card flat height="28vh" fill-height>
-              <div class="headline font-weight-bold">설문정보</div>
+              <div class="headline font-weight-bold">
+                설문정보
+              </div>
             </v-card>
             <v-card flat  height="40vh" fill-height>
-              <div class="headline font-weight-bold">문항</div>
+              <div class="headline font-weight-bold">
+                문항
+              </div>
             </v-card>
           </v-card>
         </v-flex>
@@ -54,34 +62,31 @@
 
   export default {
       name: 'marketdetail',
-      props:['market_id'],
+      props: ['market_id'],
       components: {
         MarketDetailBody,
         surveyPurchase
       },
       data(){
         return{
-          marketItems:{}
+          marketItems: {}
         }
       },
       created(){
       this.fetchList()
     },
-      methods: {
-        ...mapMutations(['SET_IS_SURVEY_PURCHASE']),
-        fetchList(){
-          axios.post('http://172.26.2.12:8000/api/market/show',{id:this.market_id})
-          .then(response=>{
-            this.marketItems = response.data.list
-            console.log(this.marketItems);
-            
-          })
-          .catch(error =>{
-            console.log(error)
-          })
-
-        }
+    methods: {
+      ...mapMutations(['SET_IS_SURVEY_PURCHASE']),
+      fetchList(){
+        axios.post('http://172.26.2.186:8000/api/market/show',{id:this.market_id})
+        .then(response=>{
+          this.marketItems = response.data.list
+          console.log(this.marketItems);
+        })
+        .catch(error =>{
+          console.log(error)
+        })
+      }
     }
-    
   }
 </script>

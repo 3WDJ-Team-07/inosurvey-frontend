@@ -52,7 +52,7 @@
     },
     methods: {
       fetchList() {
-        axios.post('http://172.26.2.88:8000/api/donation/show', {id: this.donation_id})
+        axios.post('http://172.26.2.186:8000/api/donation/show', {id: this.donation_id})
         .then(response => {
           this.donationItems = response.data.donations
           console.log(this.donationItems)
