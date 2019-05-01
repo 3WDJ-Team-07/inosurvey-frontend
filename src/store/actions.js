@@ -93,14 +93,13 @@ const actions = {
     })
   },
 
-  ADDDONATION(_,box){
-    axios.post('http://172.26.2.186:8000/api/donation/create',box,
-    box,
-    {
-      headers:{ 'Content-Type': 'multipart/form-data' } // 이미지 보낼때
+  ADDDONATION(_, data, config){
+    return api.donation.addDonation(data, config)
+    .then(response=>{
+      console.log(response);
     })
-  }, 
-  
+  },
+
   FETCH_DONATION(context) {
     api.donation.donationCard()
     .then(response => {
@@ -113,7 +112,6 @@ const actions = {
     .then(response => {
       context.commit('FETCH_MARKET',response.list)
       console.log(response)
-      
     })
   },
 
@@ -123,7 +121,6 @@ const actions = {
     .then(response => {
       context.commit('FETCH_SELL',response.list)
       console.log(response)
-
     })
   },
 

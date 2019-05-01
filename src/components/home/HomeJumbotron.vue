@@ -1,12 +1,12 @@
 <template>
   <v-fade-transition mode="out-in">
-    <v-img 
+    <v-img
      src="/static/main.png"
-     :key="$route.path"  
+     :key="$route.path"
      height="100vh"
-     gradient="to bottom,  
-     rgba(128, 128, 128, .9), 
-     rgba(128, 128, 128, .8), 
+     gradient="to bottom,
+     rgba(128, 128, 128, .4),
+     rgba(128, 128, 128, .8),
      rgba(0, 0, 0, .6), 
      rgba(0, 0, 0, .8)">
       <v-fade-transition mode="out-in">
@@ -20,7 +20,7 @@
                 <div class="subheading white--text">
                   {{$t('Home.jumbotronSubTitle')}}
                 </div>
-                <v-btn color="info" router :to="{name : 'survey'}" 
+                <v-btn color="info" router :to="{name : 'survey'}"
                 large class="title font-weight-bold mt-4 pl-5 pr-5 pa-4">
                   {{ $t('Home.btnText')}}
                 </v-btn>
@@ -28,8 +28,8 @@
             </v-fade-transition>
             <v-btn class="floating mb-5" absolute flat fab bottom right>
               <v-icon
-               class="grey--text" 
-               x-large 
+               class="grey--text"
+               x-large
                v-scroll-to="{ el: '#element',offset:-100,duration:1500}">
                expand_more
               </v-icon>

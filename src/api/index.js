@@ -1,7 +1,7 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
-const DOMAIN = 'http://172.26.4.86:8000'
+const DOMAIN = 'http://172.26.2.186:8000'
 const UNAUTHORIZED = 401
 
 // 토큰 없을경우 리다이렉트 
@@ -88,21 +88,36 @@ export const mySurvey = {
   }
 }
 
-// 기부 - 모금함 정보 불러오기
+
 export const donation = {
+  // 기부 - 모금함 정보 불러오기
   donationCard() {
     return serverRequest('get','/api/donation/index')
+  },
+  // 기부 - 모금함 등록
+  addDonation(data, config){
+    return axios({
+      method: 'post',
+      url: `${DOMAIN}/api/donation/create`,
+      data: data,
+      config: config
+    }).then(response => response.data)
+    .catch(error => {
+      console.log(error)
+    })
   }
 }
 
-// 설문마켓 - 판매 설문 정보 불러오기
 export const market = {
+  // 설문마켓 - 판매중인 설문 정보 불러오기
   marketCard(){
     return serverRequest('get','/api/market/index')
   },
+  // 설문마켓 - 판매할 설문 정보 불러오기
   marketSell(id){
     return serverRequest('post','/api/market/sellable-forms',id)
   },
+  //설문마켓 - 설문 판매
   updateMarketCard(id){
     return serverRequest('post','/api/market/create',id)
   }
