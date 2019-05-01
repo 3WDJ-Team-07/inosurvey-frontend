@@ -31,7 +31,7 @@
         </v-flex>
         <v-flex xs12>
           <v-divider/>
-          <v-card color="#FAFAFA" height="50vh" flat class=" text-xs-center">
+          <v-card color="#FAFAFA" flat height="50vh" class=" text-xs-center">
             <div fluid grid-list-md>
               <div class="headline font-weight-bold my-5 py-5">
                 " {{sellItems.title}} "을 "100이노"에 판매합니다.
@@ -42,7 +42,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </div>    
+  </div>
 </template>
 
 <script>
@@ -77,10 +77,13 @@
       },
       fetchList(){
         //설문 정보 불러오기
-        axios.post('http://172.26.4.86:8000/api/market/sellable-show',{id:this.sell_id})
+        axios.post('http://172.26.2.186:8000/api/market/sellable-show',{id:this.sell_id})
         .then(response=>{
-          this.sellItems = response.data.list[0]
-          console.log(111, this.sellItems)
+          this.sellItems = response.data
+          //백에 수정요청 배열안에 배열???
+          console.log(111, response)
+          console.log(222, response.data)
+          console.log(333, response.data[0])
         })
         .catch(error =>{
           console.log(error)
