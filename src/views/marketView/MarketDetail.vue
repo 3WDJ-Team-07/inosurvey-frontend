@@ -58,7 +58,7 @@
   import MarketDetailBody     from '@/components/market/MarketDetailBody'
   import surveyPurchase       from '@/components/dialog/surveyPurchase'
   import { mapMutations }     from 'vuex'
-  import axios                from 'axios'
+  import { market }           from '@/api/index'
 
   export default {
       name: 'marketdetail',
@@ -77,14 +77,10 @@
     },
     methods: {
       ...mapMutations(['SET_IS_SURVEY_PURCHASE']),
-      fetchList(){
-        axios.post('http://172.26.2.186:8000/api/market/show',{id:this.market_id})
-        .then(response=>{
-          this.marketItems = response.data.list
-          console.log(this.marketItems);
-        })
-        .catch(error =>{
-          console.log(error)
+      fetchList() {
+        return market.FetchListDetail({ id:this.market_id })
+        .then(response => {
+          this.marketItems = response.list
         })
       }
     }

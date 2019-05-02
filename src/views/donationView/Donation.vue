@@ -1,6 +1,6 @@
 /* 기부 페이지 */
 
-<template>
+<template lang="html">
   <span>
     <div v-if="this.$route.name == 'donation'">
       <DonationJumbotron/> 
@@ -20,7 +20,7 @@
     name: 'donation',
     components: {
       DonationJumbotron,
-      DonationContext
+      DonationContext,
     }
   }
 </script>

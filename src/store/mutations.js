@@ -48,6 +48,9 @@ const mutations = {
   SET_IS_SURVEY_PURCHASE(state, toggle) {
     state.isPurchaseDialog = toggle
   },
+  SET_IS_DONATE(state, toggle) {
+    state.isDonateDialog = toggle
+  },
 
   /* Form input */
   FORM_DATE_REQUEST(state) {
@@ -87,6 +90,9 @@ const mutations = {
   },
   INPUT_SURVEY_SALE_BOOLEAN(state, {is_sale}){
     state.form.is_sale = is_sale
+  },
+  INPUT_SURVEY_USER_ID(state, {user_id}){
+    state.form.user_id = user_id
   },
   SET_QUESTION(state, QuestionList){
     state.form.push(QuestionList)

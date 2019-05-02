@@ -1,6 +1,6 @@
 /* 설문모드를 정하는 페이지 (설문작성/내설문보기) */
 
-<template>
+<template lang="html">
   <div>
     <v-img
       v-if="this.$route.name == 'survey'" 
