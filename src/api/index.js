@@ -104,15 +104,29 @@ export const donation = {
   },
   fetchListItem(id) {
     return serverRequest('post','/api/donation/show', id)
+  },
+  requestDonate(user_id, donation_id, ino) {
+    return serverRequest('post','/api/donation/donate',{
+      user_id, donation_id, ino 
+    })
   }
 }
 
 // 설문마켓 - 판매 설문 정보 불러오기
 export const market = {
-  marketCard(){
+  marketCard() {
     return serverRequest('get','/api/market/index')
   },
-  marketSell(id){
+  marketSell(id) {
     return serverRequest('post','/api/market/sellable-forms',id)
+  },
+  updateMarketCard(id) {
+    return serverRequest('post','/api/market/create',id)
+  },
+  FetchListDetail(id) {
+    return serverRequest('post','/api/market/show',id)
+  },
+  FetchListSell(id) {
+    return serverRequest('post','/api/market/show',id)
   }
 }

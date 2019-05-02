@@ -1,5 +1,9 @@
+/* 구매 설문 상세정보 */
+// age, gender, job 로딩시 에러 뜨는 문제 해결해야됨
+
 <template lang="html">
-  <v-container fluid grid-list-md  class="font-weight-bold">
+  <v-container fluid grid-list-md
+  class="font-weight-bold">
     <v-layout>
       <v-flex>
         <v-card flat height="28vh" fill-height>
@@ -17,7 +21,10 @@
           </div>
           <div>
             <i class="far fa-calendar-alt fa-lg ma-2"></i>
-            <span>{{ marketItems.started_at | substr }}</span><span v-if="marketItems.closed_at">~{{marketItems.closed_at | substr}}</span>
+            <span>{{ marketItems.started_at | substr }}</span>
+            <span v-if="marketItems.closed_at">
+              ~{{marketItems.closed_at | substr}}
+              </span>
           </div>
           <span>
             <v-chip color="info" text-color="white">
@@ -47,12 +54,12 @@
           <span>
             <v-chip color="info" text-color="white">
               직업 - 
-              <span v-if="!job.length == 0" v-for="(targetjob) in job">
+              <span v-if="job.length == 0">
+                무관
+              </span>
+              <span v-else v-for="(targetjob) in job">
                 {{targetjob.name}}, 
               </span>
-              <span v-else>
-                무관
-              </span>       
             </v-chip>
           </span>
         </v-card>
@@ -62,12 +69,19 @@
       <v-flex>
         <v-card flat height="38vh" fill-height>
           <div>
-            <div class="subheading font-weight-bold mb-2" v-for="(question, index) in questions " :key="index">
+            <div
+            v-for="(question, index) in questions"
+            :key="index"
+            class="subheading font-weight-bold mb-2">
               Q{{question.question_number}}. 
               {{question.question_title}}
               <div class="body-1">
-                <span class="mx-2" v-for="(coo, index) in  question.question_items " :key="index">{{coo.content_number}}. {{coo.content}} </span>
-                </div>
+                <span class="mx-2"
+                v-for="(coo, index) in question.question_items"
+                :key="index">
+                {{coo.content_number}}.{{coo.content}}
+                </span>
+              </div>
             </div>
           </div>
         </v-card>
@@ -80,31 +94,31 @@
 export default {
   props:['marketItems'],
   filters:{
-      substr:function(date){
-        if(date){
-          return date.substr(0,10)
-        }
+    substr:function(date){
+      if(date){
+        return date.substr(0,10)
       }
+    }
+  },
+  computed: {
+    nickname(){
+      return this.marketItems.user.nickname||'0'
     },
-    computed: {
-      nickname(){
-        return this.marketItems.user.nickname||'0'
-      },
-      age(){
-        return this.marketItems.target.age||'0'
-      },
-      gender(){
-        return this.marketItems.target.gender||'0'
-      },
-      job(){
-        return this.marketItems.target.job||'0'
-      },
-      questions(){
-        return this.marketItems.question||'0'
-      },
-      questionsItems(){
-        return this.marketItems.question.questions||'0'
-      }
+    age(){
+      return this.marketItems.target.age||'0'
     },
+    gender(){
+      return this.marketItems.target.gender||'0'
+    },
+    job(){
+      return this.marketItems.target.job||'0'
+    },
+    questions(){
+      return this.marketItems.question||'0'
+    },
+    questionsItems(){
+      return this.marketItems.question.questions||'0'
+    }
+  },
 }
 </script>

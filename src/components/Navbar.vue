@@ -11,7 +11,7 @@
     </router-link>
     <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
       <v-btn 
-        :active-class="!isScrolling ? 'blue--text' : undefined" v-for="(item,i) in items" 
+        :active-class="!isScrolling ? 'info--text' : undefined" v-for="(item,i) in items" 
         :key="i" :to="item.to" flat class="title"><span v-text="item.text"/>
       </v-btn>
     </v-toolbar-items>

@@ -24,7 +24,9 @@
               <div class="headline font-weight-bold">모금함 설명</div>
             </v-card>
             <v-card flat height="10vh" fill-height>
-              <div class="headline font-weight-bold">모금함 정보</div>
+              <div class="headline font-weight-bold">
+                모금함 정보
+              </div>
             </v-card>
           </v-card>
         </v-flex>
@@ -40,7 +42,6 @@
 
 <script>
   import AddDonationBody from '@/components/donation/AddDonationBody'
-
   export default {
     name: 'adddonationbox',
     components: { AddDonationBody },
