@@ -5,19 +5,17 @@
         <v-flex xs12 sm12 md12 xl10 class="center_card">
           <v-layout row wrap justify-end>
             <div>
-              <v-btn small color="#64B5F6" @click="current_state = 1"></v-btn>
-              <span class="subheading mr-4">판매중</span>
-              <v-btn small color="grey" @click="current_state = 0"></v-btn>
-              <span class="subheading mr-4">대기중</span>
-              <v-btn small color="" @click="current_state = 2"></v-btn>
-              <span class="subheading mr-4">모두보기</span>
+              <v-btn small color="" @click="sale_check = 2" >모두보기</v-btn>
+              <v-btn small color="grey" @click="stay" dark>대기중</v-btn>
+              <v-btn small color="grey" @click="staySale" dark>판매 대기중</v-btn>
+              <v-btn small color="#64B5F6" @click="sale" dark>판매중</v-btn>
             </div>
           </v-layout>
           <div v-for="(form, index) in SortmySurveyForm" :key="index">
             <v-card 
-              v-if="current_state == 2 || form.is_sale == current_state"
+              v-if="sale_check == 2 || form.is_sale == sale_check && form.is_completed == complete_check"
               style="margin-top:50px;padding:20px;"
-              :class="`border_style complete${form.is_sale}`"
+              :class="`border_style complete${form.is_sale}${form.is_completed}`"
             >
               <v-card-title>
                 <v-chip 
@@ -48,7 +46,7 @@
                       <span>설문판매</span>
                     </v-tooltip>
                     <router-link 
-                      v-if="!form.respondent_count == 0"
+                      v-if="form.respondent_count == 0"
                       :to="{
                         name: 'analysis', 
                         params: { form_id: index }
@@ -95,14 +93,14 @@
           </v-flex>
         </v-flex>
         <AddSurvey/>
-        <div class="mt-4" style="margin-left:140px; margin-bottom:100px;">
+        <!-- <div class="mt-4" style="margin-left:140px; margin-bottom:100px;">
           <v-pagination
             v-model="page"
             :length="5"
             prev-icon="keyboard_arrow_left"
             next-icon="keyboard_arrow_right"
           ></v-pagination>
-        </div>
+        </div> -->
       </div>
       <Spinner v-else/>
     </div>
@@ -123,7 +121,9 @@
     data() {
       return {
         page : 1,
-        current_state: 2
+        sale_check: 2,
+        complete_check: 2
+
       }
     },
     components: { AddSurvey, Spinner },
@@ -146,6 +146,18 @@
         'FETCH_MY_SURVEY_FORM',
         'REMOVE_MY_SURVEY'
       ]),
+      sale() {
+        this.sale_check = 1
+        this.complete_check = 1
+      },
+      staySale() {
+        this.sale_check = 1
+        this.complete_check = 0
+      },
+      stay() {
+        this.sale_check = 0
+        this.complete_check = 0
+      },
       updateSale(id) {
         return mySurvey.mySurveyIsSale({ id: id })
         .then(response => {
@@ -190,8 +202,19 @@
               }
             })
           }
-        } else {
-            swal("이미 등록된 상품입니다", "마켓에서 확인해보세요 !", "warning", {button:"확인"} );
+        } else if(this.mySurveyForm[index].is_completed == 1 && this.mySurveyForm[index].is_sale == 1) {
+          swal("이미 등록된 상품입니다", "마켓에서 확인해보세요 !", "warning", {button:"확인"} );
+        } else if(this.mySurveyForm[index].is_completed == 0 && this.mySurveyForm[index].is_sale == 1) {
+          swal("조건이 충족되면 자동등록 됩니다 !", "지금 판매 하시겠어요 ?",{icon: "warning", buttons: true, dangerMode: true,})
+          .then(response => {
+            if(response) {
+              this.updateComplete(id)
+              setTimeout(() => {
+                swal("판매등록 완료", "마켓에 설문상품이 등록되었습니다 !", "success", {button:"확인"});
+              }, 2000);
+              this.updateSale(id)
+            }
+          })
         }
       },
       noRedirectAnalysis() {
@@ -208,10 +231,16 @@
   .center_card {
     margin: 0 auto;
   }
-  .border_style.complete0{
+  .border_style.complete01{
     border-left: 20px solid lightgrey;
   }
-  .border_style.complete1{
+  .border_style.complete10{
+    border-left: 20px solid lightgrey;
+  }
+  .border_style.complete00{
+    border-left: 20px solid lightgrey;
+  }
+  .border_style.complete11{
     border-left: 20px solid #64B5F6;
   }
   * {

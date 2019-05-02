@@ -142,7 +142,6 @@ const actions = {
       context.commit('FETCH_MARKET',response.surveies)
       context.state.loading = false
       context.commit('FETCH_MARKET',response.list)
-      console.log(response)
     })
   },
 
@@ -151,16 +150,12 @@ const actions = {
     api.market.marketSell({id: user_id})
     .then(response => {
       context.commit('FETCH_SELL',response.list)
-      console.log(response)
     })
   },
 
   // 설문 업뎃
   UPDATE_MARKET(_, {id: sell_id}){
     api.market.updateMarketCard({id: sell_id})
-    .then(response => {
-      console.log("3333",response)
-    })
   },
 }
 

@@ -73,7 +73,7 @@
           ino: this.$refs.donateInput.value
         })
         this.SET_IS_DONATE(false);
-        // this.$router.push({ name:'donation' })
+        this.$router.push({ name:'donation' })
         // this.fetchList()
         swal({
           title: '아름다운 기부',
