@@ -4,7 +4,7 @@
   <span>
     <v-container grid-list-xl  class="mt-4" v-if="!this.$store.state.loading">
       <v-layout row wrap class="pa-3" style="margin-right:50px;" justify-end>
-        <v-flex xs2>
+        <v-flex xs3>
           <v-select
             v-model="donate_id"
             :items="donate_item"
@@ -53,9 +53,9 @@
       return {
 				donate_id: 2,
         donate_item: [
-					{ name: '모두보기', value: 2},
-					{ name: '달성 기부처', value: 1},
-					{ name: '미달성 기부처', value: 0},
+					{ name: '모든 모금함', value: 2},
+					{ name: '미달성 모금함', value: 0},
+					{ name: '달성 모금함', value: 1},
 				],
       }
     },

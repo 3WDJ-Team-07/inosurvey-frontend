@@ -156,8 +156,8 @@ const actions = {
   },
 
   // 설문 업뎃
-  UPDATE_MARKET(_, {id: sell_id}){
-    api.market.updateMarketCard({id: sell_id})
+  UPDATE_MARKET(_, {id,user_id}){
+    api.market.updateMarketCard(id,user_id)
     .then(response => {
       console.log("3333",response)
     })

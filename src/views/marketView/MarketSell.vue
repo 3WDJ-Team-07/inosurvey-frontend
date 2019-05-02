@@ -47,12 +47,13 @@
 
 <script>
   import SellBody         from '@/components/market/MarketSellBody'
-  import { mapActions }   from 'vuex'
+  import { mapActions,mapState }   from 'vuex'
   import { market }       from '@/api/index'
 
   export default {
     name: 'surveymarketsell',
     computed: {
+      ...mapState(['userinfo']),
       sell_id(){
         return Number(this.$route.params.sell_id)
       }
@@ -71,15 +72,20 @@
       sell(){
         this.UPDATE_MARKET({
           //id 넘김 -- 해당 설문 마켓 리스트에 등록
-          id: this.sell_id
+          id: this.sell_id,
+          user_id: this.userinfo.id
         })
         this.$router.replace({name: 'surveymarket'})
       },
-      fetchList() {
-        return market.FetchListSell({ id: this.sell_id })
-        .then(response =>{
-          console.log(response)
-          this.sellItems = response.list[0]
+      fetchList(){
+        //설문 정보 불러오기
+        return market.FetchListSell({id:this.sell_id})
+        .then(response=>{
+           this.sellItems = response.list
+
+        })
+        .catch(error =>{
+          console.log(error)
         })
       }
     }
