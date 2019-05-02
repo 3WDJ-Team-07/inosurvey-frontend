@@ -1,16 +1,18 @@
 <template>
   <span>
-    <v-container grid-list-xl v-if="!this.$store.state.loading">
-      <v-layout text-xs-center row wrap class="pa-5">
-        <v-flex pa-3 xs6  v-for="(card,index) in saleSurvey" :key="index" >
-          <router-link 
+    <v-container fluid grid-list-xl v-if="!this.$store.state.loading">
+      <v-layout text-xs-center row wrap class="pa-3 mx-5">
+        <v-flex xs12> 추가예정~~ </v-flex>
+        <v-flex xs12  v-for="(card,index) in saleSurvey" :key="index" >
+          <router-link
             :to="{
-              name: 'surveymarketdetail', 
+              name: 'surveymarketdetail',
               params:{ market_id: card.id}
             }">
               <MarketCard
               :card="card"
-              :index="index"/>
+              :index="index"
+              />
           </router-link>
         </v-flex>
       </v-layout>
@@ -20,9 +22,9 @@
 </template>
 
 <script>
-  import { mapActions, mapState } from 'vuex'
-  import MarketCard               from '@/components/market/MarketCard'
-  import Spinner2                 from '@/components/Spinner2'
+  import { mapActions, mapState }    from 'vuex'
+  import MarketCard                  from '@/components/market/MarketCard'
+  import Spinner2                    from '@/components/Spinner2'
 
   export default {
     name:'MarketContext',
@@ -39,6 +41,6 @@
         this.FETCH_MARKET()
       }
     }
-}
+  }
 </script>
 

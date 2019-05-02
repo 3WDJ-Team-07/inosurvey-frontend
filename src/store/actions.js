@@ -1,6 +1,4 @@
 import * as api from '../api'
-import axios from 'axios'
-import { router } from '../routes';
 
 const actions = {
   // 회원가입 Action
@@ -105,11 +103,10 @@ const actions = {
     })
   },
 
-  ADDDONATION(_,box){
-    axios.post('http://172.26.2.186:8000/api/donation/create',box,
-    box,
-    {
-      headers:{ 'Content-Type': 'multipart/form-data' } // 이미지 보낼때
+  ADDDONATION(_, data, config){
+    return api.donation.addDonation(data, config)
+    .then(response=>{
+      console.log(response);
     })
   }, 
 
@@ -146,7 +143,6 @@ const actions = {
       context.state.loading = false
       context.commit('FETCH_MARKET',response.list)
       console.log(response)
-      
     })
   },
 
@@ -156,7 +152,6 @@ const actions = {
     .then(response => {
       context.commit('FETCH_SELL',response.list)
       console.log(response)
-
     })
   },
 

@@ -31,7 +31,7 @@
         </v-flex>
         <v-flex xs12>
           <v-divider/>
-          <v-card color="#FAFAFA" height="50vh" flat class=" text-xs-center">
+          <v-card color="#FAFAFA" flat height="50vh" class=" text-xs-center">
             <div fluid grid-list-md>
               <div class="headline font-weight-bold my-5 py-5">
                 " {{sellItems.title}} "을 "100이노"에 판매합니다.
@@ -42,7 +42,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </div>    
+  </div>
 </template>
 
 <script>
@@ -78,6 +78,7 @@
       fetchList() {
         return market.FetchListSell({ id: this.sell_id })
         .then(response =>{
+          console.log(response)
           this.sellItems = response.list[0]
         })
       }

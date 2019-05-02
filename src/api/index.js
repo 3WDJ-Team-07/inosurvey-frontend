@@ -97,8 +97,9 @@ export const mySurvey = {
   }
 }
 
-// 기부 - 모금함 정보 불러오기
+
 export const donation = {
+  // 기부 - 모금함 정보 불러오기
   donationCard() {
     return serverRequest('get','/api/donation/index')
   },
@@ -109,18 +110,31 @@ export const donation = {
     return serverRequest('post','/api/donation/donate',{
       user_id, donation_id, ino 
     })
+  },
+  addDonation(data, config){
+    return axios({
+      method: 'post',
+      url: `${DOMAIN}/api/donation/create`,
+      data: data,
+      config: config
+    }).then(response => response.data)
+    .catch(error => {
+      console.log(error)
+    })
   }
 }
 
-// 설문마켓 - 판매 설문 정보 불러오기
 export const market = {
-  marketCard() {
+  // 설문마켓 - 판매중인 설문 정보 불러오기
+  marketCard(){
     return serverRequest('get','/api/market/index')
   },
-  marketSell(id) {
+  // 설문마켓 - 판매할 설문 정보 불러오기
+  marketSell(id){
     return serverRequest('post','/api/market/sellable-forms',id)
   },
-  updateMarketCard(id) {
+  //설문마켓 - 설문 판매
+  updateMarketCard(id){
     return serverRequest('post','/api/market/create',id)
   },
   FetchListDetail(id) {
