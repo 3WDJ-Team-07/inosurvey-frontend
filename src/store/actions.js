@@ -131,6 +131,13 @@ const actions = {
     })
   },
 
+  REQUEST_DONATE(_, { user_id, donation_id, ino }) {
+    api.donation.requestDonate(user_id, donation_id, ino)
+    .then(response => {
+      console.log(response)
+    })
+  },
+
   FETCH_MARKET(context){
     context.state.loading = true
     api.market.marketCard()
@@ -143,7 +150,7 @@ const actions = {
     })
   },
 
-  //판매할 설문 리스트
+  // 판매할 설문 리스트
   FETCH_SELL(context, {id: user_id}){
     api.market.marketSell({id: user_id})
     .then(response => {
@@ -153,7 +160,7 @@ const actions = {
     })
   },
 
-  //t설문 업뎃
+  // 설문 업뎃
   UPDATE_MARKET(_, {id: sell_id}){
     api.market.updateMarketCard({id: sell_id})
     .then(response => {

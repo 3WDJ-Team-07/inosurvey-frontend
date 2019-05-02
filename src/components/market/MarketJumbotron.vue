@@ -13,7 +13,7 @@
             </div>
           </v-flex>
           <v-flex xs3 pl-4>
-            <v-btn color="info" @click="SET_IS_SURVEY_SALE(true)">설문판매</v-btn>
+            <v-btn color="info" large @click="SET_IS_SURVEY_SALE(true)">설문판매</v-btn>
           </v-flex>
         </v-layout>
       </v-container>

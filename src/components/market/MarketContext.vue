@@ -1,6 +1,6 @@
 <template>
   <span>
-    <v-container fluid grid-list-xl v-if="!this.$store.state.loading">
+    <v-container grid-list-xl v-if="!this.$store.state.loading">
       <v-layout text-xs-center row wrap class="pa-5">
         <v-flex pa-3 xs6  v-for="(card,index) in saleSurvey" :key="index" >
           <router-link 
@@ -21,8 +21,8 @@
 
 <script>
   import { mapActions, mapState } from 'vuex'
-  import MarketCard from '@/components/market/MarketCard'
-  import Spinner2 from '@/components/Spinner2'
+  import MarketCard               from '@/components/market/MarketCard'
+  import Spinner2                 from '@/components/Spinner2'
 
   export default {
     name:'MarketContext',

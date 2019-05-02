@@ -69,6 +69,9 @@
           </div>
         </v-card>
       </v-flex>
+      <v-flex xs8 class="ml-5" style="margin-top:110px;">
+        <v-btn depressed fab color="#BDBDBD" dark>더보기</v-btn>
+      </v-flex>
       <donate 
       :donationItems="donationItems"
       :inocoin = "inocoin"

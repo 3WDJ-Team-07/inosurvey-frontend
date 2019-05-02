@@ -1,5 +1,5 @@
 <template>
-    <v-card class="card pt-4" height="160px" style="cursor:pointer;">
+    <v-card class="card pt-4" height="200px" style="cursor:pointer;">
       <div class="pt-3">
         <div class="card-title headline font-weight-bold mb-3">
           {{ card.title }}

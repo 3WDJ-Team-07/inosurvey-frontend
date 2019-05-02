@@ -19,7 +19,8 @@
         </v-btn> 
       </v-card-text>
       <v-card-text class="pr-5 pl-4">
-        <div class="headline font-weight-bold mb-3">{{card.id}}. {{ card.title }}</div>
+        <!-- <div class="headline font-weight-bold mb-3">{{card.id}}. {{ card.title }}</div> -->
+        <div class="headline font-weight-bold mb-3">{{ card.title }}</div>
         <div>{{card.content}}</div>
          <v-progress-linear
           color="info"
