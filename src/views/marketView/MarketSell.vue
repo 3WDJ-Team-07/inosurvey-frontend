@@ -47,12 +47,13 @@
 
 <script>
   import SellBody         from '@/components/market/MarketSellBody'
-  import { mapActions }   from 'vuex'
+  import { mapActions,mapState }   from 'vuex'
   import { market }       from '@/api/index'
 
   export default {
     name: 'surveymarketsell',
     computed: {
+      ...mapState(['userinfo']),
       sell_id(){
         return Number(this.$route.params.sell_id)
       }
@@ -71,16 +72,17 @@
       sell(){
         this.UPDATE_MARKET({
           //id 넘김 -- 해당 설문 마켓 리스트에 등록
-          id: this.sell_id
+          id: this.sell_id,
+          user_id: this.userinfo.id
         })
         this.$router.replace({name: 'surveymarket'})
       },
       fetchList(){
         //설문 정보 불러오기
-        axios.post('http://172.26.2.186:8000/api/market/sellable-show',{id:this.sell_id})
+        return market.FetchListSell({id:this.sell_id})
         .then(response=>{
-          this.sellItems = response.data.list
-          //백에 수정요청 배열안에 배열???
+           this.sellItems = response.list
+
         })
         .catch(error =>{
           console.log(error)

@@ -21,7 +21,7 @@
       <v-card-text class="pr-5 pl-4">
         <!-- <div class="headline font-weight-bold mb-3">{{card.id}}. {{ card.title }}</div> -->
         <div class="headline font-weight-bold mb-3">{{ card.title }}</div>
-        <div>{{card.content}}</div>
+        <div>{{card.content | substr(80,' .... ')}}</div>
          <v-progress-linear
           color="info"
           height="20"
@@ -45,6 +45,13 @@
         return (this.card.current_amount / this.card.target_amount*100).toFixed(1) + ' %'
       }
     },
+    filters: {
+      substr: function(msg,length,endmsg){
+        if(msg){
+          return msg.substr(0,length)+endmsg
+        }
+      }
+    }
   }
 </script>
 

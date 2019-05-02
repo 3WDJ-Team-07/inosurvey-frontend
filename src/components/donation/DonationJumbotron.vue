@@ -13,7 +13,8 @@
             </v-flex>
             <v-flex xs3 pl-4>
               <router-link :to="{ name: 'adddonationbox' }">
-                <v-btn color="#333333" large class="white--text">모금함 등록</v-btn>
+                <v-btn color="#333333" large class="white--text" v-if="userinfo.is_donator==1">모금함 등록</v-btn>
+                <div v-else>기부회원일때만 모금함 등록 버튼 보임</div>
               </router-link>
             </v-flex>
           </v-layout>
@@ -24,7 +25,11 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
   export default {
+    computed: {
+      ...mapState(['userinfo']),
+    },
     methods:{
       addbox(){
         this.$router.push("adddonationbox");

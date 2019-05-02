@@ -1,17 +1,15 @@
 <template>
-  <v-card max-height="160px" color="#FAFAFA" flat style="cursor:pointer;">
+  <v-card color="#FAFAFA" flat style="cursor:pointer;">
     <v-layout align-center>
       <v-flex xs9>
-        <v-card flat color="#FAFAFA" class="py-4" >
-
+        <v-card flat color="#FAFAFA" class="py-4 px-2" >
           <div class="card-title 
-          display-1 font-weight-bold ">
-            ㅇㅇㅇㅇ{{ card.title }}
+          display-1 font-weight-bold pb-3">
+          {{ card.title }}
           </div>
           <div class="card-text px-5 mx-5
-          body-2 font-weight-black">
-          <!-- {{ card.description }} -->
-          {{ text | sub}}
+          body-2 font-weight-black text-xs-left">
+          ⦁  {{ card.description | substr(80,'...')}}
           </div>
         </v-card>
       </v-flex>
@@ -27,8 +25,8 @@
           </div>
           <div>
             <i class="far fa-calendar-alt font-weight-bold">
-            {{ card.started_at | substrDate }}
-            ~{{card.closed_at | substrDate }}
+            {{ card.started_at | substr(10,'') }}
+            ~ {{card.closed_at | substr(10,'') }}
             </i>
           </div>
         </v-card>
@@ -41,30 +39,15 @@
   import { mapActions, mapState } from 'vuex'
   export default {
     name: 'MarketCard',
-    data(){
-      return{
-         text:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non ab modi repellendus labore facere, fugiat ipsam quae accusantium commodi voluptas nesciunt dolor similique ipsum accusamus earum eligendi susr sit amet, consectetur adipisicing elit. Non ab modi repellendus labore facere, fugiat ipsam quae accusantium commodi voluptas nesciunt dolor similique ipsum accusamus earum eligendi susr sit amet, consectetur adipisicing elit. Non ab modi repellendus labore facere, fugiat ipsam quae accusantium commodi voluptas nesciunt dolor similique ipsum accusamus earum eligendi susr sit amet, consectetur adipisicing elit. Non ab modi repellendus labore facere, fugiat ipsam quae accusantium commodi voluptas nesciunt dolor similique ipsum accusamus earum eligendi suscipit laborum quod.'
-      }
-     
-    },
     props: ['card', 'index'],
     filters: {
-      substrDate: function (date) {
-        if (date) {
-          return date.substr(0, 10)
-        }
-      },
-      sub: function(tt){
-        if(tt){
-          return tt.substr(0,170)
+      substr: function(msg,length,endmsg){
+        if(msg){
+          return msg.substr(0,length)+endmsg
         }
       }
     }
   }
 </script>
 
-<style scoped>
-.border_style {
-    border-right: 2px solid lightgrey;
-}
-</style>
+

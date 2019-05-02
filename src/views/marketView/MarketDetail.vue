@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <v-container fluid grid-list-md pt-4 mt-5>
+    <v-container fluid grid-list-md pt-4 mt-5  v-if="!this.$store.state.loading">
       <v-layout row wrap>
         <v-flex xs12>
           <v-card color="#FAFAFA" height="10vh" flat >
@@ -47,25 +47,29 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <Spinner v-else/>
     <surveyPurchase
     :market_id = "market_id"
     :marketItems = "this.marketItems"
     />
+     
   </div>    
 </template>
 
 <script>
   import MarketDetailBody     from '@/components/market/MarketDetailBody'
   import surveyPurchase       from '@/components/dialog/surveyPurchase'
-  import { mapMutations }     from 'vuex'
+  import { mapMutations,mapState }     from 'vuex'
   import { market }           from '@/api/index'
+  import Spinner           from '@/components/Spinner'
 
   export default {
       name: 'marketdetail',
       props: ['market_id'],
       components: {
         MarketDetailBody,
-        surveyPurchase
+        surveyPurchase,
+        Spinner
       },
       data(){
         return{
@@ -78,9 +82,11 @@
     methods: {
       ...mapMutations(['SET_IS_SURVEY_PURCHASE']),
       fetchList() {
+        this.$store.state.loading = true
         return market.FetchListDetail({ id:this.market_id })
         .then(response => {
           this.marketItems = response.list
+          this.$store.state.loading = false
         })
       }
     }

@@ -2,8 +2,17 @@
   <span>
     <v-container fluid grid-list-xl v-if="!this.$store.state.loading">
       <v-layout text-xs-center row wrap class="pa-3 mx-5">
-        <v-flex xs12> 추가예정~~ </v-flex>
-        <v-flex xs12  v-for="(card,index) in saleSurvey" :key="index" >
+        <v-layout justify-end>
+          <v-flex xs12 sm3> 
+            <v-text-field
+              placeholder="검색"
+              append-icon="search"
+            >
+            </v-text-field>
+        </v-flex>
+        </v-layout>
+        
+        <v-flex xs12 class="border" v-for="(card,index) in saleSurvey" :key="index" >
           <router-link
             :to="{
               name: 'surveymarketdetail',
@@ -45,7 +54,7 @@
 </script>
 <style scoped>
 .border{
-  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
 }
 </style>
 
