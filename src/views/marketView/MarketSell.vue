@@ -79,11 +79,8 @@
         //설문 정보 불러오기
         axios.post('http://172.26.2.186:8000/api/market/sellable-show',{id:this.sell_id})
         .then(response=>{
-          this.sellItems = response.data
+          this.sellItems = response.data.list
           //백에 수정요청 배열안에 배열???
-          console.log(111, response)
-          console.log(222, response.data)
-          console.log(333, response.data[0])
         })
         .catch(error =>{
           console.log(error)
