@@ -46,7 +46,7 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
+  import { mapState, mapMutations } from 'vuex'
   import surveyPayment    from '@/components/dialog/surveyPayment'
   import { EventBus }     from '@/utils/bus'
 
@@ -66,7 +66,8 @@
     mounted() {
       this.responseNumber = 100
     },
-    computed: {
+    computed: { 
+      ...mapState(['userinfo']),
       total(){
         var regexp = /\B(?=(\d{3})+(?!\d))/g;
         return (this.responseNumber * this.questionNumberPay * this.$store.state.form.list.length).toString().replace(regexp, ',');
@@ -81,7 +82,8 @@
     methods: {
       ...mapMutations([
         'SET_IS_PAYMENT_SURVEY',
-        'INPUT_FORM_TARGET'
+        'INPUT_FORM_TARGET',
+        'INPUT_SURVEY_USER_ID'
       ]),
       targetSave(){
         this.INPUT_FORM_TARGET({
@@ -91,6 +93,7 @@
           responseNumber: this.responseNumber
         })
         this.SET_IS_PAYMENT_SURVEY(true)
+        this.INPUT_SURVEY_USER_ID({ user_id: this.userinfo.id })
       }
     }
 	}

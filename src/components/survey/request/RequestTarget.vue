@@ -55,6 +55,23 @@
 						</v-select>
           </v-card>
         </v-flex>
+        <!-- <v-flex xs3>
+          <v-card style="border:1px solid gray">
+            <v-card-text>직업</v-card-text>
+            <v-img src="/static/market.png" class="img_center"></v-img>
+            <v-select
+              :items="job_item"
+              v-model="job"
+              label="무관"
+              item-text="name"
+              item-value="value"
+              multiple
+              color="green"
+              append-icon="arrow_drop_down"
+              solo  hide-details>
+						</v-select>
+          </v-card>
+        </v-flex> -->
       </v-layout>
     </v-card>
     <v-card class="border_style pl-5 pr-5">

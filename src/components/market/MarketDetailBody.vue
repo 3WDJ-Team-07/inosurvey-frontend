@@ -1,5 +1,6 @@
 /* 구매 설문 상세정보 */
 // age, gender, job 로딩시 에러 뜨는 문제 해결해야됨
+
 <template lang="html">
   <v-container fluid grid-list-md
   class="font-weight-bold">

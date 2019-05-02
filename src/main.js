@@ -6,14 +6,12 @@ import i18n               from './i18n'
 import AOS                from 'aos'
 import VueScrollTo        from 'vue-scrollto'
 import swal               from 'sweetalert';
-import Progress           from 'vue-multiple-progress'
 import                         'vuetify/dist/vuetify.min.css'
 import                         './plugins/vuetify'
 import                         'aos/dist/aos.css'
 
-Vue.use(VueScrollTo,Progress)
+Vue.use(VueScrollTo)
 Vue.config.productionTip = false
-Vue.component('vm-progress', Progress)
 
 new Vue({
   beforeCreate() {

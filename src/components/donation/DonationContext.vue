@@ -1,13 +1,30 @@
 /* 기부 페이지 (수정필) */
 
 <template>
-  <v-fade-transition mode="out-in">
-    <v-container grid-list-xl  class="mt-4">
+  <span>
+    <v-container grid-list-xl  class="mt-4" v-if="!this.$store.state.loading">
+      <v-layout row wrap class="pa-3" style="margin-right:50px;" justify-end>
+        <v-flex xs2>
+          <v-select
+            v-model="donate_id"
+            :items="donate_item"
+            label="무관"
+            item-text="name"
+            item-value="value"
+            color="green"
+            append-icon="arrow_drop_down"
+            solo hide-details>
+					</v-select>
+        </v-flex>
+      </v-layout>
       <v-layout
-        text-xs-center
         row wrap
-        class="pa-4">
-        <v-flex pa-3 xs4 v-for="(card,index) in donationBox" :key="index"> 
+        class="pa-4 pl-5 pr-5">
+        <v-flex 
+          pa-4 xs4 
+          v-for="(card,index) in SortdonationBox" :key="index"
+          v-if="donate_id == 2 || card.is_achieved == donate_id"
+        > 
             <router-link 
             :to="{
               name: 'donationdetail', 
@@ -20,22 +37,37 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </v-fade-transition>    
+    <Spinner2 v-else/>
+  </span>    
 </template>
 
 <script>
   import { mapActions, mapState } from 'vuex'
   import DonationCard             from '@/components/donation/DonationCard'
+  import Spinner2                 from '@/components/Spinner2'
 
   export default {
     name: 'DonationContext',
-    components: { DonationCard },
+    components: { DonationCard, Spinner2 },
+    data() {
+      return {
+				donate_id: 2,
+        donate_item: [
+					{ name: '모두보기', value: 2},
+					{ name: '달성 기부처', value: 1},
+					{ name: '미달성 기부처', value: 0},
+				],
+      }
+    },
     computed: {
-      ...mapState([ 'donationBox' ])
+      ...mapState([ 'donationBox' ]),
+      SortdonationBox() {
+        this.donationBox.sort((x,y) => { return y.id - x.id})
+        return this.donationBox
+      }
     },
     created() {
       this.FETCH_DONATION()
-      console.log(this.donationBox)
     },
     methods: {
       ...mapActions([

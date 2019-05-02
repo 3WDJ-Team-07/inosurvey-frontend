@@ -25,16 +25,19 @@
 							solo-inverted block flat
 							></v-text-field>
 						</v-flex>
-            <!-- 질문 카드 컴포넌트 -->
-            <questionCard
-              v-for="(bank, index) in getPlayers" 
-              :key="bank.id" :bank="bank" 
-            />
-            <v-flex v-if="getPlayers.length === 0" sm8 md5>
-              <div class="display-2 grey--text font-weight-thin" style="width:800px;">
-                <span style="line-height:350px;">찾으시는 질문이 없습니다..</span>
-              </div>
-            </v-flex>
+            <template v-if="!this.$store.state.loading">
+              <!-- 질문 카드 컴포넌트 -->
+              <questionCard
+                v-for="(bank, index) in getPlayers" 
+                :key="bank.id" :bank="bank" 
+              />
+              <v-flex v-if="getPlayers.length === 0" sm8 md5>
+                <div class="display-2 grey--text font-weight-thin" style="width:800px;">
+                  <span style="line-height:350px;">찾으시는 질문이 없습니다..</span>
+                </div>
+              </v-flex>
+            </template>
+            <Spinner3 v-else/>
 					</v-layout>
 				</v-container>
       </v-card>
@@ -45,10 +48,11 @@
 <script>
 	import { mapState, mapMutations } from 'vuex';
   import questionCard               from './questionCard'
+  import Spinner3                    from '@/components/Spinner3'
 
 	export default {
     name: 'questionBank',
-    components:{ questionCard },
+    components:{ questionCard, Spinner3 },
     data(){
       return{
         filter:''

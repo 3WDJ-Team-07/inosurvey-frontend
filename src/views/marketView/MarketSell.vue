@@ -48,7 +48,7 @@
 <script>
   import SellBody         from '@/components/market/MarketSellBody'
   import { mapActions }   from 'vuex'
-  import axios            from 'axios'
+  import { market }       from '@/api/index'
 
   export default {
     name: 'surveymarketsell',

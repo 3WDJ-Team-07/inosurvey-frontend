@@ -32,7 +32,7 @@ export const auth = {
     return serverRequest('post','/api/user/register', user)
   },
   login(user_id, password) {
-    return serverRequest('post', '/api/user/login', {user_id, password})
+    return serverRequest('post','/api/user/login', {user_id, password})
   }
 }
 
@@ -40,6 +40,9 @@ export const auth = {
 export const userInformation = {
   userInformation({ access_token: token }) {
     return serverRequest('post','/api/user/check', { access_token: token })
+  },
+  userCoin(id) {
+    return serverRequest('post','/api/user/wallet', id)
   }
 }
 
@@ -70,11 +73,11 @@ export const questionBank = {
 
 // 설문폼 백엔드 등록 
 export const formRequest = {
-  requestFormData(form, user_id) {
-    return serverRequest('post','/api/survey/create', {form, user_id})
+  requestFormData(form) {
+    return serverRequest('post','/api/survey/create', form)
   },
   requestImgUrl(img) {
-    return serverRequest('post','/api/survey/image-delete', img)
+    return serverRequest('post','/api/survey/image-delete', {img})
   }
 }
 
@@ -84,7 +87,13 @@ export const mySurvey = {
     return localRequest('get','/static/allform.json')
   },
   mySurveyForm(id) {
-    return serverRequest('post', '/api/user/user-surveies', id)
+    return serverRequest('post', '/api/user/surveies', id)
+  },
+  mySurveyComplete(id) {
+    return serverRequest('post', '/api/survey/abort',id)
+  },
+  mySurveyIsSale(id) {
+    return serverRequest('post','/api/user/issale',id)
   }
 }
 
@@ -94,7 +103,14 @@ export const donation = {
   donationCard() {
     return serverRequest('get','/api/donation/index')
   },
-  // 기부 - 모금함 등록
+  fetchListItem(id) {
+    return serverRequest('post','/api/donation/show', id)
+  },
+  requestDonate(user_id, donation_id, ino) {
+    return serverRequest('post','/api/donation/donate',{
+      user_id, donation_id, ino 
+    })
+  },
   addDonation(data, config){
     return axios({
       method: 'post',
@@ -120,5 +136,11 @@ export const market = {
   //설문마켓 - 설문 판매
   updateMarketCard(id){
     return serverRequest('post','/api/market/create',id)
+  },
+  FetchListDetail(id) {
+    return serverRequest('post','/api/market/show',id)
+  },
+  FetchListSell(id) {
+    return serverRequest('post','/api/market/show',id)
   }
 }

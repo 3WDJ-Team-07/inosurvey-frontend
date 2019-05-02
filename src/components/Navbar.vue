@@ -4,6 +4,7 @@
   <v-toolbar 
     v-scroll="onScroll" app :flat="!isScrolling"
     :color="!isScrolling ? 'transparent' : '#FFFFFF'"
+    style="z-index: 9999; "
     >
     <router-link to="/">
       <img src="/static/logo.png" id="top">

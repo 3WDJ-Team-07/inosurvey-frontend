@@ -9,6 +9,7 @@
   },
   "is_sale": 0,
   "closed_at":"",
+  "user_id": 0,
   "bgcolor":"",
   "list":[]
 }
