@@ -48,7 +48,7 @@
                       <span>설문판매</span>
                     </v-tooltip>
                     <router-link 
-                      v-if="!form.respondent_count == 0"
+                      v-if="form.respondent_count == 0"
                       :to="{
                         name: 'analysis', 
                         params: { form_id: index }

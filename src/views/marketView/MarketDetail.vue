@@ -42,6 +42,7 @@
             <MarketDetailBody
             :market_id = "market_id"
             :marketItems = "this.marketItems"
+            :ino = "this.ino"
             />
           </v-card>
         </v-flex>
@@ -51,6 +52,7 @@
     <surveyPurchase
     :market_id = "market_id"
     :marketItems = "this.marketItems"
+    :ino = "this.ino"
     />
      
   </div>    
@@ -73,7 +75,8 @@
       },
       data(){
         return{
-          marketItems: {}
+          marketItems: {},
+          ino : ''
         }
       },
       created(){
@@ -85,7 +88,9 @@
         this.$store.state.loading = true
         return market.FetchListDetail({ id:this.market_id })
         .then(response => {
+          console.log(response)
           this.marketItems = response.list
+          this.ino = response.price
           this.$store.state.loading = false
         })
       }

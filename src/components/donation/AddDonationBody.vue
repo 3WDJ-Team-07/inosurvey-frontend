@@ -43,10 +43,32 @@
           </v-card>
           <v-card flat height="5vh" fill-height>
             <v-layout>
-              <v-flex xs2>
-                <!-- date picker로 바꿀것 -->
-                <v-text-field v-model="closed_at" label="모금마감일" required>
-                </v-text-field>
+              <v-flex xs5>
+                <v-menu
+                  ref="menu"
+                  v-model="menu"
+                  :close-on-content-click="false"
+                  :nudge-right="200"
+                  lazy
+                  offset-y
+                  min-width="290px"
+                >
+                  <template v-slot:activator>
+                    <v-text-field
+                      v-model="closed_at"
+                      label="모금마감일"
+                      prepend-icon="event"
+                      readonly
+                    ></v-text-field>
+                  </template>
+                  <v-date-picker
+                    ref="picker"
+                    v-model="closed_at"
+                    max="2024-12-31"
+                    min="2019-01-01"
+                    @change="save"
+                  ></v-date-picker>
+                </v-menu>
               </v-flex>
               <v-flex xs2>
                 <v-text-field v-model="target_amount" label="목표 모금액" required>
@@ -80,8 +102,14 @@
         ],
         file:'',
         content:'',
-        closed_at:'',
+        closed_at:null,
         target_amount:'',
+        menu:false
+      }
+    },
+    watch:{
+      menu(val){
+        val && setTimeout(() => (this.$refs.picker.activePicker = 'YEAR'))
       }
     },
     methods: {
@@ -89,9 +117,13 @@
       fileUpload() {
         this.file = this.$refs.file.files[0]
       },
+      save (closed_at) {
+      this.$refs.menu.save(closed_at)
+    },
       adddonation() {
         let data = new FormData()
         data.append('user_id', this.userinfo.id)
+        data.append('is_donator', this.userinfo.is_donator)
         data.append('title',this.title)
         data.append('file',this.file)
         data.append('content',this.content)
@@ -103,7 +135,7 @@
           }
         }
         this.ADDDONATION(data, config)
-        this.$router.push({name:'donation'})
+        this.$router.replace({name:'donation'})
       },
     },
   }

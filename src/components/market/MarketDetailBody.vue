@@ -17,7 +17,7 @@
           </div>
           <div>
             <i class="fas fa-coins fa-lg ma-2"></i>
-            <span>60이노</span>
+            <span>{{ino}}이노</span>
           </div>
           <div>
             <i class="far fa-calendar-alt fa-lg ma-2"></i>
@@ -26,6 +26,7 @@
               ~{{marketItems.closed_at | substr}}
               </span>
           </div>
+          <span  v-if="marketItems.target">
           <span>
             <v-chip color="info" text-color="white">
               연령대 - 
@@ -62,6 +63,7 @@
               </span>
             </v-chip>
           </span>
+          </span>
         </v-card>
       </v-flex>
     </v-layout>
@@ -92,7 +94,7 @@
 
 <script>
 export default {
-  props:['marketItems'],
+  props:['marketItems','ino'],
   filters:{
     substr:function(date){
       if(date){
