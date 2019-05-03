@@ -15,7 +15,7 @@
         </v-flex>
         <v-flex xs2 md2>
           <v-card height="90vh" max-width="300" class="pt-5 text-xs-center">
-            <v-card flat height="60vh" fill-height>
+            <v-card flat height="62vh" fill-height>
               <div class="headline font-weight-bold">모금 소개</div>
             </v-card>
             <v-card flat>

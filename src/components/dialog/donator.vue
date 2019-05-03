@@ -61,13 +61,13 @@
       ...mapState(['isDonatorDialog']),
       SortdonatorItem() {
         if(!this.donator_item.value){
-          this.donationItems.users.sort((x,y) => { return y.num - x.num})
+          this.donationItems.users.sort((x,y) => { return y.pivot.id - x.pivot.id})
           return this.donationItems.users
         } else if(this.donator_item.value == 1){
-          this.donationItems.users.sort((x,y) => { return y.num - x.num})
+          this.donationItems.users.sort((x,y) => { return y.pivot.id - x.pivot.id})
           return this.donationItems.users
         }else if(this.donator_item.value == 2) {
-          this.donationItems.users.sort((x,y) => { return x.num - y.num})
+          this.donationItems.users.sort((x,y) => { return x.pivot.id - y.pivot.id})
           return this.donationItems.users
         }else if(this.donator_item.value == 3) {
           this.donationItems.users.sort((x,y) => { return y.pivot.donation_amount - x.pivot.donation_amount})

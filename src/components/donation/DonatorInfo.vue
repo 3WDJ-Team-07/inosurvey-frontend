@@ -3,20 +3,12 @@
     <v-flex style="margin-top:80px;" xs12>
         <div class="subheading font-weight-bold mb-3">
           <v-layout row wrap>
-            <v-flex xs8>
-                <span class="info--text mr-4 title">{{ donationItems.users[0].pivot.donation_amount }} 이노</span>
-                <span class="mr-4 caption">{{ donationItems.users[0].pivot.created_at }}</span>
-                <span>{{ donationItems.users[0].nickname }}</span>
-            </v-flex>
-            <v-flex xs8>
-                <span class="info--text mr-4 title">{{ donationItems.users[1].pivot.donation_amount }} 이노</span>
-                <span class="mr-4 caption">{{ donationItems.users[1].pivot.created_at }}</span>
-                <span>{{ donationItems.users[1].nickname }}</span>
-            </v-flex>
-            <v-flex xs8>
-                <span class="info--text mr-4 title">{{ donationItems.users[2].pivot.donation_amount }} 이노</span>
-                <span class="mr-4 caption">{{ donationItems.users[2].pivot.created_at }}</span>
-                <span>{{ donationItems.users[2].nickname }}</span>
+            <v-flex xs8 v-for="(item, index) in SliceDonationItems" :key="index">
+              <span v-if="">
+                <span class="mr-4">{{ item.nickname }}</span>
+                <span class="info--text mr-4 title">{{ item.pivot.donation_amount }} 이노</span>
+                <span class="mr-4 caption">{{ item.pivot.created_at }}</span>
+              </span>
             </v-flex>
           </v-layout>
         </div>
@@ -37,6 +29,11 @@
   export default {
     props: ['donationItems'],
     components: { donator },
+    computed: {
+      SliceDonationItems() {
+        return this.donationItems.users.slice(0,3)
+      }
+    },
     methods: {
       ...mapMutations(['SET_IS_DONATOR'])
     }
