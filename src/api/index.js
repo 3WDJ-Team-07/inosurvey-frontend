@@ -134,13 +134,13 @@ export const market = {
     return serverRequest('post','/api/market/sellable-forms',id)
   },
   //설문마켓 - 설문 판매
-  updateMarketCard(id){
-    return serverRequest('post','/api/market/create',id)
+  updateMarketCard(id,user_id){
+    return serverRequest('post','/api/market/create',{id,user_id})
   },
   FetchListDetail(id) {
     return serverRequest('post','/api/market/show',id)
   },
   FetchListSell(id) {
-    return serverRequest('post','/api/market/show',id)
+    return serverRequest('post','/api/market/sellable-show',id)
   }
 }

@@ -3,7 +3,7 @@
 
 <template lang="html">
   <v-container fluid grid-list-md
-  class="font-weight-bold">
+  class="font-weight-bold" >
     <v-layout>
       <v-flex>
         <v-card flat height="28vh" fill-height>

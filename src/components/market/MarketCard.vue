@@ -1,21 +1,21 @@
 <template>
-  <v-card height="160px" style="cursor:pointer;">
-    <v-layout>
+  <v-card color="#FAFAFA" flat style="cursor:pointer;">
+    <v-layout align-center>
       <v-flex xs9>
-        <v-card flat class="px-2">
-          <div class="card-title pt-3
-          display-1 font-weight-bold ">
-            {{ card.title }}
+        <v-card flat color="#FAFAFA" class="py-4 px-2" >
+          <div class="card-title 
+          display-1 font-weight-bold pb-3">
+          {{ card.title }}
           </div>
-          <div class="card-text pt-2 px-5 mx-5
-          body-2 font-weight-black">
-            {{ card.description }}
+          <div class="card-text px-5 mx-5
+          body-2 font-weight-black text-xs-left">
+          ⦁  {{ card.description | substr(80,'...')}}
           </div>
         </v-card>
       </v-flex>
       <v-flex xs3 text-xs-left>
-        <v-card flat class="subheading font-weight-bold">
-          <div class="headline font-weight-bold py-3">
+        <v-card flat color="#FAFAFA" class="py-4 subheading font-weight-bold">
+          <div class="headline font-weight-bold">
             <span class="blue--text font-italic">???</span> 이노
           </div>
           <div>
@@ -25,8 +25,8 @@
           </div>
           <div>
             <i class="far fa-calendar-alt font-weight-bold">
-            {{ card.started_at | substr }}
-            ~{{card.closed_at | substr}}
+            {{ card.started_at | substr(10,'') }}
+            ~ {{card.closed_at | substr(10,'') }}
             </i>
           </div>
         </v-card>
@@ -41,17 +41,13 @@
     name: 'MarketCard',
     props: ['card', 'index'],
     filters: {
-      substr: function (date) {
-        if (date) {
-          return date.substr(0, 10)
+      substr: function(msg,length,endmsg){
+        if(msg){
+          return msg.substr(0,length)+endmsg
         }
       }
     }
   }
 </script>
 
-<style scoped>
-.border_style {
-    border-right: 2px solid lightgrey;
-}
-</style>
+
