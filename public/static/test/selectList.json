@@ -1,0 +1,65 @@
+{
+  "message": "true",
+  "list": [
+    {
+      "id": 8,
+      "title": "123123",
+      "description": "1231231231",
+      "respondent_number": 244,
+      "respondent_count": 0,
+      "is_completed": 1,
+      "is_sale": 0,
+      "target_isactive": 1,
+      "bgcolor": "#ffffff",
+      "target_id": 9,
+      "user_id": 1,
+      "started_at": "2019-05-02 12:27:46",
+      "closed_at": "2020-08-05 00:00:00"
+    },
+    {
+      "id": 9,
+      "title": "asdasd",
+      "description": "234234234234",
+      "respondent_number": 100,
+      "respondent_count": 0,
+      "is_completed": 1,
+      "is_sale": 0,
+      "target_isactive": 0,
+      "bgcolor": "#ffffff",
+      "target_id": null,
+      "user_id": 1,
+      "started_at": "2019-05-02 12:27:48",
+      "closed_at": "2023-06-15 00:00:00"
+    },
+    {
+      "id": 10,
+      "title": "12312312",
+      "description": "45645645645645",
+      "respondent_number": 100,
+      "respondent_count": 0,
+      "is_completed": 1,
+      "is_sale": 0,
+      "target_isactive": 0,
+      "bgcolor": "#ffffff",
+      "target_id": null,
+      "user_id": 1,
+      "started_at": "2019-05-02 12:27:49",
+      "closed_at": "2019-08-08 00:00:00"
+    },
+    {
+      "id": 11,
+      "title": "123123",
+      "description": "asdfcccccccccccccccccccc",
+      "respondent_number": 100,
+      "respondent_count": 0,
+      "is_completed": 1,
+      "is_sale": 0,
+      "target_isactive": 0,
+      "bgcolor": "#ffffff",
+      "target_id": null,
+      "user_id": 1,
+      "started_at": "2019-05-02 12:27:55",
+      "closed_at": "2019-08-08 00:00:00"
+    }
+  ]
+}

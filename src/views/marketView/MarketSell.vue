@@ -1,5 +1,4 @@
 <template>
-<!-- 경고 해결하기 router params 문제-->
   <div>
     <v-container fluid grid-list-md pt-4 mt-5>
       <v-layout row wrap>
@@ -24,9 +23,10 @@
         </v-flex>
         <v-flex xs10>
           <v-card height="30vh" class="pa-1">
-            <SellBody
-            :sell_id='this.sell_id'
-            :sellItems='this.sellItems'/>
+            <MarketSellBody
+            :sell_id = "sell_id"
+            :sellItems = "sellItems"
+            />
           </v-card>
         </v-flex>
         <v-flex xs12>
@@ -36,7 +36,7 @@
               <div class="headline font-weight-bold my-5 py-5">
                 " {{sellItems.title}} "을 "100이노"에 판매합니다.
               </div>
-              <v-btn color="info" block @click="sell()">판매하기</v-btn>
+              <v-btn color="info" block @click="sell">판매하기</v-btn>
             </div>
           </v-card>
         </v-flex>
@@ -46,19 +46,17 @@
 </template>
 
 <script>
-  import SellBody         from '@/components/market/MarketSellBody'
-  import { mapActions,mapState }   from 'vuex'
-  import { market }       from '@/api/index'
+  import MarketSellBody           from '@/components/market/MarketSellBody'
+  import { mapActions,mapState }  from 'vuex'
+  import { market }               from '@/api/index'
 
   export default {
+    props: ['sell_id'],
     name: 'surveymarketsell',
     computed: {
       ...mapState(['userinfo']),
-      sell_id(){
-        return Number(this.$route.params.sell_id)
-      }
     },
-    components: { SellBody },
+    components: { MarketSellBody },
     data(){
       return{
         sellItems: {},
@@ -77,16 +75,12 @@
         })
         this.$router.replace({name: 'surveymarket'})
       },
-      fetchList(){
+      fetchList() {
         //설문 정보 불러오기
-        return market.FetchListSell({id:this.sell_id})
-        .then(response=>{
-           this.sellItems = response.list
-
-        })
-        .catch(error =>{
-          console.log(error)
-        })
+        // return market.FetchListSell({id:this.sell_id})
+        // .then(response => this.sellItems = response.list )
+        return market.TestDetailList()
+        .then(response => this.sellItems = response)
       }
     }
   }

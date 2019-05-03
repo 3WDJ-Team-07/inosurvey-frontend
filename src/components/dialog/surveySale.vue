@@ -1,5 +1,5 @@
 /* 판매할 설문 리스트 모달창 */
-// 리스트가 바로 뜨지 않고 마켓 페이지가 다시 로딩 되었을때 뜨는 문제점 해결해야됨
+
 <template lang="html">
   <v-layout row>
     <v-dialog v-model="isSaleDialog" persistent max-width="450px">
@@ -14,20 +14,24 @@
             <span class="headline font-weight-bold"> 판매할 설문 선택</span>
           </v-card-title>
           <v-card-text>
-            <div v-for="(survey) in sellSurvey" class="title">
+            <v-layout column wrap align-center>
+              <div v-for="(survey, index) in saleDetailList" :key="index" class="title pa-2 form-radio-text">
               <input
-              type="radio"  name="sellSurvey"
-              v-bind:value="survey.id" v-model="pickedSurvey"
-              class="ml-3 mr-3 mb-3">
-              {{survey.title}}
-            </div>
+              type="radio" name="sellSurvey"
+              :value="survey.id" :id="survey.id"
+              v-model="pickedSurvey"
+              class="form-radio ml-3 mr-3 mb-3">
+              <label class="headline" :for="survey.id">{{survey.title}}</label> 
+              </div>
+            </v-layout>
           </v-card-text>
         </v-layout>
         <v-card-actions class="pr-4 pl-4 pb-4">
-          <!-- router !!!!!! missing param 경고 해결하기 -->
           <router-link
-          :to="{ name : 'surveymarketsell',
-          params: { sell_id: pickedSurvey } }" >
+          :to="{ 
+            name : 'surveymarketsell',
+            params: { sell_id: pickedSurvey }
+          }">
             <v-btn color="info" large @click="sale">판매하기</v-btn>
           </router-link>
         </v-card-actions>
@@ -37,23 +41,36 @@
 </template>
 
 <script>
-  import { mapState, mapMutations } from 'vuex';
+  import { mapState, mapMutations } from 'vuex'
+  import { market }                 from '@/api/index'
+
   export default {
     name: 'surveySale',
-    // marketJumbotron에서 데이터 받아 오고 있음
-    props:['sellSurvey','userinfo'],
     data(){
       return {
-        pickedSurvey:''
+        pickedSurvey:'',
+        saleDetailList: []
       }
     },
     computed: {
       ...mapState(['isSaleDialog']),
     },
+    mounted() {
+      this.fetchSelect()
+    },
+    updated() {
+      console.log(this.pickedSurvey)
+    },
     methods: {
       ...mapMutations(['SET_IS_SURVEY_SALE']),
       sale(){
         this.SET_IS_SURVEY_SALE(false);
+      },
+      fetchSelect() {
+        return market.TestSelectList()
+        .then(response => {
+          this.saleDetailList = response.list
+        })
       }
     }
   }
@@ -63,6 +80,17 @@
 	*{
 		overflow: hidden;
 	}
+  .form-radio {
+    display : none;
+  }
+  .form-radio-text {
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 1s ease;
+  }
+  .form-radio-text:hover {
+    background-color: grey;
+  }
 	.border_rounded{
 		border-radius: 7%;
 	}

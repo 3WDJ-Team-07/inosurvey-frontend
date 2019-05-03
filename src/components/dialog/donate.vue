@@ -40,7 +40,7 @@
     name: 'donate',
     data() {
       return {
-        donationItems:{}
+        // donationItems:{}
       }
     },
     computed: {

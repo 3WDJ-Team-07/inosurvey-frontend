@@ -116,13 +116,13 @@ const router = new Router({
           path:'detail/:market_id',
           name:'surveymarketdetail',
           props: true,
-          component:MarketDetail
+          component: MarketDetail
         },
         {
-          path:'sell/:sell_id',
-          name:'surveymarketsell',
-          props:true,
-          component:MarketSell
+          path: 'sell/:sell_id',
+          name: 'surveymarketsell',
+          props: true,
+          component: MarketSell
         }
       ]
     },
