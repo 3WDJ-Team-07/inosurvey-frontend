@@ -162,6 +162,15 @@ const actions = {
       console.log("3333",response)
     })
   },
+
+  // 설문 구매하기
+  MARKET_PURCHASE(_, {id, user_id}) {
+    api.market.marketPurchase(id, user_id)
+    .then(response => {
+      console.log('구매하기',response)
+    })
+  },
+
 }
 
 export default actions
