@@ -35,14 +35,14 @@
         "mainText": "",
         "subText": "나만의 설문조사 만들기",
         "img": "/static/create.png",
-        "color": "blue--text"
+        "color": "blue--text text--darken-1"
       },
       {
         "hoverTitle": "설문 리스트 보기",
         "mainText": "",
         "subText": "내가 만든 설문조사",
         "img": "/static/mysurvey.png",
-        "color": "orange--text"
+        "color": "amber--text text--darken-3"
       }
     ]
   },

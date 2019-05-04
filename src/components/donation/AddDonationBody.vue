@@ -75,9 +75,6 @@
                 </v-text-field>
               </v-flex>
               <v-flex xs3 class="mt-4">이노</v-flex>
-              <v-flex xs7>
-                <v-btn large color="info" block type="submit" class="pt-4 pb-5 title font-weight-bold" form="add-donation-form">등록하기</v-btn>
-              </v-flex>
             </v-layout>
           </v-card>
         </v-form>
@@ -113,7 +110,7 @@
       }
     },
     methods: {
-      ...mapActions(['ADDDONATION']),
+      ...mapActions(['ADDDONATION','FETCH_DONATION']),
       fileUpload() {
         this.file = this.$refs.file.files[0]
       },
@@ -136,6 +133,7 @@
         }
         this.ADDDONATION(data, config)
         this.$router.replace({name:'donation'})
+        this.FETCH_DONATION()
       },
     },
   }

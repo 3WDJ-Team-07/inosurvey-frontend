@@ -4,34 +4,58 @@
       <div 
       class="headline 
       center_sorting 
-      font-weight-bold pa-3">
+      font-weight-bold pa-2">
       응답 설문 내역</div>
     </v-card-title>
     <v-card-title class="hover_style" @click="marketPage" ref="market">
       <div 
       class="headline 
       center_sorting 
-      font-weight-bold pa-3">
+      font-weight-bold pa-2">
       구매 설문 내역</div>
+    </v-card-title>
+    <v-card-title  v-if="userinfo.is_donator==1" class="hover_style" @click="foundationPage" ref="foundation">
+      <div 
+      class="headline 
+      center_sorting 
+      font-weight-bold pa-2">
+      등록한 모금</div>
+    </v-card-title>
+    <v-card-title class="hover_style" @click="donatePage" ref="donate">
+      <div 
+      class="headline 
+      center_sorting 
+      font-weight-bold pa-2">
+      참여한 모금</div>
     </v-card-title>
     <v-card-title class="hover_style" @click="walletPage" ref="wallet">
       <div 
       class="headline 
       center_sorting 
-      font-weight-bold pa-3">
+      font-weight-bold pa-2">
       이노 지갑</div>
     </v-card-title>
   </v-card>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
+  computed: {
+    ...mapState(['userinfo'])
+  },
   methods:{
     surveyPage() {
       this.$router.push({name: 'surveyhistory'})
     },
     marketPage() {
       this.$router.push({name: 'markethistory'})
+    },
+    foundationPage() {
+      this.$router.push({name: 'foundationhistory'})
+    },
+    donatePage() {
+      this.$router.push({name: 'donatehistory'})
     },
     walletPage() {
       this.$router.push({name: 'wallethistory'})

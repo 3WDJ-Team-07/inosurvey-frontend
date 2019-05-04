@@ -1,9 +1,9 @@
 <template>
   <v-layout row wrap justify-center>
-    <v-card class="rounded-card" style="width:90%;">
-      <v-img :src="card.image" class="white--text" height="250px">
+    <v-card class="rounded-card" style="width:90%;" :class="achieved">
+      <v-img :src="card.image"  height="250px">
         <v-flex mt-2 ml-2>
-        <v-chip color="#444444" text-color="white" class="subheading">D - 50</v-chip>
+        <v-chip color="#555555" dark class="daychip subheading">D {{dDay}}</v-chip>
         </v-flex>
       </v-img>
        <v-card-text
@@ -18,7 +18,7 @@
           >
           <v-tooltip left>
             <v-icon slot="activator">thumb_up</v-icon>
-            <div class="pa-3 subheading">목표응답수를 달성했습니다</div>
+            <div class="pa-3 subheading">목표금액을 달성했습니다</div>
           </v-tooltip>
         </v-btn>
       </v-card-text>
@@ -28,11 +28,12 @@
          <v-progress-linear
           color="info"
           height="20"
+          class="rounded-bar"
           :value="rate"
         >
           <span
             class="font-weight-bold"
-            style="color:white; margin-left:6px;"
+            style="color:white; margin-left:2%;"
           >
             {{rate}}
           </span>
@@ -48,14 +49,44 @@
   
   export default {
     props: ['card','index'],
+    data() {
+      return {
+        achieved:''
+      }
+    },
     computed: {
       rate() {
         return (this.card.current_amount / this.card.target_amount*100).toFixed(1) + ' %'
+      },
+      dDay() {
+        var startDate = new Date().toISOString().substr(0,10)
+        var closeDate = this.card.closed_at.substr(0,10)
+        var arr1 = startDate.split('-')
+        var arr2 = closeDate.split('-')
+        var day1 = new Date(arr1[0],arr1[1],arr1[2])
+        var day2 = new Date(arr2[0],arr2[1],arr2[2])
+        var dday= (day2-day1)/86400000
+        var plusday = (dday.toString()).substr(1,1)
+        if(dday==0){
+          return '- day'
+        }
+        else if(dday<0){
+          return '+ '+plusday
+        }
+        return '-'+dday
+      }
+    },
+    created(){
+       if(this.card.is_achieved){
+         this.achieved='achieved'
       }
     },
     filters: {
       substr: function(msg,length,endmsg){
-        if(msg){
+        if(msg.length<80){
+          return msg.substr(0,length)
+        }
+        else if(msg.length){
           return msg.substr(0,length)+endmsg
         }
       }
@@ -67,5 +98,14 @@
   .rounded-card {
     border-radius: 10px;
     cursor: pointer;
+  }
+  .rounded-bar {
+    border-radius: 10px;
+  }
+  .achieved{
+    filter: grayscale(90%) brightness(60%)
+  }
+  .daychip{
+    box-shadow: 0 0 10px #555555
   }
 </style>

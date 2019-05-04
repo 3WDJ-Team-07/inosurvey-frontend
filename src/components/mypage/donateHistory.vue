@@ -1,11 +1,11 @@
-<template>
+f<template>
   <div>
     <v-layout row wrap justify-space-around>
       <v-flex xs2>
         <myNav/>
       </v-flex>
     <v-flex xs9>
-      <div class="display-1">응답 설문 내역</div>
+      <div class="display-1">기부한 모금</div>
       <v-data-table
       :headers="headers"
       :items="surveyInfo"

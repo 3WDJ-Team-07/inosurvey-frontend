@@ -6,7 +6,7 @@
             <v-flex xs8 v-for="(item, index) in SliceDonationItems" :key="index">
               <span v-if="">
                 <span class="mr-4">{{ item.nickname }}</span>
-                <span class="info--text mr-4 title">{{ item.pivot.donation_amount }} 이노</span>
+                <span class="info--text mr-2 title">{{ item.pivot.donation_amount }}</span><span class="title font-weight-bold">이노</span> 
                 <span class="mr-4 caption">{{ item.pivot.created_at }}</span>
               </span>
             </v-flex>
