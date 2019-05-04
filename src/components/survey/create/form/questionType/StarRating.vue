@@ -9,7 +9,7 @@
         <star-rating
         :increment="1"
         :max-rating="5"
-        inactive-color="red"
+        inactive-color="grey"
         active-color="gold"
         :star-size="100"
         ></star-rating>

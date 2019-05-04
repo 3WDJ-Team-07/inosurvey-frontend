@@ -7,7 +7,7 @@
           <v-text-field name="name" label="설문제목" outline id="id" v-model="getTitle" ref="input" @keyup.enter="onAddClick"></v-text-field>
           <div style="float:right">
             <v-btn color="grey" dark @click="SET_IS_ADD_SURVEY(false)">취소</v-btn>
-            <v-btn color="primary" @click="onAddClick" :disabled="!valid">완료</v-btn>
+            <v-btn color="info" @click="onAddClick" :disabled="!valid">완료</v-btn>
           </div>
         </v-card-text>
       </v-card>

@@ -5,6 +5,7 @@
         <myNav/>
       </v-flex>
     <v-flex xs9>
+      <div class="display-1">구매 설문 내역</div>
       <v-data-table
       :headers="headers"
       :items="surveyInfo"

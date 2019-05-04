@@ -11,7 +11,7 @@
         </span>
         <v-layout column align-center>
           <v-card-title>
-          	<span class="display-1 font-weight-bold pa-5" style="color: #64B5F6;">기부자 현황</span>
+          	<span class="display-1 font-weight-bold pa-5 info--text">기부자 현황</span>
 					</v-card-title>
           <v-select
             :items="donator_item"
@@ -21,7 +21,7 @@
             class="mb-5"
             item-text="name"
             item-value="value"
-            color="green"
+            color="info"
             append-icon="arrow_drop_down"
             solo hide-details>
 					</v-select>
