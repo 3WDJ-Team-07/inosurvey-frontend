@@ -1,5 +1,5 @@
 /* 판매할 설문 상세정보 */
-
+// age, gender, job 로딩시 에러 뜨는 문제 해결해야됨
 <template>
   <v-container>
     <v-layout fluid grid-list-md
@@ -19,20 +19,18 @@
         <div>
           <i class="far fa-calendar-alt fa-lg ma-2"></i>
           <span>
-            {{ sellItems.started_at}}
+            {{ sellItems.started_at | substr }}
           </span>
           <span v-if="sellItems.closed_at">
-            ~{{sellItems.closed_at}}
+            ~{{sellItems.closed_at | substr}}
           </span>
         </div>
-        <div>
+        <div v-if="sellItems.target">
           <span>
             <v-chip color="info" text-color="white">
-              연령대&nbsp;&nbsp;-&nbsp;&nbsp;
-              <span v-if="!sellItems.target.age.length == 0">
-                <span v-for="(age, index) in sellItems.target.age" :key="index">
-                  {{age}},
-                </span>
+              연령대 - 
+              <span v-if="!age.length == 0">
+                {{ age }} 대
               </span>
               <span v-else>
                 무관
@@ -41,26 +39,26 @@
           </span>
           <span>
             <v-chip color="info" text-color="white">
-              성별&nbsp;&nbsp;-&nbsp;&nbsp;
-              <span v-if="sellItems.target.gender == 0">
+              성별 - 
+              <span v-if="gender == 0">
                 무관
               </span>
-              <span v-else-if="sellItems.target.gender == 1">
+              <span v-else-if="gender == 1">
                 남자
               </span>  
-              <span v-else-if="sellItems.target.gender == 2">
+              <span v-else-if="gender == 2">
                 여자
               </span>      
             </v-chip>
           </span>
           <span>
             <v-chip color="info" text-color="white">
-              직업&nbsp;&nbsp;-&nbsp;&nbsp; 
-              <span v-if="sellItems.target.job.length == 0">
+              직업 - 
+              <span v-if="job.length == 0">
                 무관
               </span>
-              <span v-else v-for="(job, index) in sellItems.target.job" :key="index">
-                {{job.name}},
+              <span v-else v-for="(targetjob) in job">
+                {{targetjob.name}}, 
               </span>
             </v-chip>
           </span>
@@ -72,17 +70,27 @@
 
 <script>
 export default {
-  props: ['sell_id', 'sellItems'],
-  data() {
-    return {
-      age: '',
-      gender: '',
-      job:''
+  props:['sell_id','sellItems'],
+  filters:{
+    substr:function(date){
+      if(date){
+        return date.substr(0,10)
+      }
     }
-  }
+  },
+  computed: {
+    age(){
+      return this.sellItems.target.age||'0'
+    },
+    gender(){
+      return this.sellItems.target.gender||'0'
+    },
+    job(){
+      return this.sellItems.target.job||'0'
+    }
+  },
 }
 </script>
 
 <style>
-
 </style>

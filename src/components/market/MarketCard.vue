@@ -2,9 +2,9 @@
   <v-card color="#FAFAFA" flat style="cursor:pointer;">
     <v-layout align-center>
       <v-flex xs9>
-        <v-card flat color="#FAFAFA" class="py-4 px-2" >
+        <v-card flat color="#FAFAFA" class="my-4 px-2" >
           <div class="card-title 
-          display-1 font-weight-bold pb-3">
+          display-1 font-weight-bold pb-1">
           {{ card.title }}
           </div>
           <div class="card-text px-5 mx-5
@@ -16,7 +16,7 @@
       <v-flex xs3 text-xs-left>
         <v-card flat color="#FAFAFA" class="py-4 subheading font-weight-bold">
           <div class="headline font-weight-bold">
-            <span class="blue--text font-italic">???</span> 이노
+            <span class="blue--text font-italic">{{card.price}}</span> 이노
           </div>
           <div>
             <i class="fas fa-user-alt">
@@ -49,5 +49,3 @@
     }
   }
 </script>
-
-

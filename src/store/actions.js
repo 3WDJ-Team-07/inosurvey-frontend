@@ -146,10 +146,11 @@ const actions = {
   },
 
   // 판매할 설문 리스트
-  FETCH_SELL(context, {id: user_id}){
-    api.market.marketSell({id: user_id})
+  FETCH_SELL(context, { id: user_id }){
+    api.market.marketSell({ id: user_id })
     .then(response => {
       context.commit('FETCH_SELL',response.list)
+      console.log(response)
     })
   },
 
@@ -157,6 +158,15 @@ const actions = {
   UPDATE_MARKET(_, {id,user_id}){
     api.market.updateMarketCard(id,user_id)
   },
+
+  // 설문 구매하기
+  MARKET_PURCHASE(_, {id, user_id}) {
+    api.market.marketPurchase(id, user_id)
+    .then(response => {
+      console.log('구매하기',response)
+    })
+  },
+
 }
 
 export default actions

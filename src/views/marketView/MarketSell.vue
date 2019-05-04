@@ -23,10 +23,9 @@
         </v-flex>
         <v-flex xs10>
           <v-card height="30vh" class="pa-1">
-            <MarketSellBody
-            :sell_id = "sell_id"
-            :sellItems = "sellItems"
-            />
+            <SellBody
+            :sell_id='this.sell_id'
+            :sellItems='this.sellItems'/>
           </v-card>
         </v-flex>
         <v-flex xs12>
@@ -36,7 +35,7 @@
               <div class="headline font-weight-bold my-5 py-5">
                 " {{sellItems.title}} "을 "100이노"에 판매합니다.
               </div>
-              <v-btn color="info" block @click="sell">판매하기</v-btn>
+              <v-btn color="info" block @click="sell()">판매하기</v-btn>
             </div>
           </v-card>
         </v-flex>
@@ -46,17 +45,18 @@
 </template>
 
 <script>
-  import MarketSellBody           from '@/components/market/MarketSellBody'
-  import { mapActions,mapState }  from 'vuex'
-  import { market }               from '@/api/index'
-
+  import SellBody         from '@/components/market/MarketSellBody'
+  import { mapActions,mapState }   from 'vuex'
+  import { market }       from '@/api/index'
   export default {
-    props: ['sell_id'],
-    name: 'surveymarketsell',
+    name: 'marketsell',
     computed: {
       ...mapState(['userinfo']),
+      sell_id(){
+        return Number(this.$route.params.sell_id)
+      }
     },
-    components: { MarketSellBody },
+    components: { SellBody },
     data(){
       return{
         sellItems: {},
@@ -75,12 +75,15 @@
         })
         this.$router.replace({name: 'surveymarket'})
       },
-      fetchList() {
+      fetchList(){
         //설문 정보 불러오기
-        // return market.FetchListSell({id:this.sell_id})
-        // .then(response => this.sellItems = response.list )
-        return market.TestDetailList()
-        .then(response => this.sellItems = response)
+        return market.FetchListSell({id:this.sell_id})
+        .then(response=>{
+           this.sellItems = response.list
+        })
+        .catch(error =>{
+          console.log(error)
+        })
       }
     }
   }

@@ -129,16 +129,23 @@ export const market = {
   marketCard(){
     return serverRequest('get','/api/market/index')
   },
+  marketCardTest() {
+    return localRequest('get','/static/allform.json')
+  },
+  FetchListDetail(id) {
+    return serverRequest('post','/api/market/show',id)
+  },
+  // 설문 마켓 - 구매하기
+  marketPurchase(id,user_id) {
+    return serverRequest('post','/api/market/purchase',{ id, user_id })
+  },
   // 설문마켓 - 판매할 설문 정보 불러오기
   marketSell(id){
     return serverRequest('post','/api/market/sellable-forms',id)
   },
   //설문마켓 - 설문 판매
   updateMarketCard(id,user_id){
-    return serverRequest('post','/api/market/create',{id,user_id})
-  },
-  FetchListDetail(id) {
-    return serverRequest('post','/api/market/show',id)
+    return serverRequest('post','/api/market/sale',{id,user_id})
   },
   FetchListSell(id) {
     return serverRequest('post','/api/market/sellable-show',id)

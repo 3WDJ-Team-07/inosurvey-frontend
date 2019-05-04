@@ -13,7 +13,7 @@
         "target_id": 3,
         "user_id": 3,
         "started_at": "2019-04-19 13:33:58",
-        "closed_at": null,
+        "closed_at": "2019-05-20 13:33:58",
         "target": {
             "id": 3,
             "start_age": 16,
@@ -36,8 +36,8 @@
         "topic_id": 4,
         "target_id": 3,
         "user_id": 4,
-        "started_at": "2019-04-19 13:33:58",
-        "closed_at": null,
+        "started_at": "2019-04-30 13:33:58",
+        "closed_at": "2019-05-10 13:33:58",
         "target": {
             "id": 3,
             "start_age": 16,
