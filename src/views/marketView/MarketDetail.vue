@@ -64,7 +64,6 @@
   import { mapMutations,mapState }     from 'vuex'
   import { market }           from '@/api/index'
   import Spinner           from '@/components/Spinner'
-
   export default {
       name: 'marketdetail',
       props: ['market_id'],

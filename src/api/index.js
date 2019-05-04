@@ -149,5 +149,15 @@ export const market = {
   },
   FetchListSell(id) {
     return serverRequest('post','/api/market/sellable-show',id)
+  },
+
+  TestSaleList() {
+    return localRequest('get','/static/test/saleList.json')
+  },
+  TestDetailList() {
+    return localRequest('get','/static/test/detailList.json')
+  },
+  TestSelectList() {
+    return localRequest('get','/static/test/selectList.json')
   }
 }

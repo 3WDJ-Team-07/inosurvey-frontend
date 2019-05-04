@@ -71,10 +71,10 @@
 </script>
 
 <style scoped>
-	*{
-		overflow: hidden;
-	}
-	.border_rounded{
-		border-radius: 7%;
-	}
+   *{
+      overflow: hidden;
+   }
+   .border_rounded{
+      border-radius: 7%;
+   }
 </style>

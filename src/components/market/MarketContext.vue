@@ -43,7 +43,7 @@
   import { mapActions, mapState }    from 'vuex'
   import MarketCard                  from '@/components/market/MarketCard'
   import Spinner2                    from '@/components/Spinner2'
-  import surveySale                               from '@/components/dialog/surveySale'
+  import surveySale                  from '@/components/dialog/surveySale'
 
   export default {
     name:'MarketContext',
@@ -79,4 +79,3 @@
   border-top: 1px solid lightgrey;
 }
 </style>
-

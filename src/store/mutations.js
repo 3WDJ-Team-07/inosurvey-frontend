@@ -51,6 +51,9 @@ const mutations = {
   SET_IS_DONATE(state, toggle) {
     state.isDonateDialog = toggle
   },
+  SET_IS_DONATOR(state, toggle) {
+    state.isDonatorDialog = toggle
+  },
 
   /* Form input */
   FORM_DATE_REQUEST(state) {

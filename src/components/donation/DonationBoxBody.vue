@@ -24,7 +24,8 @@
               : {{donationItems.current_amount}} 
               / {{donationItems.target_amount}} 이노</span>
           </div>
-          <v-progress-linear
+          <v-flex xs8>
+            <v-progress-linear
               color="info"
               height="30"
               :value="rate"
@@ -32,6 +33,7 @@
             >
               <span style="color:white; margin-left:6px;">{{ rate }}</span>
             </v-progress-linear>
+          </v-flex>
           </v-flex>
           <v-flex xs12>
             <v-card class="pa-4 mt-2" flat>
@@ -54,24 +56,9 @@
       </v-flex>
     </v-layout>
     <v-layout>
-      <v-flex class="mt-5 pt-5">
-        <v-card flat fill-height>
-          <div v-for="donator in donatorInfo"
-           :key="donator.name">
-            <div class="subheading font-weight-bold mb-3">
-              <span class="mr-4">{{ donator.name }}</span>
-              <span class="mx-4">
-                <span class="info--text">{{ donator.sum }}</span>
-                <span>이노</span>
-              </span>
-              <span class="mx-4">{{ donator.date }}</span>
-            </div>
-          </div>
-        </v-card>
-      </v-flex>
-      <v-flex xs8 class="ml-5" style="margin-top:110px;">
-        <v-btn depressed fab color="#BDBDBD" dark>더보기</v-btn>
-      </v-flex>
+      <DonatorInfo
+      :donationItems="donationItems"
+      />
       <donate 
       :donationItems="donationItems"
       :inocoin = "inocoin"
@@ -84,10 +71,11 @@
   import { userInformation }        from '@/api/index'
   import { mapState, mapMutations } from 'vuex'
   import donate                     from '@/components/dialog/donate'
+  import DonatorInfo                from './DonatorInfo'
 
   export default {
     props: ['donationItems'],
-    components: { donate },
+    components: { donate, DonatorInfo },
     data() {
       return {
         inocoin: {},
