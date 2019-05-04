@@ -35,7 +35,7 @@
               <div class="headline font-weight-bold my-5 py-5">
                 " {{sellItems.title}} "을 "100이노"에 판매합니다.
               </div>
-              <v-btn color="info" block @click="sell()">판매하기</v-btn>
+              <v-btn color="info" block @click="sell">판매하기</v-btn>
             </div>
           </v-card>
         </v-flex>

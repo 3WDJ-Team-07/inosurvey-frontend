@@ -14,19 +14,17 @@
             <span class="headline font-weight-bold"> 판매할 설문 선택</span>
           </v-card-title>
           <v-card-text>
-            <div v-for="(survey, index) in mySurveyForm" :key="index" class="title">
-              <!-- 여기서 판매된걸 빼고 다 보여주도록 -->
-              <div v-if="">
-                <input
-                type="radio"  name="sellSurvey"
-                v-bind:value="index" v-model="pickedSurvey"
-                class="ml-3 mr-3 mb-3">
-                {{survey.title}}
-              </div>
+            <div v-for="(survey) in sellSurvey" class="title">
+              <input
+              type="radio"  name="sellSurvey"
+              v-bind:value="survey.id" v-model="pickedSurvey"
+              class="ml-3 mr-3 mb-3">
+              {{survey.title}}
             </div>
           </v-card-text>
         </v-layout>
         <v-card-actions class="pr-4 pl-4 pb-4">
+          <!-- router !!!!!! missing param 경고 해결하기 -->
           <router-link
           :to="{ name : 'surveymarketsell',
           params: { sell_id: pickedSurvey } }" >
@@ -39,40 +37,44 @@
 </template>
 
 <script>
-  import { mapState, mapMutations, mapActions } from 'vuex';
+  import { mapState, mapMutations } from 'vuex'
+  import { market } from '@/api/index'
+
   export default {
     name: 'surveySale',
+    props:['userinfo'],
     data(){
       return {
-        pickedSurvey:''
+        pickedSurvey:'',
+        sellSurvey: []
       }
     },
-    computed: {
-      ...mapState(['isSaleDialog','mySurveyForm','userinfo']),
+    mounted() {
+      this.fetchSellList()
     },
-    created(){
-      this.fetchMySaleList()
+    computed: {
+      ...mapState(['isSaleDialog']),
     },
     methods: {
-      ...mapActions(['FETCH_MY_SURVEY_FORM']),
       ...mapMutations(['SET_IS_SURVEY_SALE']),
-      fetchMySaleList() {
-        this.FETCH_MY_SURVEY_FORM({
-          id: this.userinfo.id  
-        })
-      },
       sale(){
         this.SET_IS_SURVEY_SALE(false);
+      },
+      fetchSellList() {
+        return market.marketSell({ id: this.userinfo.id })
+        .then(response => {
+          this.sellSurvey = response.list
+        })
       }
     }
   }
 </script>
 
 <style scoped>
-	*{
-		overflow: hidden;
-	}
-	.border_rounded{
-		border-radius: 7%;
-	}
+   *{
+      overflow: hidden;
+   }
+   .border_rounded{
+      border-radius: 7%;
+   }
 </style>

@@ -18,30 +18,17 @@
         </v-layout>
       </v-container>
     </v-img>
-    <surveySale
-    :sellSurvey="sellSurvey"
-    :userinfo="userinfo"
-    />
   </div>
 </template>
 <script>
   import { mapMutations, mapState, mapActions }   from 'vuex'
-  import surveySale                               from '@/components/dialog/surveySale'
-	export default {
+  
+  export default {
     name:'maketJumbotron',
-    components: { surveySale },
-    computed: {
-      ...mapState(['sellSurvey','userinfo']),
-    },
     methods: {
-      ...mapActions(['FETCH_SELL']),
-      ...mapMutations([ 'SET_IS_SURVEY_SALE' ]),
+      ...mapMutations([ 'SET_IS_SURVEY_SALE' ])
     },
-    created(){
-      this.FETCH_SELL({
-        id: this.userinfo.id  
-      })
-    },
+    
 	}
 </script>
 
