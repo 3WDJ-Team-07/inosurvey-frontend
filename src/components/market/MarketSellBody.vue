@@ -25,7 +25,7 @@
             ~{{sellItems.closed_at | substr}}
           </span>
         </div>
-        <div>
+        <div v-if="sellItems.target">
           <span>
             <v-chip color="info" text-color="white">
               연령대 - 

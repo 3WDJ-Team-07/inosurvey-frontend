@@ -37,15 +37,20 @@
 </template>
 
 <script>
-  import { mapState, mapMutations } from 'vuex';
+  import { mapState, mapMutations } from 'vuex'
+  import { market } from '@/api/index'
+
   export default {
     name: 'surveySale',
-    // marketJumbotron에서 데이터 받아 오고 있음
-    props:['sellSurvey','userinfo'],
+    props:['userinfo'],
     data(){
       return {
-        pickedSurvey:''
+        pickedSurvey:'',
+        sellSurvey: []
       }
+    },
+    mounted() {
+      this.fetchSellList()
     },
     computed: {
       ...mapState(['isSaleDialog']),
@@ -54,6 +59,12 @@
       ...mapMutations(['SET_IS_SURVEY_SALE']),
       sale(){
         this.SET_IS_SURVEY_SALE(false);
+      },
+      fetchSellList() {
+        return market.marketSell({ id: this.userinfo.id })
+        .then(response => {
+          this.sellSurvey = response.list
+        })
       }
     }
   }

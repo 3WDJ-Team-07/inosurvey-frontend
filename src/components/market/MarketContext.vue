@@ -33,6 +33,9 @@
       </v-layout>
     </v-container>
     <Spinner2 v-else/>
+    <surveySale
+    :userinfo="userinfo"
+    />
   </span>
 </template>
 
@@ -40,17 +43,18 @@
   import { mapActions, mapState }    from 'vuex'
   import MarketCard                  from '@/components/market/MarketCard'
   import Spinner2                    from '@/components/Spinner2'
+  import surveySale                               from '@/components/dialog/surveySale'
 
   export default {
     name:'MarketContext',
-    components: { MarketCard, Spinner2 },
+    components: { MarketCard, Spinner2, surveySale },
     data(){
       return{
         search:''
         }
     },
     computed: {
-      ...mapState([ 'saleSurvey' ]),
+      ...mapState([ 'saleSurvey', 'userinfo']),
        surveyList() {
         var sellingSurvey = this.saleSurvey.filter((card) => {
           return card.title.toLowerCase().includes(this.search.toLowerCase())||card.description.toLowerCase().includes(this.search.toLowerCase())

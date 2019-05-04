@@ -15,7 +15,7 @@
               <v-btn
               :to="{ name: 'adddonationbox' }"
               v-if="userinfo.is_donator==1"
-              color="#333333" large class="white--text"
+              color="#444444" large class="white--text"
               >
               모금함 등록
               </v-btn>
