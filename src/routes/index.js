@@ -1,25 +1,27 @@
-import Vue              from 'vue'
-import Router           from 'vue-router'
-import store            from '../store'
-import swal             from 'sweetalert'
-import Join             from '@/views/auth/Join'
-import Home             from '@/views/Home'
-import Survey           from '@/views/surveyView/Survey'
-import SurveyMarket     from '@/views/marketView/SurveyMarket'
-import SurveyForm       from '@/views/surveyView/SurveyForm'
-import SurveyRequest    from '@/views/surveyView/SurveyRequest'
-import SurveyComplete   from '@/views/surveyView/SurveyComplete'
-import MySurvey         from '@/views/surveyView/MySurvey'
-import SurveyAnalysis   from '@/components/survey/analysis/SurveyAnalysis'
-import MyPage           from '@/views/myPageView/MyPage'
-import surveyHistory    from '@/components/mypage/surveyHistory'
-import marketHistory    from '@/components/mypage/marketHistory'
-import walletHistory    from '@/components/mypage/walletHistory'
-import MarketDetail     from '@/views/marketView/MarketDetail'
-import MarketSell       from '@/views/marketView/MarketSell'
-import Donation         from '@/views/donationView/Donation'
-import DonationDetail   from '@/views/donationView/DonationDetail'
-import AddDonationBox   from '@/views/donationView/AddDonationBox'
+import Vue                    from 'vue'
+import Router                 from 'vue-router'
+import store                  from '../store'
+import swal                   from 'sweetalert'
+import Join                   from '@/views/auth/Join'
+import Home                   from '@/views/Home'
+import Survey                 from '@/views/surveyView/Survey'
+import SurveyMarket           from '@/views/marketView/SurveyMarket'
+import SurveyForm             from '@/views/surveyView/SurveyForm'
+import SurveyRequest          from '@/views/surveyView/SurveyRequest'
+import SurveyComplete         from '@/views/surveyView/SurveyComplete'
+import MySurvey               from '@/views/surveyView/MySurvey'
+import SurveyAnalysis         from '@/components/survey/analysis/SurveyAnalysis'
+import MyPage                 from '@/views/myPageView/MyPage'
+import surveyHistory          from '@/components/mypage/surveyHistory'
+import marketHistory          from '@/components/mypage/marketHistory'
+import donateRegisterHistory  from '@/components/mypage/donateRegisterHistory'
+import donateResponseHistory  from '@/components/mypage/donateResponseHistory'
+import walletHistory          from '@/components/mypage/walletHistory'
+import MarketDetail           from '@/views/marketView/MarketDetail'
+import MarketSell             from '@/views/marketView/MarketSell'
+import Donation               from '@/views/donationView/Donation'
+import DonationDetail         from '@/views/donationView/DonationDetail'
+import AddDonationBox         from '@/views/donationView/AddDonationBox'
 
 Vue.use(Router)
 
@@ -62,6 +64,16 @@ const router = new Router({
           path: 'markethistory',
           name: 'markethistory',
           component: marketHistory
+        },
+        {
+          path: 'donateregisterhistory',
+          name: 'donateregisterhistory',
+          component: donateRegisterHistory
+        },
+        {
+          path: 'donateresponsehistory',
+          name: 'donateresponsehistory',
+          component: donateResponseHistory
         },
         {
           path: 'wallethistory',

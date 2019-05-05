@@ -1,16 +1,40 @@
 <template>
   <v-layout row wrap justify-center>
-    <v-flex xs8>
+    <v-flex xs8 v-if="chartItem[0].type_id == 2 || chartItem[0].type_id == 5">
+      <v-card 
+        flat color="#FAFAFA" height="600px" class="pa-5" style="border-bottom: 1px solid lightgrey;width: 1150px;"
+      >
+        <v-layout 
+          row wrap class="pb-5"
+          justify-space-between 
+        >
+          <div class="headline font-weight-bold" style="border-top:7px solid #42A5F5; padding-top:10px;">Q.{{chartItem[0].question_number}}&nbsp;&nbsp;{{ chartItem[0].question_title }}</div>
+        </v-layout>
+        <v-layout row wrap justify-center>
+          <div class="pa-5" style="width:800px;">
+            <div
+            v-for="(item, index) in chartItem[0].responses" :key="index"
+            style="border: 1px solid #BDBDBD; width:100%;" 
+            class="pa-3 mb-4"
+            >{{item.question_text}}</div>
+          </div>
+        </v-layout>
+      </v-card>
+      <v-layout row wrap justify-center class="pa-4" style="border-bottom: 1px solid lightgrey">
+        <div>설문분석내용</div>
+      </v-layout>
+    </v-flex>
+    <v-flex xs8 v-else>
       <v-card 
         flat color="#FAFAFA" height="600px" 
-        style="border-top:1px solid lightgrey;" 
+        style="border-bottom:1px solid lightgrey;" 
         class="pa-5"
       >
         <v-layout 
           row wrap class="pb-5"
           justify-space-between 
         >
-          <div class="headline font-weight-bold" style="border-top:7px solid #42A5F5; padding-top:10px;">Q1. 질문 1</div>
+          <div class="headline font-weight-bold" style="border-top:7px solid #42A5F5; padding-top:10px;">Q.{{chartItem[0].question_number}}&nbsp;&nbsp;{{ chartItem[0].question_title }}</div>
           <div class="headline font-weight-bold">
             <v-speed-dial v-model="fab" direction="left">
               <template v-slot:activator>
@@ -30,14 +54,17 @@
         </v-layout>
         <v-layout row wrap justify-center class="pa-4">
           <apexchart 
-            width="750" height="400" 
+            width="1000" height="400" 
             :type="chartOptions.chart.type" 
             :options="chartOptions" 
             :series="series"
           ></apexchart>
         </v-layout>
       </v-card>
-    </v-flex>  
+      <v-layout row wrap justify-center class="pa-4" style="border-bottom: 1px solid lightgrey">
+        <div>설문분석내용</div>
+      </v-layout>
+    </v-flex>
   </v-layout>
 </template>
 
@@ -45,6 +72,7 @@
   import VueApexCharts from 'vue-apexcharts'
 
   export default {
+    props: ['form_id', 'chartItem'],
     components:{
       'apexchart': VueApexCharts
     },
@@ -79,19 +107,15 @@
         },
         series: [
           {
+            name: '응답수 ',
             data: ''
           }
         ],
       }
     },
     created() {
-      this.chartOptions.xaxis.categories = ['매우좋다', '좋다', '보통', '안좋다', '매우안좋다']
-      this.series[0].data = [3,7,3,2,5]
-    },
-    computed: {
-      // rate() {
-      //   return (this.donationItems.current_amount / this.donationItems.target_amount*100).toFixed(1) + ' %'
-      // }
+      this.chartOptions.xaxis.categories = this.chartItem[1].itemArray
+      this.series[0].data = this.chartItem[2].responseArray
     },
     methods: {
       barChart() {

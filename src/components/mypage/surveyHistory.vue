@@ -1,38 +1,46 @@
 <template>
-  <div>
-    <v-layout row wrap justify-space-around>
-      <v-flex xs2>
-        <myNav/>
+  <span>
+    <div v-show="!loading">
+      <v-layout row wrap justify-space-around>
+        <v-flex xs2>
+          <myNav/>
+        </v-flex>
+      <v-flex xs9>
+        <v-data-table
+        :headers="headers"
+        :items="surveyInfo"
+        :search="search"
+        :pagination.sync="pagination"
+        class="elevation-1"
+      >
+        <template v-slot:items="props">
+          <td class="pa-5 title font-weight-bold">{{ props.item.name }}</td>
+          <td class="text-xs-center grey--text subheading">{{ props.item.calories }}</td>
+          <td class="text-xs-center font-weight-bold title">{{ props.item.fat }}</td>
+        </template>
+      </v-data-table>
       </v-flex>
-    <v-flex xs9>
-      <v-data-table
-      :headers="headers"
-      :items="surveyInfo"
-      :search="search"
-      :pagination.sync="pagination"
-      class="elevation-1"
-    >
-      <template v-slot:items="props">
-        <td class="pa-5 title font-weight-bold">{{ props.item.name }}</td>
-        <td class="text-xs-center grey--text subheading">{{ props.item.calories }}</td>
-        <td class="text-xs-center font-weight-bold title">{{ props.item.fat }}</td>
-      </template>
-    </v-data-table>
-    </v-flex>
-    </v-layout>
-   <div class="text-xs-center pt-5">
-      <v-pagination v-model="pagination.page" :length="pages"></v-pagination>
+      </v-layout>
+    <div class="text-xs-center pt-5">
+        <v-pagination v-model="pagination.page" :length="pages"></v-pagination>
+      </div>
     </div>
-  </div>
+    <Spinner v-show="loading"/>
+  </span>
 </template>
 
 <script>
   import myNav from './myNav'
+  import { mapState } from 'vuex'
+  import { mypage } from '@/api/index'
+  import Spinner                     from '@/components/Spinner'
+
 
   export default {
-    components:{ myNav },
+    components:{ myNav, Spinner },
     data () {
       return {
+        loading: false,
         search: '',
         pagination: {},
         headers: [
@@ -107,7 +115,11 @@
         ]
       }
     },
+    mounted() {
+      this.fetchResponseHistory()
+    },
     computed: {
+      ...mapState([ 'userinfo' ]),
       pages () {
         if (this.pagination.rowsPerPage == null ||
           this.pagination.totalItems == null
@@ -115,6 +127,16 @@
 
         return Math.ceil(this.pagination.totalItems / this.pagination.rowsPerPage)
       }
-    }
+    },
+    methods: {
+      fetchResponseHistory() {
+        this.loading = true
+        return mypage.FetchResponseHistory({ id: this.userinfo.id })
+        .then(response => {
+          console.log(response)
+          this.loading = false
+        })
+      }
+    },
   }
 </script>

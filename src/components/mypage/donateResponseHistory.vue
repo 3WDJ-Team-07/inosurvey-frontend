@@ -9,9 +9,9 @@
           <div
           class="display-2 font-weight-bold"
           style="margin-top:150px; padding:30px;"
-          >가용이노 
+          >오늘의 기부 :  
             <span>{{inocoin.current_ino}}</span> 이노</div>
-          <div class="pb-3 title font-weight-bold">총적립 이노 {{inocoin.total_ino}} 이노</div>
+          <div class="pb-3 title font-weight-bold">총기부 이노 {{inocoin.total_ino}} 이노</div>
         </v-flex>
         <v-layout row wrap justify-end class="mr-5 pt-4 pr-4">
           <v-flex xs9>
@@ -105,9 +105,9 @@
       },
       coinHistory() {
         this.loading = true
-        return mypage.FetchCoinHistory({ id: this.userinfo.id })
+        return mypage.FetchDonate({ id: this.userinfo.id })
         .then(response => {
-          this.surveyInfo = response.list
+          console.log(response);
           this.loading = false
         })
       }

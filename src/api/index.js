@@ -161,3 +161,28 @@ export const market = {
     return localRequest('get','/static/test/selectList.json')
   }
 }
+
+export const analysis = {
+  Fetchanalysis(form_id) {
+    return serverRequest('post','/api/analysis/index',form_id)
+  },
+}
+
+export const mypage = {
+  FetchCoinHistory(user_id) {
+    return serverRequest('post','/api/user/wallet/receipt/all',user_id)
+  },
+  FetchResponseHistory(user_id) {
+    return serverRequest('post','/api/user/wallet/receipt/survey/response',user_id)
+  },
+  FetchBuyHistory(user_id) {
+    return serverRequest('post','/api/user/wallet/receipt/survey/buy',user_id)
+  },
+  // 참여
+  FetchDonate(user_id) {
+    return serverRequest('post','/api/user/wallet/receipt/donation/donate',user_id)
+  },
+  c(user_id) {
+    return serverRequest('post','/api/user/wallet/receipt/survey/buy',user_id)
+  }
+}

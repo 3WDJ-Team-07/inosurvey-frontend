@@ -14,6 +14,20 @@
       font-weight-bold pa-3">
       구매 설문 내역</div>
     </v-card-title>
+    <v-card-title class="hover_style" @click="donateRegisterPage" ref="wallet">
+      <div 
+      class="headline 
+      center_sorting 
+      font-weight-bold pa-3">
+      등록한 모금</div>
+    </v-card-title>
+    <v-card-title class="hover_style" @click="donateResponsePage" ref="wallet">
+      <div 
+      class="headline 
+      center_sorting 
+      font-weight-bold pa-3">
+      참여한 모금</div>
+    </v-card-title>
     <v-card-title class="hover_style" @click="walletPage" ref="wallet">
       <div 
       class="headline 
@@ -32,6 +46,12 @@ export default {
     },
     marketPage() {
       this.$router.push({name: 'markethistory'})
+    },
+    donateRegisterPage() {
+      this.$router.push({name: 'donateregisterhistory'})
+    },
+    donateResponsePage() {
+      this.$router.push({name: 'donateresponsehistory'})
     },
     walletPage() {
       this.$router.push({name: 'wallethistory'})

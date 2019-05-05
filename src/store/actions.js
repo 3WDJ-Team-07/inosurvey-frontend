@@ -167,7 +167,6 @@ const actions = {
       console.log('구매하기',response)
     })
   },
-
 }
 
 export default actions
