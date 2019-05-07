@@ -1,5 +1,5 @@
 <template>
-  <div>
+<div v-if="this.$route.name == 'surveyhistory'">
     <v-layout row wrap justify-space-around>
       <v-flex xs2>
         <myNav/>
@@ -14,7 +14,12 @@
       class="elevation-1"
     >
       <template v-slot:items="props">
-        <td class="pa-5 title font-weight-bold">{{ props.item.name }}</td>
+       <router-link
+        :to="{
+          name: 'surveyhistorydetail',
+        }">
+        <td class="pa-5 title font-weight-bold">
+          {{ props.item.name }}</td></router-link>
         <td class="text-xs-center grey--text subheading">{{ props.item.calories }}</td>
         <td class="text-xs-center font-weight-bold title">{{ props.item.fat }}</td>
       </template>
@@ -24,6 +29,9 @@
    <div class="text-xs-center pt-5">
       <v-pagination v-model="pagination.page" :length="pages"></v-pagination>
     </div>
+  </div>
+  <div v-else>
+    <router-view></router-view>
   </div>
 </template>
 

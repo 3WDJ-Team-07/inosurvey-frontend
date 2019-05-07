@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="this.$route.name == 'markethistory'">
     <v-layout row wrap justify-space-around>
       <v-flex xs2>
         <myNav/>
@@ -14,7 +14,11 @@
       class="elevation-1 click_event"
     >
       <template v-slot:items="props">
+        <router-link :to="
+          { name : 'markethistorydetail'}
+            ">
         <td class="pa-5 title font-weight-bold">{{ props.item.name }}</td>
+        </router-link>
         <td class="text-xs-center grey--text subheading">
           <div>
             <v-icon>person</v-icon>
@@ -38,6 +42,9 @@
       next-icon="mdi-menu-right"
       ></v-pagination>
     </div>
+  </div>
+  <div v-else> 
+    <router-view></router-view>
   </div>
 </template>
 
