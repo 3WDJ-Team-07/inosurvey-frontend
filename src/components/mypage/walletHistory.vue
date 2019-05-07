@@ -105,7 +105,7 @@
       },
       coinHistory() {
         this.loading = true
-        return mypage.FetchCoinHistory({ id: this.userinfo.id })
+        return mypage.FetchAllHistory({ id: this.userinfo.id })
         .then(response => {
           this.surveyInfo = response.list
           this.loading = false

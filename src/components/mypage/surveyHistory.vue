@@ -116,7 +116,7 @@
       }
     },
     mounted() {
-      this.fetchResponseHistory()
+      this.FetchSurveyResponse()
     },
     computed: {
       ...mapState([ 'userinfo' ]),
@@ -129,9 +129,9 @@
       }
     },
     methods: {
-      fetchResponseHistory() {
+      FetchSurveyResponse() {
         this.loading = true
-        return mypage.FetchResponseHistory({ id: this.userinfo.id })
+        return mypage.FetchSurveyResponse({ id: this.userinfo.id })
         .then(response => {
           console.log(response)
           this.loading = false

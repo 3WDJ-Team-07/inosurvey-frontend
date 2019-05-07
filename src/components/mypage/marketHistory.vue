@@ -115,7 +115,7 @@
       }
     },
     mounted() {
-      this.fetchBuyHistory()
+      this.FetchSurveyBuy()
     },
     computed: {
       ...mapState([ 'userinfo' ]),
@@ -128,9 +128,9 @@
       }
     },
     methods: {
-      fetchBuyHistory() {
+      FetchSurveyBuy() {
         this.loading = true
-        return mypage.FetchBuyHistory({ id: this.userinfo.id })
+        return mypage.FetchSurveyBuy({ id: this.userinfo.id })
         .then(response => {
           console.log(response)
           // this.buyInfo = response.list

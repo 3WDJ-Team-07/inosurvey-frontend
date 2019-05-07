@@ -105,7 +105,7 @@
       },
       coinHistory() {
         this.loading = true
-        return mypage.FetchDonate({ id: this.userinfo.id })
+        return mypage.FetchDonationDonate({ id: this.userinfo.id })
         .then(response => {
           console.log(response);
           this.loading = false
