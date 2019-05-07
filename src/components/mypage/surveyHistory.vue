@@ -11,7 +11,7 @@
         :items="surveyInfo"
         :search="search"
         :pagination.sync="pagination"
-        class="elevation-1"
+        class="elevation-1 click_event"
       >
         <template v-slot:items="props">
           <td class="pa-5 title font-weight-bold">{{ props.item.name }}</td>
@@ -140,3 +140,9 @@
     },
   }
 </script>
+
+<style scoped>
+  .click_event {
+    cursor: pointer;
+  }
+</style>

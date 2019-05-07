@@ -32,8 +32,16 @@
               </v-progress-circular>
             <div class="title font-weight-bold pa-4">{{chartData.form[0].description}}</div>
             <div class="title font-weight-bold pa-4">
-              연령대 : <span v-for="(item, index) in chartData.form[0].target.age" :key="index">
-                {{item}}대&nbsp;
+              타겟설정 :
+              <span v-if="chartData.form[0].target.gender !== 0">
+                <v-chip close large v-if="chartData.form[0].target.gender == 1">남자</v-chip>
+                <v-chip close large v-if="chartData.form[0].target.gender == 2">여자</v-chip>
+              </span>
+              <span v-for="(item, index) in chartData.form[0].target.age" :key="item">
+                <v-chip close large>{{item}}대</v-chip>
+              </span>
+              <span v-for="(item, index) in chartData.form[0].target.job" :key="index">
+                <v-chip close large>{{item.name}}</v-chip>
               </span>
             </div>
             <div class="title font-weight-bold pa-3">
@@ -45,16 +53,39 @@
           </v-card>
         </v-flex>
         <v-layout 
-        row wrap justify-center class="pa-4" 
+        column wrap align-center class="pa-4 subheading" 
         style="border-bottom: 1px solid lightgrey"
         >
-          <div>설문분석내용</div>
+          <div style="width:1200px;">
+            <v-data-table
+            :items="chartData.question"
+            :headers="headers"
+            class="mt-2"
+            prev-icon="keyboard_arrow_left"
+            next-icon="keyboard_arrow_right"
+            >
+              <template v-slot:items="props">
+                <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">{{ props.item[0].question_number }}</td>
+                <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">{{ props.item[0].question_title }}</td>
+                <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">
+                  <span v-if="props.item[0].type_id == 1">객관식</span>
+                  <span v-else-if="props.item[0].type_id == 2">주관식</span>
+                  <span v-else-if="props.item[0].type_id == 3">선택란</span>
+                  <span v-else-if="props.item[0].type_id == 4">별등급</span>
+                  <span v-else-if="props.item[0].type_id == 5">의견란</span>
+                  <span v-else-if="props.item[0].type_id == 6">이미지선택란</span>
+                </td>
+                <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">{{ props.item[0].id }} %</td>
+              </template>
+            </v-data-table>
+          </div>
         </v-layout>
       </v-layout>
       <Chart 
         v-for="(chartItem, index) in chartData.question" :key="index"
         :form_id = "form_id"
         :chartItem = "chartItem"
+        :tagetData = "chartData.form[0].target"
         />
     </span>
     <Spinner v-else/>
@@ -72,8 +103,42 @@
     components:{ Chart, Spinner },
     data() {
       return {
+        headers: [
+          {
+            text: '설문번호',
+            align: 'center',
+            sortable: false,
+            value: 'name'
+          },
+          { 
+            text: '설문제목',
+            align: 'center',
+            sortable: false,
+            value: 'calories'
+          },
+          { 
+            text: '설문유형',
+            align: 'center',
+            sortable: false,
+            value: 'calories'
+          },
+          { 
+            text: '응답률',
+            align: 'center',
+            sortable: false,
+            value: 'calories'
+          },
+        ],
         loading: false,
-        chartData: {},
+        chartData: {
+          form: [
+            {title: 'a', 
+              target: {
+                gender: 0
+              }
+            },
+          ],
+        },
       }
     },
     computed: {

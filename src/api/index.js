@@ -166,6 +166,9 @@ export const analysis = {
   Fetchanalysis(form_id) {
     return serverRequest('post','/api/analysis/index',form_id)
   },
+  FetchTargetAnalyis(target) {
+    return serverRequest('post','/api/analysis/target-result',target)
+  }
 }
 
 export const mypage = {
