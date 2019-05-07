@@ -1,7 +1,8 @@
 <template>
   <v-card style="border-radius: 20px;" class="font-weight-bold">
-    <v-card-title class="hover_style" @click="surveyPage" ref="survey">
-      <div 
+    <v-card-title class="hover_style" @click="surveyPage"
+     ref="survey">
+      <div
       class="headline 
       center_sorting 
       font-weight-bold pa-2">
@@ -41,8 +42,13 @@
 <script>
 import { mapState } from 'vuex'
 export default {
+  data() {
+    return {
+      active:''
+    }
+  },
   computed: {
-    ...mapState(['userinfo'])
+    ...mapState(['userinfo']),
   },
   methods:{
     surveyPage() {
@@ -75,5 +81,8 @@ export default {
   }
   .hover_style:hover{
     background: #EEEEEE;
+  }
+  .active{
+    background: blue
   }
 </style>

@@ -45,8 +45,8 @@
                 </div>
               </v-card>
               <v-card flat :to="{name: 'donatehistory'}">
-                <div class="hover_style" style="margin:0 auto">
-                  <div class="title font-weight-bold py-4" :style="classObject">참여한 모금</div>
+                <div class="hover_style py-4" style="margin:0 auto">
+                  <div class="title font-weight-bold" :style="styleObject">참여한 모금</div>
                 </div>
               </v-card>
             </v-card>
@@ -78,19 +78,16 @@
   export default {
     data() {
       return {
-        classObject:''
+        styleObject:''
       }
     },
     computed: {
       ...mapState(['userinfo']),
-      
-    },   
+    },
     created() {
-      
-        if(this.userinfo.is_donator==0){
-          return this.classObject = 'margin-top:8% ; margin-bottom:8%'
-        }
-      
+      if(!this.userinfo.is_donator==1){
+        return this.styleObject = 'margin-top:8% ; padding-bottom:8%'
+      }
     },
   }
 

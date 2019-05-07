@@ -103,7 +103,7 @@
     border-radius: 10px;
   }
   .achieved{
-    filter: grayscale(90%) brightness(60%)
+    filter: grayscale(90%) brightness(150%) contrast(80%)
   }
   .daychip{
     box-shadow: 0 0 10px #555555

@@ -1,27 +1,29 @@
-import Vue                from 'vue'
-import Router             from 'vue-router'
-import store              from '../store'
-import swal               from 'sweetalert'
-import Join               from '@/views/auth/Join'
-import Home               from '@/views/Home'
-import Survey             from '@/views/surveyView/Survey'
-import SurveyMarket       from '@/views/marketView/SurveyMarket'
-import SurveyForm         from '@/views/surveyView/SurveyForm'
-import SurveyRequest      from '@/views/surveyView/SurveyRequest'
-import SurveyComplete     from '@/views/surveyView/SurveyComplete'
-import MySurvey           from '@/views/surveyView/MySurvey'
-import SurveyAnalysis     from '@/components/survey/analysis/SurveyAnalysis'
-import MyPage             from '@/views/myPageView/MyPage'
-import surveyHistory      from '@/components/mypage/surveyHistory'
-import marketHistory      from '@/components/mypage/marketHistory'
-import foundationHistory  from '@/components/mypage/foundationHistory'
-import donateHistory      from '@/components/mypage/donateHistory'
-import walletHistory      from '@/components/mypage/walletHistory'
-import MarketDetail       from '@/views/marketView/MarketDetail'
-import MarketSell         from '@/views/marketView/MarketSell'
-import Donation           from '@/views/donationView/Donation'
-import DonationDetail     from '@/views/donationView/DonationDetail'
-import AddDonationBox     from '@/views/donationView/AddDonationBox'
+import Vue                  from 'vue'
+import Router               from 'vue-router'
+import store                from '../store'
+import swal                 from 'sweetalert'
+import Join                 from '@/views/auth/Join'
+import Home                 from '@/views/Home'
+import Survey               from '@/views/surveyView/Survey'
+import SurveyMarket         from '@/views/marketView/SurveyMarket'
+import SurveyForm           from '@/views/surveyView/SurveyForm'
+import SurveyRequest        from '@/views/surveyView/SurveyRequest'
+import SurveyComplete       from '@/views/surveyView/SurveyComplete'
+import MySurvey             from '@/views/surveyView/MySurvey'
+import SurveyAnalysis       from '@/components/survey/analysis/SurveyAnalysis'
+import MyPage               from '@/views/myPageView/MyPage'
+import surveyHistory        from '@/components/mypage/surveyHistory'
+import surveyHistoryDetail  from '@/components/mypage/surveyHistoryDetail'
+import marketHistory        from '@/components/mypage/marketHistory'
+import marketHistoryDetail  from '@/components/mypage/marketHistoryDetail'
+import foundationHistory    from '@/components/mypage/foundationHistory'
+import donateHistory        from '@/components/mypage/donateHistory'
+import walletHistory        from '@/components/mypage/walletHistory'
+import MarketDetail         from '@/views/marketView/MarketDetail'
+import MarketSale           from '@/views/marketView/MarketSale'
+import Donation             from '@/views/donationView/Donation'
+import DonationDetail       from '@/views/donationView/DonationDetail'
+import AddDonationBox       from '@/views/donationView/AddDonationBox'
 
 Vue.use(Router)
 
@@ -58,12 +60,26 @@ const router = new Router({
         {
           path: 'surveyhistory',
           name: 'surveyhistory',
-          component: surveyHistory
+          component: surveyHistory,
+          children: [
+            {
+              path: 'detail',
+              name: 'surveyhistorydetail',
+              component : surveyHistoryDetail
+            }
+          ]
         },
         {
           path: 'markethistory',
           name: 'markethistory',
-          component: marketHistory
+          component: marketHistory,
+          children: [
+            {
+              path: 'detail',
+              name: 'markethistorydetail',
+              component : marketHistoryDetail
+            }
+          ]
         },
         {
           path: 'foundationhistory',
@@ -132,9 +148,9 @@ const router = new Router({
         },
         {
           path: 'sell/:sell_id',
-          name: 'surveymarketsell',
+          name: 'marketsale',
           props: true,
-          component: MarketSell
+          component: MarketSale
         }
       ]
     },
