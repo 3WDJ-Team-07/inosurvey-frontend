@@ -27,17 +27,22 @@
             <v-card flat style="background-color:#FAFAFA;">
               <v-layout row wrap>
                 <v-flex xs9>
-                  <div class="elevation-5">
-                    <div class="title font-weight-bold px-4 pt-4 mt-2 pb-3">
-                      설문조사 1 설문조사 1 소개설문조사 1 소개
-                      <span class="pl-5 ml-5 subheading grey--text">닉네임</span>
-                    </div>
-                    <div class="title font-weight-bold px-4 pb-3">
-                      <v-tooltip right color="info">
-                        <span slot="activator">
-                          <i class="far fa-calendar-alt ma-1"></i>
-                          <span>2019-05-01</span>
-                          <span>~2019-05-12</span>
+
+                <div class="elevation-5">
+
+                  <div class="title font-weight-bold px-4 pt-4 mt-2 pb-3">
+                    설문조사 1 설문조사 1 소개설문조사 1 소개
+                    <span class="pl-5 ml-5 subheading grey--text">
+                      닉네임
+                    </span>
+                  </div>
+                  
+                  <div class="title font-weight-bold px-4 pb-3">
+                    <v-tooltip right color="info">
+                      <span slot="activator">
+                        <i class="far fa-calendar-alt ma-1"></i>
+                        <span>
+                          2019-05-01
                         </span>
                         <span>설문 진행 일정</span>
                       </v-tooltip>

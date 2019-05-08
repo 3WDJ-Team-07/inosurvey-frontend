@@ -63,7 +63,7 @@ const router = new Router({
           component: surveyHistory,
           children: [
             {
-              path: 'detail',
+              path: 'detail/:form_id',
               name: 'surveyhistorydetail',
               component : surveyHistoryDetail
             }
@@ -91,6 +91,16 @@ const router = new Router({
           name: 'donatehistory',
           component: donateHistory
         },
+        // {
+        //   path: 'donateregisterhistory',
+        //   name: 'donateregisterhistory',
+        //   component: donateRegisterHistory
+        // },
+        // {
+        //   path: 'donateresponsehistory',
+        //   name: 'donateresponsehistory',
+        //   component: donateResponseHistory
+        // },
         {
           path: 'wallethistory',
           name: 'wallethistory',

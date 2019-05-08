@@ -166,7 +166,6 @@ const actions = {
   MARKET_PURCHASE(_, {id, user_id}) {
     return api.market.marketPurchaseTest(id, user_id)
   },
-
 }
 
 export default actions

@@ -59,6 +59,9 @@
 				],
       }
     },
+    updated(){
+      console.log(this.donate_id)
+    },
     computed: {
       ...mapState([ 'donationBox' ]),
       SortdonationBox() {

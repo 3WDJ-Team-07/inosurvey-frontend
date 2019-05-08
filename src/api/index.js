@@ -173,3 +173,47 @@ export const market = {
     return localRequest('get','/static/test/selectList.json')
   }
 }
+
+export const analysis = {
+  Fetchanalysis(form_id) {
+    return serverRequest('post','/api/analysis/index',form_id)
+  },
+  FetchTargetAnalyis(target) {
+    return serverRequest('post','/api/analysis/target-result',target)
+  }
+}
+
+// /api/user/wallet/receipt/survey/response     - 설문조사 응답이력 
+// /api/user/wallet/receipt/survey/request      - 설문조사 요청이력  // mysurvey
+// /api/user/wallet/receipt/survey/buy          - 설문조사 구매이력 
+// /api/user/wallet/receipt/survey/sell         - 설문조사 판매이력   
+// /api/user/wallet/receipt/donation/donate     - 내가 참여한 기부 이력
+// /api/user/wallet/receipt/donation/request    - 내가 등록한 기부 이력
+// /api/user/wallet/receipt/all                 - 이노정보 이력
+
+export const mypage = {
+  FetchSurveyResponse(user_id) {
+    return serverRequest('post', '/api/user/wallet/receipt/survey/response', user_id)
+  },
+  FetchSurveyRequest(user_id) {
+    return serverRequest('post', '/api/user/wallet/receipt/survey/request', user_id)
+  },
+  FetchSurveyBuy(user_id) {
+    return serverRequest('post', '/api/user/wallet/receipt/survey/buy', user_id)
+  },
+  FetchSurveySell(user_id) {
+    return serverRequest('post', '/api/user/wallet/receipt/survey/sell', user_id)
+  },
+  FetchDonationDonate(user_id) {
+    return serverRequest('post', '/api/user/wallet/receipt/donation/donate', user_id)
+  },
+  FetchDonationRequest(user_id) {
+    return serverRequest('post', '/api/user/wallet/receipt/donation/request', user_id)
+  },
+  FetchAllHistory(user_id) {
+    return serverRequest('post', '/api/user/wallet/receipt/all', user_id)
+  },
+  FetchSurveyForm(form_id) {
+    return serverRequest('post', '/api/user/survey', form_id)
+  }
+}

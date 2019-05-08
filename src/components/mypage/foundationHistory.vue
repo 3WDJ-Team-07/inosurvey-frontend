@@ -1,121 +1,151 @@
-f<template>
-  <div>
-    <v-layout row wrap justify-space-around>
-      <v-flex xs2>
-        <myNav/>
-      </v-flex>
-    <v-flex xs9>
-      <div class="display-1">등록한 모금</div>
-      <v-data-table
-      :headers="headers"
-      :items="surveyInfo"
-      :search="search"
-      :pagination.sync="pagination"
-      class="elevation-1"
-    >
-      <template v-slot:items="props">
-        <td class="pa-5 title font-weight-bold">{{ props.item.name }}</td>
-        <td class="text-xs-center grey--text subheading">{{ props.item.calories }}</td>
-        <td class="text-xs-center font-weight-bold title">{{ props.item.fat }}</td>
-      </template>
-    </v-data-table>
-    </v-flex>
-    </v-layout>
-   <div class="text-xs-center pt-5">
-      <v-pagination v-model="pagination.page" :length="pages"></v-pagination>
+<template>
+  <span>
+    <div v-if="!loading">
+      <v-layout row wrap justify-space-around>
+        <v-navigation-drawer
+            v-model="drawer"
+            fixed
+            temporary
+            style="z-index: 10000;"
+          >
+          <div class="headline text-xs-center pa-4 mt-5 info--text">{{userinfo.nickname}}</div>
+            <v-list class="pt-5" dense>
+              <v-divider></v-divider>
+              <div class="pa-5 myhover_style text-xs-center title" @click="surveyPage">응답 설문 내역</div>
+              <div class="pa-5 myhover_style text-xs-center title" @click="marketPage">구매 설문 내역</div>
+              <div class="pa-5 myhover_style text-xs-center title" 
+              v-if="userinfo.is_donator==1" @click="foundationPage">등록한 모금</div>
+              <div class="pa-5 myhover_style text-xs-center title" @click="donatePage">참여한 모금</div>
+              <div class="pa-5 myhover_style text-xs-center title" @click="walletPage">이노 지갑</div>
+            </v-list>
+          </v-navigation-drawer>
+          <v-btn 
+          color="#29B6F6" 
+          dark fixed 
+          left bottom 
+          style="margin-bottom:350px; 
+          height:200px; margin-left:-30px;" 
+          @click.stop="drawer = !drawer"
+          >
+            <v-icon>arrow_forward_ios</v-icon>
+          </v-btn>
+        <v-flex xs9>
+          <div class="display-1 pa-5">등록한 모금</div>
+          <v-data-table
+          :headers="headers"
+          :items="surveyInfo"
+          :search="search"
+          :pagination.sync="pagination"
+          class="elevation-1"
+          >
+            <template v-slot:items="props">
+              <td class="pa-5 subheading">{{ props.item.title }}  {{props.item.method}}</td>
+              <td class="text-xs-center subheading">{{ props.item.content }}</td>
+              <td class="text-xs-center font-weight-bold title">
+                <span v-if="props.item.sign == '+'" style="color:#42A5F5;"><i class="fas fa-plus fa-xs"></i>&nbsp;{{ props.item.price }}  <span class="caption">이노</span></span> 
+                <span v-else-if="props.item.sign == '-'" style="color:red;"><i class="fas fa-minus fa-xs"></i>&nbsp;{{ props.item.price }} <span class="caption">이노</span></span> 
+                <span v-else style="color:#42A5F5">{{ props.item.price }}</span> 
+              </td>
+              <td class="text-xs-center">{{ props.item.date }}</td>
+           </template>
+          </v-data-table>
+        </v-flex>
+      </v-layout>
+      <div class="text-xs-center pt-5">
+        <v-pagination v-model="pagination.page" :length="pages"></v-pagination>
+      </div>
     </div>
-  </div>
+    <Spinner v-else/>
+  </span>
 </template>
 
 <script>
   import myNav from './myNav'
+  import { mapState } from 'vuex'
+  import { mypage } from '@/api/index'
+  import Spinner from '@/components/Spinner'
 
   export default {
-    components:{ myNav },
+    components:{ myNav, Spinner },
     data () {
       return {
+        drawer: null,
+        loading: false,
         search: '',
         pagination: {},
         headers: [
           {
-            text: '설문조사 제목',
+            text: '내용',
             align: 'center',
             sortable: false,
             value: 'name'
           },
           { 
-            text: '응답일', 
+            text: '기관명', 
             align: 'center', 
             value:'calories'
           },
           { 
-            text: '획득 이노', 
+            text: '기부 금액', 
+            align: 'center', 
+            value:'calories'
+          },
+          { 
+            text: '기부한 날짜', 
             align: 'center', 
             value: 'fat'
           },
         ],
-        surveyInfo: [
-          {
-            name: '설문조사 Frozen Yogurt',
-            calories: '2019.03.22',
-            fat: 6.0,
-          },
-          {
-            name: '설문조사 Ice cream sandwich',
-            calories: '2019.03.21',
-            fat: 9.0,
-          },
-          {
-            name: '설문조사 Eclair',
-            calories: '2019.03.20',
-            fat: 16.0,
-          },
-          {
-            name: '설문조사 Cupcake',
-            calories: '2019.03.19',
-            fat: 3.7,
-          },
-          {
-            name: '설문조사 Gingerbread',
-            calories: '2019.03.18',
-            fat: 16.0,
-          },
-          {
-            name: '설문조사 Jelly bean',
-            calories: '2019.03.17',
-            fat: 0.0,
-          },
-          {
-            name: '설문조사 Lollipop',
-            calories: '2019.03.16',
-            fat: 0.2,
-          },
-          {
-            name: '설문조사 Honeycomb',
-            calories: '2019.03.15',
-            fat: 3.2,
-          },
-          {
-            name: '설문조사 Donut',
-            calories: '2019.03.14',
-            fat: 25.0,
-          },
-          {
-            name: '설문조사 KitKat',
-            calories: '2019.03.13',
-            fat: 26.0,
-          }
-        ]
+        surveyInfo: []
       }
     },
+    mounted() {
+      this.fetchDonateRequest()
+    },
     computed: {
+      ...mapState(['userinfo']),
       pages () {
         if (this.pagination.rowsPerPage == null ||
           this.pagination.totalItems == null
         ) return 0
-
         return Math.ceil(this.pagination.totalItems / this.pagination.rowsPerPage)
+      }
+    },
+    methods: {
+      fetchDonateRequest() {
+        this.loading = true
+        return mypage.FetchDonationRequest({ id: this.userinfo.id })
+        .then(response => {
+          console.log(response)
+          this.surveyInfo = response.list
+          this.loading = false
+        })
+      },
+      surveyPage() {
+      this.$router.push({name: 'surveyhistory'})
+      },
+      marketPage() {
+        this.$router.push({name: 'markethistory'})
+      },
+      foundationPage() {
+        this.$router.push({name: 'foundationhistory'})
+      },
+      donatePage() {
+        this.$router.push({name: 'donatehistory'})
+      },
+      walletPage() {
+        this.$router.push({name: 'wallethistory'})
       }
     }
   }
 </script>
+
+<style scoped>
+  .myhover_style {
+    cursor: pointer;
+    transition: background 0.7s ease;
+  }
+  .myhover_style:hover{
+    background: #E0E0E0;
+  }
+</style>

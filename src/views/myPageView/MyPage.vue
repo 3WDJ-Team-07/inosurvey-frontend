@@ -56,7 +56,7 @@
               <v-card-title>
                 <div style="margin:0 auto">
                   <div class="display-1 font-weight-bold">이노 지갑</div>
-                  <div class="headline mt-4 font-weight-black mt-4">가용이노 <span class="display-1 font-weight-black">7500</span></div>
+                  <div class="headline mt-4 font-weight-black mt-4">보유이노 <span class="display-1 font-weight-black">{{inocoin.current_ino}}</span></div>
                 </div>
               </v-card-title>
               <v-card-actions>
@@ -73,12 +73,14 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  import { mapState }        from 'vuex'
+  import { userInformation } from '@/api/index'
 
   export default {
     data() {
       return {
-        styleObject:''
+        styleObject:'',
+        inocoin: {}
       }
     },
     computed: {
@@ -88,6 +90,17 @@
       if(!this.userinfo.is_donator==1){
         return this.styleObject = 'margin-top:8% ; padding-bottom:8%'
       }
+    },
+    mounted() {
+      this.fetchCoin()
+    },
+    methods: {
+      fetchCoin() {
+        return userInformation.userCoin({ id: this.userinfo.id })
+        .then(response => {
+          this.inocoin = response
+        })
+      },
     },
   }
 

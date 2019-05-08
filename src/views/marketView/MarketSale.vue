@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container fluid grid-list-md pt-4 mt-5 v-if="!this.$store.state.loading">
+    <v-container fluid grid-list-md pt-5 mt-5 v-if="!this.$store.state.loading">
       <v-layout row>
           <v-layout row wrap>
             <v-flex xs10>
