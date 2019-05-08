@@ -2,8 +2,8 @@
 
 <template>
   <span>
-    <v-container grid-list-xl  class="mt-4" v-if="!this.$store.state.loading">
-      <v-layout row wrap class="pa-3" style="margin-right:50px;" justify-end>
+    <v-container grid-list-xl  class="mt-2" v-if="!this.$store.state.loading">
+      <v-layout row wrap class="pr-2" style="margin-right:50px;" justify-end>
         <v-flex xs3>
           <v-select
             v-model="donate_id"
@@ -11,7 +11,7 @@
             label="무관"
             item-text="name"
             item-value="value"
-            color="green"
+            color="info"
             append-icon="arrow_drop_down"
             solo hide-details>
 					</v-select>
@@ -20,14 +20,14 @@
       <v-layout
         row wrap
         class="pa-4 pl-5 pr-5">
-        <v-flex 
-          pa-4 xs4 
+        <v-flex
+          py-4 mb-4 xs4
           v-for="(card,index) in SortdonationBox" :key="index"
           v-if="donate_id == 2 || card.is_achieved == donate_id"
-        > 
-            <router-link 
+        >
+            <router-link
             :to="{
-              name: 'donationdetail', 
+              name: 'donationdetail',
               params: { donation_id: card.id }
             }">
               <DonationCard
@@ -38,7 +38,7 @@
       </v-layout>
     </v-container>
     <Spinner2 v-else/>
-  </span>    
+  </span>
 </template>
 
 <script>

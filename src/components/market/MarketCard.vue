@@ -16,7 +16,8 @@
       <v-flex xs3 text-xs-left>
         <v-card flat color="#FAFAFA" class="py-4 subheading font-weight-bold">
           <div class="headline font-weight-bold">
-            <span class="blue--text font-italic">{{card.price}}</span> 이노
+            <span class="blue--text font-italic"> {{card.ino}} </span> 이노
+            <!--  -->
           </div>
           <div>
             <i class="fas fa-user-alt">

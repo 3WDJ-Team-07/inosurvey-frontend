@@ -30,8 +30,9 @@
               height="30"
               :value="rate"
               style="font-size:20px;"
+              class="rounded-bar"
             >
-              <span style="color:white; margin-left:6px;">{{ rate }}</span>
+              <span style="color:white; margin-left:2%;">{{ rate }}</span>
             </v-progress-linear>
           </v-flex>
           </v-flex>
@@ -114,3 +115,8 @@
     },
   }
 </script>
+<style scoped>
+.rounded-bar {
+    border-radius: 15px;
+  }
+</style>

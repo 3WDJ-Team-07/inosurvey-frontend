@@ -31,7 +31,7 @@
               label="무관"
               item-text="name"
               multiple
-              color="green"
+              color="info"
               item-value="value"
               append-icon="arrow_drop_down"
               solo hide-details>
@@ -49,7 +49,7 @@
               item-text="name"
               item-value="value"
               multiple
-              color="green"
+              color="info"
               append-icon="arrow_drop_down"
               solo  hide-details>
 						</v-select>
@@ -66,7 +66,7 @@
               item-text="name"
               item-value="value"
               multiple
-              color="green"
+              color="info"
               append-icon="arrow_drop_down"
               solo  hide-details>
 						</v-select>

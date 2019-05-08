@@ -23,7 +23,7 @@
                   <v-expand-transition>
                     <div
                       v-if="hover" style="cursor:pointer;height:100%;"
-                      class="d-flex transition-fast-in-fast-out blue darken-2 
+                      class="d-flex transition-fast-in-fast-out blue darken-1 
                       v-card--reveal display-1 white--text font-weight-thin" 
                       @click="SET_IS_ADD_SURVEY(true)">
                       {{$t(Features[0].hoverTitle)}}
@@ -32,7 +32,7 @@
                 </v-img>
                 <v-card-text class="pt-4">
                   <div class="font-weight-light grey--text title mb-2">{{$t(Features[0].mainText)}}</div>
-                  <h3 :class="Features[0].color" class="headline font-weight-thin pa-2">{{$t(Features[0].subText)}}</h3>
+                  <h3 :class="Features[0].color" class="headline pa-2">{{$t(Features[0].subText)}}</h3>
                 </v-card-text>
               </v-card>
             </v-hover>
@@ -46,7 +46,7 @@
                   <v-expand-transition>
                     <div
                       v-if="hover" style="cursor:pointer;height:100%;"
-                      class="d-flex transition-fast-in-fast-out blue darken-2 
+                      class="d-flex transition-fast-in-fast-out amber darken-3
                       v-card--reveal display-1 white--text font-weight-thin" 
                       @click="my_survey_list">
                       {{$t(Features[1].hoverTitle)}}
@@ -55,7 +55,7 @@
                 </v-img>
                 <v-card-text class="pt-4">
                   <div class="font-weight-light grey--text title mb-2">{{$t(Features[1].mainText)}}</div>
-                  <h3 :class="Features[1].color" class="headline font-weight-thin pa-2">{{$t(Features[1].subText)}}</h3>
+                  <h3 :class="Features[1].color" class="headline pa-2">{{$t(Features[1].subText)}}</h3>
                 </v-card-text>
               </v-card>
             </v-hover>

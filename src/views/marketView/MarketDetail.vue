@@ -59,11 +59,11 @@
 </template>
 
 <script>
-  import MarketDetailBody     from '@/components/market/MarketDetailBody'
-  import surveyPurchase       from '@/components/dialog/surveyPurchase'
-  import { mapMutations,mapState }     from 'vuex'
-  import { market }           from '@/api/index'
-  import Spinner           from '@/components/Spinner'
+  import MarketDetailBody             from '@/components/market/MarketDetailBody'
+  import surveyPurchase               from '@/components/dialog/surveyPurchase'
+  import { mapMutations,mapState }    from 'vuex'
+  import { market }                   from '@/api/index'
+  import Spinner                      from '@/components/Spinner'
   export default {
       name: 'marketdetail',
       props: ['market_id'],

@@ -68,7 +68,7 @@
       <v-btn 
       class="title font-weight-black" 
       :disabled="!inputQuestion" 
-      color="success" @click="SubmitForm" 
+      color="info darken-1" @click="SubmitForm" 
       v-scroll-to="{ el: '#element',offset:-100,duration:1000}"
       large block>저장</v-btn>
     </span>

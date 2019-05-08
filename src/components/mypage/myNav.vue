@@ -1,45 +1,55 @@
 <template>
-  <v-card style="border-radius: 20px;" class="font-weight-bold">
-    <v-card-title class="hover_style" @click="surveyPage" ref="survey">
-      <div 
+  <v-card style="margin-top:50px; background-color:#FAFAFA;" flat>
+    <v-card-title class="hover_style" @click="surveyPage"
+     ref="survey">
+      <div
       class="headline 
       center_sorting 
-      font-weight-bold pa-3">
+      font-weight-bold pa-1">
       응답 설문 내역</div>
     </v-card-title>
     <v-card-title class="hover_style" @click="marketPage" ref="market">
       <div 
       class="headline 
       center_sorting 
-      font-weight-bold pa-3">
+      font-weight-bold pa-1">
       구매 설문 내역</div>
     </v-card-title>
-    <v-card-title class="hover_style" @click="donateRegisterPage" ref="wallet">
+    <v-card-title  v-if="userinfo.is_donator==1" class="hover_style" @click="foundationPage" ref="foundation">
       <div 
       class="headline 
       center_sorting 
-      font-weight-bold pa-3">
+      font-weight-bold pa-1">
       등록한 모금</div>
     </v-card-title>
-    <v-card-title class="hover_style" @click="donateResponsePage" ref="wallet">
+    <v-card-title class="hover_style" @click="donatePage" ref="donate">
       <div 
       class="headline 
       center_sorting 
-      font-weight-bold pa-3">
+      font-weight-bold pa-1">
       참여한 모금</div>
     </v-card-title>
     <v-card-title class="hover_style" @click="walletPage" ref="wallet">
       <div 
       class="headline 
       center_sorting 
-      font-weight-bold pa-3">
+      font-weight-bold pa-1">
       이노 지갑</div>
     </v-card-title>
   </v-card>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
+  data() {
+    return {
+      active:''
+    }
+  },
+  computed: {
+    ...mapState(['userinfo']),
+  },
   methods:{
     surveyPage() {
       this.$router.push({name: 'surveyhistory'})
@@ -47,11 +57,11 @@ export default {
     marketPage() {
       this.$router.push({name: 'markethistory'})
     },
-    donateRegisterPage() {
-      this.$router.push({name: 'donateregisterhistory'})
+    foundationPage() {
+      this.$router.push({name: 'foundationhistory'})
     },
-    donateResponsePage() {
-      this.$router.push({name: 'donateresponsehistory'})
+    donatePage() {
+      this.$router.push({name: 'donatehistory'})
     },
     walletPage() {
       this.$router.push({name: 'wallethistory'})
@@ -71,5 +81,8 @@ export default {
   }
   .hover_style:hover{
     background: #EEEEEE;
+  }
+  .active{
+    background: blue
   }
 </style>

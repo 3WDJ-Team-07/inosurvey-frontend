@@ -3,11 +3,24 @@
     <v-container fluid grid-list-xl v-if="!this.$store.state.loading">
       <v-layout text-xs-center row wrap class="pa-3 mx-5">
         <v-layout justify-end>
-          <v-flex xs12 sm3 class="searchBox"> 
+          <v-flex xs1>
+            <v-select
+            :items="items"
+            v-model="items.value"
+            label="전체"
+            item-text="text"
+            item-value="value"
+            color="info"
+            append-icon="arrow_drop_down"
+            solo
+          ></v-select>
+          </v-flex>
+          <v-flex xs3 class="searchBox"> 
             <v-text-field
               placeholder="검색..."
               append-icon="search"
               v-model="search"
+              @focus="search=''"
             >
             </v-text-field>
         </v-flex>
@@ -50,14 +63,27 @@
     components: { MarketCard, Spinner2, surveySale },
     data(){
       return{
-        search:''
+        search:'',
+        items:[
+          { text: '전체', value:1 },
+          { text: '제목', value:2 },
+          { text: '소개글', value:3 },
+          ]
         }
     },
     computed: {
       ...mapState([ 'saleSurvey', 'userinfo']),
        surveyList() {
         var sellingSurvey = this.saleSurvey.filter((card) => {
-          return card.title.toLowerCase().includes(this.search.toLowerCase())||card.description.toLowerCase().includes(this.search.toLowerCase())
+          if(this.items.value ==2){
+            return card.title.toLowerCase().includes(this.search.toLowerCase())
+          }
+          else if(this.items.value ==3){
+            return card.description.toLowerCase().includes(this.search.toLowerCase())
+          }
+          else{
+            return card.title.toLowerCase().includes(this.search.toLowerCase())||card.description.toLowerCase().includes(this.search.toLowerCase())
+          }
         })
         return sellingSurvey
       }

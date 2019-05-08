@@ -124,6 +124,7 @@ const actions = {
     api.donation.donationCard()
     .then(response => {
       context.commit('FETCH_DONATION',response.donation)
+      console.log(response.donation)
       context.state.loading = false
     })
   },
