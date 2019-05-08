@@ -1,4 +1,5 @@
 <template>
+
   <span>
     <div v-if="this.$route.name == 'markethistory' || !loading">
       <v-layout row wrap justify-space-around>
@@ -33,11 +34,13 @@
           {{surveyInfo}}
           <div class="display-1 pa-5">구매 설문 내역</div>
           <v-data-table
+
           :headers="headers"
           :items="surveyInfo"
           :search="search"
           :pagination.sync="pagination"
           class="elevation-1 click_event"
+
           >
             <template v-slot:items="props">
               <router-link :to=" { name : 'markethistorydetail'} ">
@@ -142,10 +145,13 @@
         this.$router.push({name: 'wallethistory'})
       }
     },
+
   }
+};
 </script>
 
 <style scoped>
+
   .click_event {
     cursor: pointer;
   }
@@ -156,4 +162,5 @@
   .myhover_style:hover{
     background: #E0E0E0;
   }
+
 </style>
