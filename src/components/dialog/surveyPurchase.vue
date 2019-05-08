@@ -22,6 +22,8 @@
 </template>
 
 <script>
+  import { market } from '@/api/index'
+  import swal                                   from 'sweetalert'
   import { mapState, mapMutations,mapActions } from 'vuex';
   export default {
     name: 'surveyPurchase',
@@ -37,8 +39,23 @@
       purchase(){
         this.MARKET_PURCHASE({
            id:this.marketItems.id,
-          user_id : this.userinfo.id
+           user_id : this.userinfo.id
         })
+        .then(response => {
+          console.log('구매하기',response)
+          if(response.status==202){
+            swal({
+          title: '구매 오류',
+          text: '자신이 만든 설문조사는 구매할 수 없습니다.',
+          icon: "error",
+          button: "확인"
+        })
+          }
+        })
+        // return market.marketPurchaseTest({
+
+        // })
+
         this.SET_IS_SURVEY_PURCHASE(false);
         this.$router.replace({name:'surveymarket'})
       }
