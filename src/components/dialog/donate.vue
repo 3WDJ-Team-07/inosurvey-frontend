@@ -18,10 +18,10 @@
           <span>보유 이노 : {{ inocoin.current_ino || '0' }}</span>
         </v-card-text>
 			</v-layout>
-      <v-card-actions class="pb-4">        
+      <v-card-actions class="pb-4">
           <input type="number" class="form-control title" style="width:100%; height:50px;" ref="donateInput" @keyup.enter="donate">
         </v-card-actions>
-        <v-card-actions class="pb-4">        
+        <v-card-actions class="pb-4">
           <v-btn block large color="white" class="font-weight-bold" @click="donate">기부하기</v-btn>
         </v-card-actions>
       </v-card>
