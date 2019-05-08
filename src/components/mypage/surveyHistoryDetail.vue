@@ -1,13 +1,11 @@
 <template>
   <div>
     <v-layout>
-      <v-flex xs2>
-        <myNav/>
-      </v-flex>
       <v-container>
         <v-flex xs9 text-xs-left>
           <div class="display-2 font-weight-bold px-3 pb-4">
-            설문조사1
+            {{surveyFormInfo.survey.title}}
+            <pre></pre>
           </div>
         </v-flex>
       <v-layout>
@@ -15,8 +13,8 @@
           <v-card class="text-xs-center" flat style="background-color:#FAFAFA;" >
             <v-container fluid>
               <v-layout align-center justify-space-around column fill-height>
-                <div class="display-1 font-weight-bold my-5 py-5 elevation-5">설문 정보</div>
-                <div class="display-1 font-weight-bold  my-5 py-5 elevation-5">설문 구매처</div>
+                <div class="display-1 font-weight-bold my-5 py-5">설문 정보</div>
+                <div class="display-1 font-weight-bold  my-5 py-5">설문 구매처</div>
               </v-layout>
             </v-container>
           </v-card>
@@ -25,11 +23,11 @@
           <v-card flat style="background-color:#FAFAFA;">
             <v-container fluid>
               <v-layout justify-space-around column fill-height>
-                <div class="elevation-5">
+                <div>
                   <div class="title font-weight-bold px-4 pt-4 mt-2 pb-3">
-                    설문조사 1 소개
-                    <span class="pl-5 ml-5 subheading grey--text">
-                      닉네임
+                    {{surveyFormInfo.survey.description}}
+                    <span class=" ml-5 subheading grey--text">
+                      요청자 - 닉네임
                     </span>
                   </div>
                   <div class="title font-weight-bold px-4 pb-3">
@@ -37,7 +35,7 @@
                     <span slot="activator">
                       <i class="fas fa-user ma-1"></i>
                       <span>
-                        100명
+                        {{surveyFormInfo.survey.respondent_count}}명
                       </span>
                       </span>
                       <span>응답인원</span>
@@ -48,10 +46,10 @@
                       <span slot="activator">
                         <i class="far fa-calendar-alt ma-1"></i>
                         <span>
-                          2019-05-01
+                          {{surveyFormInfo.survey.started_at}}
                         </span>
                         <span>
-                          ~2019-05-12
+                          ~{{surveyFormInfo.survey.closed_at}}
                         </span>
                       </span>
                       <span>설문 진행 일정</span>
@@ -62,14 +60,14 @@
                     <span slot="activator">
                       <i class="fas fa-coins ma-1"></i>
                       <span>
-                        100이노
+                        {{surveyFormInfo.price}} 이노
                       </span>
                       </span>
                       <span>금액</span>
                     </v-tooltip>
                   </div>
                 </div>
-                <div class="elevation-5 mt-5 py-2">
+                <div class=" mt-5 py-2">
                   <v-layout row wrap>
                     <v-flex xs-12 pa-4>
                       <div class="font-weight-bold  my-2" v-for="i in 5">
@@ -91,14 +89,27 @@
 </template>
 
 <script>
-  import myNav from './myNav'
+  import myNav      from './myNav'
+  import { mypage } from '@/api/index'
 
   export default {
     components:{ myNav },
     data () {
       return {
+        surveyFormInfo: {}
       }
-    }
+    },
+    mounted() {
+      this.fetchSurveyForm()
+    },
+    methods: {
+      fetchSurveyForm() {
+        return mypage.FetchSurveyForm({ form_id: this.$route.params.form_id })
+        .then(response => {
+          this.surveyFormInfo = response
+        })
+      }
+    },
   }
 </script>
 <style scoped>

@@ -31,7 +31,6 @@
               <v-layout row wrap>
                 <v-flex xs9>
                 <div class="elevation-5">
-                
 
                   <div class="title font-weight-bold px-4 pt-4 mt-2 pb-3">
                     설문조사 1 설문조사 1 소개설문조사 1 소개

@@ -2,6 +2,7 @@
 const state = {
   userinfo: {},                 // 유저객체
   drawer: null,                 // 사이드 네비게이션
+  mypageDrawer: null,           // 마이페이지 네비게이션
   isLoginDialog : false,        // 로그인 모달 
   isSurveyDialog: false,        // 설문제목 모달
   isQuestionBank: false,        // 설문은행 모달

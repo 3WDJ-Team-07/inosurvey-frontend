@@ -172,7 +172,7 @@ export const analysis = {
 }
 
 // /api/user/wallet/receipt/survey/response     - 설문조사 응답이력 
-// /api/user/wallet/receipt/survey/request      - 설문조사 요청이력  
+// /api/user/wallet/receipt/survey/request      - 설문조사 요청이력  // mysurvey
 // /api/user/wallet/receipt/survey/buy          - 설문조사 구매이력 
 // /api/user/wallet/receipt/survey/sell         - 설문조사 판매이력   
 // /api/user/wallet/receipt/donation/donate     - 내가 참여한 기부 이력
@@ -200,5 +200,8 @@ export const mypage = {
   },
   FetchAllHistory(user_id) {
     return serverRequest('post', '/api/user/wallet/receipt/all', user_id)
+  },
+  FetchSurveyForm(form_id) {
+    return serverRequest('post', '/api/user/survey', form_id)
   }
 }

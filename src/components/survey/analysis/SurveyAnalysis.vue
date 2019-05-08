@@ -32,7 +32,7 @@
               </v-progress-circular>
             <div class="title font-weight-bold pa-4">{{chartData.form[0].description}}</div>
             <div class="title font-weight-bold pa-4">
-              타겟설정 :
+              <v-btn color="success" depressed round>응답비율 분석</v-btn>
               <span v-if="chartData.form[0].target.gender !== 0">
                 <v-chip close large v-if="chartData.form[0].target.gender == 1">남자</v-chip>
                 <v-chip close large v-if="chartData.form[0].target.gender == 2">여자</v-chip>
@@ -56,7 +56,7 @@
         column wrap align-center class="pa-4 subheading" 
         style="border-bottom: 1px solid lightgrey"
         >
-          <div style="width:1200px;">
+          <div style="width:800px;">
             <v-data-table
             :items="chartData.question"
             :headers="headers"
@@ -75,7 +75,6 @@
                   <span v-else-if="props.item[0].type_id == 5">의견란</span>
                   <span v-else-if="props.item[0].type_id == 6">이미지선택란</span>
                 </td>
-                <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">{{ props.item[0].id }} %</td>
               </template>
             </v-data-table>
           </div>
@@ -121,18 +120,13 @@
             align: 'center',
             sortable: false,
             value: 'calories'
-          },
-          { 
-            text: '응답률',
-            align: 'center',
-            sortable: false,
-            value: 'calories'
-          },
+          }
         ],
         loading: false,
         chartData: {
           form: [
-            {title: 'a', 
+            {
+              title: 'a', 
               target: {
                 gender: 0
               }
