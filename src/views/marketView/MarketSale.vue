@@ -42,7 +42,7 @@
               <span slot="activator">
                 <i class="far fa-calendar-alt ma-1"></i>
                 <span>
-                  {{ sellItems.started_at | substr }}
+                  {{ sellItems.created_at | substr }}
                 </span>
                 <span v-if="sellItems.closed_at">
                   ~{{sellItems.closed_at | substr}}

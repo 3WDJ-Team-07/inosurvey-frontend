@@ -51,6 +51,14 @@
           button: "확인"
         })
           }
+          else{
+            swal({
+          title: '구매 성공',
+          text: '구매한 설문은 마이페이지에서 볼 수 있습니다!',
+          icon: "success",
+          button: "확인"
+        })
+          }
         })
         // return market.marketPurchaseTest({
 
