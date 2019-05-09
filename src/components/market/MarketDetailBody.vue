@@ -6,7 +6,7 @@
       <v-container fluid>
         <v-layout align-center justify-space-around column fill-height>
           <div class="display-1 font-weight-bold my-5 py-5">설문 정보</div>
-          <div class="display-1 font-weight-bold py-5 qInfo">문항 정보</div>
+          <div class="display-1 font-weight-bold py-5 my-5">문항 정보</div>
         </v-layout>
       </v-container>
     </v-card>
@@ -16,7 +16,7 @@
       <v-container fluid>
         <v-layout column fill-height>
           <div>
-            <div class="title font-weight-bold px-4 pt-4 mt-2 pb-3">
+            <div class="title font-weight-bold px-4 pt-4 mt-2 pb-5">
                {{marketItems.description}}
                <span v-if="nickname" class="pl-5 ml-5 subheading grey--text">
                 {{nickname}}
@@ -93,29 +93,11 @@
             </v-tooltip>
           </div>
           </div>
-          <div class="my-5">
+          <div style="margin-top:50px;">
             <v-slide-y-transition group>
-            <div v-for="(question, index) in questions" :key="index"
-            class="mx-5 pa-3 my-3 questions" style="cursor:pointer" @click="show =! show">
-            <div class="font-weight-bold">
-              <span>
-                Q{{question.question_number}}.{{question.question_title}}
-              </span>
-              <div class="body-1" v-show="show">
-               
-                <span class="ml-3"
-                v-for="(coo, index) in question.question_items"
-                :key="index">
-                <span class="circle mr-1">
-                  {{coo.content_number}}
-                </span>
-                {{coo.content}}
-                </span>
-              </div>
-               
-         
-            </div>
-            </div>
+              <MarketDetailItem
+              v-for="(question, index) in questions" :key="index"
+              :question = "question" :show = "show"/>
             </v-slide-y-transition>
           </div>
         </v-layout>
@@ -124,42 +106,41 @@
   </v-flex>
   </v-layout>
 </template>
+
 <script>
-export default {
-  data(){
-    return{
-      show:false
-    }
-  },
-  props:['marketItems','ino'],
-  filters:{
-    substr:function(date){
-      if(date){
-        return date.substr(0,10)
+  import MarketDetailItem from './MarketDetailItem'
+
+  export default {
+    components: { MarketDetailItem },
+    props:['marketItems','ino'],
+    filters:{
+      substr:function(date){
+        if(date){
+          return date.substr(0,10)
+        }
       }
-    }
-  },
-  computed: {
-    nickname(){
-      return this.marketItems.user.nickname||'0'
     },
-    age(){
-      return this.marketItems.target.age||'0'
+    computed: {
+      nickname(){
+        return this.marketItems.user.nickname||'0'
+      },
+      age(){
+        return this.marketItems.target.age||'0'
+      },
+      gender(){
+        return this.marketItems.target.gender||'0'
+      },
+      job(){
+        return this.marketItems.target.job||'0'
+      },
+      questions(){
+        return this.marketItems.question||'0'
+      },
+      questionsItems(){
+        return this.marketItems.question.questions||'0'
+      }
     },
-    gender(){
-      return this.marketItems.target.gender||'0'
-    },
-    job(){
-      return this.marketItems.target.job||'0'
-    },
-    questions(){
-      return this.marketItems.question||'0'
-    },
-    questionsItems(){
-      return this.marketItems.question.questions||'0'
-    }
-  },
-}
+  }
 </script>
 <style scoped>
   .border_style {

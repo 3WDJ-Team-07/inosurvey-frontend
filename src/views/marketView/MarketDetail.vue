@@ -4,12 +4,12 @@
       <v-layout row>
         <v-layout row wrap>
           <v-flex xs10>
-            <div class="display-2 font-weight-bold pa-3 ml-5">
+            <div class="display-2 font-weight-bold pa-3 mt-4 mb-4 ml-5">
               {{marketItems.title}}
             </div>
           </v-flex>
           <v-flex xs2>
-            <div class="mr-5 pa-3">
+            <div class="mr-5 mt-4 mb-4 pa-3">
               <v-btn color="info" large block @click="SET_IS_SURVEY_PURCHASE(true)">
                 구매하기
               </v-btn>

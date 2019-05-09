@@ -2,100 +2,113 @@
 
 <template>
   <v-layout row justify-center>
-    <v-dialog v-model="isTargetDialog" persistent m{{item.age}}-width="80%">
+    <v-dialog v-model="isTargetDialog" persistent fullscreen>
       <v-card class="pa-1 border_rounded">
-		    <span 
-          class="headline right grey--text pa-3" 
-          @click="SET_IS_TARGET(false)">
-          <i class="fas fa-times"></i>
-        </span>
-        <v-layout row justify-center class="pt-4 pb-4" style="margin-top:20px;">
-          <div class="title"></div>
+        <v-layout column="" align-center class="pt-5 grey--text" style="margin-top:80px;">
+          <div class="headline">전체 타겟 응답결과</div>
+          <span>
+            <v-btn color="red" dark small depressed @click="pieChart">pie</v-btn>
+            <v-btn color="red" dark small depressed @click="donutChart">donut</v-btn>
+          </span>
+          
 				</v-layout>
+        <v-layout row wrap justify-center style="margin-left:100px;margin-top:80px;">
+          <apexchart :type="chartSexOptions.responsive[0].options.chart.type" width=500 :options="chartSexOptions" :series="SexSeries"/>
+          <apexchart :type="chartAgeOptions.responsive[0].options.chart.type" width=500 :options="chartAgeOptions" :series="AgeSeries"/>
+          <apexchart :type="chartJobOptions.responsive[0].options.chart.type" width=530 :options="chartJobOptions" :series="JobSeries"/>
+        </v-layout>
         
-        <v-layout row justify-center style="margin-top:20px;">
-          <div v-for="(item, index) in percentage[1].gender" :key="index">
-            <span v-if="index == 0" class="mr-4">남자 : {{item}}%</span>
-            <span v-if="index == 1" class="mr-4">여자 : {{item}}%</span>
-          </div>
-          <div v-for="(item, index) in percentage[0].age[0]" :key="index" class="mr-4">{{item.age}}대 : {{item.percentage}}%</div>
-          <div v-for="(item, index) in percentage[2].job[0]" :key="index" class="mr-4">{{item.job_name}} : {{item.percentage}}%</div>
-				</v-layout>
-        <v-layout row justify-center class="pt-4 pb-4" style="margin-top:20px;">
-          <div v-for="(item, index) in percentage[1].gender" :key="index" class="pr-4">
-            <span v-if="index == 0">
-              <v-progress-circular
-              style="float:right; margin-right:10px;"
-              :rotate="360"
-              :size="120"
-              :width="15"
-              :value="item"
-              color="teal"
-              >남자
-              </v-progress-circular>
-            </span>
-            <span v-if="index == 1">
-              <v-progress-circular
-              style="float:right; margin-right:10px;"
-              :rotate="360"
-              :size="120"
-              :width="15"
-              :value="item"
-              color="teal"
-              >여자
-              </v-progress-circular>
-            </span>
-          </div>
-          <div v-for="(item, index) in percentage[0].age[0]" :key="index" class="pr-4">
-            <v-progress-circular
-            style="float:right; margin-right:10px;"
-            :rotate="360"
-            :size="120"
-            :width="15"
-            :value="item.percentage"
-            color="teal"
-            >
-              {{item.age}}
-            </v-progress-circular>
-          </div>
-           <div v-for="(item, index) in percentage[2].job[0]" :key="index" class="pr-4">
-            <v-progress-circular
-              style="float:right; margin-right:10px;"
-              :rotate="360"
-              :size="120"
-              :width="15"
-              :value="item.percentage"
-              color="teal"
-              >
-                {{item.job_name}}
-            </v-progress-circular>
-          </div>
-				</v-layout>
-        <v-card-actions class="pr-3 pb-3" style="float:right;">
-          <v-btn color="info" dark large @click="SET_IS_TARGET(false)">확인</v-btn>
-        </v-card-actions>
+        <v-layout row wrap justify-center>
+          <v-btn style="width:1000px;margin-left:10px;" block fixed bottom color="info" dark large @click="SET_IS_TARGET(false)">확인</v-btn>
+        </v-layout>
       </v-card>
     </v-dialog>
   </v-layout>
 </template>
 
 <script>
+  import VueApexCharts from 'vue-apexcharts'
   import { mapState, mapMutations, mapActions } from 'vuex';
 
   export default {
     props: ['percentage'],
-    name: 'surveyPayment',
+    components:{
+      'apexchart': VueApexCharts,
+    },
+    name: 'targetanalysis',
+    data() {
+      return {
+        SexSeries: [44, 22],
+        chartSexOptions: {
+          labels: ['남자', '여자'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                type: 'pie',
+                width: 100
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }]
+        },
+        AgeSeries: [0, 0, 0, 40, 0, 60, 70, 80],
+        chartAgeOptions: {
+          labels: ['10대', '20대', '30대', '40대', '50대', '60대', '70대', '80대'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                type: 'pie',
+                width: 100
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }]
+        },
+        JobSeries: [44, 55, 13, 43, 62, 0, 0, 0, 0],
+        chartJobOptions: {
+          labels: ['서비스/상담', '금융/무역', '연구/개발', 'IT/인터넷', '건설', '사무/경영', '의료', '교육', '생산/제조'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                type: 'pie',
+                width: 300
+              },
+              legend: {
+                position: 'bottom'
+              },
+            }
+          }]
+        }
+      }
+    },
     computed: {
       ...mapState(['isTargetDialog'])
     },
     methods: {
       ...mapMutations(['SET_IS_TARGET']),
+      pieChart() {
+        this.chartSexOptions.responsive[0].options.chart.type = 'pie'
+        this.chartAgeOptions.responsive[0].options.chart.type = 'pie'
+        this.chartJobOptions.responsive[0].options.chart.type = 'pie'
+      },
+      donutChart() {
+        this.chartSexOptions.responsive[0].options.chart.type = 'donut'
+        this.chartAgeOptions.responsive[0].options.chart.type = 'donut'
+        this.chartJobOptions.responsive[0].options.chart.type = 'donut'
+      },
     }
   }
 </script>
 
 <style scoped>
-	*{
+	* {
 		overflow: hidden;
 	}
 </style>

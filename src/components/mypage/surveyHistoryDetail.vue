@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="surveyFormInfo.survey">
     <v-layout>
       <v-container>
         <v-flex xs9 text-xs-left>

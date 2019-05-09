@@ -14,7 +14,7 @@
             Q.{{chartItem[0].question_number}}&nbsp;&nbsp;{{ chartItem[0].question_title }}
           </span> 
           <select v-model="gender" class="subheading ml-5 pr-3 pl-3">
-            <option :value="0">성별</option>
+            <option :value="0">모든 성별</option>
             <span v-if="tagetData.gender == 0">
               <option :value="1">남성</option>
               <option :value="2">여성</option>
@@ -23,11 +23,11 @@
             <option :value="2" v-if="tagetData.gender == 2">여성</option>
           </select>
           <select v-model="age" class="subheading pr-3 pl-3">
-            <option :value="0">나이</option>
+            <option :value="0">모든 연령</option>
             <option :value="item" v-for="(item, index) in tagetData.age" :key="index">{{item}}대</option>
           </select>
           <select v-model="job" class="subheading pr-3 pl-3">
-            <option :value="0">직업</option>
+            <option :value="0">모든 직업</option>
             <option :value="item.id" v-for="(item, index) in tagetData.job" :key="index">{{item.name}}</option>
           </select>
         </div>

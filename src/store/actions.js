@@ -84,6 +84,7 @@ const actions = {
     context.state.loading = true
     return api.mySurvey.mySurveyForm({ id: user_id })
     .then(response => {
+      console.log(response)
       for (let index = 0; index < response.serveies.length; index++) {
         response.serveies[index].created_at = response.serveies[index].created_at.substring(10,0)
         if(response.serveies[index].closed_at){
@@ -167,7 +168,7 @@ const actions = {
   // },
 
   // 설문 업뎃
-  UPDATE_MARKET(_, {id,user_id}){
+  UPDATE_MARKET(_, {id,user_id}) {
     api.market.updateMarketCard(id,user_id)
   },
 

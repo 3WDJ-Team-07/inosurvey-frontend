@@ -31,8 +31,8 @@
                 {{rate}}
               </v-progress-circular>
             <div class="title font-weight-bold pa-4">{{chartData.form[0].formData.description}}</div>
-            <div class="title font-weight-bold pa-4">
-              <v-btn color="success" depressed round @click="SET_IS_TARGET(true)">응답비율 분석</v-btn>
+            <div class="title font-weight-bold pa-1">
+              <v-btn color="success" depressed round @click="SET_IS_TARGET(true)" large="">전체 타겟 응답결과</v-btn>
               <span v-if="chartData.form[0].formData.target.gender !== 0">
                 <v-chip close large v-if="chartData.form[0].formData.target.gender == 1">남자</v-chip>
                 <v-chip close large v-if="chartData.form[0].formData.target.gender == 2">여자</v-chip>
@@ -145,10 +145,12 @@
     },
     computed: {
       started() {
-        return this.chartData.form[0].formData.created_at.slice(0,10)
+        let start = this.chartData.form[0].formData.created_at+""
+        return start.slice(0,10)
       },
       closed() {
-        return this.chartData.form[0].formData.closed_at.slice(0,10)
+        let close = this.chartData.form[0].formData.closed_at+""
+        return close.slice(0,10)
       },
       rate() {
         return (this.chartData.form[0].formData.respondent_count / this.chartData.form[0].formData.respondent_number*100).toFixed(1) + ' %'
@@ -163,8 +165,9 @@
         this.loading = true
         return analysis.Fetchanalysis({ form_id: this.form_id })
         .then(response => {
+          console.log(response.form[1].percentage)
           this.chartData = response
-        this.loading = false
+          this.loading = false
         })
       },
     },
