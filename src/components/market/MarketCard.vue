@@ -15,7 +15,7 @@
       <v-flex xs3 text-xs-left>
         <v-card flat color="#FAFAFA" class="py-4 subheading font-weight-bold">
           <div class="headline font-weight-bold">
-       <!--     <span class="blue font-italic"> {{card.price}} </span> 이노-->
+  <span class="info--text font-italic"> {{card.price}} </span>이노
             <!--  -->
           </div>
           <div>
@@ -25,7 +25,7 @@
           </div>
           <div>
             <i class="far fa-calendar-alt font-weight-bold">
-            {{ card.started_at | substr(10,'') }}
+            {{ card.created_at | substr(10,'') }}
             ~ {{card.closed_at | substr(10,'') }}
             </i>
           </div>

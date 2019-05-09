@@ -112,9 +112,9 @@
       this.fetchMarket()
     },
     methods: {
-      ...mapActions(['FETCH_MARKETTest']),
+      ...mapActions(['FETCH_MARKET']),
       fetchMarket() {
-        this.FETCH_MARKETTest()
+        this.FETCH_MARKET()
         console.log(this.cards);
       },
     }
