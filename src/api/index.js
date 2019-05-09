@@ -4,6 +4,7 @@ import router   from '../routes/index'
 const DOMAIN = 'http://172.26.3.31:8000'
 const UNAUTHORIZED = 401
 
+
 // 토큰 없을경우 리다이렉트 
 const onUnauthrorized = () => { router.push('/') }
 
@@ -136,8 +137,19 @@ export const market = {
     return serverRequest('post','/api/market/show',id)
   },
   // 설문 마켓 - 구매하기
-  marketPurchase(id,user_id) {
-    return serverRequest('post','/api/market/purchase',{ id, user_id })
+  // marketPurchase(id,user_id) {
+  //   return serverRequest('post','/api/market/purchase',{ id, user_id })
+    
+  // },
+  marketPurchaseTest(id, user_id){
+    return axios({
+      method: 'post',
+      url: `${DOMAIN}/api/market/purchase`,
+      data: { id, user_id },
+    }).then(response => response)
+    .catch(error => {
+      console.log(error)
+    })
   },
   // 설문마켓 - 판매할 설문 정보 불러오기
   marketSell(id){

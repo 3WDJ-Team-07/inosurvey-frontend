@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-img src="/static/market-hero.png" height="40vh"
+  <v-img src="/static/market-hero.png" height="35vh"
     gradient="to top,  rgba(0, 0, 0, .3), rgba(0, 0, 0, .1)">
       <v-container fill-height>
         <v-layout align-center row wrap>

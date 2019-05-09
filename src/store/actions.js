@@ -1,5 +1,5 @@
 import * as api from '../api'
-
+const ACCEPTED =202
 const actions = {
   // 회원가입 Action
   REGISTER(_, user) {
@@ -146,6 +146,16 @@ const actions = {
       console.log(response)
     })
   },
+    FETCH_MARKETTest(context){
+    context.state.loading = true
+    api.market.marketCardTest()
+    .then(response => {
+
+      context.commit('FETCH_MARKET',response)
+      context.state.loading = false
+      console.log(response)
+    })
+  },
 
   // // 판매할 설문 리스트
   // FETCH_SELL(context, {id: user_id}){
@@ -162,11 +172,9 @@ const actions = {
   },
 
   // 설문 구매하기
+
   MARKET_PURCHASE(_, {id, user_id}) {
-    api.market.marketPurchase(id, user_id)
-    .then(response => {
-      console.log('구매하기',response)
-    })
+    return api.market.marketPurchaseTest(id, user_id)
   },
 }
 

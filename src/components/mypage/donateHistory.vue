@@ -30,16 +30,18 @@
             <v-icon>arrow_forward_ios</v-icon>
           </v-btn>
         <v-flex xs9>
-          <div class="display-1 pa-5">기부한 모금</div>
+          <div class="display-1 pa-5">기부한 모금
+            {{total}}
+          </div>
             <v-data-table
             :headers="headers"
-            :items="surveyInfo"
+            :items="donationInfo"
             :search="search"
             :pagination.sync="pagination"
             class="elevation-1"
             >
             <template v-slot:items="props">
-              <td class="subheading">{{ props.item.title }} {{props.item.method}}</td>
+
               <td class="pa-5 text-xs-center subheading">{{ props.item.content }}</td>
               <td class="title">
                 <span v-if="props.item.sign == '+'" style="color:#42A5F5;">
@@ -78,12 +80,7 @@
         search: '',
         pagination: {},
         headers: [
-          {
-            text: '내용',
-            align: 'center',
-            sortable: false,
-            value: 'name'
-          },
+
           { 
             text: '설문 제목', 
             align: 'center', 
@@ -100,7 +97,7 @@
             value: 'fat'
           },
         ],
-        surveyInfo: []
+        donationInfo: []
       }
     },
     mounted() {
@@ -115,6 +112,10 @@
 
         return Math.ceil(this.pagination.totalItems / this.pagination.rowsPerPage)
       },
+      total(){
+        return this.donationInfo.reduce((acc,item)=>acc+item.price,0)
+      }
+    
     },
     methods: {
       fetchDonatedonate() {
@@ -122,7 +123,7 @@
         return mypage.FetchDonationDonate({ id: this.userinfo.id })
         .then(response => {
           console.log(response)
-          this.surveyInfo = response.list
+          this.donationInfo = response.list
           this.loading = false
         })
       },

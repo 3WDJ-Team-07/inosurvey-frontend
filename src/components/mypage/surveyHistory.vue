@@ -40,12 +40,12 @@
             class="elevation-1"
             >
               <template v-slot:items="props">
-                <td class="subheading">{{ props.item.title }} {{props.item.method}}</td>
+                <td class="text-xs-center grey--text"></td>
                 <router-link :to="{ 
                   name: 'surveyhistorydetail',
                   params: { form_id: props.item.form_id } 
                 }">
-                  <td class="pa-5 text-xs-center subheading">{{ props.item.content }}</td>
+                  <td class="pa-5 text-xs-center font-weight-bold headline">{{ props.item.content }}</td>
                 </router-link>
                 <td class="title">
                   <span v-if="props.item.sign == '+'" style="color:#42A5F5;">
@@ -89,11 +89,10 @@
         search: '',
         pagination: {},
         headers: [
-          {
-            text: '내용',
-            align: 'center',
-            sortable: false,
-            value: 'name'
+          { 
+            text: '', 
+            align: 'center', 
+            value:'calories'
           },
           { 
             text: '설문 제목', 
