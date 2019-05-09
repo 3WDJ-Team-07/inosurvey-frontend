@@ -25,12 +25,12 @@
                 <v-layout>
                   <v-flex xs5 class="mt-3" style="margin-left:150px">
                     <span class="headline font-weight-bold">{{form.title}}</span>
-                    <div class="grey--text pt-1">작성일 : {{form.started_at}}</div>
+                    <div class="grey--text pt-1">작성일 : {{form.created_at}}</div>
                   </v-flex>
                   <v-flex xs3>
                     <v-layout row wrap justify-start>
                       <div class="pb-2"><v-icon large style="line-height:20px;">person</v-icon><span class="ml-3">{{form.respondent_count}} / {{form.respondent_number}} 명</span></div>
-                      <div class="pb-2 mt-4"><v-icon large style="line-height:20px;">event</v-icon><span class="ml-3">{{form.started_at}} ~ {{form.closed_at || '설문마감 미정'}}</span></div>
+                      <div class="pb-2 mt-4"><v-icon large style="line-height:20px;">event</v-icon><span class="ml-3">{{form.created_at}} ~ {{form.closed_at || '설문마감 미정'}}</span></div>
                     </v-layout>
                   </v-flex>
                   <v-flex xs5 style="margin-left:100px">
@@ -189,7 +189,7 @@
           })
         }else if(this.mySurveyForm[index].is_completed == 0 && this.mySurveyForm[index].is_sale == 0){
           if(this.mySurveyForm[index].respondent_number >= this.mySurveyForm[index].respondent_count || 
-          this.mySurveyForm[index].closed_at >= this.mySurveyForm[index].started_at){
+          this.mySurveyForm[index].closed_at >= this.mySurveyForm[index].created_at){
             swal("조건이 충족되지 않았습니다", "이대로 판매를 하시겠습니까 ?",
             {icon: "warning", buttons: true,  dangerMode: true})
             .then(response => {

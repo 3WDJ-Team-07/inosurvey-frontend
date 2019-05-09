@@ -21,7 +21,7 @@
           </div>
           <div>
             <i class="far fa-calendar-alt fa-lg ma-2"></i>
-            <span>{{ marketItems.started_at | substr }}</span>
+            <span>{{ marketItems.created_at | substr }}</span>
             <span v-if="marketItems.closed_at">
               ~{{marketItems.closed_at | substr}}
               </span>

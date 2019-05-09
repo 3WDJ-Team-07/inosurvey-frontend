@@ -146,7 +146,6 @@
         </v-flex>
       </v-layout>
     </v-card>
-    <pre>{{form}}</pre>
   </v-container>
 </template>
 

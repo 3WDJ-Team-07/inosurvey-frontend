@@ -1,7 +1,7 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
-const DOMAIN = 'http://172.26.2.186:8000'
+const DOMAIN = 'http://172.26.3.31:8000'
 const UNAUTHORIZED = 401
 
 // 토큰 없을경우 리다이렉트 

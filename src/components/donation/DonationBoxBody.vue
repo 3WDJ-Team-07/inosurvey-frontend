@@ -13,7 +13,7 @@
             <i class="far fa-calendar-alt fa-2x ma-2"></i>
             <span class="subheading">
               <span class="font-weight-bold">마감날짜</span> 
-               : {{donationItems.started_at}}
+               : {{donationItems.created_at}}
                ~ {{donationItems.closed_at}}
             </span>
           </div>

@@ -85,7 +85,7 @@ const actions = {
     return api.mySurvey.mySurveyForm({ id: user_id })
     .then(response => {
       for (let index = 0; index < response.serveies.length; index++) {
-        response.serveies[index].started_at = response.serveies[index].started_at.substring(10,0)
+        response.serveies[index].created_at = response.serveies[index].created_at.substring(10,0)
         if(response.serveies[index].closed_at){
           response.serveies[index].closed_at = response.serveies[index].closed_at.substring(10,0)
         }

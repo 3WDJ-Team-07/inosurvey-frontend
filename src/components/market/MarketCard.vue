@@ -26,7 +26,7 @@
           </div>
           <div>
             <i class="far fa-calendar-alt font-weight-bold">
-            {{ card.started_at | substr(10,'') }}
+            {{ card.created_at | substr(10,'') }}
             ~ {{card.closed_at | substr(10,'') }}
             </i>
           </div>
