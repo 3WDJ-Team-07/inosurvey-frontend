@@ -1,7 +1,7 @@
 /* 판매할 설문 리스트 모달창 */
 <template lang="html">
   <v-layout>
-    <v-dialog v-model="isSaleDialog" persistent max-width="450px"  >
+    <v-dialog v-model="isSaleDialog" persistent max-width="500px">
       <v-card class="pr-5 pl-5 pt-4 pb-4 border_rounded">
         <span 
           class="headline right grey--text" 
@@ -17,7 +17,7 @@
             <div v-for="(survey) in sellSurvey" class="title py-3">
               <span class="mx-5">
                  <input
-                  type="radio" name="sellSurvey" class=" radio_btn mr-5"
+                  type="radio" name="sellSurvey" class=" radio_btn mr-4"
                   v-bind:value="survey.id" v-model="pickedSurvey" :id="survey.id"
                  >
                  <label :for="survey.id" class="radio_label font-weight-bold">{{survey.title}}</label>
@@ -32,7 +32,7 @@
               name : 'marketsale',
               params: { sell_id: pickedSurvey }
             }">
-            <v-btn color="info" class="mx-3" large round @click="sale">
+            <v-btn color="info" class="mx-5" large round @click="sale">
             판매하기
           </v-btn>
 
@@ -76,7 +76,6 @@
         .then(response => {
            this.$store.state.loading = false
           this.sellSurvey = response.list
-          
         })
       }
     }

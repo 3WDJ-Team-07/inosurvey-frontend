@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="surveyFormInfo.survey">
     <v-layout>
       <v-container>
         <v-flex xs9 text-xs-left>
@@ -72,8 +72,7 @@
                     <v-flex xs-12 pa-4>
                       <div class="font-weight-bold  my-2" v-for="i in 5">
                         <span class="mr-5">설문 구매자 1</span>
-                        <span class="mx-5">+ <span class="info--text font-italic">100 </span> 이노</span>
-                        <span class="ml-5">설문 구매 날짜1</span>
+                        <span class="grey--text">2019-05-05</span>
                       </div>
                     </v-flex>
                   </v-layout>
@@ -96,7 +95,8 @@
     components:{ myNav },
     data () {
       return {
-        surveyFormInfo: {}
+        loading: false,
+        surveyFormInfo: {},
       }
     },
     mounted() {
@@ -104,9 +104,12 @@
     },
     methods: {
       fetchSurveyForm() {
+        this.loading = true
         return mypage.FetchSurveyForm({ form_id: this.$route.params.form_id })
         .then(response => {
+          console.log(response)
           this.surveyFormInfo = response
+          this.loading = false
         })
       }
     },

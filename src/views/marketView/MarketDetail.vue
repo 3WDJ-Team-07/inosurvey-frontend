@@ -4,7 +4,7 @@
       <v-layout row>
         <v-layout row wrap>
           <v-flex xs10>
-            <div class="display-2 font-weight-bold pa-3 ml-5">
+            <div class="display-2 font-weight-bold pa-3 ml-5 my-2">
               {{marketItems.title}}
             </div>
           </v-flex>
