@@ -44,17 +44,13 @@
           >
             <template v-slot:items="props">
               <router-link :to=" { name : 'markethistorydetail'} ">
-                <td class="pa-5 title font-weight-bold">{{ props.item.name }}</td>
+                <td class="pa-5 title font-weight-bold">{{ props.item.content }}</td>
               </router-link>
               <td class="text-xs-center grey--text subheading">
-                <div>
-                  <v-icon>person</v-icon>200명
-                  <v-chip color="light-blue lighten-1" class="ml-3 mb-2 pr-4 pl-4" dark>직종: IT</v-chip>
-                </div>
-                <div>
-                  <v-icon>event</v-icon>
-                  {{ props.item.calories }} ~ {{ props.item.calories }}
-                </div>
+              {{props.item.date}}
+              </td>
+              <td class="text-xs-center grey--text subheading">
+              {{props.item.price}}
               </td>
             </template>
           </v-data-table>
@@ -99,7 +95,12 @@
             value: 'name'
           },
           { 
-            text: '설문정보', 
+            text: '구매일자', 
+            align: 'center', 
+            value:'calories'
+          },
+          { 
+            text: '구매가격', 
             align: 'center', 
             value:'calories'
           },

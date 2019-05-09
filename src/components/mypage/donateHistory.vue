@@ -1,4 +1,5 @@
 <template>
+<!-- 정은이가 수정 예정~!~!~! -->
   <span>
     <div v-if="!loading">
       <v-layout row wrap justify-space-around>
@@ -30,9 +31,8 @@
             <v-icon>arrow_forward_ios</v-icon>
           </v-btn>
         <v-flex xs9>
-          <div class="display-1 pa-5">기부한 모금
-            {{total}}
-          </div>
+          <div class="display-1">기부한 모금</div>
+          <div class="headline font-weight-bold">총 기부 금액 : {{total}}</div>
             <v-data-table
             :headers="headers"
             :items="donationInfo"

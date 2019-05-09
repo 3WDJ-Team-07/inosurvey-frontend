@@ -147,16 +147,6 @@ const actions = {
       console.log(response)
     })
   },
-    FETCH_MARKETTest(context){
-    context.state.loading = true
-    api.market.marketCardTest()
-    .then(response => {
-
-      context.commit('FETCH_MARKET',response)
-      context.state.loading = false
-      console.log(response)
-    })
-  },
 
   // // 판매할 설문 리스트
   // FETCH_SELL(context, {id: user_id}){
