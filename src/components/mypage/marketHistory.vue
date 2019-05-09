@@ -31,7 +31,6 @@
             <v-icon>arrow_forward_ios</v-icon>
           </v-btn>
         <v-flex xs9>
-          {{buyInfo}}
           <div class="display-1 pa-5">구매 설문 내역</div>
           <v-data-table
 

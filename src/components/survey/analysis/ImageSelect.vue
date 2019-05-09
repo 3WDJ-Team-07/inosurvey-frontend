@@ -39,7 +39,7 @@
                 <v-icon>close</v-icon>
               </v-btn>
             </template>
-            <v-btn fab color="white" @click="radarChart"><img src="/static/chart6.png" width="20"></v-btn>
+            <!-- <v-btn fab color="white" @click="radarChart"><img src="/static/chart6.png" width="20"></v-btn> -->
             <v-btn fab color="white" @click="heatChart"><img src="/static/chart5.png" width="20"></v-btn>
             <v-btn fab color="white" @click="areaChart"><img src="/static/chart4.png" width="20"></v-btn>
             <v-btn fab color="white" @click="lineChart"><img src="/static/chart3.png" width="20"></v-btn>
@@ -198,9 +198,9 @@
       heatChart() {
         this.chartOptions.chart.type = 'heatmap'
       },
-      radarChart() {
-        this.chartOptions.chart.type = 'radar'
-      }
+      // radarChart() {
+      //   this.chartOptions.chart.type = 'radar'
+      // }
     },
   }
 </script>

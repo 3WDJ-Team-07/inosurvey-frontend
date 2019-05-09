@@ -22,10 +22,10 @@
 
 <script>
   export default {
-    props: ['question', 'show'],
+    props: ['question'],
     data(){
       return{
-        show:false
+        show: false
       }
     },
   }

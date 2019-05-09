@@ -97,7 +97,7 @@
             <v-slide-y-transition group>
               <MarketDetailItem
               v-for="(question, index) in questions" :key="index"
-              :question = "question" :show = "show"/>
+              :question = "question"/>
             </v-slide-y-transition>
           </div>
         </v-layout>
@@ -150,18 +150,13 @@
   .border_style:nth-child(1) {
     border-right: 2px solid lightgrey;
   }
-  .qInfo{
-    margin-top: 30%
-  }
   .questions{
     font-size: 1.4em;
     border: 1px solid #bbbbbb;
     border-radius: 10px;
-       }
-       .circle{
-       
+  }
+  .circle{
     border:1px solid grey;
     border-radius:50%;
-  
-       }
+  }
 </style>

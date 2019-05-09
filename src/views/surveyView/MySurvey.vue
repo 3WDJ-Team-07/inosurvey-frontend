@@ -183,7 +183,7 @@
               this.updateComplete(id)
               setTimeout(() => {
                 swal("판매등록 완료", "마켓에 설문상품이 등록되었습니다 !", "success", {button:"확인"});
-              }, 2000);
+              }, 1000);
               this.updateSale(id)
             }
           })
@@ -197,7 +197,7 @@
                 this.updateComplete(id)
                 setTimeout(() => {
                   swal("판매등록 완료", "마켓에 설문상품이 등록되었습니다 !", "success", {button:"확인"});
-                }, 2000);
+                }, 1000);
                 this.updateSale(id)
               }
             })
@@ -211,7 +211,7 @@
               this.updateComplete(id)
               setTimeout(() => {
                 swal("판매등록 완료", "마켓에 설문상품이 등록되었습니다 !", "success", {button:"확인"});
-              }, 2000);
+              }, 1000);
               this.updateSale(id)
             }
           })

@@ -32,7 +32,7 @@
               </v-progress-circular>
             <div class="title font-weight-bold pa-4">{{chartData.form[0].formData.description}}</div>
             <div class="title font-weight-bold pa-1">
-              <v-btn color="success" depressed round @click="SET_IS_TARGET(true)" large="">전체 타겟 응답결과</v-btn>
+              <v-btn color="success" depressed round @click="SET_IS_TARGET(true)" large class="subheading">전체 타겟 응답결과</v-btn>
               <span v-if="chartData.form[0].formData.target.gender !== 0">
                 <v-chip close large v-if="chartData.form[0].formData.target.gender == 1">남자</v-chip>
                 <v-chip close large v-if="chartData.form[0].formData.target.gender == 2">여자</v-chip>

@@ -19,7 +19,7 @@
           <div class="headline font-weight-bold">결제합니다.</div>
 				</v-layout>
         <v-card-actions class="pr-4 pl-4 pb-4">
-          <v-btn block color="#EF6C00" class="font-weight-black headline" dark large @click="payment()">결제</v-btn>
+          <v-btn block color="#EF6C00" class="font-weight-black headline" dark large @click="payment">결제</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
