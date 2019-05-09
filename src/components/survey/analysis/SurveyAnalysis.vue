@@ -1,13 +1,13 @@
 <template>
   <v-container fluid grid-list-md style="margin:0px;padding:0px;">
     <span v-if="!loading">
+      <targetAnalysis :percentage = "chartData.form[1].percentage"/>
       <v-layout row>
         <v-flex xs12>
           <div class="display-1 font-weight-bold pa-3">{{chartData.form[0].formData.title}}</div>
         </v-flex>
         <v-flex xs12>
           <div class="mt-3">
-            <v-btn class="font-weight-bold" flat style="float:right;">PDF파일 변환</v-btn>
             <v-btn class="font-weight-bold" flat style="float:right;">엑셀파일 변환</v-btn>
           </div>
         </v-flex>
@@ -31,8 +31,8 @@
                 {{rate}}
               </v-progress-circular>
             <div class="title font-weight-bold pa-4">{{chartData.form[0].formData.description}}</div>
-            <div class="title font-weight-bold pa-4">
-              <v-btn color="success" depressed round>응답비율 분석</v-btn>
+            <div class="title font-weight-bold pa-1">
+              <v-btn color="success" depressed round @click="SET_IS_TARGET(true)" large class="subheading">전체 타겟 응답결과</v-btn>
               <span v-if="chartData.form[0].formData.target.gender !== 0">
                 <v-chip close large v-if="chartData.form[0].formData.target.gender == 1">남자</v-chip>
                 <v-chip close large v-if="chartData.form[0].formData.target.gender == 2">여자</v-chip>
@@ -92,14 +92,16 @@
 </template>
 
 <script>
-  import Chart         from './Chart'
-  import { analysis }  from '@/api/index'
-  import Spinner       from '@/components/Spinner'
+  import Chart            from './Chart'
+  import { analysis }     from '@/api/index'
+  import Spinner          from '@/components/Spinner'
+  import { mapMutations } from 'vuex'
+  import targetAnalysis   from '@/components/dialog/targetAnalysis'
 
   export default {
     props: ['form_id'],
     name:'analysis',
-    components:{ Chart, Spinner },
+    components:{ Chart, Spinner, targetAnalysis },
     data() {
       return {
         headers: [
@@ -126,21 +128,29 @@
         chartData: {
           form: [
             {
-              title: 'a', 
-              target: {
-                gender: 0
+              formData: {
+                title: 'a', 
+                target: {
+                  gender: 0
+                }
               }
             },
+            {
+              percentage: [
+              ], 
+            }
           ],
         },
       }
     },
     computed: {
       started() {
-        return this.chartData.form[0].formData.created_at.slice(0,10)
+        let start = this.chartData.form[0].formData.created_at+""
+        return start.slice(0,10)
       },
       closed() {
-        return this.chartData.form[0].formData.closed_at.slice(0,10)
+        let close = this.chartData.form[0].formData.closed_at+""
+        return close.slice(0,10)
       },
       rate() {
         return (this.chartData.form[0].formData.respondent_count / this.chartData.form[0].formData.respondent_number*100).toFixed(1) + ' %'
@@ -150,13 +160,14 @@
       this.fetchAnalysis()
     },
     methods: {
+      ...mapMutations(['SET_IS_TARGET']),
       fetchAnalysis() {
         this.loading = true
         return analysis.Fetchanalysis({ form_id: this.form_id })
         .then(response => {
+          console.log(response.form[1].percentage)
           this.chartData = response
-          console.log(this.chartData)
-        this.loading = false
+          this.loading = false
         })
       },
     },

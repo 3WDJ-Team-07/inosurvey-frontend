@@ -7,7 +7,7 @@
   "is_sale": 0,
   "respondent_count": 0,
   "respondent_number": 188,
-  "started_at": "2019-05-02 12:34:06",
+  "created_at": "2019-05-02 12:34:06",
   "target": {
     "id": 3,
     "age": [10, 20],

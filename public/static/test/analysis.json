@@ -2,105 +2,399 @@
   "message": "true",
   "form": [
       {
-          "id": 2,
-          "title": "의료 설문조사",
-          "description": "안녕하세요",
-          "respondent_number": 100,
-          "respondent_count": 0,
-          "is_completed": 1,
-          "is_sale": 1,
-          "target_isactive": 1,
-          "bgcolor": "#ffffff",
-          "target_id": 6,
-          "user_id": 3,
-          "started_at": "2019-05-04 11:11:12",
-          "closed_at": "2019-06-05 00:00:00",
-          "target": {
+          "formData": {
               "id": 6,
-              "percent" : [
-                {
+              "title": "김kkk",
+              "description": "소개글을 입력하세요",
+              "respondent_number": 361,
+              "respondent_count": 22,
+              "is_completed": 1,
+              "is_sale": 1,
+              "target_isactive": 1,
+              "bgcolor": "#ffffff",
+              "target_id": 8,
+              "user_id": 10,
+              "started_at": "2019-05-08 05:47:37",
+              "closed_at": "2021-05-12 00:00:00",
+              "target": {
+                  "id": 8,
                   "age": [
-                    52.00,
-                    22.00
+                      30,
+                      40,
+                      70
                   ],
+                  "gender": 1,
                   "job": [
-                    51.00,
-                    84.00
-                  ],
-                  "gender": [
-                    12.12
+                      {
+                          "id": 2,
+                          "name": "금융/무역",
+                          "pivot": {
+                              "target_id": 8,
+                              "job_id": 2
+                          }
+                      },
+                      {
+                          "id": 3,
+                          "name": "연구/개발",
+                          "pivot": {
+                              "target_id": 8,
+                              "job_id": 3
+                          }
+                      }
                   ]
-                }
-              ],
-              "age": [
-                30,
-                40
-              ],
-              "gender": 0,
-              "job": [
-                  {
-                      "id": 1,
-                      "name": "developer2",
-                      "pivot": {
-                          "target_id": 6,
-                          "job_id": 1
-                      }
-                  },
-                  {
-                      "id": 3,
-                      "name": "developer2",
-                      "pivot": {
-                          "target_id": 6,
-                          "job_id": 3
-                      }
-                  },
-                  {
-                      "id": 4,
-                      "name": "guest0",
-                      "pivot": {
-                          "target_id": 6,
-                          "job_id": 4
-                      }
-                  }
-              ]
+              }
           }
+      },
+      {
+          "percentage": [
+              {
+                  "age": [
+                      [
+                          {
+                              "10": "0.00"
+                          },
+                          {
+                              "20": "0.00"
+                          },
+                          {
+                              "30": "50.00"
+                          },
+                          {
+                              "40": "0.00"
+                          },
+                          {
+                              "50": "0.00"
+                          },
+                          {
+                              "60": "0.00"
+                          },
+                          {
+                              "70": "50.00"
+                          },
+                          {
+                              "80": "0.00"
+                          },
+                          {
+                              "90": "0.00"
+                          },
+                          {
+                              "100": "0.00"
+                          }
+                      ]
+                  ]
+              },
+              {
+                  "gender": [
+                      "50.00",
+                      "50.00"
+                  ]
+              },
+              {
+                  "job": [
+                      [
+                          {
+                              "1": "0.00"
+                          },
+                          {
+                              "2": "50.00"
+                          },
+                          {
+                              "3": "50.00"
+                          },
+                          {
+                              "4": "0.00"
+                          },
+                          {
+                              "5": "0.00"
+                          },
+                          {
+                              "6": "0.00"
+                          },
+                          {
+                              "7": "0.00"
+                          },
+                          {
+                              "8": "0.00"
+                          },
+                          {
+                              "9": "0.00"
+                          }
+                      ]
+                  ]
+              }
+          ]
       }
   ],
   "question": [
       [
           {
-              "id": 1,
-              "question_title": "ratione",
+              "id": 14,
+              "question_title": "객관신",
               "question_number": 1,
-              "image": "imagesExample",
-              "form_id": 1,
-              "type_id": 4
+              "image": null,
+              "form_id": 6,
+              "type_id": 1,
+              "question_items": [
+                  {
+                      "id": 25,
+                      "content": "ㅋㅋ",
+                      "content_number": 1,
+                      "content_image": null,
+                      "question_id": 14
+                  },
+                  {
+                      "id": 26,
+                      "content": "ㄴㄴㅇㄹ",
+                      "content_number": 2,
+                      "content_image": null,
+                      "question_id": 14
+                  },
+                  {
+                      "id": 27,
+                      "content": "ㅇㄹㅀ",
+                      "content_number": 3,
+                      "content_image": null,
+                      "question_id": 14
+                  },
+                  {
+                      "id": 28,
+                      "content": "ㅀㅀㅀ",
+                      "content_number": 4,
+                      "content_image": null,
+                      "question_id": 14
+                  }
+              ],
+              "responses": [
+                  {
+                      "id": 6,
+                      "question_text": null,
+                      "question_id": 14,
+                      "response_id": 6
+                  },
+                  {
+                      "id": 11,
+                      "question_text": null,
+                      "question_id": 14,
+                      "response_id": 7
+                  }
+              ]
           },
           {
               "itemArray": [
-                  "ㅁㄴㅇ",
-                  "질문을 지정해주세요.ㅁㄴㅇ",
-                  "질문을 지정해주세요.ㅁㄴㅇ",
-                  "질문을 지정해주세요."
+                  "ㅋㅋ",
+                  "ㄴㄴㅇㄹ",
+                  "ㅇㄹㅀ",
+                  "ㅀㅀㅀ"
               ]
           },
           {
               "responseArray": [
+                  1,
                   0,
-                  0,
-                  0,
+                  1,
                   0
+              ]
+          },
+          {
+              "responseResult": [
+                  {
+                      "itemTitle": "ㅋㅋ",
+                      "percentage": "50.00"
+                  },
+                  {
+                      "itemTitle": "ㄴㄴㅇㄹ",
+                      "percentage": "0.00"
+                  },
+                  {
+                      "itemTitle": "ㅇㄹㅀ",
+                      "percentage": "50.00"
+                  },
+                  {
+                      "itemTitle": "ㅀㅀㅀ",
+                      "percentage": "0.00"
+                  }
               ]
           }
       ],
       [
           {
-              "id": 1,
-              "question_title": "ratione",
-              "question_number": 1,
-              "image": "imagesExample",
-              "form_id": 1,
-              "type_id": 4
+              "id": 15,
+              "question_title": "주관식",
+              "question_number": 2,
+              "image": null,
+              "form_id": 6,
+              "type_id": 2,
+              "question_items": [],
+              "responses": [
+                  {
+                      "id": 7,
+                      "question_text": "csaasvsaf",
+                      "question_id": 15,
+                      "response_id": 6
+                  },
+                  {
+                      "id": 12,
+                      "question_text": "xzcawfawfcawvafsadsadasdasd",
+                      "question_id": 15,
+                      "response_id": 7
+                  }
+              ]
+          },
+          {
+              "responseArray": [
+                  "csaasvsaf",
+                  "xzcawfawfcawvafsadsadasdasd"
+              ]
+          }
+      ],
+      [
+          {
+              "id": 16,
+              "question_title": "체크",
+              "question_number": 3,
+              "image": null,
+              "form_id": 6,
+              "type_id": 3,
+              "question_items": [
+                  {
+                      "id": 29,
+                      "content": "ㅏㄱ",
+                      "content_number": 1,
+                      "content_image": null,
+                      "question_id": 16
+                  },
+                  {
+                      "id": 30,
+                      "content": "ㅋㅋㅋ",
+                      "content_number": 2,
+                      "content_image": null,
+                      "question_id": 16
+                  },
+                  {
+                      "id": 31,
+                      "content": "질문을 ㅇㅇㅇ.",
+                      "content_number": 3,
+                      "content_image": null,
+                      "question_id": 16
+                  }
+              ],
+              "responses": [
+                  {
+                      "id": 8,
+                      "question_text": null,
+                      "question_id": 16,
+                      "response_id": 6
+                  },
+                  {
+                      "id": 13,
+                      "question_text": null,
+                      "question_id": 16,
+                      "response_id": 7
+                  },
+                  {
+                      "id": 14,
+                      "question_text": null,
+                      "question_id": 16,
+                      "response_id": 7
+                  },
+                  {
+                      "id": 15,
+                      "question_text": null,
+                      "question_id": 16,
+                      "response_id": 7
+                  }
+              ]
+          },
+          {
+              "itemArray": [
+                  "ㅏㄱ",
+                  "ㅋㅋㅋ",
+                  "질문을 ㅇㅇㅇ."
+              ]
+          },
+          {
+              "responseArray": [
+                  2,
+                  1,
+                  1
+              ]
+          },
+          {
+              "responseResult": [
+                  {
+                      "itemTitle": "ㅏㄱ",
+                      "percentage": "50.00"
+                  },
+                  {
+                      "itemTitle": "ㅋㅋㅋ",
+                      "percentage": "25.00"
+                  },
+                  {
+                      "itemTitle": "질문을 ㅇㅇㅇ.",
+                      "percentage": "25.00"
+                  }
+              ]
+          }
+      ],
+      [
+          {
+              "id": 17,
+              "question_title": "ㅋㅋ별등급",
+              "question_number": 4,
+              "image": null,
+              "form_id": 6,
+              "type_id": 4,
+              "question_items": [
+                  {
+                      "id": 32,
+                      "content": "1",
+                      "content_number": 1,
+                      "content_image": null,
+                      "question_id": 17
+                  },
+                  {
+                      "id": 33,
+                      "content": "2",
+                      "content_number": 2,
+                      "content_image": null,
+                      "question_id": 17
+                  },
+                  {
+                      "id": 34,
+                      "content": "3",
+                      "content_number": 3,
+                      "content_image": null,
+                      "question_id": 17
+                  },
+                  {
+                      "id": 35,
+                      "content": "4",
+                      "content_number": 4,
+                      "content_image": null,
+                      "question_id": 17
+                  },
+                  {
+                      "id": 36,
+                      "content": "5",
+                      "content_number": 5,
+                      "content_image": null,
+                      "question_id": 17
+                  }
+              ],
+              "responses": [
+                  {
+                      "id": 9,
+                      "question_text": null,
+                      "question_id": 17,
+                      "response_id": 6
+                  },
+                  {
+                      "id": 16,
+                      "question_text": null,
+                      "question_id": 17,
+                      "response_id": 7
+                  }
+              ]
           },
           {
               "itemArray": [
@@ -115,45 +409,64 @@
               "responseArray": [
                   0,
                   0,
+                  1,
                   0,
-                  0,
-                  0
+                  1
+              ]
+          },
+          {
+              "responseResult": [
+                  {
+                      "itemTitle": "1",
+                      "percentage": "0.00"
+                  },
+                  {
+                      "itemTitle": "2",
+                      "percentage": "0.00"
+                  },
+                  {
+                      "itemTitle": "3",
+                      "percentage": "50.00"
+                  },
+                  {
+                      "itemTitle": "4",
+                      "percentage": "0.00"
+                  },
+                  {
+                      "itemTitle": "5",
+                      "percentage": "50.00"
+                  }
               ]
           }
       ],
       [
           {
-              "id": 1,
-              "question_title": "ratione",
-              "question_number": 1,
-              "image": "imagesExample",
-              "form_id": 1,
-              "type_id": 4
-          },
-          {
-              "itemArray": []
-          },
-          {
-              "responseArray": []
-          }
-      ],
-      [
-          {
-              "id": 1,
-              "question_title": "ratione",
-              "question_number": 1,
-              "image": "imagesExample",
-              "form_id": 1,
-              "type_id": 4
-          },
-          {
-              "itemArray": [
-                  "질문을 지정해주세요."
+              "id": 18,
+              "question_title": "당신의 의견을",
+              "question_number": 5,
+              "image": null,
+              "form_id": 6,
+              "type_id": 5,
+              "question_items": [],
+              "responses": [
+                  {
+                      "id": 10,
+                      "question_text": "savasvwfreafaef",
+                      "question_id": 18,
+                      "response_id": 6
+                  },
+                  {
+                      "id": 17,
+                      "question_text": "vzxvzzxzzzzzzzzzzzzzzzzzzzzzzzzzz",
+                      "question_id": 18,
+                      "response_id": 7
+                  }
               ]
           },
           {
               "responseArray": [
-                  0
+                  "savasvwfreafaef",
+                  "vzxvzzxzzzzzzzzzzzzzzzzzzzzzzzzzz"
               ]
           }
       ]

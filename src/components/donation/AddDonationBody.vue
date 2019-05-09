@@ -85,6 +85,8 @@
 
 <script>
   import { mapActions,mapState }   from 'vuex'
+  import { donation }              from '@/api/index'
+
   export default {
     computed: {
       ...mapState(['userinfo']),
@@ -131,8 +133,8 @@
             'Content-Type' : 'multipart/form-data'
           }
         }
-        this.ADDDONATION(data, config)
         this.$router.replace({name:'donation'})
+        this.ADDDONATION(data, config)
         this.FETCH_DONATION()
       },
     },

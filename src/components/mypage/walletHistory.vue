@@ -33,22 +33,17 @@
         <v-layout row wrap justify-center class="mr-5 pt-4 pr-4">
           <v-flex xs8>
             <div class="jumbotron">
-           
-          <div
-          class="display-3 font-weight-bold"
-          style="margin-top:50px; padding:30px;"
-          >
-          현재 보유 이노 
-            <div>
-            <span class="info--text font-italic pb-4">{{inocoin.current_ino}}</span>
-            <span class="coinImg pl-3">
-            <img src="/static/coin.png" width="60"></img>
-            </span>
+              <div
+              class="display-3 font-weight-bold"
+              style="margin-top:50px; padding:30px;"
+              >현재 보유 이노 
+                <div>
+                  <span class="info--text font-italic">{{totalCoin}}</span>
+                  <img src="/static/coin.png" width="60" class="pos ml-3"></img>
+                </div>
+              </div>
             </div>
-            </div>
-            </div>
-            
-            </v-flex>
+          </v-flex>
         </v-layout>
         </v-flex>
         <v-layout row wrap justify-center class="mr-5 pr-4">
@@ -142,6 +137,11 @@
         ) return 0
 
         return Math.ceil(this.pagination.totalItems / this.pagination.rowsPerPage)
+      },
+      totalCoin(){
+        var regexp = /\B(?=(\d{3})+(?!\d))/g;
+        var inoValue = this.inocoin.current_ino+""
+        return inoValue.replace(regexp, ',');
       }
     },
     mounted() {
@@ -195,5 +195,9 @@
   }
   .myhover_style:hover{
     background: #E0E0E0;
+  }
+  .pos {
+    position: relative;
+    top:10px;
   }
 </style>

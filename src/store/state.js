@@ -9,6 +9,7 @@ const state = {
   isPaymentDialog: false,       // 결제 모달 
   isDonateDialog: false,        // 기부 모달 
   isDonatorDialog: false,       // 기부자 모달
+  isTargetDialog: false,       // 타겟분석 모달
   formTitle: "" || "무제",      // 설문제목
   formIntro: "" || "소개글을 입력하세요", // 설명글
   token: null,                  // 유저 토큰

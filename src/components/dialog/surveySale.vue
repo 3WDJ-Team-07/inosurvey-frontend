@@ -8,10 +8,10 @@
           @click="SET_IS_SURVEY_SALE(false)">
           <i class="fas fa-times" style="cursor:pointer"></i>
         </span>
-        <v-layout column align-center class="py-3">
+        <v-layout column align-center class="py-5">
           <v-flex xs12>
              <v-card-title>
-            <span class="display-1 font-weight-bold mx-4">판매할 설문 선택</span>
+            <span class="display-1 font-weight-bold mx-5">판매할 설문 선택</span>
           </v-card-title>
           <v-card-text >
             <div v-for="(survey) in sellSurvey" class="title py-3">

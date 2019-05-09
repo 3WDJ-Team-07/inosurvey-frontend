@@ -45,18 +45,20 @@
             </v-text-field>
         </v-flex>
         </v-layout>
-        <v-flex xs12 class="border" v-for="(card,index) in surveyList" :key="index">
-          <router-link
-            :to="{
-              name: 'surveymarketdetail',
-              params:{ market_id: card.id}
-            }">
-              <MarketCard
-              :card="card"
-              :index="index"
-              />
-          </router-link>
-        </v-flex>
+        <v-layout row wrap justify-center>
+          <v-flex xs10 class="border" v-for="(card,index) in surveyList" :key="index">
+            <router-link
+              :to="{
+                name: 'surveymarketdetail',
+                params:{ market_id: card.id}
+              }">
+                <MarketCard
+                :card="card"
+                :index="index"
+                />
+            </router-link>
+          </v-flex>
+        </v-layout>
         <v-flex v-if="surveyList.length === 0" xs12 >
           <div class="display-1 grey--text">
             <span v-if="search.length == 0"><i class="far fa-frown mx-2"></i>판매중인 설문이 없습니다. </span>
