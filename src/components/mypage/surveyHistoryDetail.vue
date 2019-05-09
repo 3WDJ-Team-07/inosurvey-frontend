@@ -46,7 +46,7 @@
                       <span slot="activator">
                         <i class="far fa-calendar-alt ma-1"></i>
                         <span>
-                          {{surveyFormInfo.survey.started_at}}
+                          {{surveyFormInfo.survey.created_at}}
                         </span>
                         <span>
                           ~{{surveyFormInfo.survey.closed_at}}

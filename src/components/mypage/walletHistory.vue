@@ -41,8 +41,8 @@
             <v-card class="pa-4 mb-3" id="bordering" flat style="background-color:#BDBDBD;">
               <v-layout row wrap justify-space-around>
                 <table>
-                  <td class="font-weight-black title white--text">설문내용</td>
                   <td class="font-weight-black title white--text">내역</td>
+                  <td class="font-weight-black title white--text">제목</td>
                   <td class="font-weight-black title white--text">이노</td>
                   <td class="font-weight-black title white--text">날짜</td>
                 </table>
@@ -59,7 +59,9 @@
                   <td class="title">
                       <span v-if="item.sign == '+'" style="color:#42A5F5;"><i class="fas fa-plus fa-xs"></i>&nbsp;{{ item.price }}  <span class="caption">이노</span></span> 
                       <span v-else-if="item.sign == '-'" style="color:red;"><i class="fas fa-minus fa-xs"></i>&nbsp;{{ item.price }} <span class="caption">이노</span></span> 
-                      <span v-else style="color:#42A5F5">{{ item.price }}</span> 
+                      <span v-if="item.price==0" style="display:none"></span> 
+                      
+                      
                   </td>
                   <td class="subheading">{{ item.date }}</td>
                 </table>

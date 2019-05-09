@@ -38,7 +38,7 @@
               <span slot="activator">
                 <i class="far fa-calendar-alt ma-1"></i>
                 <span>
-                  {{ marketItems.started_at | substr }}
+                  {{ marketItems.created_at | substr }}
                 </span>
                 <span v-if="marketItems.closed_at">
                   ~ {{marketItems.closed_at | substr}}
@@ -94,25 +94,29 @@
           </div>
           </div>
           <div class="my-5">
+            <v-slide-y-transition group>
             <div v-for="(question, index) in questions" :key="index"
-            class="mx-5 pa-3 my-3 questions">
+            class="mx-5 pa-3 my-3 questions" style="cursor:pointer" @click="show =! show">
             <div class="font-weight-bold">
               <span>
                 Q{{question.question_number}}.{{question.question_title}}
               </span>
-              <span class="px-5 elevation-4" style="float:right">
-                <i class="fas fa-sort-down fa-lg grey--text text--darken-2"></i>
-              </span>
-              <div class="body-1" style="display:none">
-                <span class="ml-5"
+              <div class="body-1" v-show="show">
+               
+                <span class="ml-3"
                 v-for="(coo, index) in question.question_items"
                 :key="index">
-                {{coo.content_number}}.{{coo.content}}
+                <span class="circle mr-1">
+                  {{coo.content_number}}
+                </span>
+                {{coo.content}}
                 </span>
               </div>
+               
          
             </div>
             </div>
+            </v-slide-y-transition>
           </div>
         </v-layout>
       </v-container>
@@ -122,6 +126,11 @@
 </template>
 <script>
 export default {
+  data(){
+    return{
+      show:false
+    }
+  },
   props:['marketItems','ino'],
   filters:{
     substr:function(date){
@@ -167,5 +176,11 @@ export default {
     font-size: 1.4em;
     border: 1px solid #bbbbbb;
     border-radius: 10px;
+       }
+       .circle{
+       
+    border:1px solid grey;
+    border-radius:50%;
+  
        }
 </style>

@@ -6,7 +6,7 @@
         <span 
           class="headline right grey--text" 
           @click="SET_IS_SURVEY_SALE(false)">
-          <i class="fas fa-times"></i>
+          <i class="fas fa-times" style="cursor:pointer"></i>
         </span>
         <v-layout column align-center class="py-3">
           <v-flex xs12>
@@ -26,17 +26,19 @@
           </v-card-text>
           </v-flex>
         </v-layout>
-        <v-flex xs12>
-          <v-card-actions>
-          <v-btn
-            color="info" block round @click="sale"
-            class="mb-2 py-4"
-            :to="{
+
+          <v-card-actions class="mx-5 px-5">
+                <router-link :to="{
               name : 'marketsale',
               params: { sell_id: pickedSurvey }
             }">
+            <v-btn color="info" class="mx-3" large round @click="sale">
             판매하기
           </v-btn>
+
+            </router-link>
+          
+          
         </v-card-actions>
         </v-flex>
       </v-card>
@@ -86,7 +88,7 @@
     overflow: hidden;
   }
   .border_rounded{
-    border-radius: 7%;
+    border-radius: 20px;
   }
 
 .radio_btn{

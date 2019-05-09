@@ -44,6 +44,7 @@
                         <span>
                           2019-05-01
                         </span>
+                        </span>
                         <span>설문 진행 일정</span>
                       </v-tooltip>
                     </div>

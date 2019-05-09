@@ -147,7 +147,7 @@
     },
 
   }
-};
+
 </script>
 
 <style scoped>
