@@ -42,7 +42,7 @@
     },
     computed: {
       // 설문결제 모달 상태값
-      ...mapState(['isPaymentDialog','form','userinfo', ]),
+      ...mapState([ 'isPaymentDialog', 'form', 'userinfo' ]),
       currentIno() {
         var regexp = /\B(?=(\d{3})+(?!\d))/g;
         var ino = this.inocoin.current_ino + ""
