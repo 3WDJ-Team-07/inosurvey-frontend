@@ -3,6 +3,7 @@
     <v-layout align-center>
       <v-flex xs9>
         <v-card flat color="#FAFAFA" class="my-4 px-2" >
+          <div v-if="card.isBuy==true" class="text-xs-left red--text">이미 구매한 설문입니다.</div>
           <div class="card-title 
           display-1 font-weight-bold pb-2">
           {{ card.title }}
