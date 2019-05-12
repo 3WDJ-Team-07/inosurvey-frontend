@@ -37,7 +37,12 @@
           </v-card>
           <v-card flat  height="20vh" fill-height>
             <v-flex xs5>
-              <v-textarea v-model="content" solo label="모금함에 대해 설명해주세요">
+              <v-textarea
+              v-model="content" solo
+              :rules="contentRules"
+              :counter="255"
+              label="모금함에 대해 설명해주세요"
+              >
               </v-textarea>
             </v-flex>
           </v-card>
@@ -98,6 +103,11 @@
           //모금함 이름 규격
           v => !!v || '모금함 이름을 작성해주세요.',
           v => v.length <= 30 || '모금함 이름은 30자 이내여야합니다.'
+        ],
+        contentRules: [
+          //모금함 설명 규격
+          v => !!v || '모금함 소개를 작성해주세요.',
+          v => v.length <= 255 || '모금함 소개는 255자 이내여야합니다.'
         ],
         file:'',
         content:'',

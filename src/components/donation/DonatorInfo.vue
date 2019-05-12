@@ -1,31 +1,33 @@
 <template>
-  <span>
-    <v-flex style="margin-top:80px;" xs12>
-        <div class="subheading font-weight-bold mb-3">
-          <v-layout row wrap>
-            <v-flex xs8 v-for="(item, index) in SliceDonationItems" :key="index">
-              <span v-if="">
-                <span class="mr-4">{{ item.nickname }}</span>
-                <span class="info--text mr-2 title">{{ item.pivot.donation_amount }}</span><span class="title font-weight-bold">이노</span> 
-                <span class="mr-4 caption">{{ item.pivot.created_at }}</span>
-              </span>
+  <v-layout text-xs-center justify-center mt-5>
+    <v-flex xs3>
+      <div class="mb-3">
+        <div v-for="(item, index) in SliceDonationItems" :key="index">
+          <v-layout text-xs-center justify-center>
+            <v-flex xs12>
+              <span class="title">{{ item.nickname }}</span>
+            </v-flex>
+            <v-flex xs12>
+              <span class="info--text title">{{ item.pivot.donation_amount }}</span>
+              <span class="title font-weight-bold">이노</span>
+            </v-flex>
+            <v-flex xs12>
+              <span class="caption">{{ item.pivot.created_at }}</span>
             </v-flex>
           </v-layout>
         </div>
+      </div>
+      <v-btn block color="grey" dark @click="SET_IS_DONATOR(true)">모두보기</v-btn> 
+      <donator
+        :donationItems = "donationItems"
+      />
     </v-flex>
-    <v-flex xs5>
-      <v-btn block color="grey" dark @click="SET_IS_DONATOR(true)">모두보기</v-btn>
-    </v-flex>
-    <donator
-    :donationItems = "donationItems"
-    />
-  </span>
+  </v-layout>
 </template>
 
 <script>
   import donator from '@/components/dialog/donator'
   import { mapMutations } from 'vuex'
-
   export default {
     props: ['donationItems'],
     components: { donator },

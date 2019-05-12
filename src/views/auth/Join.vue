@@ -77,7 +77,7 @@
 										></v-select>
 									</v-flex>
 										<v-flex xs5>
-											<v-select
+											<!-- <v-select
 											class="mr-3"
 											v-model="age" 
 											:items="age_item" 
@@ -87,7 +87,32 @@
 											outline height=0
 											hide-details
 											append-icon="arrow_drop_down"
-										></v-select>
+										></v-select> -->
+                <v-menu
+                  ref="menu"
+                  v-model="menu"
+                  :close-on-content-click="false"
+                  :nudge-right="200"
+                  lazy
+                  offset-y
+                  min-width="290px"
+                >
+                  <template v-slot:activator>
+                    <v-text-field
+                      v-model="age"
+                      label="생년월일"
+                      prepend-icon="event"
+                      readonly
+                    ></v-text-field>
+                  </template>
+                  <v-date-picker
+                    ref="picker"
+                    v-model="age"
+                    max="2019-05-15"
+                    min="1960-01-01"
+                    @change="save"
+                  ></v-date-picker>
+                </v-menu>
 									</v-flex>
 								</v-layout>
 								<v-card-actions>
@@ -135,28 +160,29 @@
 				email: '',      // 이메일
 				gender: 0,      // 성별
 				job_id: 0,      // 직업
-				age: 0,         // 연령대
+				age: null,         // 연령대
 				is_donator: 0,  // 기부단체 or 일반회원
+				menu:false,
 				job_item: [
-					{ name: '서비스/상담', value: 1},
-					{ name: '금융/무역', value: 2},
-					{ name: '연구/개발', value: 3},
-					{ name: 'IT/인터넷', value: 4},
-					{ name: '건설', value: 5},
-					{ name: '사무/경영', value: 6},
-					{ name: '의료', value: 7},
-					{ name: '교육', value: 8},
-					{ name: '생산/제조', value: 9},
+					{ name: '교육', value: 1},
+					{ name: '건설', value: 2},
+					{ name: '금융 / 무역', value: 3},
+					{ name: '사무 / 경영', value: 4},
+					{ name: '생산 / 제조', value: 5},
+					{ name: '서비스 / 상담', value: 6},
+					{ name: '연구 / 개발', value: 7},
+					{ name: '예술 / 방송', value: 8},
+					{ name: 'IT / 인터넷', value: 9},
 				],
-				age_item: [
-					{ name: '1950년도생', value: 1950},
-					{ name: '1960년도생', value: 1960},
-					{ name: '1970년도생', value: 1970},
-					{ name: '1980년도생', value: 1980},
-					{ name: '1990년도생', value: 1990},
-					{ name: '2000년도생', value: 2000},
-					{ name: '2010년도생', value: 2010},
-				],
+				// age_item: [
+				// 	{ name: '1950년도생', value: 1950},
+				// 	{ name: '1960년도생', value: 1960},
+				// 	{ name: '1970년도생', value: 1970},
+				// 	{ name: '1980년도생', value: 1980},
+				// 	{ name: '1990년도생', value: 1990},
+				// 	{ name: '2000년도생', value: 2000},
+				// 	{ name: '2010년도생', value: 2010},
+				// ],
 				emailRules: [
           v => !!v || '이메일을 입력하세요', 
           v => /.+@.+/.test(v) || '이메일 형식으로 입력하세요' 
@@ -170,8 +196,18 @@
 		mounted(){
 			this.$refs.input.focus()
 		},
+		watch:{
+      menu(val){
+        val && setTimeout(() => (this.$refs.picker.activePicker = 'YEAR'))
+      }
+    },
 		methods: {
 			...mapMutations(['SET_IS_REGISTER_NULL']),
+			save (age) {
+			var ages= age.slice(0,4)
+			this.$refs.menu.save(ages)
+
+    },
 			register(){
 				if(!this.user_id || !this.password || !this.nickname || !this.email ||	
 				!this.gender || !this.job_id || !this.age ){
