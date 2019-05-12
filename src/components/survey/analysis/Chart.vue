@@ -4,21 +4,21 @@
       <Subjected
       :form_id = "form_id"
       :chartItem = "chartItem"
-      :tagetData = "tagetData"
+      :targetData = "targetData"
       />
     </v-flex>
     <v-flex xs8 v-else-if="chartItem[0].type_id == 6">
       <ImageSelect
       :form_id = "form_id"
       :chartItem = "chartItem"
-      :tagetData = "tagetData"
+      :targetData = "targetData"
       />
     </v-flex>
     <v-flex xs8 v-else>
       <Choice
       :form_id = "form_id"
       :chartItem = "chartItem"
-      :tagetData = "tagetData"
+      :targetData = "targetData"
       />
     </v-flex>
   </v-layout>
@@ -31,7 +31,7 @@
   import Choice        from './Choice'
 
   export default {
-    props: ['form_id', 'chartItem', 'tagetData'],
+    props: ['form_id', 'chartItem', 'targetData'],
     components:{
       Subjected,
       ImageSelect,

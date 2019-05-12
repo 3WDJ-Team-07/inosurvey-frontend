@@ -1,7 +1,7 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
-const DOMAIN = 'http://172.26.3.31:8000'
+const DOMAIN = 'http://54.180.121.254'
 const UNAUTHORIZED = 401
 
 
@@ -160,9 +160,8 @@ export const market = {
     return serverRequest('post','/api/market/sale',{id,user_id})
   },
   FetchListSell(id) {
-    return serverRequest('post','/api/market/sellable-show',id)
+    return serverRequest('post','/api/market/sellable-show', id)
   },
-
   TestSaleList() {
     return localRequest('get','/static/test/saleList.json')
   },

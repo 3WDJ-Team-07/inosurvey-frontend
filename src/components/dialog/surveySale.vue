@@ -1,83 +1,86 @@
 /* 판매할 설문 리스트 모달창 */
 <template lang="html">
   <v-layout>
-    <v-dialog v-model="isSaleDialog" persistent max-width="500px">
+    <v-dialog v-model="isSaleDialog" persistent max-width="600px">
       <v-card class="pr-5 pl-5 pt-4 pb-4 border_rounded">
+      <span v-if="!loading">
         <span 
-          class="headline right grey--text" 
+          class="title right grey--text" 
           @click="SET_IS_SURVEY_SALE(false)">
-          <i class="fas fa-times" style="cursor:pointer"></i>
+          <i class="fas fa-times fa-2x" style="cursor:pointer"></i>
         </span>
-        <v-layout column align-center class="py-5">
-          <v-flex xs12>
-             <v-card-title>
-            <span class="display-1 font-weight-bold mx-5">판매할 설문 선택</span>
-          </v-card-title>
-          <v-card-text >
-            <div v-for="(survey) in sellSurvey" class="title py-3">
-              <span class="mx-5">
-                 <input
-                  type="radio" name="sellSurvey" class=" radio_btn mr-4"
-                  v-bind:value="survey.id" v-model="pickedSurvey" :id="survey.id"
-                 >
-                 <label :for="survey.id" class="radio_label font-weight-bold">{{survey.title}}</label>
-              </span>
-            </div>
-          </v-card-text>
-          </v-flex>
-        </v-layout>
-
-          <v-card-actions class="mx-5 px-5">
-                <router-link :to="{
-              name : 'marketsale',
-              params: { sell_id: pickedSurvey }
-            }">
-            <v-btn color="info" class="mx-5" large round @click="sale">
-            판매하기
-          </v-btn>
-
+        <span v-if="sellSurvey.length !== 0">
+          <v-layout column align-center class="py-5">
+            <v-flex xs12>
+              <v-card-title>
+              <span class="display-1 font-weight-bold mx-5">판매할 설문 선택</span>
+            </v-card-title>
+            <v-card-text >
+              <div v-for="(survey) in sellSurvey" class="title py-3">
+                <span class="mx-5">
+                  <input
+                    type="radio" name="sellSurvey" class=" radio_btn mr-4"
+                    v-bind:value="survey.id" v-model="pickedSurvey" :id="survey.id"
+                  >
+                  <label :for="survey.id" class="radio_label font-weight-bold">{{survey.title}}</label>
+                </span>
+              </div>
+            </v-card-text>
+            </v-flex>
+          </v-layout>
+          <v-layout row wrap justify-center>
+            <router-link :to="{
+                name : 'marketsale',
+                params: { sell_id: pickedSurvey }
+              }">
+              <v-btn color="info" block style="width:400px;" large round @click="sale">판매하기</v-btn>
             </router-link>
-          
-          
-        </v-card-actions>
+          </v-layout>
+        </span>
+        <span v-else>
+          <v-layout row wrap justify-center>
+              <v-card-title class="headline pa-5">
+                판매 할 설문이 없습니다...
+              </v-card-title>
+          </v-layout>
+        </span>
         </v-flex>
+        </span>
+        <Spinner3 v-else/>
       </v-card>
     </v-dialog>
   </v-layout>
 </template>
 
 <script>
-  import { mapState, mapMutations } from 'vuex'
+  import { mapState, mapMutations, mapActions } from 'vuex'
   import { market } from '@/api/index'
+  import Spinner3   from '@/components/Spinner3'
 
   export default {
     name: 'surveySale',
-    props:['userinfo'],
-    data(){
+    components: {
+      Spinner3
+    },
+    props: ['userinfo'],
+    data() {
       return {
-        pickedSurvey:'',
-        sellSurvey: [],
+        loading: false,
+        pickedSurvey: '',
       }
     },
-    created() {
-      this.fetchSellList()
-      console.log(1111, this.pickedSurvey);
+    mounted() {
+      this.FETCH_SELL({ id: this.userinfo.id })
     },
     computed: {
-      ...mapState(['isSaleDialog']),
+      ...mapState(['isSaleDialog', 'sellSurvey']),
     },
     methods: {
       ...mapMutations(['SET_IS_SURVEY_SALE']),
+      ...mapActions(['FETCH_SELL']),
       sale(){
         this.SET_IS_SURVEY_SALE(false);
       },
-      fetchSellList() {
-        return market.marketSell({ id: this.userinfo.id })
-        .then(response => {
-           this.$store.state.loading = false
-          this.sellSurvey = response.list
-        })
-      }
     }
   }
 </script>

@@ -10,7 +10,7 @@
           style="position: relative;"
         >
           <v-btn
-            v-if="card.current_amount == card.target_amount"
+            v-if="card.current_amount >= card.target_amount"
             absolute
             color="info"
             dark fab large

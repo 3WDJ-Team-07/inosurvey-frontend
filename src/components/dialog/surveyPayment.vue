@@ -28,28 +28,55 @@
 
 <script>
   import { mapState, mapMutations, mapActions } from 'vuex';
+  import { userInformation } from '@/api/index'
+  import swal                from 'sweetalert'
 
   export default {
     name: 'surveyPayment',
-    props: ['total','responseNumber'],
+    props: ['total','responseNumber', 'numberTotal'],
     data() {
       return {
         questionNumberPay:10, // 문제당 요금
+        inocoin: {}
       }
     },
     computed: {
       // 설문결제 모달 상태값
-      ...mapState(['isPaymentDialog','form','userinfo'])
+      ...mapState([ 'isPaymentDialog', 'form', 'userinfo' ]),
+      currentIno() {
+        var regexp = /\B(?=(\d{3})+(?!\d))/g;
+        var ino = this.inocoin.current_ino + ""
+        return ino.replace(regexp, ',')
+      }
+    },
+    mounted() {
+      this.fetchCoin()
     },
     methods: {
       // 설문결제 모달 상태값 변이 
       ...mapMutations(['SET_IS_PAYMENT_SURVEY']),
       ...mapActions(['REQUEST_SURVEY_FORM']),
+      fetchCoin() {
+        return userInformation.userCoin({ id: this.userinfo.id })
+        .then(response => {
+          this.inocoin = response
+        })
+      },
       // 결제시 모달 닫기/이동
       payment(){
-        this.REQUEST_SURVEY_FORM()
-        this.SET_IS_PAYMENT_SURVEY(false)
-        this.$router.push('surveycomplete')
+        if(Number(this.inocoin.current_ino) >= this.numberTotal) {
+          this.REQUEST_SURVEY_FORM()
+          this.SET_IS_PAYMENT_SURVEY(false)
+          this.$router.push('surveycomplete')
+        }else {
+          swal("이노가 부족합니다 !", `\n지금 바로 이노를 충전하시겠습니까 ? \n\n내 보유이노 : ${this.currentIno} 이노`,
+          {icon: "warning", buttons: true, dangerMode: true,})
+          .then(response => {
+            if(response) {
+              //  이노충전하러가기 
+            }
+          })
+        }
       }
     }
   }

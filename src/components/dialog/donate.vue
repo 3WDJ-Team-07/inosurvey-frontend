@@ -5,7 +5,7 @@
 		  <span
         class="pr-1 pt-1 right white--text" 
         @click="SET_IS_DONATE(false)">
-        <i class="fas fa-times"></i>
+        <i class="fas fa-times fa-2x"></i>
       </span>
       <v-layout column align-center>
         <v-card-title class="white--text font-weight-bold display-1" primary-title>
@@ -15,7 +15,7 @@
            <v-img :src="donationItems.image" class="white--text" height="50%"></v-img>
         </v-card-text>
         <v-card-text class="headline font-weight-bold white--text">
-          <span>보유 이노 : {{ inocoin.current_ino || '0' }}</span>
+          <span>보유 이노 : {{ coin || '0' }} 이노</span>
         </v-card-text>
 			</v-layout>
       <v-card-actions class="pb-4">
@@ -47,7 +47,8 @@
       ...mapState([ 'isDonateDialog', 'userinfo' ]),
       coin() {
         var regexp = /\B(?=(\d{3})+(?!\d))/g;
-        return this.inocoin.current_ino.toString().replace(regexp, ',')
+        var ino = this.inocoin.current_ino + ""
+        return ino.replace(regexp, ',')
       }
     },
     updated() {
@@ -57,31 +58,31 @@
     methods: {
       ...mapActions([ 'REQUEST_DONATE' ]),
       ...mapMutations([ 'SET_IS_DONATE', 'SET_IS_DONATE_COMPLETE' ]),
-      // 기부를 하면 바로 반영되기 위해서 리스트정보를 한번더 불러와 반영시켜준다 
-      // fetchList() {
-      //   this.$store.state.loading = true
-      //   return donation.fetchListItem({ id: this.$route.params.donation_id })
-      //   .then(response => {
-      //     this.donationItems = response.donations
-      //     this.$store.state.loading = false
-      //   })
-      // },
       donate(){
-        this.REQUEST_DONATE({
-          user_id: this.userinfo.id,
-          donation_id: this.$route.params.donation_id,
-          ino: this.$refs.donateInput.value
-        })
-        this.SET_IS_DONATE(false);
-        this.$router.push({ name:'donation' })
-        // this.fetchList()
-        swal({
-          title: '아름다운 기부',
-          text: `\n${this.donationItems.title} 기부처에 ${this.$refs.donateInput.value} 이노를 기부하셨습니다 ! 
-          \n내 보유이노 : ${(this.inocoin.current_ino - this.$refs.donateInput.value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`,
-          icon: "success",
-          button: "확인"
-        })
+        if(Number(this.inocoin.current_ino) >= Number(this.$refs.donateInput.value)) {
+          this.REQUEST_DONATE({
+            user_id: this.userinfo.id,
+            donation_id: this.$route.params.donation_id,
+            ino: this.$refs.donateInput.value
+          })
+          this.SET_IS_DONATE(false);
+          this.$router.push({ name:'donation' })
+          swal({
+            title: '아름다운 기부',
+            text: `\n${this.donationItems.title} 기부처에 ${this.$refs.donateInput.value} 이노를 기부하셨습니다 ! 
+            \n내 보유이노 : ${(this.inocoin.current_ino - this.$refs.donateInput.value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`,
+            icon: "success",
+            button: "확인"
+          })
+        } else {
+          swal("이노가 부족합니다 !", `\n지금 바로 이노를 충전하시겠습니까 ? \n\n내 보유이노 : ${this.coin} 이노`,
+          {icon: "warning", buttons: true, dangerMode: true,})
+          .then(response => {
+            if(response) {
+              //  이노충전하러가기 
+            }
+          })
+        }
       }
     },
   }

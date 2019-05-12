@@ -8,29 +8,29 @@
       row wrap class="pb-5"
       justify-space-between 
       >
-        <div style="padding-top:10px;">
-          <span class="headline font-weight-bold" style="border-top:7px solid #42A5F5;padding-top:10px;">
-            Q.{{chartItem[0].question_number}}&nbsp;&nbsp;{{ chartItem[0].question_title }}
-          </span> 
+        <span>
           <select v-model="gender" class="subheading ml-5 pr-3 pl-3">
             <option :value="0">모든 성별</option>
-            <span v-if="tagetData.gender == 0">
-              <option :value="1">남성</option>
-              <option :value="2">여성</option>
-            </span>
-            <option :value="1" v-if="tagetData.gender == 1">남성</option>
-            <option :value="2" v-if="tagetData.gender == 2">여성</option>
+            <option v-if="targetData.gender == 0" :value="1">남성</option>
+            <option v-if="targetData.gender == 0" :value="2">여성</option>
+            <option :value="1" v-if="targetData.gender == 1">남성</option>
+            <option :value="2" v-if="targetData.gender == 2">여성</option>
           </select>
           <select v-model="age" class="subheading pr-3 pl-3">
             <option :value="0">모든 연령</option>
-            <option :value="item" v-for="(item, index) in tagetData.age" :key="index">{{item}}대</option>
+            <option :value="item" v-for="(item, index) in targetData.age" :key="index">{{item}}대</option>
           </select>
           <select v-model="job" class="subheading pr-3 pl-3">
             <option :value="0">모든 직업</option>
-            <option :value="item.id" v-for="(item, index) in tagetData.job" :key="index">{{item.name}}</option>
+            <option :value="item.id" v-for="(item, index) in targetData.job" :key="index">{{item.name}}</option>
           </select>
-        </div>
+        </span>
       </v-layout>
+      <div style="padding-top:10px;" class="mb-4">
+        <span class="title font-weight-bold" style="border-top:7px solid #42A5F5; padding-top:10px;">
+          Q.{{chartItem[0].question_number}}&nbsp;&nbsp;{{ chartItem[0].question_title }}
+        </span> 
+      </div>
       <v-layout row wrap justify-center>
         <div style="width:800px;">
           <v-data-table
@@ -54,7 +54,7 @@
   import { analysis }  from '@/api/index'
 
   export default {
-    props: ['form_id', 'chartItem', 'tagetData'],
+    props: ['form_id', 'chartItem', 'targetData'],
     data() {
       return {
         gender: 0,
