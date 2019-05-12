@@ -65,15 +65,33 @@
             donation_id: this.$route.params.donation_id,
             ino: this.$refs.donateInput.value
           })
+          .then(response=>{
+            if(response.status=="end"){
+              swal({
+                title: '기부 오류',
+                text: '이미 종료된 모금입니다.',
+                icon: "error",
+                button: "확인"
+              })
+            }
+            else if(response.status =="excess"){
+              swal({
+                title: '기부 오류',
+                text: '목표금액보다 초과한 금액을 기부할 수 없습니다.',
+                icon: "error",
+                button: "확인"
+              })
+            }
+          })
+          swal({
+                title: '아름다운 기부',
+                text: `\n${this.donationItems.title} 기부처에 ${this.$refs.donateInput.value} 이노를 기부하셨습니다 !
+                \n내 보유이노 : ${(this.inocoin.current_ino - this.$refs.donateInput.value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`,
+                icon: "success",
+                button: "확인"
+              })
           this.SET_IS_DONATE(false);
           this.$router.push({ name:'donation' })
-          swal({
-            title: '아름다운 기부',
-            text: `\n${this.donationItems.title} 기부처에 ${this.$refs.donateInput.value} 이노를 기부하셨습니다 ! 
-            \n내 보유이노 : ${(this.inocoin.current_ino - this.$refs.donateInput.value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`,
-            icon: "success",
-            button: "확인"
-          })
         } else {
           swal("이노가 부족합니다 !", `\n지금 바로 이노를 충전하시겠습니까 ? \n\n내 보유이노 : ${this.coin} 이노`,
           {icon: "warning", buttons: true, dangerMode: true,})

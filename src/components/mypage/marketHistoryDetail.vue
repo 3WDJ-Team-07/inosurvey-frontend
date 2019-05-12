@@ -1,49 +1,42 @@
 <template>
-  <div>
-    <v-layout>
-      <v-flex xs2>
-        <myNav/>
-      </v-flex>
-      <v-container mt-4>
+  <div v-if="surveyFormInfo.survey">
+    <v-container>
+      <v-layout row>
         <v-layout row wrap>
-          <v-flex xs8 text-xs-left>
-            <div class="display-2 font-weight-bold px-3 pb-4">설문조사1</div>
-          </v-flex>
-
-          <v-flex justify-end>
-            <div>
-              <v-btn class="font-weight-bold" flat>PDF파일 변환</v-btn>
-              <v-btn class="font-weight-bold" flat>엑셀파일 변환</v-btn>
+          <v-flex xs12 text-xs-left>
+            <div class="display-2 font-weight-bold px-3 pb-4">
+            {{surveyFormInfo.survey.title}}
             </div>
           </v-flex>
         </v-layout>
-        <v-layout>
+      </v-layout>
+        <v-layout row wrap>
           <v-flex xs3 class="border_style">
             <v-card class="text-xs-center" flat style="background-color:#FAFAFA;">
-              <div class="display-1 font-weight-bold my-5 py-5 elevation-5">설문 정보</div>
+              <div class="display-1 font-weight-bold my-5 py-5">설문 정보</div>
             </v-card>
           </v-flex>
           <v-flex xs9 class="border_style pa-3 text-xs-left">
             <v-card flat style="background-color:#FAFAFA;">
               <v-layout row wrap>
                 <v-flex xs9>
-
-                <div class="elevation-5">
-
-                  <div class="title font-weight-bold px-4 pt-4 mt-2 pb-3">
-                    설문조사 1 설문조사 1 소개설문조사 1 소개
-                    <span class="pl-5 ml-5 subheading grey--text">
-                      닉네임
-                    </span>
-                  </div>
-                  
-                  <div class="title font-weight-bold px-4 pb-3">
-                    <v-tooltip right color="info">
-                      <span slot="activator">
-                        <i class="far fa-calendar-alt ma-1"></i>
-                        <span>
-                          2019-05-01
-                        </span>
+                  <div>
+                    <div class="title font-weight-bold px-4 pt-4 mt-2 pb-3">
+                      {{surveyFormInfo.survey.description}}
+                      <span class="pl-5 ml-5 subheading grey--text">
+                        {{surveyFormInfo.survey.user.nickname}}
+                      </span>
+                    </div>
+                    <div class="title font-weight-bold px-4 pb-3">
+                      <v-tooltip right color="info">
+                        <span slot="activator">
+                          <i class="far fa-calendar-alt ma-1"></i>
+                          <span>
+                            {{surveyFormInfo.survey.created_at}}
+                          </span>
+                          <span>
+                            ~{{surveyFormInfo.survey.closed_at}}
+                          </span>
                         </span>
                         <span>설문 진행 일정</span>
                       </v-tooltip>
@@ -52,62 +45,132 @@
                       <v-tooltip right color="info">
                         <span slot="activator">
                           <i class="fas fa-coins ma-1"></i>
-                          <span>100이노</span>
+                          <span>
+                            {{surveyFormInfo.price}} 이노
+                          </span>
                         </span>
                         <span>금액</span>
                       </v-tooltip>
                     </div>
-                    <div class="title font-weight-bold px-4 pb-3">
+                    <div v-if="surveyFormInfo.survey.target" class="px-4">
                       <v-tooltip right color="info">
                         <span slot="activator">
-                          <v-chip color="grey darken-2" dark>
-                            <span>타겟</span>
+                          <span>
+                            <v-chip color="grey darken-2" text-color="white" large v-if="gender ==! 0">
+                              <span v-if="gender == 1">
+                                남자
+                              </span>
+                              <span v-else-if="gender == 2">
+                                여자
+                              </span>
+                            </v-chip>
+                          </span>
+                        <span>
+                          <v-chip
+                            color="grey darken-2" text-color="white" large
+                            v-if="age" v-for="(targetAge, index) in age " :key="index"
+                          >
+                            {{ targetAge }} 대
                           </v-chip>
                         </span>
-                        <span>타겟</span>
-                      </v-tooltip>
-                    </div>
-                  </div>
-                </v-flex>
-                <v-flex xs3 class="text-xs-center pt-4 mt-1">
-                  <div class="elevation-5">
-                    <v-progress-circular
-                      :rotate="360"
-                      :size="120"
-                      :width="20"
-                      value="100"
-                      color="info"
-                    >100%</v-progress-circular>
-                    <div class="title font-weight-bold pt-2">
-                      <v-tooltip right color="info">
-                        <span slot="activator">
-                          <i class="fas fa-user ma-1"></i>
-                          <span>300/300명</span>
+                        <span>
+                          <v-chip
+                            color="grey darken-2" text-color="white" large
+                            v-if="job" v-for="(targetJob, index) in job" :key="index"
+                          >
+                            {{targetJob.name}}
+                          </v-chip>
                         </span>
-                        <span>응답인원</span>
-                      </v-tooltip>
-                    </div>
+                      </span>
+                      <span>타겟</span>
+                    </v-tooltip>
                   </div>
-                </v-flex>
-              </v-layout>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-layout>
-    <Chart/>
-  </div>
+                </div>
+              </v-flex>
+              <v-flex xs3 class="text-xs-center pt-4 mt-1">
+                <div>
+                  <v-progress-circular
+                    :rotate="360"
+                    :size="120"
+                    :width="20"
+                    :value="rate"
+                    color="info"
+                  >{{rate}}</v-progress-circular>
+                  <div class="title font-weight-bold pt-2">
+                    <v-tooltip right color="info">
+                      <span slot="activator">
+                        <i class="fas fa-user ma-1"></i>
+                        <span>{{surveyFormInfo.survey.respondent_count}}</span>
+                        /<span>{{surveyFormInfo.survey.respondent_number}}</span>명
+                      </span>
+                      <span>응답인원</span>
+                    </v-tooltip>
+                  </div>
+                </div>
+              </v-flex>
+            </v-layout>
+          </v-card>
+        </v-flex>
+        <v-flex xs12>
+          <v-card color="#FAFAFA" flat class=" text-xs-center">
+            <div fluid grid-list-md class="py-5">
+              <div class="display-3 font-weight-bold my-5 py-5">
+                <v-btn color="info" class="pa-5" 
+                :to="{
+                        name: 'analysis', 
+                        params: { form_id: surveyFormInfo.survey.id }
+                      }">분석보기</v-btn>
+              </div>
+            </div>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    
+  </v-layout>
+  </v-container>
+</div>
+<!-- //<router-link 
+                      > -->
 </template>
 
 <script>
-import myNav from "./myNav";
-import Chart from "@/components/survey/analysis/Chart";
+
+import { mypage } from '@/api/index'
 
 export default {
-  components: { myNav, Chart },
-  data() {
-    return {};
-  }
+  data () {
+      return {
+        surveyFormInfo: {},
+      }
+    },
+    computed:{
+      rate() {
+        return (this.surveyFormInfo.survey.respondent_count / this.surveyFormInfo.survey.respondent_number*100).toFixed(1) + ' %'
+      },
+      age(){
+      return this.surveyFormInfo.survey.target.age||'0'
+      },
+      gender(){
+        return this.surveyFormInfo.survey.target.gender||'0'
+      },
+      job(){
+        return this.surveyFormInfo.survey.target.job||'0'
+      }
+    },
+    mounted() {
+      this.fetchSurveyForm()
+    },
+    methods: {
+      fetchSurveyForm() {
+        this.loading = true
+        return mypage.FetchSurveyForm({ form_id: this.$route.params.form_id })
+        .then(response => {
+          console.log(response)
+          this.surveyFormInfo = response
+          this.loading = false
+        })
+      }
+    },
 };
 </script>
 

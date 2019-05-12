@@ -2,10 +2,9 @@
   <div v-if="surveyFormInfo.survey">
     <v-layout>
       <v-container>
-        <v-flex xs9 text-xs-left>
+        <v-flex text-xs-left>
           <div class="display-2 font-weight-bold px-3 pb-4">
             {{surveyFormInfo.survey.title}}
-            <pre></pre>
           </div>
         </v-flex>
       <v-layout>
@@ -27,7 +26,7 @@
                   <div class="title font-weight-bold px-4 pt-4 mt-2 pb-3">
                     {{surveyFormInfo.survey.description}}
                     <span class=" ml-5 subheading grey--text">
-                      요청자 - 닉네임
+                      {{surveyFormInfo.survey.user.nickname}}
                     </span>
                   </div>
                   <div class="title font-weight-bold px-4 pb-3">
@@ -60,7 +59,7 @@
                     <span slot="activator">
                       <i class="fas fa-coins ma-1"></i>
                       <span>
-                        {{surveyFormInfo.price}} 이노
+                        {{surveyFormInfo.reward}} 이노
                       </span>
                       </span>
                       <span>금액</span>

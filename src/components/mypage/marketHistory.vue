@@ -1,7 +1,7 @@
 <template>
-
   <span>
-    <div v-if="this.$route.name == 'markethistory' || !loading">
+    <span v-if="!loading">
+    <div v-if="this.$route.name == 'markethistory'">
       <v-layout row wrap justify-space-around>
         <v-navigation-drawer
             v-model="drawer"
@@ -42,7 +42,10 @@
 
           >
             <template v-slot:items="props">
-              <router-link :to=" { name : 'markethistorydetail'} ">
+              <router-link :to=" {
+                name : 'markethistorydetail',
+                params: { form_id: props.item.form_id }
+              } ">
                 <td class="pa-5 title font-weight-bold">{{ props.item.content }}</td>
               </router-link>
               <td class="text-xs-center grey--text subheading">
@@ -67,6 +70,7 @@
     <div v-else> 
       <router-view/>
     </div>
+    </span>
     <Spinner v-else/>
   </span>
 </template>

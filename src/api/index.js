@@ -141,15 +141,8 @@ export const market = {
   // marketPurchase(id,user_id) {
   //   return serverRequest('post','/api/market/purchase',{ id, user_id })
   // },
-  marketPurchaseTest(id, user_id){
-    return axios({
-      method: 'post',
-      url: `${DOMAIN}/api/market/purchase`,
-      data: { id, user_id },
-    }).then(response => response)
-    .catch(error => {
-      console.log(error)
-    })
+  marketPurchase(id, user_id){
+    return serverRequest('post','/api/market/purchase',{ id, user_id })
   },
   // 설문마켓 - 판매할 설문 정보 불러오기
   marketSell(id){

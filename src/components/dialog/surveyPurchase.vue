@@ -64,10 +64,26 @@
             user_id : this.userinfo.id
           })
           .then(response => {
-            if(response.status == 202){
+            if(response.status == "mysurvey"){
               swal({
                 title: '구매 오류',
                 text: '자신이 만든 설문조사는 구매할 수 없습니다.',
+                icon: "error",
+                button: "확인"
+              })
+            }
+            else if(response.status == "duplicated"){
+              swal({
+                title: '구매 오류',
+                text: '이미 구매한 설문입니다.',
+                icon: "error",
+                button: "확인"
+              })
+            }
+            else if(response.status == "request failure"){
+              swal({
+                title: '구매 오류',
+                text: '네트워크가 불안정합니다.',
                 icon: "error",
                 button: "확인"
               })

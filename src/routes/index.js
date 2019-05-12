@@ -76,7 +76,7 @@ const router = new Router({
           component: marketHistory,
           children: [
             {
-              path: 'detail',
+              path: 'detail/:form_id',
               name: 'markethistorydetail',
               component : marketHistoryDetail
             }

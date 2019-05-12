@@ -110,7 +110,7 @@
         return sellingSurvey.sort((x,y) => { return y.id - x.id})
       }
     },
-    created() {
+    mounted() {
       this.FETCH_MARKET({ id: this.userinfo.id })
     },
     methods: {
