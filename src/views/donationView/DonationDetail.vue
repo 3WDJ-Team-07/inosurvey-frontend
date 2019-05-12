@@ -1,40 +1,29 @@
 <template>
-  <div>
+  <div transition="slide-x-transition">
+      <v-img :src="donationItems.image" id="donationImg" class="donationImg" height="35vh" color=""
+      gradient="to top,  rgba(0, 0, 0, .6), rgba(0, 0, 0, .1)"
+      style="border-bottom-left-radius: 5%; 
+   border-bottom-right-radius: 5% ">
+
+        <v-container fill-height>
+          <v-layout align-center justify-center>
+            <div class="font-weight-bold white--text" style="font-size: 3em; text-shadow: 0 0 20px #000000" >
+              {{donationItems.title}}
+            </div>
+          </v-layout>
+        </v-container>
+    </v-img>
     <v-container fluid grid-list-md pt-5 mt-5
     v-if="!this.$store.state.loading">
-      <v-layout row wrap justify-center>
-        <v-flex xs12>
-          <v-card color="#FAFAFA" height="10vh" flat>
-            <div fluid grid-list-md>
-              <v-layout row wrap>
-                <div  class="display-1 font-weight-bold pt-3 ml-5 xs-2">{{donationItems.title}}</div>
-              </v-layout>
-            </div>
-          </v-card>
-          <v-divider/>
-        </v-flex>
-        <v-flex xs2 md2>
-          <v-card height="90vh" max-width="300" class="pt-5 text-xs-center">
-            <v-card flat height="62vh" fill-height>
-              <div class="headline font-weight-bold">모금 소개</div>
-            </v-card>
-            <v-card flat>
-              <div class="headline font-weight-bold">기부자 현황</div>
-            </v-card>
-          </v-card>
-        </v-flex>
-        <v-flex xs8>
-          <v-card height="90vh" class="pa-4">
-            <DonationBoxBody
-            :donation_id = "donation_id"
-            :donationItems = "this.donationItems"
-            />
-          </v-card>
-        </v-flex>
-      </v-layout>
+    <v-layout>
+      <DonationBoxBody
+        :donation_id = "donation_id"
+        :donationItems = "this.donationItems"
+      />
+    </v-layout>
     </v-container>
     <Spinner v-else/>
-  </div>    
+  </div>
 </template>
 <script>
   import DonationBoxBody   from '@/components/donation/DonationBoxBody'

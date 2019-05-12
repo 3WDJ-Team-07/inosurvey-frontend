@@ -7,7 +7,10 @@
       <DonationContext/> 
     </div>
     <div v-else>
+      <transition>
+      
       <router-view/>
+      </transition>
     </div>
   </span>
 </template>

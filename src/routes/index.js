@@ -39,6 +39,7 @@ const requireAuth = (to, from, next) => {
 }
 
 const router = new Router({
+
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -187,7 +188,8 @@ const router = new Router({
       name: 'notfound',
       redirect: {name : 'Home'}
     }
-  ]
+  ],
+  scrollBehavior : () =>({y:0})
 })
 
 export default router

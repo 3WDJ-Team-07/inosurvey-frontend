@@ -1,71 +1,92 @@
 <template>
-  <v-container fluid grid-list-md>
-    <v-layout>
-      <v-flex>
-        <v-card flat >
-          <v-flex xs10>
-          <div class="mb-4">
-            <span class="headline font-weight-bold">
+  <v-layout justify-center text-xs-center>
+    <v-flex xs12>
+      <v-card flat color="#fafafa">
+        <v-container fluid >
+          <v-layout column fill-height>
+            <div class="mb-4 display-1 font-weight-bold">
               {{donationItems.content}}
-            </span>
+            </div>
+            <div class="title font-weight-bold px-4">
+              <v-tooltip right color="info">
+                <span slot="activator">
+                  <i class="far fa-calendar-alt ma-1"></i>
+                  <span>
+                    {{donationItems.created_at | substr(10)}}
+                    ~ {{donationItems.closed_at | substr(10)}}
+                  </span>
+                </span>
+                <span>모금 일정</span>
+              </v-tooltip>
+            </div>
+          <v-container fill-height>
+            <v-layout align-center justify-center row wrap>
+              <v-flex xs3 class="padding">
+                <div class="title font-weight-bold">
+                  <v-tooltip right color="info">
+                    <span slot="activator">
+                      <i class="fas fa-coins ma-1"></i>
+                      <span class="info--text">
+                      {{donationItems.current_amount}}
+                      </span>
+                      / {{donationItems.target_amount}} 이노
+                    </span>
+                    <span>모금 상황</span>
+                  </v-tooltip>
+              </div>
+              </v-flex>
+              <v-flex xs4 mr-5 pr-3>
+                <v-progress-linear
+                  color="info"
+                  height="25"
+                  :value="rate"
+                  style="font-size:17px;"
+                  class="rounded-bar text-xs-left"
+                >
+                <span style="color:white;" class="ml-3">{{ rate }}</span>
+                </v-progress-linear>
+              </v-flex>
+            </v-layout>
+          </v-container>
+          <v-layout row wrap justify-center text-xs-center>
+            <div class="donate pa-5">
+              <span class="headline font-weight-bold mr-4">내 보유 이노</span>
+              <v-progress-circular
+                v-if="loading"
+                indeterminate
+                color="primary"
+              ></v-progress-circular>
+              <span v-else class="headline font-weight-bold info--text">{{coin || '0'}}</span>
+              <span class="headline font-weight-bold mr-3">&nbsp;&nbsp;이노</span>
+              <v-btn
+                large color="info"
+                class="mb-3 title font-weight-bold"
+                @click="SET_IS_DONATE(true)"
+              >기부하기</v-btn>
+            </div>
+          </v-layout>
+          <div v-if="!this.donationItems.users.length==0">
+            <DonatorInfo
+            :donationItems="donationItems"
+          />
           </div>
-          <div>
-            <i class="far fa-calendar-alt fa-2x ma-2"></i>
-            <span class="subheading">
-              <span class="font-weight-bold">마감날짜</span> 
-               : {{donationItems.created_at}}
-               ~ {{donationItems.closed_at}}
-            </span>
+          <div v-else>
+            <div class="mt-5 subheading font-weight-bold">
+              당신이 첫번째 기부의 주인공이 되어주세요!
+            </div>
           </div>
-          <div>
-            <i class="fas fa-coins fa-2x ma-2 mb-5"></i>
-            <span class="subheading">
-              <span class="font-weight-bold">목표금액</span> 
-              : {{donationItems.current_amount}} 
-              / {{donationItems.target_amount}} 이노</span>
-          </div>
-          <v-flex xs8>
-            <v-progress-linear
-              color="info"
-              height="30"
-              :value="rate"
-              style="font-size:20px;"
-              class="rounded-bar"
-            >
-              <span style="color:white; margin-left:2%;">{{ rate }}</span>
-            </v-progress-linear>
-          </v-flex>
-          </v-flex>
-          <v-flex xs12>
-            <v-card class="pa-4 mt-2" flat>
-              <v-layout row wrap>
-                <span class="headline font-weight-bold mr-4">내 보유 이노</span>
-                <v-progress-circular
-                  v-if="loading"
-                  indeterminate
-                  color="primary"
-                ></v-progress-circular>
-                <span v-else class="headline">{{coin || '0'}}</span>
-                <span class="headline">&nbsp;&nbsp;이노</span>
-              </v-layout>
-            </v-card> 
-            <v-flex xs4>
-              <v-btn large block color="info" class="pt-4 pb-5 title font-weight-bold" @click="SET_IS_DONATE(true)">기부하기</v-btn>
-            </v-flex>
-          </v-flex>
-        </v-card>
-      </v-flex>
+        </v-layout>
+      </v-container>
+    </v-card>
+    <v-layout text-xs-center justify-center>
+      <donate
+        :donationItems="donationItems"
+        :inocoin = "inocoin"
+        />
     </v-layout>
-    <v-layout>
-      <DonatorInfo
-      :donationItems="donationItems"
-      />
-      <donate 
-      :donationItems="donationItems"
-      :inocoin = "inocoin"
-      />
-    </v-layout>
-  </v-container>
+  </v-flex>
+</v-layout>
+
 </template>
 
 <script>
@@ -83,14 +104,16 @@
         loading: false
       }
     },
+    filters:{
+      substr:function(date,length){
+        return date.substr(0,length)
+      }
+    },
     created() {
       this.fetchCoin()
     },
     computed: {
       ...mapState(['userinfo']),
-      donatorInfo () {
-        return this.$t('Donation.donatorInfo')
-      },
       rate() {
         return (this.donationItems.current_amount / this.donationItems.target_amount*100).toFixed(1) + ' %'
       },
@@ -118,5 +141,13 @@
 <style scoped>
 .rounded-bar {
     border-radius: 15px;
+  }
+  .padding{
+    margin-right: -2%
+  }
+  .donate{
+    border: 2px solid white;
+    border-radius:30px;
+    box-shadow:0 0 20px #99999970
   }
 </style>
