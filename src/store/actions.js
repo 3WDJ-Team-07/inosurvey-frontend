@@ -136,20 +136,22 @@ const actions = {
     })
   },
 
-  FETCH_MARKET(context){
+  FETCH_MARKET(context, {id: user_id}){
     context.state.loading = true
-    api.market.marketCard()
+    api.market.marketCard({id: user_id})
     .then(response => {
-      context.commit('FETCH_MARKET',response.list)
+      context.commit('FETCH_MARKET', response.list)
       context.state.loading = false
     })
   },
 
   // 판매할 설문 리스트
   FETCH_SELL(context, {id: user_id}){
+    context.state.loading = true
     api.market.marketSell({id: user_id})
     .then(response => {
       context.commit('FETCH_SELL',response.list)
+      context.state.loading = false
     })
   },
 

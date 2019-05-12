@@ -26,16 +26,29 @@
               </v-layout>
             </v-layout>
           </v-card>
-          <v-card flat height="30vh" fill-height>
+          <v-card flat height="33vh" fill-height>
             <div>
-              <!-- <v-avatar size="250px" tile class="grey lighten-3 ml-3">
-                <span>사진을 넣어주세요</span>
-              </v-avatar> -->
-              //이미지 preview 추가
-              <input type="file" id="file" ref="file" @change="fileUpload()">
+              <div
+                class="image-input mt-4"
+                :style="{ 'background-image': `url(${imageData})` }"
+                @click="chooseImage"
+              >
+                <span
+                  v-if="!imageData"
+                  class="placeholder"
+                >
+                  이미지를 선택하세요
+                </span>
+                <input
+                  class="file-input"
+                  ref="fileInput"
+                  type="file"
+                  @input="onSelectFile"
+                >
+              </div>
             </div>
           </v-card>
-          <v-card flat  height="20vh" fill-height>
+          <v-card flat  height="18vh" fill-height>
             <v-flex xs5>
               <v-textarea
               v-model="content" solo
@@ -76,7 +89,7 @@
                 </v-menu>
               </v-flex>
               <v-flex xs2>
-                <v-text-field v-model="target_amount" label="목표 모금액" required>
+                <v-text-field type="number" v-model="target_amount" label="목표 모금액" required>
                 </v-text-field>
               </v-flex>
               <v-flex xs3 class="mt-4">이노</v-flex>
@@ -113,7 +126,9 @@
         content:'',
         closed_at:null,
         target_amount:'',
-        menu:false
+        menu:false,
+        // imageData: ""
+        imageData: null
       }
     },
     watch:{
@@ -123,12 +138,24 @@
     },
     methods: {
       ...mapActions(['ADDDONATION','FETCH_DONATION']),
-      fileUpload() {
-        this.file = this.$refs.file.files[0]
+      chooseImage () {
+        this.$refs.fileInput.click()
+      },
+      onSelectFile () {
+        const input = this.$refs.fileInput
+        const files = input.files
+        if (files && files[0]) {
+          const reader = new FileReader()
+          reader.onload = e => {
+            this.imageData = e.target.result
+          }
+          reader.readAsDataURL(files[0])
+          this.file = input.files[0]
+        }
       },
       save (closed_at) {
-      this.$refs.menu.save(closed_at)
-    },
+        this.$refs.menu.save(closed_at)
+      },
       adddonation() {
         let data = new FormData()
         data.append('user_id', this.userinfo.id)
@@ -149,3 +176,30 @@
     },
   }
 </script>
+
+<style scoped>
+  .image-input {
+    display: block;
+    width: 260px;
+    height: 260px;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center center;
+  }
+  .placeholder {
+    background: #F0F0F0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 15px;
+  }
+  .placeholder:hover {
+    background-color: #E0E0E0;
+  }
+  .file-input {
+    display: none;
+  }
+</style>

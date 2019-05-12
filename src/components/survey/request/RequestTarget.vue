@@ -159,8 +159,8 @@
 			return{
         isToggled: 0,
 				gender: 0,  // 성별
-				age: 0,  // 연령대
-				job: 0,  // 직업
+				age: [],  // 연령대
+				job: [],  // 직업
         gender_item: [
           {name: '무관', value: 0},
           {name: '남성', value: 1},

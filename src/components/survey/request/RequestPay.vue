@@ -61,8 +61,8 @@
         responseNumber:50,    // 응답자수
         questionNumberPay:10, // 문제당 요금,
         gender:0,
-        age:0,
-        job:0
+        age:[],
+        job:[]
 			}
     },
     // 이상하게 마운트될때 값을 바꿔줘야 v-model 값이 변동가능 

@@ -3,7 +3,7 @@
   <v-layout>
     <v-dialog v-model="isSaleDialog" persistent max-width="600px">
       <v-card class="pr-5 pl-5 pt-4 pb-4 border_rounded">
-      <span v-if="!loading">
+      <span v-if="!this.$store.state.loading">
         <span 
           class="title right grey--text" 
           @click="SET_IS_SURVEY_SALE(false)">
@@ -16,7 +16,7 @@
               <span class="display-1 font-weight-bold mx-5">판매할 설문 선택</span>
             </v-card-title>
             <v-card-text >
-              <div v-for="(survey) in sellSurvey" class="title py-3">
+              <div v-for="(survey) in SortSellSurvey" class="title py-3">
                 <span class="mx-5">
                   <input
                     type="radio" name="sellSurvey" class=" radio_btn mr-4"
@@ -65,7 +65,6 @@
     props: ['userinfo'],
     data() {
       return {
-        loading: false,
         pickedSurvey: '',
       }
     },
@@ -74,6 +73,10 @@
     },
     computed: {
       ...mapState(['isSaleDialog', 'sellSurvey']),
+      SortSellSurvey() {
+        this.sellSurvey.sort((x,y) => { return y.id - x.id })
+        return this.sellSurvey
+      }
     },
     methods: {
       ...mapMutations(['SET_IS_SURVEY_SALE']),

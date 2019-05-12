@@ -1,108 +1,119 @@
 /* 구매 설문 상세정보 */
 <template lang="html">
-<v-layout>
-  <v-flex xs3 class="border_style">
-    <v-card class="text-xs-center" flat style="background-color:#FAFAFA;" >
-      <v-container fluid>
-        <v-layout align-center justify-space-around column fill-height>
-          <div class="display-1 font-weight-bold my-5 py-5">설문 정보</div>
-          <div class="display-1 font-weight-bold py-5 my-5">문항 정보</div>
-        </v-layout>
-      </v-container>
-    </v-card>
-  </v-flex>
+  <v-layout>
+    <v-flex xs3 class="border_style">
+      <v-card class="text-xs-center" flat style="background-color:#FAFAFA;" >
+        <v-container fluid>
+          <v-layout align-center justify-space-around column fill-height>
+            <div class="display-1 font-weight-bold my-5 py-5">설문 정보</div>
+            <div class="display-1 font-weight-bold py-5 my-5">문항 정보</div>
+          </v-layout>
+        </v-container>
+      </v-card>
+    </v-flex>
     <v-flex xs9 class="border_style">
-    <v-card flat style="background-color:#FAFAFA;" >
-      <v-container fluid>
-        <v-layout column fill-height>
-          <div>
-            <div class="title font-weight-bold px-4 pt-4 mt-2 pb-5">
-               {{marketItems.description}}
-               <span v-if="nickname" class="pl-5 ml-5 subheading grey--text">
-                {{nickname}}
-              </span>
+      <v-card flat style="background-color:#FAFAFA;">
+        <v-container fluid>
+          <v-layout column fill-height>
+            <div>
+              <div class="title font-weight-bold px-4 pt-4 mt-2 pb-5">{{marketItems.description}}
+                <span v-if="nickname" class="pl-5 ml-5 subheading grey--text">{{nickname}}</span>
+              </div>
+              <div class="title font-weight-bold px-4 pb-3">
+                <v-tooltip right color="info">
+                  <span slot="activator">
+                    <i class="fas fa-user ma-1"></i>
+                    <span>{{marketItems.respondent_count}}명</span>
+                  </span>
+                  <span>응답인원</span>
+                </v-tooltip>
+              </div>
+              <div class="title font-weight-bold px-4 pb-3">
+                <v-tooltip right color="info">
+                  <span slot="activator">
+                    <i class="far fa-calendar-alt ma-1"></i>
+                    <span>{{ marketItems.created_at | substr }}</span>
+                    <span v-if="marketItems.closed_at">
+                    ~ {{marketItems.closed_at | substr}}
+                    </span>
+                  </span>
+                  <span>설문 진행 일정</span>
+                </v-tooltip>
+              </div>
+              <div class="title font-weight-bold px-4 pb-3">
+                <v-tooltip right color="info">
+                  <span slot="activator">
+                    <i class="fas fa-user ma-1"></i><span>{{ino}}이노</span>
+                  </span>
+                  <span>응답인원</span>
+                </v-tooltip>
+              </div>
+              <div v-if="marketItems.target" class="px-4 pb-3">
+                <v-tooltip right color="info">
+                  <span slot="activator">
+                    <span v-if="gender !== 0">
+                      <span v-if="gender == 1">
+                        <v-chip close color="grey darken-2" text-color="white" large>남자</v-chip>
+                      </span>
+                      <span v-else-if="gender == 2">
+                        <v-chip close color="grey darken-2" text-color="white" large>여자</v-chip>
+                      </span>
+                    </span>
+                    <span v-if="gender == 0">
+                      <v-chip close color="grey darken-2" text-color="white" large>모든 성별</v-chip>
+                    </span>
+                    <span v-if="age.length !==0 ">
+                      <v-chip
+                        color="grey darken-2" text-color="white" large
+                        v-for="(targetAge, index) in age " :key="index"
+                      >
+                        {{ targetAge }} 대
+                      </v-chip>
+                    </span>
+                    <span v-else>
+                      <v-chip
+                        color="grey darken-2" 
+                        text-color="white" 
+                        large 
+                      >
+                        모든 연령
+                      </v-chip>
+                    </span>
+                    <span v-if="job.length !== 0">
+                      <v-chip
+                        color="grey darken-2" text-color="white" large
+                        v-for="(targetJob, index) in job" :key="index"
+                      >
+                        {{targetJob.name}}
+                      </v-chip>
+                    </span>
+                    <span v-else>
+                      <v-chip
+                        color="grey darken-2" 
+                        text-color="white" 
+                        large 
+                      >
+                        모든 직업
+                      </v-chip>
+                    </span>
+                  </span>
+                  <span>타겟</span>
+                </v-tooltip>
+              </div>
+              <div v-if="!marketItems.target" class="px-3">
+                <v-chip class="pa-1" color="grey darken-2" text-color="white" large close>모든 인원</v-chip>
+              </div>
             </div>
-            <div class="title font-weight-bold px-4 pb-3">
-            <v-tooltip right color="info">
-              <span slot="activator">
-            <i class="fas fa-user ma-1"></i>
-            <span>
-            {{marketItems.respondent_count}}명
-            </span>
-            </span>
-            <span>응답인원</span>
-            </v-tooltip>
-          </div>
-          <div class="title font-weight-bold px-4 pb-3">
-            <v-tooltip right color="info">
-              <span slot="activator">
-                <i class="far fa-calendar-alt ma-1"></i>
-                <span>
-                  {{ marketItems.created_at | substr }}
-                </span>
-                <span v-if="marketItems.closed_at">
-                  ~ {{marketItems.closed_at | substr}}
-                </span>
-              </span>
-              <span>설문 진행 일정</span>
-            </v-tooltip>
-          </div>
-          <div class="title font-weight-bold px-4 pb-3">
-            <v-tooltip right color="info">
-              <span slot="activator">
-            <i class="fas fa-user ma-1"></i>
-            <span>
-            {{ino}}이노
-            </span>
-            </span>
-            <span>응답인원</span>
-            </v-tooltip>
-          </div>
-          <div v-if="marketItems.target" class="px-4 pb-3">
-            <v-tooltip right color="info">
-              <span slot="activator">
-            <span>
-              <v-chip color="grey darken-2" text-color="white" large v-if="gender ==! 0">
-                <span v-if="gender == 1">
-                  남자
-                </span>
-                <span v-else-if="gender == 2">
-                  여자
-                </span>
-              </v-chip>
-            </span>
-            <span>
-              <v-chip
-                color="grey darken-2" text-color="white" large
-                v-if="age" v-for="(targetAge, index) in age " :key="index"
-              >
-                {{ targetAge }} 대
-              </v-chip>
-            </span>
-            <span>
-              <v-chip
-                color="grey darken-2" text-color="white" large
-                v-if="job" v-for="(targetJob, index) in job" :key="index"
-              >
-                {{targetJob.name}}
-              </v-chip>
-            </span>
-
-            </span>
-            <span>타겟</span>
-            </v-tooltip>
-          </div>
-          </div>
-          <div style="margin-top:50px;">
-            <MarketDetailItem
-              v-for="(question, index) in questions" :key="index"
-              :question = "question"
-            />
-          </div>
-        </v-layout>
-      </v-container>
-    </v-card>
-  </v-flex>
+            <div style="margin-top:50px;">
+              <MarketDetailItem
+                v-for="(question, index) in questions" :key="index"
+                :question = "question"
+              />
+            </div>
+          </v-layout>
+        </v-container>
+      </v-card>
+    </v-flex>
   </v-layout>
 </template>
 
