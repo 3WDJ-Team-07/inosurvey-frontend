@@ -95,9 +95,9 @@
     },
     computed: {
       ...mapState([ 'saleSurvey', 'userinfo']),
-       surveyList() {
+      surveyList() {
         var sellingSurvey = this.saleSurvey.filter((card) => {
-          if(this.items.value ==2){
+          if(this.items.value == 2){
             return card.title.toLowerCase().includes(this.search.toLowerCase())
           }
           else if(this.items.value ==3){
@@ -110,14 +110,11 @@
         return sellingSurvey.sort((x,y) => { return y.id - x.id})
       }
     },
-    created() {
-      this.fetchMarket()
+    mounted() {
+      this.FETCH_MARKET({ id: this.userinfo.id })
     },
     methods: {
       ...mapActions(['FETCH_MARKET']),
-      fetchMarket() {
-        this.FETCH_MARKET()
-      },
     }
   }
 </script>

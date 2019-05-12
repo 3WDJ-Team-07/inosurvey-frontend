@@ -129,16 +129,23 @@ const actions = {
     })
   },
 
+  // REQUEST_DONATE(_, { user_id, donation_id, ino }) {
+  //   api.donation.requestDonate(user_id, donation_id, ino)
+  //   .then(response => {
+  //     console.log(response)
+  //   })
+  // },
+
   REQUEST_DONATE(_, { user_id, donation_id, ino }) {
-    api.donation.requestDonate(user_id, donation_id, ino)
-    .then(response => {
-      console.log(response)
-    })
+    return api.donation.requestDonate(user_id, donation_id, ino)
   },
 
-  FETCH_MARKET(context){
+
+  
+
+  FETCH_MARKET(context,{id:user_id}){
     context.state.loading = true
-    api.market.marketCard()
+    api.market.marketCard({id:user_id})
     .then(response => {
       context.commit('FETCH_MARKET',response.list)
       context.state.loading = false
@@ -164,7 +171,7 @@ const actions = {
 
   // 설문 구매하기
   MARKET_PURCHASE(context, {id, user_id}) {
-    return api.market.marketPurchaseTest(id, user_id)
+    return api.market.marketPurchase(id, user_id)
   },
 }
 

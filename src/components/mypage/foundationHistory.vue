@@ -29,25 +29,50 @@
           >
             <v-icon>arrow_forward_ios</v-icon>
           </v-btn>
-        <v-flex xs9>
-          <div class="display-1 pa-5">등록한 모금</div>
+          <v-flex xs9>
+            <div class="display-1 pa-5">등록한 모금</div>
+            <!--
+            <div>
+               <carousel-3d :width="600" :height="400" :controls-visible="true" :clickable="false">
+    <slide v-for="(donation, i) in donationInfo" :index="i" >
+      <figure >
+        <img :src="donation.detail.image"/>
+        <figcaption>
+          {{donation.content}}
+        </figcaption>
+      </figure>
+    </slide>
+  </carousel-3d>
+            </div>
+              <v-layout row wrap justify-center text-xs-center>
+                <v-flex xs12 v-for="(donation, index) in donationInfo" :key="index">
+                <v-card
+                  v-if="donation.content&&donation.date" class="round ma-2"
+                  :to="{name: 'donationdetail',params:{donation_id:donation.form_id}}"
+                >
+                <div class="pa-4">
+                  <span class="font-weight-bold headline pb-1">{{donation.content}}</span>
+                  <span class="font">{{donation.date}}</span>
+                  <span>{{donation.detail.current_amount}}/{{donation.detail.target_amount}}</span>
+                </div>
+              </v-card>
+            </v-flex>
+          </v-layout>-->
           <v-data-table
-          :headers="headers"
-          :items="surveyInfo"
-          :search="search"
-          :pagination.sync="pagination"
-          class="elevation-1"
-          >
+            :headers="headers"
+            :items="donationInfo"
+            :search="search"
+            :pagination.sync="pagination"
+            class="elevation-1"
+            >
             <template v-slot:items="props">
-              <td class="pa-5 subheading">{{ props.item.title }}  {{props.item.method}}</td>
-              <td class="text-xs-center subheading">{{ props.item.content }}</td>
-              <td class="text-xs-center font-weight-bold title">
-                <span v-if="props.item.sign == '+'" style="color:#42A5F5;"><i class="fas fa-plus fa-xs"></i>&nbsp;{{ props.item.price }}  <span class="caption">이노</span></span> 
-                <span v-else-if="props.item.sign == '-'" style="color:red;"><i class="fas fa-minus fa-xs"></i>&nbsp;{{ props.item.price }} <span class="caption">이노</span></span> 
-                <span v-else style="color:#42A5F5">{{ props.item.price }}</span> 
+
+              <td class="pa-5 text-xs-center subheading">{{ props.item.content }}</td>
+              <td class="title">
+                {{props.item.detail.current_amount}}
               </td>
-              <td class="text-xs-center">{{ props.item.date }}</td>
-           </template>
+              <td class="text-xs-center grey--text">{{ props.item.date }}</td>
+            </template>
           </v-data-table>
         </v-flex>
       </v-layout>
@@ -62,31 +87,27 @@
 <script>
   import myNav from './myNav'
   import { mapState } from 'vuex'
-  import { mypage } from '@/api/index'
+  import { mypage, donation } from '@/api/index'
   import Spinner from '@/components/Spinner'
+  import { Carousel3d, Slide } from 'vue-carousel-3d'
 
   export default {
-    components:{ myNav, Spinner },
+    components:{ myNav, Spinner,Carousel3d,Slide },
     data () {
       return {
         drawer: null,
         loading: false,
         search: '',
+        donationInfo: [],
         pagination: {},
         headers: [
-          {
-            text: '내용',
-            align: 'center',
-            sortable: false,
-            value: 'name'
-          },
           { 
             text: '기관명', 
             align: 'center', 
             value:'calories'
           },
           { 
-            text: '기부 금액', 
+            text: '목표금액', 
             align: 'center', 
             value:'calories'
           },
@@ -96,7 +117,6 @@
             value: 'fat'
           },
         ],
-        surveyInfo: []
       }
     },
     mounted() {
@@ -117,7 +137,7 @@
         return mypage.FetchDonationRequest({ id: this.userinfo.id })
         .then(response => {
           console.log(response)
-          this.surveyInfo = response.list
+          this.donationInfo = response.list
           this.loading = false
         })
       },
@@ -148,4 +168,23 @@
   .myhover_style:hover{
     background: #E0E0E0;
   }
+  .round{
+    border-radius: 20px
+  }
+  .carousel-3d-container figure {
+  margin:0;
+}
+
+.carousel-3d-container figcaption {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  bottom: 0;
+  position: absolute;
+  bottom: 0;
+  padding: 15px;
+  font-size: 12px;
+  min-width: 100%;
+  box-sizing: border-box;
+}
 </style>
