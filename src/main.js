@@ -6,7 +6,7 @@ import i18n               from './i18n'
 import AOS                from 'aos'
 import VueScrollTo        from 'vue-scrollto'
 import swal               from 'sweetalert';
-import Carousel3d from 'vue-carousel-3d'
+import Carousel3d         from 'vue-carousel-3d'
 import                         'vuetify/dist/vuetify.min.css'
 import                         './plugins/vuetify'
 import                         'aos/dist/aos.css'
