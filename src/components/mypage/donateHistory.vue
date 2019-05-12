@@ -31,8 +31,8 @@
             <v-icon>arrow_forward_ios</v-icon>
           </v-btn>
         <v-flex xs9>
-          <div class="display-1">기부한 모금</div>
-          <div class="headline font-weight-bold">총 기부 금액 : {{total}}</div>
+          <div class="display-1 mb-2">기부한 모금</div>
+          <div class="headline font-weight-bold mb-5">총 기부 금액 : {{total}}</div>
             <v-data-table
             :headers="headers"
             :items="donationInfo"

@@ -56,7 +56,7 @@
               <v-card-title>
                 <div style="margin:0 auto">
                   <div class="display-1 font-weight-bold">이노 지갑</div>
-                  <div class="headline mt-4 font-weight-black mt-4">보유이노 <span class="display-1 font-weight-black">{{inocoin.current_ino}}</span></div>
+                  <div class="headline mt-4 font-weight-black mt-4">보유이노 <span class="display-1 font-weight-black">{{totalCoin}}</span></div>
                 </div>
               </v-card-title>
               <v-card-actions>
@@ -85,6 +85,11 @@
     },
     computed: {
       ...mapState(['userinfo']),
+      totalCoin(){
+        var regexp = /\B(?=(\d{3})+(?!\d))/g;
+        var inoValue = this.inocoin.current_ino+""
+        return inoValue.replace(regexp, ',');
+      }
     },
     created() {
       if(!this.userinfo.is_donator==1){

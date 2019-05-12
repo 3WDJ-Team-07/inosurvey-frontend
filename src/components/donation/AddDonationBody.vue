@@ -84,8 +84,8 @@
 </template>
 
 <script>
-  import { mapActions,mapState }   from 'vuex'
-  import { donation }              from '@/api/index'
+  import { mapActions, mapState }   from 'vuex'
+  import { donation }               from '@/api/index'
 
   export default {
     computed: {
@@ -133,14 +133,9 @@
             'Content-Type' : 'multipart/form-data'
           }
         }
-        this.$router.replace({name:'donation'})
         this.ADDDONATION(data, config)
-        this.FETCH_DONATION()
+        this.$router.push({ name: 'donation' })
       },
     },
   }
 </script>
-
-<style scope>
-
-</style>

@@ -1,7 +1,11 @@
 <template>
   <v-container fluid grid-list-md style="margin:0px;padding:0px;">
     <span v-if="!loading">
-      <targetAnalysis :percentage = "chartData.form[1].percentage"/>
+      <targetAnalysis 
+      :age = "age"
+      :gender = "gender"
+      :job = "job"
+      />
       <v-layout row>
         <v-flex xs12>
           <div class="display-1 font-weight-bold pa-3">{{chartData.form[0].formData.title}}</div>
@@ -33,16 +37,31 @@
             <div class="title font-weight-bold pa-4">{{chartData.form[0].formData.description}}</div>
             <div class="title font-weight-bold pa-1">
               <v-btn color="success" depressed round @click="SET_IS_TARGET(true)" large class="subheading">전체 타겟 응답결과</v-btn>
-              <span v-if="chartData.form[0].formData.target.gender !== 0">
-                <v-chip close large v-if="chartData.form[0].formData.target.gender == 1">남자</v-chip>
-                <v-chip close large v-if="chartData.form[0].formData.target.gender == 2">여자</v-chip>
-              </span>
-              <span v-for="(item, index) in chartData.form[0].formData.target.age" :key="item">
-                <v-chip close large>{{item}}대</v-chip>
-              </span>
-              <span v-for="(item, index) in chartData.form[0].formData.target.job" :key="index">
-                <v-chip close large>{{item.name}}</v-chip>
-              </span>
+
+                <span v-if="chartData.form[0].formData.target.gender !== 0">
+                  <v-chip close large v-if="chartData.form[0].formData.target.gender == 1">남자</v-chip>
+                  <v-chip close large v-if="chartData.form[0].formData.target.gender == 2">여자</v-chip>
+                </span>
+                <span v-else>
+                  <v-chip close large>모든성별</v-chip>
+                </span>
+                <span v-if="chartData.form[0].formData.target.age.length !== 10">
+                  <span v-for="(item, index) in chartData.form[0].formData.target.age" :key="item">
+                    <v-chip close large>{{item}}대</v-chip>
+                  </span>
+                </span>
+                <span v-else>
+                  <v-chip close large>모든나이</v-chip>
+                </span>
+                <span v-if="chartData.form[0].formData.target.job.length !== 9">
+                  <span v-for="(item, index) in chartData.form[0].formData.target.job" :key="index">
+                    <v-chip close large>{{item.name}}</v-chip>
+                  </span>
+                </span>
+                <span v-else>
+                  <v-chip close large>모든직업</v-chip>
+                </span>
+
             </div>
             <div class="title font-weight-bold pa-3">
               <v-icon large style="line-height:20px;">event</v-icon>
@@ -84,7 +103,7 @@
         v-for="(chartItem, index) in chartData.question" :key="index"
         :form_id = "form_id"
         :chartItem = "chartItem"
-        :tagetData = "chartData.form[0].formData.target"
+        :targetData = "chartData.form[0].formData.target"
         />
     </span>
     <Spinner v-else/>
@@ -104,6 +123,9 @@
     components:{ Chart, Spinner, targetAnalysis },
     data() {
       return {
+        age: [],
+        gender: [],
+        job: [],
         headers: [
           {
             text: '설문번호',
@@ -136,8 +158,7 @@
               }
             },
             {
-              percentage: [
-              ], 
+              percentage: [], 
             }
           ],
         },
@@ -165,8 +186,10 @@
         this.loading = true
         return analysis.Fetchanalysis({ form_id: this.form_id })
         .then(response => {
-          console.log(response.form[1].percentage)
           this.chartData = response
+          this.age = response.form[1].percentage[0].age
+          this.gender = response.form[1].percentage[1].gender
+          this.job = response.form[1].percentage[2].job
           this.loading = false
         })
       },

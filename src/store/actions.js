@@ -104,10 +104,10 @@ const actions = {
     })
   },
 
-  ADDDONATION(_, data, config){
+  ADDDONATION(context, data, config){
     return api.donation.addDonation(data, config)
-    .then(response=>{
-      console.log(response);
+    .then((response)=>{
+      context.dispatch('FETCH_DONATION')
     })
   }, 
 
@@ -125,7 +125,6 @@ const actions = {
     api.donation.donationCard()
     .then(response => {
       context.commit('FETCH_DONATION',response.donation)
-      console.log(response.donation)
       context.state.loading = false
     })
   },
@@ -141,30 +140,30 @@ const actions = {
     context.state.loading = true
     api.market.marketCard()
     .then(response => {
-
       context.commit('FETCH_MARKET',response.list)
       context.state.loading = false
-      console.log(response)
     })
   },
 
-  // // 판매할 설문 리스트
-  // FETCH_SELL(context, {id: user_id}){
-  //   api.market.marketSell({id: user_id})
-  //   .then(response => {
-  //     context.commit('FETCH_SELL',response.list)
-  //     console.log(response)
-  //   })
-  // },
+  // 판매할 설문 리스트
+  FETCH_SELL(context, {id: user_id}){
+    api.market.marketSell({id: user_id})
+    .then(response => {
+      context.commit('FETCH_SELL',response.list)
+    })
+  },
 
   // 설문 업뎃
-  UPDATE_MARKET(_, {id,user_id}) {
+  UPDATE_MARKET(context, {id, user_id}) {
     api.market.updateMarketCard(id,user_id)
+    .then(response => {
+      context.dispatch('FETCH_MARKET')
+      context.dispatch('FETCH_SELL', id)
+    })
   },
 
   // 설문 구매하기
-
-  MARKET_PURCHASE(_, {id, user_id}) {
+  MARKET_PURCHASE(context, {id, user_id}) {
     return api.market.marketPurchaseTest(id, user_id)
   },
 }

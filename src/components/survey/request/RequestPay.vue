@@ -41,7 +41,10 @@
         확인 ( 결제 )
       </v-btn>
     </v-card>
-    <surveyPayment :responseNumber = "responseNumber" :total ="total"/>
+    <surveyPayment
+    :responseNumber = "responseNumber"
+    :total = "total"
+    :numberTotal = "numberTotal"/>
   </v-container>
 </template>
 
@@ -71,6 +74,9 @@
       total(){
         var regexp = /\B(?=(\d{3})+(?!\d))/g;
         return (this.responseNumber * this.questionNumberPay * this.$store.state.form.list.length).toString().replace(regexp, ',');
+      },
+      numberTotal() {
+        return this.responseNumber * this.questionNumberPay * this.$store.state.form.list.length
       }
     },
     updated() {

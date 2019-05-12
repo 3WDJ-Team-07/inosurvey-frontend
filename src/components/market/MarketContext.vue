@@ -107,7 +107,7 @@
             return card.title.toLowerCase().includes(this.search.toLowerCase())||card.description.toLowerCase().includes(this.search.toLowerCase())
           }
         })
-        return sellingSurvey
+        return sellingSurvey.sort((x,y) => { return y.id - x.id})
       }
     },
     created() {
@@ -117,7 +117,6 @@
       ...mapActions(['FETCH_MARKET']),
       fetchMarket() {
         this.FETCH_MARKET()
-        console.log(this.cards);
       },
     }
   }

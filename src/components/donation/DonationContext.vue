@@ -59,9 +59,6 @@
 				],
       }
     },
-    updated(){
-      console.log(this.donate_id)
-    },
     computed: {
       ...mapState([ 'donationBox' ]),
       SortdonationBox() {
@@ -69,7 +66,7 @@
         return this.donationBox
       }
     },
-    created() {
+    mounted() {
       this.FETCH_DONATION()
     },
     methods: {

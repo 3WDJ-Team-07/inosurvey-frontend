@@ -45,7 +45,7 @@
                   {{ sellItems.created_at | substr }}
                 </span>
                 <span v-if="sellItems.closed_at">
-                  ~{{sellItems.closed_at | substr}}
+                  {{sellItems.closed_at | substr}}
                 </span>
               </span>
               <span>설문 진행 일정</span>
@@ -118,10 +118,7 @@
     },
     computed: {
       ...mapState(['userinfo']),
-      sell_id(){
-        return Number(this.$route.params.sell_id)
-      },
-       age(){
+      age(){
       return this.sellItems.target.age||'0'
       },
       gender(){
@@ -142,20 +139,42 @@
     methods: {
       ...mapActions(['UPDATE_MARKET']),
       sell(){
-        this.UPDATE_MARKET({
-          //id 넘김 -- 해당 설문 마켓 리스트에 등록
-          id: this.sell_id,
-          user_id: this.userinfo.id
-        })
-        this.$router.replace({name: 'surveymarket'})
+        if(this.sellItems.is_sale == 0){
+          swal("조건이 충족되지 않았습니다", "이대로 판매를 하시겠습니까 ?",
+          {icon: "warning", buttons: true,  dangerMode: true})
+          .then(response => {
+            if(response) {
+              this.UPDATE_MARKET({
+                //id 넘김 -- 해당 설문 마켓 리스트에 등록
+                id: this.$route.params.sell_id,
+                user_id: this.userinfo.id
+              })
+              this.$router.replace({name: 'surveymarket'})
+            }
+          })
+        }
+        else{
+          swal("조건이 충족되면 자동등록 됩니다 !", "지금 판매 하시겠어요 ?",{icon: "warning", buttons: true, dangerMode: true,})
+          .then(response => {
+            if(response) {
+              this.UPDATE_MARKET({
+                //id 넘김 -- 해당 설문 마켓 리스트에 등록
+                id: this.$route.params.sell_id,
+                user_id: this.userinfo.id
+              })
+              this.$router.replace({name: 'surveymarket'})
+            }
+          })
+        }
       },
       fetchList(){
         //설문 정보 불러오기
-        this.$store.state.loading=true
-        return market.FetchListSell({id:this.sell_id})
+        this.$store.state.loading = true
+        return market.FetchListSell({ id: this.$route.params.sell_id })
         .then(response=>{
-           this.sellItems = response.list
-           this.$store.state.loading=false
+          console.log(response)
+          this.sellItems = response.list
+          this.$store.state.loading=false
         })
         .catch(error =>{
           console.log(error)
