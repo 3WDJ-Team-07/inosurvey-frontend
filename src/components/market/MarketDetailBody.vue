@@ -94,11 +94,10 @@
           </div>
           </div>
           <div style="margin-top:50px;">
-            <v-slide-y-transition group>
-              <MarketDetailItem
+            <MarketDetailItem
               v-for="(question, index) in questions" :key="index"
-              :question = "question"/>
-            </v-slide-y-transition>
+              :question = "question"
+            />
           </div>
         </v-layout>
       </v-container>
