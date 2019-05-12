@@ -1,6 +1,7 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
+// http://54.180.121.254
 const DOMAIN = 'http://172.26.3.31:8000'
 const UNAUTHORIZED = 401
 
@@ -128,7 +129,10 @@ export const donation = {
 export const market = {
   // 설문마켓 - 판매중인 설문 정보 불러오기
   marketCard(id){
-    return serverRequest('post','/api/market/index',id)
+    return serverRequest('post','/api/market/index', id)
+  },
+  marketCardTest() {
+    return localRequest('get','/static/allform.json')
   },
   FetchListDetail(id) {
     return serverRequest('post','/api/market/show',id)

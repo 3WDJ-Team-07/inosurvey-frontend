@@ -54,44 +54,83 @@
           <div v-if="sellItems.target" class="px-4">
             <v-tooltip right color="info">
               <span slot="activator">
-            <span>
-              <v-chip color="grey darken-2" text-color="white" large v-if="gender ==! 0">
-                <span v-if="gender == 1">
-                  남자
+                <span v-if="gender !== 0">
+                  <span v-if="gender == 1">
+                    <v-chip color="grey darken-2" text-color="white" large>남자</v-chip>
+                  </span>
+                  <span v-if="gender == 2">
+                    <v-chip color="grey darken-2" text-color="white" large>여자</v-chip>
+                  </span>
                 </span>
-                <span v-else-if="gender == 2">
-                  여자
+                <span v-if="gender == 0">
+                  <v-chip close color="grey darken-2" text-color="white" large>모든 성별</v-chip>
                 </span>
-              </v-chip>
-            </span>
-            <span>
-              <v-chip
-                color="grey darken-2" text-color="white" large
-                v-if="age" v-for="(targetAge, index) in age " :key="index"
-              >
-                {{ targetAge }} 대
-              </v-chip>
-            </span>
-            <span>
-              <v-chip
-                color="grey darken-2" text-color="white" large
-                v-if="job" v-for="(targetJob, index) in job" :key="index"
-              >
-                {{targetJob.name}}
-              </v-chip>
-            </span>
-
-            </span>
-            <span>타겟</span>
+                <span v-if="age.length !== 0">
+                  <v-chip
+                    color="grey darken-2" text-color="white" large
+                    v-if="age" v-for="(targetAge, index) in age " :key="index"
+                  >
+                    {{ targetAge }} 대
+                  </v-chip>
+                </span>
+                <span v-else>
+                  <v-chip
+                    color="grey darken-2" 
+                    text-color="white" 
+                    large 
+                  >
+                    모든 연령
+                  </v-chip>
+                </span>
+                <span v-if="job.length !== 0" >
+                  <v-chip
+                    color="grey darken-2" 
+                    text-color="white" large
+                    v-for="(targetJob, index) in job" :key="index"
+                  >
+                    {{targetJob.name}}
+                  </v-chip>
+                </span>
+                <span v-else>
+                  <v-chip
+                    color="grey darken-2" 
+                    text-color="white" 
+                    large 
+                  >
+                    모든 직업
+                  </v-chip>
+                </span>
+              </span>
+              <span>타겟</span>
             </v-tooltip>
+          </div>
+          <div v-if="!sellItems.target" class="px-3">
+            <v-chip class="pa-1" color="grey darken-2" text-color="white" large close>모든 인원</v-chip>
           </div>
         </v-card>
       </v-flex>
         <v-flex xs12>
-          <v-card color="#FAFAFA" flat class=" text-xs-center">
+          <!-- <v-card color="#FAFAFA" flat class=" text-xs-center">
             <div fluid grid-list-md class="py-5">
               <div class="display-3 font-weight-bold my-5 py-5">
                 " <span class="info--text">{{sellItems.title}}</span> "을 "<span class="info--text font-italic"> 100</span> 이노"에 판매합니다.
+              </div>
+            </div>
+          </v-card> -->
+          <v-card color="#FAFAFA" flat class=" text-xs-center">
+            <div fluid grid-list-md>
+              <v-layout row wrap justify-center>
+                <div style="margin-top:50px;">
+                  <v-text-field
+                    v-model="saleIno"
+                    ref="saleCoin"
+                    style="width:200px;"
+                  ></v-text-field>
+                </div>
+              </v-layout>
+              <div class="display-3 font-weight-bold" style="margin-top:70px;">
+                " <span class="info--text">{{sellItems.title}}</span> "을 "<span class="info--text font-italic">
+                {{saleIno}}</span> 이노"에 판매합니다.
               </div>
             </div>
           </v-card>
@@ -110,8 +149,8 @@
     name: 'marketsale',
     components: { Spinner },
     filters:{
-      substr:function(date){
-        if(date){
+      substr(date) {
+        if(date) {
           return date.substr(0,10)
         }
       }
@@ -131,9 +170,10 @@
     data(){
       return{
         sellItems: {},
+        saleIno: 0
       }
     },
-    created(){
+    created() {
       this.fetchList()
     },
     methods: {

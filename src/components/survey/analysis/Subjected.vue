@@ -9,7 +9,7 @@
       justify-space-between 
       >
         <span>
-          <select v-model="gender" class="subheading ml-5 pr-3 pl-3">
+          <select v-model="gender" class="subheading pr-3 pl-3">
             <option :value="0">모든 성별</option>
             <option v-if="targetData.gender == 0" :value="1">남성</option>
             <option v-if="targetData.gender == 0" :value="2">여성</option>
