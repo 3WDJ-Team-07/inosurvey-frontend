@@ -17,14 +17,15 @@
             right top
           >
           <v-tooltip left>
-            <v-icon slot="activator">thumb_up</v-icon>
+            <!-- <i slot="activator" color="#ffd700" class="fas fa-crown fa-4x"></i> -->
+            <v-icon slot="activator" color="#ffd700" x-large>thumb_up</v-icon>
             <div class="pa-3 subheading">목표금액을 달성했습니다</div>
           </v-tooltip>
         </v-btn>
       </v-card-text>
       <v-card-text class="px-4">
-        <div class="headline font-weight-bold mb-2">{{ card.title }}</div>
-        <div>{{card.content | substr(80,' .... ')}}</div>
+        <div class="title font-weight-bold mb-2">{{ card.title }}</div>
+        <div>{{card.content | substr(30,'.....')}}</div>
          <v-progress-linear
           color="info"
           height="20"
@@ -82,7 +83,7 @@
       }
     },
     filters: {
-      substr: function(msg,length,endmsg){
+      substr(msg,length,endmsg){
         if(msg.length<80){
           return msg.substr(0,length)
         }
@@ -103,7 +104,7 @@
     border-radius: 10px;
   }
   .achieved{
-    filter: grayscale(90%) brightness(150%) contrast(80%)
+    filter: grayscale(80%) brightness(100%) contrast(50%)
   }
   .daychip{
     box-shadow: 0 0 10px #555555

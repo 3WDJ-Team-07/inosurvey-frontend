@@ -38,7 +38,7 @@
           </v-flex>
         </v-layout>
         <v-layout row wrap justify-center>
-          <v-flex xs10 class="border" v-for="(card,index) in surveyList" :key="index">
+          <v-flex xs9 class="border" v-for="(card,index) in surveyList" :key="index">
             <router-link
               :to="{
                 name: 'surveymarketdetail',

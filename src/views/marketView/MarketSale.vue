@@ -145,6 +145,8 @@
   import { mapActions,mapState }   from 'vuex'
   import { market }                from '@/api/index'
   import Spinner                   from '@/components/Spinner'
+  import swal                      from 'sweetalert'
+
   export default {
     name: 'marketsale',
     components: { Spinner },
@@ -185,12 +187,19 @@
           .then(response => {
             if(response) {
               this.UPDATE_MARKET({
-                //id 넘김 -- 해당 설문 마켓 리스트에 등록
                 id: this.$route.params.sell_id,
                 user_id: this.userinfo.id,
                 price: this.saleIno
               })
               this.$router.replace({name: 'surveymarket'})
+              setTimeout(() => {
+                swal(
+                  "판매등록 완료",
+                  "마켓에 설문상품이 등록되었습니다 !",
+                  "success",
+                  {button: "확인"}
+                );
+              }, 1000);
             }
           })
         }
@@ -199,9 +208,9 @@
           .then(response => {
             if(response) {
               this.UPDATE_MARKET({
-                //id 넘김 -- 해당 설문 마켓 리스트에 등록
                 id: this.$route.params.sell_id,
-                user_id: this.userinfo.id
+                user_id: this.userinfo.id,
+                price: this.saleIno
               })
               this.$router.replace({name: 'surveymarket'})
             }

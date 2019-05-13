@@ -106,7 +106,7 @@ const actions = {
 
   ADDDONATION(context, data, config){
     return api.donation.addDonation(data, config)
-    .then((response)=>{
+    .then(() => {
       context.dispatch('FETCH_DONATION')
     })
   }, 
@@ -162,14 +162,14 @@ const actions = {
   // 설문 업뎃
   UPDATE_MARKET(context, {id, user_id, price}) {
     api.market.updateMarketCard(id,user_id,price)
-    .then(response => {
-      context.dispatch('FETCH_MARKET')
-      context.dispatch('FETCH_SELL', id)
+    .then(() => {
+      context.dispatch('FETCH_MARKET', {id: user_id})
+      context.dispatch('FETCH_SELL', {id: user_id})
     })
   },
 
   // 설문 구매하기
-  MARKET_PURCHASE(context, {id, user_id}) {
+  MARKET_PURCHASE(_, {id, user_id}) {
     return api.market.marketPurchase(id, user_id)
   },
 }

@@ -32,7 +32,7 @@
           </v-btn>
         <v-flex xs9>
           <div class="display-1 font-weight-bold mb-2">참여한 모금</div>
-          <div class="headline font-weight-bold mb-5">총 기부 금액 : <span class="red--text">{{total}}</span>이노</div>
+          <div class="headline font-weight-bold mb-5">총 기부 금액 : <span class="red--text">{{total}}</span> 이노</div>
             <v-data-table
             :headers="headers"
             :items="donationInfo"
@@ -114,7 +114,9 @@
         return Math.ceil(this.pagination.totalItems / this.pagination.rowsPerPage)
       },
       total(){
-        return this.donationInfo.reduce((acc,item)=>acc+item.price,0)
+        var regexp = /\B(?=(\d{3})+(?!\d))/g;
+        var totalCoin = this.donationInfo.reduce((acc,item)=>acc+item.price,0)+""
+        return totalCoin.replace(regexp, ',');
       }
     },
     methods: {
