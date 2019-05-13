@@ -36,7 +36,6 @@
 <style>
   *{
     text-decoration: none;
-      font-family: 'NanumSquare', sans-serif;
   }
   .form-control {
     box-sizing: border-box;

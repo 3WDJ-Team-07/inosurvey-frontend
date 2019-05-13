@@ -17,7 +17,7 @@
                 <h1 class="display-2 white--text font-weight-bold">
                   {{$t('Home.jumbotronTitle')}}
                 </h1>
-                <div class="subheading white--text">
+                <div class="title white--text mt-4">
                   {{$t('Home.jumbotronSubTitle')}}
                 </div>
                 <v-btn color="info" router :to="{name : 'survey'}"

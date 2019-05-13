@@ -3,27 +3,19 @@
     <v-container fluid grid-list-xl v-if="!this.$store.state.loading">
       <v-layout text-xs-center row wrap class="pa-3 mx-5">
         <v-layout>
-        <v-flex xs6>
-        <div class="pa-3 mb-4">
-        <span class="title font-weight-bold grey--text text--darken-2">
-        <i class="fas fa-thumbtack mr-2"></i>
-        <span class="info--text">
-        {{surveyList.length}} 
-        </span>
-        개의 설문이 
-        <span v-if="search.length == 0">
-        판매중입니다!
-        </span>
-        <span v-else>
-        검색되었습니다.
-        </span>
-        </span>
-        </div>
-        
-        </v-flex>
+          <v-flex xs12>
+            <div class="pa-3 mb-4">
+              <span class="title font-weight-bold grey--text text--darken-2">
+              <i class="fas fa-thumbtack mr-2"></i>
+              <span class="info--text">{{surveyList.length}} </span>개의 설문이 
+              <span v-if="search.length == 0">판매중입니다!</span>
+              <span v-else>검색되었습니다.</span>
+              </span>
+            </div>
+          </v-flex>
         </v-layout>
-        <v-layout justify-end>
-          <v-flex xs2>
+        <v-layout justify-end style="margin-left:700px;">
+          <v-flex xs3>
             <v-select
             :items="items"
             v-model="items.value"
@@ -35,7 +27,7 @@
             solo
           ></v-select>
           </v-flex>
-          <v-flex xs4 class="searchBox"> 
+          <v-flex xs6 class="searchBox"> 
             <v-text-field
               placeholder="검색..."
               append-icon="search"
@@ -43,7 +35,7 @@
               @focus="search=''"
             >
             </v-text-field>
-        </v-flex>
+          </v-flex>
         </v-layout>
         <v-layout row wrap justify-center>
           <v-flex xs10 class="border" v-for="(card,index) in surveyList" :key="index">
