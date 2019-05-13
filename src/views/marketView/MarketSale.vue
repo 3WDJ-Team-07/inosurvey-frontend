@@ -187,7 +187,8 @@
               this.UPDATE_MARKET({
                 //id 넘김 -- 해당 설문 마켓 리스트에 등록
                 id: this.$route.params.sell_id,
-                user_id: this.userinfo.id
+                user_id: this.userinfo.id,
+                price: this.saleIno
               })
               this.$router.replace({name: 'surveymarket'})
             }

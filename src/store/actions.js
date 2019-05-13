@@ -160,8 +160,8 @@ const actions = {
   },
 
   // 설문 업뎃
-  UPDATE_MARKET(context, {id, user_id}) {
-    api.market.updateMarketCard(id,user_id)
+  UPDATE_MARKET(context, {id, user_id, price}) {
+    api.market.updateMarketCard(id,user_id,price)
     .then(response => {
       context.dispatch('FETCH_MARKET')
       context.dispatch('FETCH_SELL', id)

@@ -148,8 +148,8 @@ export const market = {
     return serverRequest('post','/api/market/sellable-forms',id)
   },
   //설문마켓 - 설문 판매
-  updateMarketCard(id,user_id){
-    return serverRequest('post','/api/market/sale',{id,user_id})
+  updateMarketCard(id,user_id,price){
+    return serverRequest('post','/api/market/sale',{id,user_id,price})
   },
   FetchListSell(id) {
     return serverRequest('post','/api/market/sellable-show', id)
