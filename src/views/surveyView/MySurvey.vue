@@ -2,7 +2,7 @@
   <v-container grid-list-md class="pt-5 mt-5">
     <div v-if="this.$route.name == 'mysurvey'">
       <div v-if="!this.$store.state.loading">
-        <v-flex xs12 sm12 md12 xl10 class="center_card">
+        <v-flex xs12 sm12 md12 xl11 class="center_card">
           <v-layout row wrap justify-end>
             <div>
               <v-btn small color="" @click="sale_check = 2" >모두보기</v-btn>
@@ -18,12 +18,12 @@
               :class="`border_style complete${form.is_sale}${form.is_completed}`"
             >
               <v-card-title>
-                <v-chip 
+                <v-chip
                 v-if="form.is_completed == 0" 
                 class="body-2 ml-3 pa-2" color="info" dark>응답중..</v-chip>
                 <v-chip v-else class="subheading ml-3 pa-2 pr-4 pl-4" color="success" dark>완료</v-chip>
                 <v-layout>
-                  <v-flex xs5 class="mt-3" style="margin-left:150px">
+                  <v-flex xs7 class="mt-3" style="margin-left:150px">
                     <span class="headline font-weight-bold">{{form.title}}</span>
                     <div class="grey--text pt-1">작성일 : {{form.created_at}}</div>
                   </v-flex>
@@ -33,7 +33,7 @@
                       <div class="pb-2 mt-4"><v-icon large style="line-height:20px;">event</v-icon><span class="ml-3">{{form.created_at}} ~ {{form.closed_at || '설문마감 미정'}}</span></div>
                     </v-layout>
                   </v-flex>
-                  <v-flex xs5 style="margin-left:100px">
+                  <v-flex xs4>
                     <v-tooltip bottom>
                       <v-icon
                         class="mr-5"
@@ -93,14 +93,6 @@
           </v-flex>
         </v-flex>
         <AddSurvey/>
-        <!-- <div class="mt-4" style="margin-left:140px; margin-bottom:100px;">
-          <v-pagination
-            v-model="page"
-            :length="5"
-            prev-icon="keyboard_arrow_left"
-            next-icon="keyboard_arrow_right"
-          ></v-pagination>
-        </div> -->
       </div>
       <Spinner v-else/>
     </div>
@@ -176,7 +168,7 @@
       },
       surveySales(index, id) {
         if(this.mySurveyForm[index].is_completed == 1 && this.mySurveyForm[index].is_sale == 0) {
-          swal("설문을 판매하시겠어요 ?", "마켓에서 확인할 수 있습니다.",
+          swal("무료로 설문을 등록하시겠어요 ?", "마켓에서 확인할 수 있습니다.",
           {icon: "warning", buttons: true, dangerMode: true,})
           .then(response => {
             if(response) {
@@ -190,7 +182,7 @@
         }else if(this.mySurveyForm[index].is_completed == 0 && this.mySurveyForm[index].is_sale == 0){
           if(this.mySurveyForm[index].respondent_number >= this.mySurveyForm[index].respondent_count || 
           this.mySurveyForm[index].closed_at >= this.mySurveyForm[index].created_at){
-            swal("조건이 충족되지 않았습니다", "이대로 판매를 하시겠습니까 ?",
+            swal("조건이 충족되지 않았습니다", "즉시 무료로 설문을 등록하시겠어요 ?",
             {icon: "warning", buttons: true,  dangerMode: true})
             .then(response => {
               if(response) {
@@ -205,7 +197,7 @@
         } else if(this.mySurveyForm[index].is_completed == 1 && this.mySurveyForm[index].is_sale == 1) {
           swal("이미 등록된 상품입니다", "마켓에서 확인해보세요 !", "warning", {button:"확인"} );
         } else if(this.mySurveyForm[index].is_completed == 0 && this.mySurveyForm[index].is_sale == 1) {
-          swal("조건이 충족되면 자동등록 됩니다 !", "지금 판매 하시겠어요 ?",{icon: "warning", buttons: true, dangerMode: true,})
+          swal("조건이 충족되면 자동등록 됩니다 !", "지금 등록 하시겠어요 ?",{icon: "warning", buttons: true, dangerMode: true,})
           .then(response => {
             if(response) {
               this.updateComplete(id)

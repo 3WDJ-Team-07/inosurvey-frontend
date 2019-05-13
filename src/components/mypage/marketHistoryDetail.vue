@@ -54,23 +54,23 @@
                     </div>
                     <div v-if="surveyFormInfo.survey.target" class="px-4">
                       <v-tooltip right color="info">
-                        <span slot="activator">
-                          <span v-if="gender == 0">
+                      <span slot="activator">
+                        <span v-if="gender == 0">
                           <v-chip color="grey darken-2" text-color="white" large>모든 성별</v-chip>
                         </span>
                         <span v-else>
-                          <v-chip color="grey darken-2" dark large>
+                          <v-chip color="grey darken-2" text-color="white" large>
                             <span v-if="gender == 1">
                               남자
                             </span>
                             <span v-else-if="gender == 2">
                               여자
-                            </span>
+                          </span>
                           </v-chip>
                         </span>
                         <span v-if="age.length !==0 ">
                           <v-chip
-                            color="grey darken-2" dark large
+                            color="grey darken-2" text-color="white" large
                             v-for="(targetAge, index) in age " :key="index"
                           >
                             {{ targetAge }} 대
@@ -79,8 +79,8 @@
                         <span v-else>
                           <v-chip
                             color="grey darken-2"
-                            dar
-                            large 
+                            text-color="white"
+                            large
                           >
                             모든 연령
                           </v-chip>
@@ -96,7 +96,7 @@
                         <span v-else>
                           <v-chip
                             color="grey darken-2" 
-                            dark 
+                            text-color="white" 
                             large 
                           >
                             모든 직업
@@ -106,6 +106,9 @@
                       <span>타겟</span>
                     </v-tooltip>
                   </div>
+                  <div v-if="!surveyFormInfo.survey.target" class="px-3">
+                <v-chip class="pa-1" color="grey darken-2" text-color="white" large close>모든 인원</v-chip>
+              </div>
                 </div>
               </v-flex>
               <v-flex xs3 class="text-xs-center pt-4 mt-1">

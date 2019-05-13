@@ -3,12 +3,12 @@
     <v-dialog v-model="isDonateDialog" hide-overlay persistent max-width="500px">
       <v-card color="#1E88E5" class="pa-4 border_rounded">
 		  <span
-        class="pr-1 pt-1 right white--text" 
+        class="pr-1 pt-1 pb-3 right white--text" 
         @click="SET_IS_DONATE(false)">
         <i class="fas fa-times fa-2x"></i>
       </span>
       <v-layout column align-center>
-        <v-card-title class="white--text font-weight-bold display-1" primary-title>
+        <v-card-title class="mt-4 white--text text-xs-center font-weight-bold display-1" primary-title>
           {{ donationItems.title }}
         </v-card-title>
         <v-card-text class="subheading font-weight-bold white--text">
@@ -56,7 +56,7 @@
       this.$refs.donateInput.value = ''
     },
     methods: {
-      ...mapActions([ 'REQUEST_DONATE' ]),
+      ...mapActions([ 'REQUEST_DONATE', 'FETCH_DONATION' ]),
       ...mapMutations([ 'SET_IS_DONATE', 'SET_IS_DONATE_COMPLETE' ]),
       donate(){
         if(Number(this.inocoin.current_ino) >= Number(this.$refs.donateInput.value)) {
@@ -92,6 +92,7 @@
               })
           this.SET_IS_DONATE(false);
           this.$router.push({ name:'donation' })
+          this.FETCH_DONATION()
         } else {
           swal("이노가 부족합니다 !", `\n지금 바로 이노를 충전하시겠습니까 ? \n\n내 보유이노 : ${this.coin} 이노`,
           {icon: "warning", buttons: true, dangerMode: true,})

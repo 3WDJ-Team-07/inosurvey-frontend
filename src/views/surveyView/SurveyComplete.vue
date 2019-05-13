@@ -9,7 +9,7 @@
       <v-btn color="info" class="pl-5 pr-5 subheading" disabled large>다음</v-btn>
     </v-toolbar>
     <v-divider/>
-    <v-layout column wrap align-center style="margin-top:180px;"> 
+    <v-layout column wrap align-center style="margin-top:220px;"> 
       <div>
         <span class="display-3 font-weight-bold">" {{formTitle}} "</span>
         <span class="display-1 font-weight-bold"> 가 등록되었습니다 !</span>

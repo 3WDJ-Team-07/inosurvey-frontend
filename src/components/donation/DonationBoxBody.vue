@@ -4,9 +4,13 @@
       <v-card flat color="#fafafa">
         <v-container fluid >
           <v-layout column fill-height>
-            <div class="mb-4 display-1 font-weight-bold">
-              {{donationItems.content}}
-            </div>
+            <v-layout row wrap justify-center class="mb-5">
+              <div style="width:800px;">
+                <div class="mb-4 headline text-xs-left">
+                  {{donationItems.content}}
+                </div>
+              </div>
+            </v-layout>
             <div class="title font-weight-bold px-4">
               <v-tooltip right color="info">
                 <span slot="activator">
@@ -21,7 +25,7 @@
             </div>
           <v-container fill-height>
             <v-layout align-center justify-center row wrap>
-              <v-flex xs3 class="padding">
+              <v-flex xs2 class="padding">
                 <div class="title font-weight-bold">
                   <v-tooltip right color="info">
                     <span slot="activator">
@@ -35,7 +39,7 @@
                   </v-tooltip>
               </div>
               </v-flex>
-              <v-flex xs4 mr-5 pr-3>
+              <v-flex xs2 ml-3 mr-3>
                 <v-progress-linear
                   color="info"
                   height="25"
@@ -105,7 +109,7 @@
       }
     },
     filters:{
-      substr:function(date,length){
+      substr(date,length){
         return date.substr(0,length)
       }
     },
