@@ -31,8 +31,7 @@
           </v-btn>
           <v-flex xs9>
             <div class="display-1 pa-5">등록한 모금</div>
-            <!--
-            <div>
+            <!--      <div>
                <carousel-3d :width="600" :height="400" :controls-visible="true" :clickable="false">
     <slide v-for="(donation, i) in donationInfo" :index="i" >
       <figure >
@@ -44,7 +43,7 @@
     </slide>
   </carousel-3d>
             </div>
-              <v-layout row wrap justify-center text-xs-center>
+        <v-layout row wrap justify-center text-xs-center>
                 <v-flex xs12 v-for="(donation, index) in donationInfo" :key="index">
                 <v-card
                   v-if="donation.content&&donation.date" class="round ma-2"
@@ -66,10 +65,14 @@
             class="elevation-1"
             >
             <template v-slot:items="props">
-
-              <td class="pa-5 text-xs-center subheading">{{ props.item.content }}</td>
-              <td class="title">
-                {{props.item.detail.current_amount}}
+              <router-link :to=" {
+                name : 'donationdetail',
+                params: { donation_id: props.item.form_id }
+              } ">
+              <td class="pa-5 text-xs-center font-weight-bold headline black--text">{{ props.item.content }}</td>
+              </router-link>
+              <td class="title font-weight-bold">
+                <i class="fas fa-coins ma-1"></i><span class="info--text mr-1">{{props.item.detail.current_amount}}</span>/{{props.item.detail.target_amount}}
               </td>
               <td class="text-xs-center grey--text">{{ props.item.date }}</td>
             </template>
@@ -102,19 +105,17 @@
         pagination: {},
         headers: [
           { 
-            text: '기관명', 
+            text: '모금함 이름', 
             align: 'center', 
-            value:'calories'
+            width : '500'
           },
           { 
-            text: '목표금액', 
+            text: '기부현황', 
             align: 'center', 
-            value:'calories'
           },
           { 
             text: '기부한 날짜', 
             align: 'center', 
-            value: 'fat'
           },
         ],
       }

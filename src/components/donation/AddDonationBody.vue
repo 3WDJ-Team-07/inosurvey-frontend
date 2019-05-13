@@ -1,104 +1,132 @@
 <template>
-  <v-container fluid grid-list-md  class="font-weight-bold">
-    <v-layout>
-      <v-flex>
-        <v-form @submit.prevent="adddonation"
+  <div>
+    <v-container fluid grid-list-md pt-5 mt-5>
+       <v-form
+        @submit.prevent="adddonation"
         id="add-donation-form"
-        enctype="multipart/form-data">
-          <v-card flat height="12vh" fill-height>
-            <v-layout row wrap>
-              <v-flex xs5>
-                <v-text-field
-                  v-model="title"
-                  :rules="titleRules"
-                  :counter="30"
-                  label="모금함이름"
-                  required>
-                </v-text-field>
-              </v-flex>
-              <v-layout row wrap justify-end>
-                <v-flex sm3>
-                  <v-btn large color="info" type="submit"
-                  form="add-donation-form">
-                  등록하기
-                  </v-btn>
-                </v-flex>
-              </v-layout>
-            </v-layout>
-          </v-card>
-          <v-card flat height="33vh" fill-height>
-            <div>
-              <div
-                class="image-input mt-4"
-                :style="{ 'background-image': `url(${imageData})` }"
-                @click="chooseImage"
-              >
-                <span
-                  v-if="!imageData"
-                  class="placeholder"
-                >
-                  이미지를 선택하세요
-                </span>
-                <input
-                  class="file-input"
-                  ref="fileInput"
-                  type="file"
-                  @input="onSelectFile"
-                >
+        enctype="multipart/form-data"
+      >
+        <v-layout row>
+          <v-layout row wrap>
+            <v-flex xs10>
+              <div class="display-2 font-weight-bold pa-3 ml-5">
+                <span v-if="this.title.length==0" class="grey--text">모금함 등록</span>
+                <span v-else>{{title}}</span>
               </div>
-            </div>
-          </v-card>
-          <v-card flat  height="18vh" fill-height>
-            <v-flex xs5>
-              <v-textarea
-              v-model="content" solo
-              :rules="contentRules"
-              :counter="255"
-              label="모금함에 대해 설명해주세요"
-              >
-              </v-textarea>
             </v-flex>
+            <v-flex xs2>
+              <div class="mr-5 pa-3">
+                <v-btn block color="info" type="submit" form="add-donation-form">
+                  등록하기
+                </v-btn>
+            </div>
+          </v-flex>
+        </v-layout>
+      </v-layout>
+      
+      <v-layout row wrap>
+        <v-flex xs3 class="border_style">
+          <v-card class="text-xs-center" flat style="background-color:#FAFAFA;" >
+            <v-container fluid>
+              <v-layout align-center justify-space-around column fill-height>
+                <div class="display-1 font-weight-bold py-5 my-2">모금함 이름</div>
+                <div class="display-1 font-weight-bold py-5 my-5">소개 이미지</div>
+                <div class="display-1 font-weight-bold py-5 my-5">모금함 설명</div>
+                <div class="display-1 font-weight-bold py-5">모금함 정보</div>
+              </v-layout>
+            </v-container>
           </v-card>
-          <v-card flat height="5vh" fill-height>
-            <v-layout>
-              <v-flex xs5>
-                <v-menu
-                  ref="menu"
-                  v-model="menu"
-                  :close-on-content-click="false"
-                  :nudge-right="200"
-                  lazy
-                  offset-y
-                  min-width="290px"
-                >
-                  <template v-slot:activator>
+        </v-flex>
+        <v-flex xs9 class="border_style">
+          <v-card  flat style="background-color:#FAFAFA;">
+            <v-container fluid>
+              <v-layout column fill-height>
+                <div style="padding-top:3%">
+                  <v-flex xs5>
                     <v-text-field
-                      v-model="closed_at"
-                      label="모금마감일"
-                      prepend-icon="event"
-                      readonly
-                    ></v-text-field>
-                  </template>
-                  <v-date-picker
-                    ref="picker"
-                    v-model="closed_at"
-                    max="2024-12-31"
-                    min="2019-01-01"
-                    @change="save"
-                  ></v-date-picker>
-                </v-menu>
-              </v-flex>
-              <v-flex xs2>
-                <v-text-field type="number" v-model="target_amount" label="목표 모금액" required>
-                </v-text-field>
-              </v-flex>
-              <v-flex xs3 class="mt-4">이노</v-flex>
+                      v-model="title"
+                      :rules="titleRules"
+                      :counter="30"
+                      label="모금함이름"
+                      required>
+                    </v-text-field>
+                  </v-flex>
+                </div>
+                <div>
+                  <div
+                    class="image-input mt-4"
+                    :style="{ 'background-image': `url(${imageData})` }"
+                    @click="chooseImage"
+                  >
+                    <span
+                      v-if="!imageData"
+                      class="placeholder"
+                    >
+                      이미지를 선택하세요
+                    </span>
+                    <input
+                      class="file-input"
+                      ref="fileInput"
+                      type="file"
+                      @input="onSelectFile"
+                    >
+                  </div>
+                </div>
+                <div class="py-4 my-3">
+                  <v-flex xs5>
+                    <v-textarea
+                      v-model="content" solo
+                      :rules="contentRules"
+                      :counter="255"
+                      label="모금함에 대해 설명해주세요"
+                    >
+                    </v-textarea>
+                  </v-flex>
+                </div>
+                <div class="py-4">
+                  <v-layout>
+                    <v-flex xs5>
+                      <v-menu
+                        ref="menu"
+                        v-model="menu"
+                        :close-on-content-click="false"
+                        :nudge-right="200"
+                        lazy
+                        offset-y
+                        min-width="290px"
+                      >
+                      <template v-slot:activator>
+                        <v-text-field
+                          v-model="closed_at"
+                          label="모금마감일"
+                          prepend-icon="event"
+                          readonly
+                        ></v-text-field>
+                      </template>
+                      <v-date-picker
+                        ref="picker"
+                        v-model="closed_at"
+                        max="2024-12-31"
+                        min="2019-05-15"
+                        @change="save"
+                      ></v-date-picker>
+                    </v-menu>
+                  </v-flex>
+                  <v-flex xs2>
+                    <v-text-field type="number" v-model="target_amount" label="목표 모금액" required>
+                    </v-text-field>
+                  </v-flex>
+                  <v-flex xs3 class="mt-4">이노</v-flex>
+                </v-layout>
+              </div>
             </v-layout>
-          </v-card>
-        </v-form>
+          </v-container>
+        </v-card>
       </v-flex>
-    </v-layout>
-  </v-container>
+      </v-layout>
+      </v-form>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -201,5 +229,12 @@
   }
   .file-input {
     display: none;
+  }
+  .border_style {
+    border-bottom: 2px solid lightgrey;
+    border-top: 2px solid lightgrey;
+  }
+  .border_style:nth-child(1) {
+    border-right: 2px solid lightgrey;
   }
 </style>

@@ -43,24 +43,26 @@
               <div class="title font-weight-bold px-4 pb-3">
                 <v-tooltip right color="info">
                   <span slot="activator">
-                    <i class="fas fa-user ma-1"></i><span>{{ino}}이노</span>
+                    <i class="fas fa-coins ma-1"></i><span>{{ino}}이노</span>
                   </span>
-                  <span>응답인원</span>
+                  <span>판매가격</span>
                 </v-tooltip>
               </div>
               <div v-if="marketItems.target" class="px-4 pb-3">
                 <v-tooltip right color="info">
                   <span slot="activator">
-                    <span v-if="gender !== 0">
-                      <span v-if="gender == 1">
-                        <v-chip close color="grey darken-2" text-color="white" large>남자</v-chip>
-                      </span>
-                      <span v-else-if="gender == 2">
-                        <v-chip close color="grey darken-2" text-color="white" large>여자</v-chip>
-                      </span>
-                    </span>
                     <span v-if="gender == 0">
-                      <v-chip close color="grey darken-2" text-color="white" large>모든 성별</v-chip>
+                      <v-chip color="grey darken-2" text-color="white" large>모든 성별</v-chip>
+                    </span>
+                    <span v-else>
+                      <v-chip color="grey darken-2" text-color="white" large>
+                        <span v-if="gender == 1">
+                          남자
+                        </span>
+                        <span v-else-if="gender == 2">
+                          여자
+                       </span>
+                      </v-chip>
                     </span>
                     <span v-if="age.length !==0 ">
                       <v-chip
@@ -72,9 +74,9 @@
                     </span>
                     <span v-else>
                       <v-chip
-                        color="grey darken-2" 
-                        text-color="white" 
-                        large 
+                        color="grey darken-2"
+                        text-color="white"
+                        large
                       >
                         모든 연령
                       </v-chip>

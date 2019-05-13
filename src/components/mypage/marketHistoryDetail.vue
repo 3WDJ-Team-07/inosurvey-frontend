@@ -55,30 +55,51 @@
                     <div v-if="surveyFormInfo.survey.target" class="px-4">
                       <v-tooltip right color="info">
                         <span slot="activator">
-                          <span>
-                            <v-chip color="grey darken-2" text-color="white" large v-if="gender ==! 0">
-                              <span v-if="gender == 1">
-                                남자
-                              </span>
-                              <span v-else-if="gender == 2">
-                                여자
-                              </span>
-                            </v-chip>
-                          </span>
-                        <span>
+                          <span v-if="gender == 0">
+                          <v-chip color="grey darken-2" text-color="white" large>모든 성별</v-chip>
+                        </span>
+                        <span v-else>
+                          <v-chip color="grey darken-2" dark large>
+                            <span v-if="gender == 1">
+                              남자
+                            </span>
+                            <span v-else-if="gender == 2">
+                              여자
+                            </span>
+                          </v-chip>
+                        </span>
+                        <span v-if="age.length !==0 ">
                           <v-chip
-                            color="grey darken-2" text-color="white" large
-                            v-if="age" v-for="(targetAge, index) in age " :key="index"
+                            color="grey darken-2" dark large
+                            v-for="(targetAge, index) in age " :key="index"
                           >
                             {{ targetAge }} 대
                           </v-chip>
                         </span>
-                        <span>
+                        <span v-else>
+                          <v-chip
+                            color="grey darken-2"
+                            dar
+                            large 
+                          >
+                            모든 연령
+                          </v-chip>
+                        </span>
+                        <span v-if="job.length !== 0">
                           <v-chip
                             color="grey darken-2" text-color="white" large
-                            v-if="job" v-for="(targetJob, index) in job" :key="index"
+                            v-for="(targetJob, index) in job" :key="index"
                           >
                             {{targetJob.name}}
+                          </v-chip>
+                        </span>
+                        <span v-else>
+                          <v-chip
+                            color="grey darken-2" 
+                            dark 
+                            large 
+                          >
+                            모든 직업
                           </v-chip>
                         </span>
                       </span>
@@ -114,13 +135,17 @@
         <v-flex xs12>
           <v-card color="#FAFAFA" flat class=" text-xs-center">
             <div fluid grid-list-md class="py-5">
-              <div class="display-3 font-weight-bold my-5 py-5">
-                <v-btn color="info" class="pa-5" 
-                :to="{
+              <router-link :to="{
                         name: 'analysis', 
                         params: { form_id: surveyFormInfo.survey.id }
-                      }">분석보기</v-btn>
+                      }">
+              <div class="display-3 font-weight-bold my-5 py-5 info--text">
+                <v-btn color="info" class="pa-5" fab style="width:180px; height:180px">
+                  <img src="/static/analysis2.png" style="width:130%"/>
+                </v-btn>
+                  분석하기
               </div>
+              </router-link>
             </div>
           </v-card>
         </v-flex>

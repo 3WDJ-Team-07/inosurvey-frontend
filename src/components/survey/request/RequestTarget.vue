@@ -9,7 +9,7 @@
         <v-flex xs4>
           <v-card style="border:1px solid gray">
             <v-card-text>성별</v-card-text>
-            <v-img src="/static/market.png" class="img_center"></v-img>
+            <v-img src="/static/gender.png" class="img_center"></v-img>
             <v-select
               :items="gender_item"
               v-model="gender"
@@ -24,7 +24,7 @@
         <v-flex xs4>
           <v-card style="border:1px solid gray">
 						<v-card-text>연령</v-card-text>
-						<v-img src="/static/write.png" class="img_center"></v-img>
+						<v-img src="/static/age.png" class="img_center"></v-img>
 						<v-select
               :items="age_item"
               v-model="age"
@@ -41,7 +41,7 @@
         <v-flex xs4>
           <v-card style="border:1px solid gray">
             <v-card-text>직업</v-card-text>
-            <v-img src="/static/market.png" class="img_center"></v-img>
+            <v-img src="/static/job.png" class="img_center"></v-img>
             <v-select
               :items="job_item"
               v-model="job"

@@ -33,26 +33,24 @@
         <v-flex xs9>
           <div class="display-1 pa-5">구매 설문 내역</div>
           <v-data-table
-
-          :headers="headers"
-          :items="buyInfo"
-          :search="search"
-          :pagination.sync="pagination"
-          class="elevation-1 click_event"
-
+            :headers="headers"
+            :items="buyInfo"
+            :search="search"
+            :pagination.sync="pagination"
+            class="elevation-1 click_event"
           >
             <template v-slot:items="props">
               <router-link :to=" {
                 name : 'markethistorydetail',
                 params: { form_id: props.item.form_id }
               } ">
-                <td class="pa-5 title font-weight-bold">{{ props.item.content }}</td>
+                <td class="pa-5 headline font-weight-bold black--text">{{ props.item.content }}</td>
               </router-link>
               <td class="text-xs-center grey--text subheading">
               {{props.item.date}}
               </td>
-              <td class="text-xs-center grey--text subheading">
-              {{props.item.price}}
+              <td class="text-xs-center subheading red--text">
+              -{{props.item.price}}
               </td>
             </template>
           </v-data-table>
@@ -95,7 +93,7 @@
             text: '설문조사 제목',
             align: 'center',
             sortable: false,
-            value: 'name'
+            width : '700'
           },
           { 
             text: '구매일자', 
