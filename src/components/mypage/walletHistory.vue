@@ -70,8 +70,7 @@
                       <span v-if="item.sign == '+'" style="color:#42A5F5;"><i class="fas fa-plus fa-xs"></i>&nbsp;{{ item.price }}  <span class="caption">이노</span></span> 
                       <span v-else-if="item.sign == '-'" style="color:red;"><i class="fas fa-minus fa-xs"></i>&nbsp;{{ item.price }} <span class="caption">이노</span></span> 
                       <span v-if="item.price==0" style="display:none"></span> 
-                      
-                      
+
                   </td>
                   <td class="subheading">{{ item.date }}</td>
                 </table>
@@ -102,30 +101,6 @@
         search: '',
         inocoin: {},
         pagination: {},
-        headers: [
-          {
-            text: '내용',
-            align: 'center',
-            sortable: false,
-            value: 'state'
-          },
-          {
-            text: '날짜',
-            align: 'center',
-            sortable: false,
-            value: 'name'
-          },
-          { 
-            text: '내역', 
-            align: 'center', 
-            value:'calories'
-          },
-          { 
-            text: '이노', 
-            align: 'center', 
-            value: 'fat'
-          },
-        ],
         surveyInfo: []
       }
     },
