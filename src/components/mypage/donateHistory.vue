@@ -31,8 +31,8 @@
             <v-icon>arrow_forward_ios</v-icon>
           </v-btn>
         <v-flex xs9>
-          <div class="display-1 mb-2">기부한 모금</div>
-          <div class="headline font-weight-bold mb-5">총 기부 금액 : {{total}}</div>
+          <div class="display-1 font-weight-bold mb-2">참여한 모금</div>
+          <div class="headline font-weight-bold mb-5">총 기부 금액 : <span class="red--text">{{total}}</span>이노</div>
             <v-data-table
             :headers="headers"
             :items="donationInfo"
@@ -41,8 +41,12 @@
             class="elevation-1"
             >
             <template v-slot:items="props">
-
-              <td class="pa-5 text-xs-center subheading">{{ props.item.content }}</td>
+              <router-link :to=" {
+                name : 'donationdetail',
+                params: { donation_id: props.item.form_id }
+              } ">
+              <td class="pa-5 text-xs-center font-weight-bold headline black--text">{{ props.item.content }}</td>
+              </router-link>
               <td class="title">
                 <span v-if="props.item.sign == '+'" style="color:#42A5F5;">
                   <i class="fas fa-plus fa-xs"></i>&nbsp;{{ props.item.price }}  <span class="caption">이노</span>
@@ -82,19 +86,16 @@
         headers: [
 
           { 
-            text: '설문 제목', 
-            align: 'center', 
-            value:'calories'
+            text: '모금함 이름', 
+            align: 'center'
           },
           { 
             text: '기부 금액', 
-            align: 'center', 
-            value: 'fat'
+            align: 'center'
           },
           { 
             text: '날짜', 
-            align: 'center', 
-            value: 'fat'
+            align: 'center'
           },
         ],
         donationInfo: []
@@ -115,7 +116,6 @@
       total(){
         return this.donationInfo.reduce((acc,item)=>acc+item.price,0)
       }
-    
     },
     methods: {
       fetchDonatedonate() {

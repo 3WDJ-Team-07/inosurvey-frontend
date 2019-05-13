@@ -13,8 +13,8 @@
               <v-btn color="info" large block @click="sell">판매하기</v-btn>
             </div>
           </v-flex>
-          </v-layout>
-    </v-layout>
+        </v-layout>
+      </v-layout>
     <v-layout row wrap>
       <v-flex xs3 class="border_style">
         <v-card height=180 class="text-xs-center" flat style="background-color:#FAFAFA;" >
