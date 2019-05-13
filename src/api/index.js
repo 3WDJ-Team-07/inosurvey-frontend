@@ -1,7 +1,6 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
-// http://54.180.121.254
 const DOMAIN = 'http://54.180.121.254'
 const UNAUTHORIZED = 401
 
