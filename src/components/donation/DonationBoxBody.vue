@@ -5,9 +5,10 @@
         <v-container fluid >
           <v-layout column fill-height>
             <v-layout row wrap justify-center class="mb-5">
-              <div style="width:800px;">
+              <div style="width:900px;">
                 <div class="mb-4 headline text-xs-left">
-                  {{donationItems.content}}
+                  <span v-html="donationItems.content"></span>
+                  <!-- {{donationItems.content}} -->
                 </div>
               </div>
             </v-layout>

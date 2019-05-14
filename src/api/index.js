@@ -1,7 +1,7 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
-const DOMAIN = 'http://172.26.3.63:8000'
+const DOMAIN = 'http://54.180.121.254'
 const UNAUTHORIZED = 401
 
 
@@ -11,10 +11,10 @@ const onUnauthrorized = () => { router.push('/') }
 const serverRequest = (method, url, data) => {
   return axios({ method, url: DOMAIN+url, data })
 	.then(result => result.data)
-  .catch(result => {
-    const {status} = result.response
-    if(status===UNAUTHORIZED) onUnauthrorized()
-  })
+  // .catch(result => {
+  //   const {status} = result.response
+  //   if(status===UNAUTHORIZED) onUnauthrorized()
+  // })
 }
 
 const localRequest = (method, url, data) => {

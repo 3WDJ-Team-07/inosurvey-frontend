@@ -51,7 +51,7 @@
             </router-link>
           </v-flex>
         </v-layout>
-        <v-flex v-if="surveyList.length === 0" xs12 >
+        <v-flex v-if="surveyList.length === 0" xs12 style="margin-top:100px;">
           <div class="display-1 grey--text">
             <span v-if="search.length == 0"><i class="far fa-frown mx-2"></i>판매중인 설문이 없습니다. </span>
             <span v-else><i class="far fa-frown mx-2"></i> " {{ search }} " 를 찾을 수 없습니다 ! </span>
