@@ -25,7 +25,7 @@
             </div>
           <v-container fill-height>
             <v-layout align-center justify-center row wrap>
-              <v-flex xs2 class="padding">
+              <v-flex xs2>
                 <div class="title font-weight-bold">
                   <v-tooltip right color="info">
                     <span slot="activator">
@@ -143,11 +143,8 @@
   }
 </script>
 <style scoped>
-.rounded-bar {
+  .rounded-bar {
     border-radius: 15px;
-  }
-  .padding{
-    margin-right: -2%
   }
   .donate{
     border: 2px solid white;
