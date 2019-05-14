@@ -169,6 +169,7 @@ const router = new Router({
       path: '/donation',
       name: 'donation',
       component: Donation,
+      beforeEnter: requireAuth,
       children:[
         {
           path: 'donationdetail/:donation_id',
