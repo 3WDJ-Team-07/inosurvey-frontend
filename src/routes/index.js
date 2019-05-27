@@ -171,7 +171,7 @@ const router = new Router({
       component: Donation,
       children:[
         {
-          path: 'donationdetail/:donation_id',
+          path: 'detail/:donation_id',
           name: 'donationdetail',
           props: true,
           component: DonationDetail

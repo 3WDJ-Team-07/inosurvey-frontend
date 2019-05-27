@@ -25,7 +25,7 @@
             </div>
           <v-container fill-height>
             <v-layout align-center justify-center row wrap>
-              <v-flex xs2 class="padding">
+              <v-flex xs3 class="padding">
                 <div class="title font-weight-bold">
                   <v-tooltip right color="info">
                     <span slot="activator">
