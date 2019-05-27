@@ -5,9 +5,10 @@
         <v-container fluid >
           <v-layout column fill-height>
             <v-layout row wrap justify-center class="mb-5">
-              <div style="width:800px;">
+              <div style="width:900px;">
                 <div class="mb-4 headline text-xs-left">
-                  {{donationItems.content}}
+                  <span v-html="donationItems.content"></span>
+                  <!-- {{donationItems.content}} -->
                 </div>
               </div>
             </v-layout>
@@ -25,7 +26,7 @@
             </div>
           <v-container fill-height>
             <v-layout align-center justify-center row wrap>
-              <v-flex xs2 class="padding">
+              <v-flex xs2>
                 <div class="title font-weight-bold">
                   <v-tooltip right color="info">
                     <span slot="activator">
@@ -143,11 +144,8 @@
   }
 </script>
 <style scoped>
-.rounded-bar {
+  .rounded-bar {
     border-radius: 15px;
-  }
-  .padding{
-    margin-right: -2%
   }
   .donate{
     border: 2px solid white;

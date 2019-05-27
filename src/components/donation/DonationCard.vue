@@ -25,7 +25,7 @@
       </v-card-text>
       <v-card-text class="px-4">
         <div class="title font-weight-bold mb-2">{{ card.title }}</div>
-        <div>{{card.content | substr(30,'.....')}}</div>
+        <div>{{card.content.replace(/(<([^>]+)>)/gi, "") | substr(30,'.....')}}</div>
          <v-progress-linear
           color="info"
           height="20"
