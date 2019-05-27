@@ -92,16 +92,6 @@ const router = new Router({
           name: 'donatehistory',
           component: donateHistory
         },
-        // {
-        //   path: 'donateregisterhistory',
-        //   name: 'donateregisterhistory',
-        //   component: donateRegisterHistory
-        // },
-        // {
-        //   path: 'donateresponsehistory',
-        //   name: 'donateresponsehistory',
-        //   component: donateResponseHistory
-        // },
         {
           path: 'wallethistory',
           name: 'wallethistory',
