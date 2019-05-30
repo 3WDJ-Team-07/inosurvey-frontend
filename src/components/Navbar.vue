@@ -11,7 +11,7 @@
     </router-link>
     <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
       <v-btn 
-        :active-class="!isScrolling ? 'info--text' : undefined" v-for="(item,i) in items" 
+        :active-class="!isScrolling ? 'info--text' : undefined" v-for="(item,i) in items"
         :key="i" :to="item.to" flat class="title"><span v-text="item.text"/>
       </v-btn>
     </v-toolbar-items>
@@ -21,6 +21,9 @@
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'join'}" flat outline class="subheading">sign up</v-btn>
     </template>
     <template v-else>
+      <v-btn  v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" class="headline" flat fab>
+        <i class="far fa-bell"></i>
+      </v-btn>
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'mypage'}" flat outline class="subheading">MyPage</v-btn>
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" 
       @click.prevent="logout" flat outline class="subheading">Logout</v-btn>

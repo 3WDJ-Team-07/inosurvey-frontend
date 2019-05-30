@@ -37,6 +37,7 @@
     "vue-friendly-iframe": "^0.12.0",
     "vue-star-rating": "^1.6.1",
     "vue-template-compiler": "^2.5.21",
-    "vuetify-loader": "^1.0.5"
+    "vuetify-loader": "^1.0.5",
+    "webpack-bundle-analyzer": "^3.3.2"
   }
 }
