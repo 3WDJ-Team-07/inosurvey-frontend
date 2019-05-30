@@ -85,7 +85,12 @@
                 </div>
                 <div class="py-4">
                   <v-layout>
-                    <v-flex xs5>
+                    <v-flex xs2>
+                      <v-select
+                        label="카테고리"
+                      ></v-select>
+                    </v-flex>
+                    <v-flex xs3> 0.
                       <v-menu
                         ref="menu"
                         v-model="menu"
@@ -95,34 +100,34 @@
                         offset-y
                         min-width="290px"
                       >
-                      <template v-slot:activator>
-                        <v-text-field
+                        <template v-slot:activator>
+                          <v-text-field
+                            v-model="closed_at"
+                            label="모금마감일"
+                            prepend-icon="event"
+                            readonly
+                          ></v-text-field>
+                        </template>
+                        <v-date-picker
+                          ref="picker"
                           v-model="closed_at"
-                          label="모금마감일"
-                          prepend-icon="event"
-                          readonly
-                        ></v-text-field>
-                      </template>
-                      <v-date-picker
-                        ref="picker"
-                        v-model="closed_at"
-                        max="2024-12-31"
-                        min="2019-05-15"
-                        @change="save"
-                      ></v-date-picker>
-                    </v-menu>
-                  </v-flex>
-                  <v-flex xs2>
-                    <v-text-field type="number" v-model="target_amount" label="목표 모금액" required>
-                    </v-text-field>
-                  </v-flex>
-                  <v-flex xs3 class="mt-4">이노</v-flex>
-                </v-layout>
-              </div>
-            </v-layout>
-          </v-container>
-        </v-card>
-      </v-flex>
+                          max="2024-12-31"
+                          min="2019-05-15"
+                          @change="save"
+                        ></v-date-picker>
+                      </v-menu>
+                    </v-flex>
+                    <v-flex xs2>
+                      <v-text-field type="number" v-model="target_amount" label="목표 모금액" required>
+                      </v-text-field>
+                    </v-flex>
+                    <v-flex xs3 class="mt-4">이노</v-flex>
+                  </v-layout>
+                </div>
+              </v-layout>
+            </v-container>
+          </v-card>
+        </v-flex>
       </v-layout>
       </v-form>
     </v-container>

@@ -92,16 +92,6 @@ const router = new Router({
           name: 'donatehistory',
           component: donateHistory
         },
-        // {
-        //   path: 'donateregisterhistory',
-        //   name: 'donateregisterhistory',
-        //   component: donateRegisterHistory
-        // },
-        // {
-        //   path: 'donateresponsehistory',
-        //   name: 'donateresponsehistory',
-        //   component: donateResponseHistory
-        // },
         {
           path: 'wallethistory',
           name: 'wallethistory',
@@ -169,6 +159,7 @@ const router = new Router({
       path: '/donation',
       name: 'donation',
       component: Donation,
+      beforeEnter: requireAuth,
       children:[
         {
           path: 'detail/:donation_id',

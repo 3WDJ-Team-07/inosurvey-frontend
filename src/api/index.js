@@ -1,6 +1,7 @@
 import axios    from 'axios'
 import router   from '../routes/index'
 
+//http://54.180.121.254
 const DOMAIN = 'http://54.180.121.254'
 const UNAUTHORIZED = 401
 
@@ -11,10 +12,10 @@ const onUnauthrorized = () => { router.push('/') }
 const serverRequest = (method, url, data) => {
   return axios({ method, url: DOMAIN+url, data })
 	.then(result => result.data)
-  .catch(result => {
-    const {status} = result.response
-    if(status===UNAUTHORIZED) onUnauthrorized()
-  })
+  // .catch(result => {
+  //   const {status} = result.response
+  //   if(status===UNAUTHORIZED) onUnauthrorized()
+  // })
 }
 
 const localRequest = (method, url, data) => {
@@ -88,7 +89,7 @@ export const mySurvey = {
     return localRequest('get','/static/allform.json')
   },
   mySurveyForm(id) {
-    return serverRequest('post', '/api/user/surveies', id)
+    return serverRequest('post', '/api/user/surveys', id)
   },
   mySurveyComplete(id) {
     return serverRequest('post', '/api/survey/abort',id)
@@ -136,10 +137,6 @@ export const market = {
   FetchListDetail(id) {
     return serverRequest('post','/api/market/show',id)
   },
-  // 설문 마켓 - 구매하기
-  // marketPurchase(id,user_id) {
-  //   return serverRequest('post','/api/market/purchase',{ id, user_id })
-  // },
   marketPurchase(id, user_id){
     return serverRequest('post','/api/market/purchase',{ id, user_id })
   },
