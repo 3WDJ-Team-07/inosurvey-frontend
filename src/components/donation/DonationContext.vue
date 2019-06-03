@@ -17,13 +17,24 @@
 					</v-select>
         </v-flex>
       </v-layout>
+      <v-layout>
+         <v-flex
+        v-for="(category, index) in category_item" :key="index">
+        <v-layout justify-space-around>
+          <v-btn fab large color="info" :category_id="category.id" v-model="category_id">
+            {{category.name}}
+          </v-btn>
+        </v-layout>
+          
+        </v-flex>
+      </v-layout>
       <v-layout
         row wrap
         class="pa-4 pl-5 pr-5">
         <v-flex
           py-4 mb-4 xs4
           v-for="(card,index) in SortdonationBox" :key="index"
-          v-if="donate_id == 2 || card.is_achieved == donate_id"
+          v-if="donate_id == 2 || card.is_achieved == donate_id || card.category == category_id"
         >
             <router-link
             :to="{
@@ -51,12 +62,26 @@
     components: { DonationCard, Spinner2 },
     data() {
       return {
-				donate_id: 2,
+        donate_id: 2,
+        category_id:'',
         donate_item: [
 					{ name: '모든 모금함', value: 2},
 					{ name: '미달성 모금함', value: 0},
 					{ name: '달성 모금함', value: 1},
-				],
+        ],
+        category_item: [
+          {name: '전체', id: 0},
+          {name: '아동 / 청소년', id: 1},
+          {name: '어르신', id: 2},
+          {name: '장애인', id: 3},
+          {name: '다문화', id: 4},
+          {name: '지구촌', id: 5},
+          {name: '가족 / 여성', id: 6},
+          {name: '시민사회', id: 7},
+          {name: '동물', id: 8},
+          {name: '환경', id: 9},
+          {name: '기타', id: 10}
+        ],
       }
     },
     computed: {
@@ -64,7 +89,8 @@
       SortdonationBox() {
         this.donationBox.sort((x,y) => { return y.id - x.id})
         return this.donationBox
-      }
+      },
+      
     },
     mounted() {
       this.FETCH_DONATION()
@@ -72,7 +98,7 @@
     methods: {
       ...mapActions([
         'FETCH_DONATION'
-      ]),
+      ])
     }
   }
 </script>

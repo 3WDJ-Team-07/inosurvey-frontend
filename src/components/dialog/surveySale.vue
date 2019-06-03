@@ -20,7 +20,7 @@
                 <span class="mx-5">
                   <input
                     type="radio" name="sellSurvey" class=" radio_btn mr-4"
-                    v-bind:value="survey.id" v-model="pickedSurvey" :id="survey.id"
+                    :value="survey.id" v-model="pickedSurvey" :id="survey.id"
                   >
                   <label :for="survey.id" class="radio_label font-weight-bold">{{survey.title}}</label>
                 </span>
