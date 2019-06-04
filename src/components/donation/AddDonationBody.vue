@@ -10,7 +10,7 @@
           <v-layout row wrap>
             <v-flex xs10>
               <div class="display-2 font-weight-bold pa-3 ml-5">
-                <span v-if="this.title.length==0" class="grey--text">모금함 등록</span>
+                <span v-if="this.title.length==0" class="grey--text text--darken-1">모금함 등록</span>
                 <span v-else>{{title}}</span>
               </div>
             </v-flex>
@@ -23,13 +23,12 @@
           </v-flex>
         </v-layout>
       </v-layout>
-      
       <v-layout row wrap>
         <v-flex xs3 class="border_style">
           <v-card class="text-xs-center" flat style="background-color:#FAFAFA;" >
             <v-container fluid>
               <v-layout align-center justify-space-around column fill-height>
-                <div class="display-1 font-weight-bold py-5 my-2">모금함 이름</div>
+                <div class="display-1 font-weight-bold py-5 my-2">모금함 주제</div>
                 <div class="display-1 font-weight-bold py-5 my-5">소개 이미지</div>
                 <div class="display-1 font-weight-bold py-5 my-5">모금함 설명</div>
                 <div class="display-1 font-weight-bold py-5">모금함 정보</div>
@@ -42,15 +41,29 @@
             <v-container fluid>
               <v-layout column fill-height>
                 <div style="padding-top:3%">
-                  <v-flex xs5>
-                    <v-text-field
-                      v-model="title"
-                      :rules="titleRules"
-                      :counter="30"
-                      label="모금함이름"
-                      required>
-                    </v-text-field>
-                  </v-flex>
+                  <v-layout>
+                    <v-flex xs2 mr-5>
+                      <v-select
+                        :items="category_item"
+                        v-model="category"
+                        label="카테고리"
+                        item-text="name"
+                        item-value="value"
+                        append-icon="arrow_drop_down"
+                        solo hide-details>
+						          </v-select>
+                    </v-flex>
+                    <v-flex xs5>
+                      <v-text-field
+                        v-model="title"
+                        :rules="titleRules"
+                        :counter="30"
+                        label="모금함이름"
+                        required>
+                      </v-text-field>
+                    </v-flex>
+                    
+                  </v-layout>
                 </div>
                 <div>
                   <div
@@ -85,12 +98,7 @@
                 </div>
                 <div class="py-4">
                   <v-layout>
-                    <v-flex xs2>
-                      <v-select
-                        label="카테고리"
-                      ></v-select>
-                    </v-flex>
-                    <v-flex xs3> 0.
+                    <v-flex xs3>
                       <v-menu
                         ref="menu"
                         v-model="menu"
@@ -121,7 +129,7 @@
                       <v-text-field type="number" v-model="target_amount" label="목표 모금액" required>
                       </v-text-field>
                     </v-flex>
-                    <v-flex xs3 class="mt-4">이노</v-flex>
+                    <v-flex class="mt-4">이노</v-flex>
                   </v-layout>
                 </div>
               </v-layout>
@@ -161,7 +169,20 @@
         target_amount:'',
         menu:false,
         // imageData: ""
-        imageData: null
+        imageData: null,
+        category:'',
+        category_item: [
+          {name: '아동 / 청소년', value: 1},
+          {name: '어르신', value: 2},
+          {name: '장애인', value: 3},
+          {name: '다문화', value: 4},
+          {name: '지구촌', value: 5},
+          {name: '가족 / 여성', value: 6},
+          {name: '시민사회', value: 7},
+          {name: '동물', value: 8},
+          {name: '환경', value: 9},
+          {name: '기타', value: 10}
+        ],
       }
     },
     watch:{
@@ -192,6 +213,7 @@
       adddonation() {
         let data = new FormData()
         data.append('user_id', this.userinfo.id)
+        data.append('category_id',this.category)
         data.append('is_donator', this.userinfo.is_donator)
         data.append('title',this.title)
         data.append('file',this.file)
