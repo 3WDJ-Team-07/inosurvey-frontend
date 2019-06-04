@@ -7,15 +7,18 @@ const UNAUTHORIZED = 401
 
 
 // 토큰 없을경우 리다이렉트 
-const onUnauthrorized = () => { router.push('/') }
+// const onUnauthrorized = () => { router.push('/') }
 
 const serverRequest = (method, url, data) => {
   return axios({ method, url: DOMAIN+url, data })
 	.then(result => result.data)
-  // .catch(result => {
-  //   const {status} = result.response
-  //   if(status===UNAUTHORIZED) onUnauthrorized()
-  // })
+  .catch(result => {
+    const {status} = result.response
+    if(status===UNAUTHORIZED) {
+      // onUnauthrorized()
+      console.log('401에러')
+    } 
+  })
 }
 
 const localRequest = (method, url, data) => {
@@ -89,7 +92,7 @@ export const mySurvey = {
     return localRequest('get','/static/allform.json')
   },
   mySurveyForm(id) {
-    return serverRequest('post', '/api/user/surveys', id)
+    return serverRequest('post', '/api/user/surveies', id)
   },
   mySurveyComplete(id) {
     return serverRequest('post', '/api/survey/abort',id)
