@@ -65,6 +65,9 @@ const mutations = {
   UPDATE_TITLE(state, title) {
     state.formTitle = title
   },
+  UPDATE_TESTNUMBER(state, testNumber) {
+    state.testNumber = testNumber
+  },
   UPDATE_INTRO(state, intro) {
     state.formIntro = intro
   },
@@ -77,10 +80,14 @@ const mutations = {
   INPUT_ITEMS(state, payload) {
     state.form.list[payload.questionIndex-1].items.push(payload.items)
   },
-  INPUT_FORM_HEAD(state, {formTitle,formIntro,bgcolor}) {
+  INPUT_FORM_HEAD(state, {formTitle,formIntro,bgcolor,answer}) {
     state.form.survey_title = formTitle
     state.form.survey_description = formIntro
     state.form.bgcolor = bgcolor
+    state.form.list[0].answer = answer
+  },
+  INPUT_TESTNUMBER(state, testNumber) {
+    state.form.list.testOk = testNumber
   },
   INPUT_FORM_TARGET(state, {gender,age,job,responseNumber}) {
     state.form.target.gender = gender

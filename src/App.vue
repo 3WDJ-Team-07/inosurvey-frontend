@@ -36,6 +36,7 @@
 <style>
   *{
     text-decoration: none;
+    list-style: none;
   }
   .form-control {
     box-sizing: border-box;

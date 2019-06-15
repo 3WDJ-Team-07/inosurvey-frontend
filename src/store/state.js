@@ -20,6 +20,7 @@ const state = {
   donationBox: [],              // 모금함 정보
   mySurveyForm: [],             // 내작성한 모든설문조사 
   saleSurvey:[],                // 마켓카드정보
+  testNumber: null,
   sellSurvey:[],
   isSaleDialog: false,
   isPurchaseDialog: false

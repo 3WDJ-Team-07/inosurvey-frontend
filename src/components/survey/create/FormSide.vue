@@ -17,10 +17,11 @@
       </v-tab>
       <v-tab-item>
         <v-card flat class="headline">
+          <v-card-text style="text-align: center;" class="grey lighten-1 white--text pa-4 card_transition" @click="add_check_question">1차설문 추가하기</v-card-text>
           <v-expansion-panel>
             <v-expansion-panel-content>
               <template v-slot:header>
-                <div class=" pb-2 pt-3 card_transition">테마</div>
+                <div class="pb-2 pt-3 card_transition">테마</div>
               </template>
               <v-card >
                 <div class="color-picker">
@@ -169,6 +170,21 @@
             items: []
           }) 
         this.loading=false
+        }, 1000)
+      },
+      add_check_question() {
+        this.loading=true
+        setTimeout(() => {
+          let index = this.form.list.length + 1
+          this.INPUT_QUESTION({
+            index : index,
+            type: 7,
+            question_title:'' || '질문제목을 지정해주세요',
+            question_image: null,
+            question_bank: false,
+            items: []
+          })
+          this.loading=false
         }, 1000)
       }
     }

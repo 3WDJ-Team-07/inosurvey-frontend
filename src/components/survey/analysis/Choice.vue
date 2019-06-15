@@ -45,7 +45,7 @@
       </v-layout>
       <div class="title font-weight-bold pb-4">
         <span style="border-top:7px solid #42A5F5;padding-top:10px;">
-          Q.{{chartItem[0].question_number}}&nbsp;&nbsp;{{ chartItem[0].question_title }}
+          Q.{{chartItem[0].question_number-1}}&nbsp;&nbsp;{{ chartItem[0].question_title }}
         </span> 
       </div>
       <v-layout row wrap justify-center class="pa-4">

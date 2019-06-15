@@ -17,17 +17,15 @@
 					</v-select>
         </v-flex>
       </v-layout>
-      <v-layout>
-         <v-flex
-        v-for="(category, index) in category_item" :key="index">
-        <v-layout justify-space-around>
-          <v-btn fab large color="info" :category_id="category.id" v-model="category_id">
-            {{category.name}}
-          </v-btn>
-        </v-layout>
-          
+      <!-- <v-layout>
+        <v-flex v-for="(category, index) in category_item" :key="index">
+          <v-layout justify-space-around>
+            <v-btn fab large color="info" :category_id="category.id" v-model="category_id">
+              {{category.name}}
+            </v-btn>
+          </v-layout>
         </v-flex>
-      </v-layout>
+      </v-layout> -->
       <v-layout
         row wrap
         class="pa-4 pl-5 pr-5">

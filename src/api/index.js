@@ -2,7 +2,7 @@ import axios    from 'axios'
 import router   from '../routes/index'
 
 //http://54.180.121.254
-const DOMAIN = 'http://54.180.121.254'
+const DOMAIN = 'http://172.26.2.77:8000'
 const UNAUTHORIZED = 401
 
 
@@ -92,7 +92,7 @@ export const mySurvey = {
     return localRequest('get','/static/allform.json')
   },
   mySurveyForm(id) {
-    return serverRequest('post', '/api/user/surveies', id)
+    return serverRequest('post', '/api/user/surveys', id)
   },
   mySurveyComplete(id) {
     return serverRequest('post', '/api/survey/abort',id)
@@ -101,7 +101,6 @@ export const mySurvey = {
     return serverRequest('post','/api/user/issale',id)
   }
 }
-
 
 export const donation = {
   // 기부 - 모금함 정보 불러오기
@@ -173,14 +172,6 @@ export const analysis = {
     return serverRequest('post','/api/analysis/target-result',target)
   }
 }
-
-// /api/user/wallet/receipt/survey/response     - 설문조사 응답이력 
-// /api/user/wallet/receipt/survey/request      - 설문조사 요청이력  // mysurvey
-// /api/user/wallet/receipt/survey/buy          - 설문조사 구매이력 
-// /api/user/wallet/receipt/survey/sell         - 설문조사 판매이력   
-// /api/user/wallet/receipt/donation/donate     - 내가 참여한 기부 이력
-// /api/user/wallet/receipt/donation/request    - 내가 등록한 기부 이력
-// /api/user/wallet/receipt/all                 - 이노정보 이력
 
 export const mypage = {
   FetchSurveyResponse(user_id) {
