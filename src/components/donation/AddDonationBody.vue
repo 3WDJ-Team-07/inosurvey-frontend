@@ -213,7 +213,7 @@
       adddonation() {
         let data = new FormData()
         data.append('user_id', this.userinfo.id)
-        data.append('category_id',this.category)
+        data.append('category',this.category)
         data.append('is_donator', this.userinfo.is_donator)
         data.append('title',this.title)
         data.append('file',this.file)

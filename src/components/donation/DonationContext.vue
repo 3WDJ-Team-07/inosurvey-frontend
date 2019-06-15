@@ -17,12 +17,19 @@
 					</v-select>
         </v-flex>
       </v-layout>
-      <!-- <v-layout>
-        <v-flex v-for="(category, index) in category_item" :key="index">
+      <v-layout>
+         <v-flex
+          v-for="(category, index) in category_item" :key="index">
           <v-layout justify-space-around>
-            <v-btn fab large color="info" :category_id="category.id" v-model="category_id">
-              {{category.name}}
+            <v-btn color="info" :category_id="category.id" v-model="category_id" class="fabbtn">
+              <v-img :src="`/static/category/${category.id}.png`" class="fabimage">
+              </v-img> 
             </v-btn>
+          </v-layout>
+          <v-layout justify-space-around>
+            <div class="caption font-weight-bold grey--text ">
+              {{category.name}}
+            </div>
           </v-layout>
         </v-flex>
       </v-layout> -->
@@ -32,7 +39,7 @@
         <v-flex
           py-4 mb-4 xs4
           v-for="(card,index) in SortdonationBox" :key="index"
-          v-if="donate_id == 2 || card.is_achieved == donate_id || card.category == category_id"
+          v-if="donate_id == 2 || card.is_achieved == donate_id && category_id==card.category[0].id"
         >
             <router-link
             :to="{
@@ -72,13 +79,11 @@
           {name: '아동 / 청소년', id: 1},
           {name: '어르신', id: 2},
           {name: '장애인', id: 3},
-          {name: '다문화', id: 4},
-          {name: '지구촌', id: 5},
-          {name: '가족 / 여성', id: 6},
-          {name: '시민사회', id: 7},
-          {name: '동물', id: 8},
-          {name: '환경', id: 9},
-          {name: '기타', id: 10}
+          {name: '지구촌', id: 4},
+          {name: '가족 / 여성', id: 5},
+          {name: '시민사회', id: 6},
+          {name: '동 / 식물', id: 7},
+          {name: '기타', id: 8}
         ],
       }
     },
@@ -91,6 +96,7 @@
       
     },
     mounted() {
+ 
       this.FETCH_DONATION()
     },
     methods: {
@@ -100,3 +106,11 @@
     }
   }
 </script>
+<style scoped>
+.fabbtn{
+  border-radius: 100%;
+  
+  height: 10vh
+}
+</style>
+
