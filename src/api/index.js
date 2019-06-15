@@ -2,20 +2,23 @@ import axios    from 'axios'
 import router   from '../routes/index'
 
 //http://54.180.121.254
-const DOMAIN = 'http://54.180.121.254'
+const DOMAIN = 'http://172.26.2.77:8000'
 const UNAUTHORIZED = 401
 
 
 // 토큰 없을경우 리다이렉트 
-const onUnauthrorized = () => { router.push('/') }
+// const onUnauthrorized = () => { router.push('/') }
 
 const serverRequest = (method, url, data) => {
   return axios({ method, url: DOMAIN+url, data })
 	.then(result => result.data)
-  // .catch(result => {
-  //   const {status} = result.response
-  //   if(status===UNAUTHORIZED) onUnauthrorized()
-  // })
+  .catch(result => {
+    const {status} = result.response
+    if(status===UNAUTHORIZED) {
+      // onUnauthrorized()
+      console.log('401에러')
+    } 
+  })
 }
 
 const localRequest = (method, url, data) => {
@@ -99,7 +102,6 @@ export const mySurvey = {
   }
 }
 
-
 export const donation = {
   // 기부 - 모금함 정보 불러오기
   donationCard() {
@@ -170,14 +172,6 @@ export const analysis = {
     return serverRequest('post','/api/analysis/target-result',target)
   }
 }
-
-// /api/user/wallet/receipt/survey/response     - 설문조사 응답이력 
-// /api/user/wallet/receipt/survey/request      - 설문조사 요청이력  // mysurvey
-// /api/user/wallet/receipt/survey/buy          - 설문조사 구매이력 
-// /api/user/wallet/receipt/survey/sell         - 설문조사 판매이력   
-// /api/user/wallet/receipt/donation/donate     - 내가 참여한 기부 이력
-// /api/user/wallet/receipt/donation/request    - 내가 등록한 기부 이력
-// /api/user/wallet/receipt/all                 - 이노정보 이력
 
 export const mypage = {
   FetchSurveyResponse(user_id) {

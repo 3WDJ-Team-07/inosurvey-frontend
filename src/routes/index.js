@@ -139,7 +139,7 @@ const router = new Router({
       path: '/surveymarket',
       name: 'surveymarket',
       component: SurveyMarket,
-     
+      beforeEnter: requireAuth,
       children:[
         {
           path:'detail/:market_id',

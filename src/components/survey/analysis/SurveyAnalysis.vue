@@ -84,7 +84,7 @@
             next-icon="keyboard_arrow_right"
             >
               <template v-slot:items="props">
-                <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">{{ props.item[0].question_number }}</td>
+                <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">{{ props.item[0].question_number-1 }}</td>
                 <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">{{ props.item[0].question_title }}</td>
                 <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">
                   <span v-if="props.item[0].type_id == 1">객관식</span>
@@ -187,6 +187,7 @@
         return analysis.Fetchanalysis({ form_id: this.form_id })
         .then(response => {
           this.chartData = response
+          this.chartData.question.splice(0,1)
           this.age = response.form[1].percentage[0].age
           this.gender = response.form[1].percentage[1].gender
           this.job = response.form[1].percentage[2].job

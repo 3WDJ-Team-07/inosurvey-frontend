@@ -15,6 +15,11 @@
       <v-form v-if="question.question_bank == false">
         <v-layout row wrap>
           <v-flex sm12>
+            <check 
+            v-if="question.type == 7"
+            :inputQuestion="inputQuestion"
+            :question="question"
+            />  
             <Single 
             v-if="question.type == 1"
             :inputQuestion="inputQuestion"
@@ -78,6 +83,7 @@
 <script>
   import {mapState, mapActions, mapMutations, mapGetters} from 'vuex'
   import Single      from './questionType/single/Single'
+  import check      from './questionType/checking/check'
   import Subjective  from './questionType/Subjective'
   import Multiple    from './questionType/multiple/Multiple'
   import StarRating  from './questionType/StarRating'
@@ -88,6 +94,7 @@
 
 	export default {
     components: {
+      check,
       Single,
       Subjective,
       Multiple,
@@ -121,7 +128,8 @@
       ...mapMutations([
         'FORM_DATE_REQUEST',
         'REMOVE_QUESTION',
-        'INPUT_FORM_HEAD'
+        'INPUT_FORM_HEAD',
+        'INPUT_TESTNUMBER'
       ]),
       ...mapActions(['INPUT_ITEMS']),
       SaveValues() {
@@ -134,10 +142,12 @@
         this.REMOVE_QUESTION(index)
       },
       SubmitForm() {
+        console.log(this.$store.state.testNumber)
         this.INPUT_FORM_HEAD({
           formTitle: this.formTitle,
           formIntro: this.formIntro,
-          bgcolor: this.bgColor || '#ffffff'
+          bgcolor: this.bgColor || '#ffffff',
+          answer: this.$store.state.testNumber
         })
         this.FORM_DATE_REQUEST()
       }
@@ -145,7 +155,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.hoverEvent{
 		transition: background-color 0.5s ease;
 	}
@@ -153,8 +163,9 @@
     background-color: #ECEFF1;
     cursor: pointer;
   }
-  ul li {
-    list-style: none;
+  .hoverEvent:first-child {
+    border-radius: 20px;
+    border:1px solid lightgray;
   }
   .list-enter-active, .list-leave-active {
   transition: all 1s;
