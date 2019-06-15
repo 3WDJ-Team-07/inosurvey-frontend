@@ -17,22 +17,19 @@
 					</v-select>
         </v-flex>
       </v-layout>
-      <v-layout>
-         <v-flex
-          v-for="(category, index) in category_item" :key="index">
+      <v-layout justify-center>
+       <div v-for="(category, index) in category_item" :key="index" class="pa-3 mb-5">
+          <v-btn depressed :category_id="category.id" v-model="category_id" class="fabbtn">
+          <v-img :src="`/static/category/${category.id}.png`" style="border-radius:50%; background-color:#42A5F5; padding:40px;">
+          </v-img> 
+          </v-btn>
           <v-layout justify-space-around>
-            <v-btn color="info" :category_id="category.id" v-model="category_id" class="fabbtn">
-              <v-img :src="`/static/category/${category.id}.png`" class="fabimage">
-              </v-img> 
-            </v-btn>
+            <div class="caption font-weight-bold grey--text">
+            {{category.name}}
+          </div>
           </v-layout>
-          <v-layout justify-space-around>
-            <div class="caption font-weight-bold grey--text ">
-              {{category.name}}
-            </div>
-          </v-layout>
-        </v-flex>
-      </v-layout> -->
+        </div>
+      </v-layout>
       <v-layout
         row wrap
         class="pa-4 pl-5 pr-5">
@@ -108,9 +105,8 @@
 </script>
 <style scoped>
 .fabbtn{
-  border-radius: 100%;
-  
-  height: 10vh
+  border-radius: 50%;
+  height: 12vh
 }
 </style>
 
