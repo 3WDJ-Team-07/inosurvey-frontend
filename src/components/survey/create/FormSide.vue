@@ -17,7 +17,7 @@
       </v-tab>
       <v-tab-item>
         <v-card flat class="headline">
-          <v-card-text style="text-align: center;" class="grey lighten-1 white--text pa-4 card_transition" @click="add_check_question">1차설문 추가하기</v-card-text>
+          <v-card-text style="text-align: center;" class="grey lighten-1 white--text pa-4 card_transition" @click="add_check_question">사전조사 추가하기</v-card-text>
           <v-expansion-panel>
             <v-expansion-panel-content>
               <template v-slot:header>
