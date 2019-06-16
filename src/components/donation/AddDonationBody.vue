@@ -175,13 +175,11 @@
           {name: '아동 / 청소년', value: 1},
           {name: '어르신', value: 2},
           {name: '장애인', value: 3},
-          {name: '다문화', value: 4},
-          {name: '지구촌', value: 5},
-          {name: '가족 / 여성', value: 6},
-          {name: '시민사회', value: 7},
-          {name: '동물', value: 8},
-          {name: '환경', value: 9},
-          {name: '기타', value: 10}
+          {name: '지구촌', value: 4},
+          {name: '가족 / 여성', value: 5},
+          {name: '시민사회', value: 6},
+          {name: '동식물', value: 7},
+          {name: '기타', value: 8}
         ],
       }
     },
