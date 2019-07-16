@@ -146,7 +146,9 @@
         </v-flex>
       </v-layout>
     </v-card>
-
+ <pre>
+    {{this.$store.state.form}}
+    </pre>
   </v-container>
 </template>
 

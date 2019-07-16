@@ -29,7 +29,7 @@
           height="75vh" class="pa-5" 
           data-aos="fade-left" 
           data-aos-delay="300" >
-          <v-card-text class="display-1 mt-2 mb-3 font-weight-black">요청자</v-card-text>
+          <v-card-text class="display-1 mt-2 mb-3 font-weight-black">작성자</v-card-text>
           <v-img src="/static/request.png" width="35%" class="center"></v-img>
           <v-card-text class="pa-5">
             <span class="headline font-weight-bold">

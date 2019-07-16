@@ -15,7 +15,6 @@ const serverRequest = (method, url, data) => {
   .catch(result => {
     const {status} = result.response
     if(status===UNAUTHORIZED) {
-      // onUnauthrorized()
       console.log('401에러')
     } 
   })
@@ -133,34 +132,25 @@ export const market = {
   marketCard(id){
     return serverRequest('post','/api/market/index', id)
   },
-  marketCardTest() {
-    return localRequest('get','/static/allform.json')
-  },
+  // 설문마켓 - 판매중인 설문 각각의 정보
   FetchListDetail(id) {
     return serverRequest('post','/api/market/show',id)
   },
+  // 설문마켓 - 설문 구매
   marketPurchase(id, user_id){
     return serverRequest('post','/api/market/purchase',{ id, user_id })
   },
-  // 설문마켓 - 판매할 설문 정보 불러오기
+  // 설문마켓 - 판매할 설문 리스트
   marketSell(id){
     return serverRequest('post','/api/market/sellable-forms',id)
   },
-  //설문마켓 - 설문 판매
+  // 설문마켓 - 설문 판매
   updateMarketCard(id,user_id,price){
     return serverRequest('post','/api/market/sale',{id,user_id,price})
   },
+  // 설문 마켓 - 판매할 설문 각각의 정보
   FetchListSell(id) {
     return serverRequest('post','/api/market/sellable-show', id)
-  },
-  TestSaleList() {
-    return localRequest('get','/static/test/saleList.json')
-  },
-  TestDetailList() {
-    return localRequest('get','/static/test/detailList.json')
-  },
-  TestSelectList() {
-    return localRequest('get','/static/test/selectList.json')
   }
 }
 
