@@ -120,7 +120,7 @@
                           ref="picker"
                           v-model="closed_at"
                           max="2024-12-31"
-                          min="2019-05-15"
+                          min="2019-06-19"
                           @change="save"
                         ></v-date-picker>
                       </v-menu>

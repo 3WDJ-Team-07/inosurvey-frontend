@@ -69,9 +69,9 @@
                 <div class=" mt-5 py-2">
                   <v-layout row wrap>
                     <v-flex xs-12 pa-4>
-                      <div class="font-weight-bold  my-2" v-for="i in 5">
-                        <span class="mr-5">설문 구매자 1</span>
-                        <span class="grey--text">2019-05-05</span>
+                      <div class="font-weight-bold  my-2" v-for="i in 1">
+                        <span class="mr-5">김민영</span>
+                        <span class="grey--text">2019-06-19</span>
                       </div>
                     </v-flex>
                   </v-layout>

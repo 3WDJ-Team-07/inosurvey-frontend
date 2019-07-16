@@ -64,7 +64,7 @@
         this.$store.state.loading = true
         return market.FetchListDetail({ id:this.market_id })
         .then(response => {
-          console.log(response)
+
           this.marketItems = response.list
           this.ino = response.price
           this.$store.state.loading = false
