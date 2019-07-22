@@ -39,7 +39,7 @@
     ],
     data() {
       return {
-        multipleValues: { value: '' || "질문을 지정해주세요." }
+        multipleValues: { value: '' || "タイトルを指定してください。" }
       }
     },
     methods: {

@@ -59,14 +59,14 @@
       ]),
       logout() {
         swal({
-          text: "로그아웃 하시겠습니까?",
+          text: "ログアウトしますか？",
           icon: "warning",
           buttons: true,
           dangerMode: true,
         })
         .then((willDelete) => {
           if (willDelete) {
-            swal("로그아웃 되었습니다!");
+            swal("ログアウトしました！");
             this.LOGOUT()
             this.$router.push({name:'home'})
           }

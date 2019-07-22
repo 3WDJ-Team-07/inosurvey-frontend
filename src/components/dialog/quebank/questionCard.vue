@@ -24,8 +24,8 @@
       </v-card-title>
     </v-card>
     <div ref="btns" style="float:right;display:none;">
-      <v-btn @click="value_cancel" style="border:1px solid grey" color="lightgrey" depressed small>취소</v-btn>
-      <v-btn @click="value_save" style="border:1px solid grey" color="lightgrey" depressed small>완료</v-btn>
+      <v-btn @click="value_cancel" style="border:1px solid grey" color="lightgrey" depressed small>取り消し</v-btn>
+      <v-btn @click="value_save" style="border:1px solid grey" color="lightgrey" depressed small>完了</v-btn>
     </div>
   </v-flex>
 </template>

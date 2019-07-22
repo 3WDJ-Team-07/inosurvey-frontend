@@ -2,16 +2,16 @@
   <v-container fluid grid-list-md class="pt-5 mt-5">
     <v-divider/>
     <v-toolbar color="#FAFAFA" flat>
-      <v-btn flat color="info" class="subheading font-weight-bold">설문 작성</v-btn><i class="info--text fas fa-chevron-right"></i>
-      <v-btn flat color="grey" class="subheading font-weight-bold">설문 요청</v-btn><i class="grey--text fas fa-chevron-right"></i>
-      <v-btn flat color="grey" class="subheading font-weight-bold">등록</v-btn>
+      <v-btn flat color="info" class="subheading font-weight-bold">作成</v-btn><i class="info--text fas fa-chevron-right"></i>
+      <v-btn flat color="grey" class="subheading font-weight-bold">要請</v-btn><i class="grey--text fas fa-chevron-right"></i>
+      <v-btn flat color="grey" class="subheading font-weight-bold">登録</v-btn>
       <v-spacer/>
       <v-btn 
         color="info" id="element"
         class="pl-5 pr-5 subheading" 
         :disabled="!isSuccessFormData" 
         large @click="next_stage"
-      >다음</v-btn>
+      >Next</v-btn>
     </v-toolbar>
     <v-divider/>
     <v-layout row wrap>

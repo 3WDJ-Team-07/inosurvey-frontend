@@ -4,7 +4,7 @@
         <image-input v-model="avatar">
           <div slot="activator" class="pt-2">
             <v-avatar size="300px" tile v-if="!avatar" class="grey lighten-3 ml-3">
-              <span>사진을 넣어주세요</span>
+              <span>写真を入れてください</span>
             </v-avatar>
             <v-avatar size="300px" tile v-else class="pt-3 ml-3">
               <img :src="avatar.imageURL" alt="avatar">
@@ -22,8 +22,8 @@
         <label v-else class="title font-weight-bold">{{ImageValue.value}}</label>
       </v-card-title>
       <v-card-actions style="float:right;">
-        <v-btn color="grey" dark @click="removeSingleChoice(itemIndex)">삭제</v-btn>
-        <v-btn color="info" @click="addNewSingleChoice">추가</v-btn>
+        <v-btn color="grey" dark @click="removeSingleChoice(itemIndex)">削除</v-btn>
+        <v-btn color="info" @click="addNewSingleChoice">追加</v-btn>
       </v-card-actions>
     </v-card>
   </v-flex>

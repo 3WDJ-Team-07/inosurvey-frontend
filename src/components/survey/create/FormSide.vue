@@ -17,11 +17,11 @@
       </v-tab>
       <v-tab-item>
         <v-card flat class="headline">
-          <v-card-text style="text-align: center;" class="grey lighten-1 white--text pa-4 card_transition" @click="add_check_question">사전조사 추가하기</v-card-text>
+          <v-card-text style="text-align: center;" class="grey lighten-1 white--text pa-4 card_transition" @click="add_check_question">事前調査追加</v-card-text>
           <v-expansion-panel>
             <v-expansion-panel-content>
               <template v-slot:header>
-                <div class="pb-2 pt-3 card_transition">테마</div>
+                <div class="pb-2 pt-3 card_transition">テーマ</div>
               </template>
               <v-card >
                 <div class="color-picker">
@@ -45,7 +45,7 @@
         indeterminate
         color="white"
       ></v-progress-circular>  
-      <span class="subgeading pa-3">질문 만드는 중
+      <span class="subgeading pa-3">質問製造中
       </span><v-btn flat>Close</v-btn>
     </v-snackbar>
   </div>
@@ -89,7 +89,7 @@
           this.INPUT_QUESTION({
             index : index,
             type: 1,
-            question_title:'' || '질문제목을 지정해주세요',
+            question_title:'' || 'タイトルを指定してください。',
             question_image: null,
             question_bank: false,
             items: []
@@ -104,7 +104,7 @@
           this.INPUT_QUESTION({
             index : index,
             type: 2,
-            question_title:'' || '질문제목을 지정해주세요',
+            question_title:'' || 'タイトルを指定してください。',
             question_image: null,
             question_bank: false,
             items: ""
@@ -119,7 +119,7 @@
           this.INPUT_QUESTION({
             index : index,
             type: 3,
-            question_title:'' || '질문제목을 지정해주세요',
+            question_title:'' || 'タイトルを指定してください。',
             question_image: null,
             question_bank: false,
             items: []
@@ -134,7 +134,7 @@
           this.INPUT_QUESTION({
             index : index,
             type: 4,
-            question_title:'' || '질문제목을 지정해주세요',
+            question_title:'' || 'タイトルを指定してください。',
             question_image: null,
             question_bank: false,
             items: ""
@@ -149,7 +149,7 @@
           this.INPUT_QUESTION({
             index : index,
             type: 5,
-            question_title:'' || '당신의 의견을 말해주세요',
+            question_title:'' || '意見を書いてください。',
             question_image: null,
             question_bank: false,
             items: ""
@@ -164,7 +164,7 @@
           this.INPUT_QUESTION({
             index : index,
             type: 6,
-            question_title:'' || '질문제목을 지정해주세요',
+            question_title:'' || 'タイトルを指定してください。',
             question_image: null,
             question_bank: false,
             items: []
@@ -179,7 +179,7 @@
           this.INPUT_QUESTION({
             index : index,
             type: 7,
-            question_title:'' || '질문제목을 지정해주세요',
+            question_title:'' || 'タイトルを指定してください。',
             question_image: null,
             question_bank: false,
             items: []

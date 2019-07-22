@@ -10,7 +10,7 @@
             </v-flex>
             <v-flex xs2>
             <div class="mr-5 pa-3">
-              <v-btn color="info" large block @click="sell">판매하기</v-btn>
+              <v-btn color="info" large block @click="sell">販売する</v-btn>
             </div>
           </v-flex>
         </v-layout>
@@ -18,7 +18,7 @@
     <v-layout row wrap>
       <v-flex xs3 class="border_style">
         <v-card height=180 class="text-xs-center" flat style="background-color:#FAFAFA;" >
-          <div class="display-1 font-weight-bold pt-5 mt-5">설문 정보</div>
+          <div class="display-1 font-weight-bold pt-5 mt-5">アンケートの情報</div>
         </v-card>
       </v-flex>
       <v-flex xs9 class="border_style pa-3"> 
@@ -31,10 +31,10 @@
               <span slot="activator">
             <i class="fas fa-user ma-1"></i>
             <span>
-            {{sellItems.respondent_count}}명
+            {{sellItems.respondent_count}}人
             </span>
             </span>
-            <span>응답인원</span>
+            <span>回答数</span>
             </v-tooltip>
           </div>
           <div class="title font-weight-bold px-4 pb-3">
@@ -48,7 +48,7 @@
                   {{sellItems.closed_at | substr}}
                 </span>
               </span>
-              <span>설문 진행 일정</span>
+              <span>期間</span>
             </v-tooltip>
           </div>
           <div v-if="sellItems.target" class="px-4">
@@ -56,21 +56,21 @@
               <span slot="activator">
                 <span v-if="gender !== 0">
                   <span v-if="gender == 1">
-                    <v-chip color="grey darken-2" text-color="white" large>남자</v-chip>
+                    <v-chip color="grey darken-2" text-color="white" large>男</v-chip>
                   </span>
                   <span v-if="gender == 2">
-                    <v-chip color="grey darken-2" text-color="white" large>여자</v-chip>
+                    <v-chip color="grey darken-2" text-color="white" large>女</v-chip>
                   </span>
                 </span>
                 <span v-if="gender == 0">
-                  <v-chip close color="grey darken-2" text-color="white" large>모든 성별</v-chip>
+                  <v-chip close color="grey darken-2" text-color="white" large>無関</v-chip>
                 </span>
                 <span v-if="age.length !== 0">
                   <v-chip
                     color="grey darken-2" text-color="white" large
                     v-if="age" v-for="(targetAge, index) in age " :key="index"
                   >
-                    {{ targetAge }} 대
+                    {{ targetAge }} 代
                   </v-chip>
                 </span>
                 <span v-else>
@@ -79,7 +79,7 @@
                     text-color="white" 
                     large 
                   >
-                    모든 연령
+                    無関
                   </v-chip>
                 </span>
                 <span v-if="job.length !== 0" >
@@ -97,15 +97,15 @@
                     text-color="white" 
                     large 
                   >
-                    모든 직업
+                    無関
                   </v-chip>
                 </span>
               </span>
-              <span>타겟</span>
+              <span>対象者</span>
             </v-tooltip>
           </div>
           <div v-if="!sellItems.target" class="px-3">
-            <v-chip class="pa-1" color="grey darken-2" text-color="white" large close>모든 인원</v-chip>
+            <v-chip class="pa-1" color="grey darken-2" text-color="white" large close>無関</v-chip>
           </div>
         </v-card>
       </v-flex>
@@ -129,8 +129,8 @@
                 </div>
               </v-layout>
               <div class="display-3 font-weight-bold" style="margin-top:70px;">
-                " <span class="info--text">{{sellItems.title}}</span> "을 "<span class="info--text font-italic">
-                {{saleIno}}</span> 이노"에 판매합니다.
+                「 <span class="info--text">{{sellItems.title}}</span> 」を 「<span class="info--text font-italic">
+                {{saleIno}}</span> イノ」に 販売します。
               </div>
             </div>
           </v-card>

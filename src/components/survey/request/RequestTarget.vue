@@ -1,19 +1,19 @@
 <template>
   <v-container fluid grid-list-md>
     <v-layout row wrap>
-      <div class="display-1 pb-4">타겟 설정</div>
+      <div class="display-1 pb-4">対象の設定</div>
     </v-layout>
     <v-card class="border_style pa-5" >
-      <div> <v-chip class="title ml-3 pa-1 mb-2" dark>1단계</v-chip><span class="title font-weight-bold"> 대상설정</span></div>
+      <div> <v-chip class="title ml-3 pa-1 mb-2" dark>1段階</v-chip><span class="title font-weight-bold"> 対象の設定</span></div>
       <v-layout row wrap class="pa-3" text-sm-center>
         <v-flex xs4>
           <v-card style="border:1px solid gray">
-            <v-card-text>성별</v-card-text>
+            <v-card-text>性別</v-card-text>
             <v-img src="/static/gender.png" class="img_center"></v-img>
             <v-select
               :items="gender_item"
               v-model="gender"
-              label="무관"
+              label="設定なし"
               item-text="name"
               item-value="value"
               append-icon="arrow_drop_down"
@@ -23,12 +23,12 @@
         </v-flex>
         <v-flex xs4>
           <v-card style="border:1px solid gray">
-						<v-card-text>연령</v-card-text>
+						<v-card-text>年齢</v-card-text>
 						<v-img src="/static/age.png" class="img_center"></v-img>
 						<v-select
               :items="age_item"
               v-model="age"
-              label="무관"
+              label="設定なし"
               item-text="name"
               multiple
               color="info"
@@ -40,12 +40,12 @@
         </v-flex>
         <v-flex xs4>
           <v-card style="border:1px solid gray">
-            <v-card-text>직업</v-card-text>
+            <v-card-text>職業</v-card-text>
             <v-img src="/static/job.png" class="img_center"></v-img>
             <v-select
               :items="job_item"
               v-model="job"
-              label="무관"
+              label="設定なし"
               item-text="name"
               item-value="value"
               multiple
@@ -75,14 +75,14 @@
       </v-layout>
     </v-card>
     <v-card class="border_style pl-5 pr-5">
-      <div> <v-chip class="title ml-3 pa-1 mb-2" dark>2단계</v-chip><span class="title font-weight-bold"> 응답수 선택</span></div>
+      <div> <v-chip class="title ml-3 pa-1 mb-2" dark>2段階</v-chip><span class="title font-weight-bold"> 回答数の選択</span></div>
       <v-layout row wrap class="pa-2">
         <v-flex pl-5 pr-5 pb-3 pt-5>
           <v-slider
             v-model="responseNumber"
             always-dirty
             thumb-label="always" 
-            hint="응답수는 비용에 비례합니다."
+            hint="回答数は費用に比例します。"
             class="title"
             max="1000"
             min="1"
@@ -96,10 +96,10 @@
     <v-card class="border_style pl-5 pr-5 pb-5">
       <v-layout row wrap>
         <v-flex xs6>
-          <div><v-chip class="title ml-3 pa-1 mb-2" dark>3단계</v-chip><span class="title font-weight-bold"> 마감일 선택</span></div>
+          <div><v-chip class="title ml-3 pa-1 mb-2" dark>3段階</v-chip><span class="title font-weight-bold"> 締切選択</span></div>
         </v-flex>
         <v-flex xs6>
-          <div><v-chip class="title ml-3 pa-1 mb-2" dark>4단계</v-chip><span class="title font-weight-bold"> 판매여부 선택</span></div>
+          <div><v-chip class="title ml-3 pa-1 mb-2" dark>4段階</v-chip><span class="title font-weight-bold"> 販売するか否か</span></div>
         </v-flex>
       </v-layout>
       <v-layout row wrap>
@@ -135,12 +135,12 @@
         <v-flex xs6 pl-5 pr-5 pt-5>
           <div v-if="isToggled == 1">
             <v-btn class="subheading" color="primary" block round large :class="{toggled: isToggled}" @click="isToggled = 0">
-            <span>판매합니다.</span>
+            <span>販売します。</span>
             </v-btn>
           </div>
           <div v-if="isToggled == 0">
             <v-btn class="subheading" depressed color="grey lighten-3" block round large :class="{toggled: isToggled}" @click="isToggled = 1">
-            <span>판매하지 않습니다.</span>
+            <span>販売しません。</span>
             </v-btn>
           </div>
         </v-flex>

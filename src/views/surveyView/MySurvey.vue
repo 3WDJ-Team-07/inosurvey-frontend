@@ -5,10 +5,10 @@
         <v-flex xs12 sm12 md12 xl11 class="center_card">
           <v-layout row wrap justify-end>
             <div>
-              <v-btn small color="" @click="sale_check = 2" >모두보기</v-btn>
+              <v-btn small color="" @click="sale_check = 2" ></v-btn>
               <v-btn small color="grey" @click="stay" dark>대기중</v-btn>
               <v-btn small color="grey" @click="staySale" dark>판매 대기중</v-btn>
-              <v-btn small color="#64B5F6" @click="sale" dark>판매중</v-btn>
+              <v-btn small color="#64B5F6" @click="sale" dark>販売中</v-btn>
             </div>
           </v-layout>
           <div v-for="(form, index) in SortmySurveyForm" :key="index">
@@ -20,16 +20,16 @@
               <v-card-title>
                 <v-chip
                 v-if="form.is_completed == 0" 
-                class="body-2 ml-3 pa-2" color="info" dark>응답중..</v-chip>
-                <v-chip v-else class="subheading ml-3 pa-2 pr-4 pl-4" color="success" dark>완료</v-chip>
+                class="body-2 ml-3 pa-2" color="info" dark>回答中..</v-chip>
+                <v-chip v-else class="subheading ml-3 pa-2 pr-4 pl-4" color="success" dark>完了</v-chip></v-chip>
                 <v-layout>
                   <v-flex xs7 class="mt-3" style="margin-left:150px">
                     <span class="headline font-weight-bold">{{form.title}}</span>
-                    <div class="grey--text pt-1">작성일 : {{form.created_at}}</div>
+                    <div class="grey--text pt-1">作成日時 : {{form.created_at}}</div>
                   </v-flex>
                   <v-flex xs3>
                     <v-layout row wrap justify-start>
-                      <div class="pb-2"><v-icon large style="line-height:20px;">person</v-icon><span class="ml-3">{{form.respondent_count}} / {{form.respondent_number}} 명</span></div>
+                      <div class="pb-2"><v-icon large style="line-height:20px;">person</v-icon><span class="ml-3">{{form.respondent_count}} / {{form.respondent_number}} 人</span></div>
                       <div class="pb-2 mt-4"><v-icon large style="line-height:20px;">event</v-icon><span class="ml-3">{{form.created_at}} ~ {{form.closed_at || '설문마감 미정'}}</span></div>
                     </v-layout>
                   </v-flex>
@@ -43,7 +43,7 @@
                       >
                         shopping_cart
                       </v-icon>
-                      <span>설문판매</span>
+                      <span>アンケートの販売</span>
                     </v-tooltip>
                     <router-link 
                       v-if="!form.respondent_count == 0"
@@ -57,7 +57,7 @@
                           slot="activator" 
                           size="65">insert_chart
                         </v-icon>
-                        <span>분석</span>
+                        <span>分析</span>
                       </v-tooltip>
                     </router-link>
                     <v-tooltip bottom v-else>
@@ -68,14 +68,14 @@
                           @click="noRedirectAnalysis"
                           size="65">insert_chart
                         </v-icon>
-                      <span>분석</span>
+                      <span>分析</span>
                     </v-tooltip>
                     <v-tooltip bottom>
                       <v-icon 
                         slot="activator" size="65" @click="surveyRemove"
                       >delete
                       </v-icon>
-                      <span>삭제</span>
+                      <span>削除</span>
                     </v-tooltip>
                   </v-flex>
                 </v-layout>
@@ -88,7 +88,7 @@
               class="subheading
               font-weight-bold mt-4"
               @click="SET_IS_ADD_SURVEY(true)">
-              새 설문 만들기
+              新しいアンケートの作成
             </v-btn>
           </v-flex>
         </v-flex>
