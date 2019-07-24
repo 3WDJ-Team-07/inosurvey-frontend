@@ -8,7 +8,7 @@
           @click="add_single_question"
 					class="pb-5 pt-4 pr-5 pl-5 
           display-1 font-weight-bold"
-        ><v-icon large class="mr-3">add_circle_outline</v-icon>새 질문
+        ><v-icon large class="mr-3">add_circle_outline</v-icon>質問作成
         </v-btn>
 			</v-flex>
 		</v-layout>	
@@ -17,7 +17,7 @@
         indeterminate
         color="white"
       ></v-progress-circular>
-      <span class="subgeading pa-3">질문 만드는 중</span><v-btn flat>Close</v-btn>
+      <span class="subgeading pa-3">質問製造中</span><v-btn flat>Close</v-btn>
     </v-snackbar>
 	</v-container>
 </template>
@@ -43,7 +43,7 @@
           this.INPUT_QUESTION({
             index : index,
             type: 1,
-            question_title: '' || '질문제목을 지정해주세요',
+            question_title: '' || 'タイトルを指定してください。',
             question_image: null,
             question_bank: false,
             items: []

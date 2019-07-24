@@ -15,13 +15,13 @@
 				<v-container grid-list-xs>
 					<v-layout row wrap justify-center>
 						<v-flex xs12>
-							<div class="display-1 mb-4">질문은행</div>
+							<div class="display-1 mb-4">質問銀行</div>
 						</v-flex>
 						<v-flex xs12>
 							<v-text-field
               v-model="filter"
 							prepend-icon="search"
-							label="질문검색"
+							label="Search"
 							solo-inverted block flat
 							></v-text-field>
 						</v-flex>
@@ -33,7 +33,7 @@
               />
               <v-flex v-if="getPlayers.length === 0" sm8 md5>
                 <div class="display-2 grey--text font-weight-thin" style="width:800px;">
-                  <span style="line-height:350px;">찾으시는 질문이 없습니다..</span>
+                  <span style="line-height:350px;">見つかりません。</span>
                 </div>
               </v-flex>
             </template>

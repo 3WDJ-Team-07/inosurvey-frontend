@@ -8,7 +8,7 @@
       <div v-if="this.$route.name == 'mypage'">
         <div class="display-2 pa-5 mt-5 font-weight-bold">
           <span class="blue--text">{{userinfo.nickname}} </span>
-          <span>님의 마이페이지</span> 
+          <span>様のマイページ</span> 
         </div>
         <v-layout 
           row wrap align-center 
@@ -17,17 +17,17 @@
             <v-card class="border_round elevation-4">
               <v-card-title>
                 <div style="margin:0 auto">
-                  <div class="display-1 font-weight-bold py-3">설문</div>
+                  <div class="display-1 font-weight-bold py-3">アンケート</div>
                 </div>
               </v-card-title>
               <v-card flat :to="{name: 'surveyhistory'}">
                 <div class="hover_style" style="margin:0 auto">
-                  <div class="title font-weight-bold py-4" >응답 설문 내역</div>
+                  <div class="title font-weight-bold py-4" >アンケート回答の記録</div>
                 </div>
               </v-card>
               <v-card flat :to="{name: 'markethistory'}">
                 <div class="hover_style" style="margin:0 auto">
-                  <div class="title font-weight-bold py-4">구매 설문 내역</div>
+                  <div class="title font-weight-bold py-4">アンケート購買の記録</div>
                 </div>
               </v-card>
             </v-card>
@@ -36,17 +36,17 @@
             <v-card class="border_round elevation-4">
               <v-card-title>
                 <div style="margin:0 auto">
-                  <div class="display-1 font-weight-bold py-3">기부</div>
+                  <div class="display-1 font-weight-bold py-3">寄付</div>
                 </div>
               </v-card-title>
               <v-card v-if="userinfo.is_donator ==1" flat :to="{name: 'foundationhistory'}">
                 <div class="hover_style" style="margin:0 auto">
-                  <div class="title font-weight-bold py-4" >등록한 모금</div>
+                  <div class="title font-weight-bold py-4" >登録した募金</div>
                 </div>
               </v-card>
               <v-card flat :to="{name: 'donatehistory'}">
                 <div class="hover_style py-4" style="margin:0 auto">
-                  <div class="title font-weight-bold" :style="styleObject">참여한 모금</div>
+                  <div class="title font-weight-bold" :style="styleObject">参加した募金</div>
                 </div>
               </v-card>
             </v-card>
@@ -55,12 +55,12 @@
             <v-card class="border_round pa-4 elevation-4">
               <v-card-title>
                 <div style="margin:0 auto">
-                  <div class="display-1 font-weight-bold">이노 지갑</div>
-                  <div class="headline mt-4 font-weight-black mt-4">보유이노 <span class="display-1 font-weight-black">{{totalCoin}}</span></div>
+                  <div class="display-1 font-weight-bold">イノウォレット</div>
+                  <div class="headline mt-4 font-weight-black mt-4">保有しているイノ<span class="display-1 font-weight-black">{{totalCoin}}</span></div>
                 </div>
               </v-card-title>
               <v-card-actions>
-                <v-btn color="info" id="btn_center" class="title font-weight-bold" large :to="{name: 'wallethistory'}">더보기</v-btn>
+                <v-btn color="info" id="btn_center" class="title font-weight-bold" large :to="{name: 'wallethistory'}">もっと</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>

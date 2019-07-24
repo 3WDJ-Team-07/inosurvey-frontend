@@ -15,14 +15,14 @@
            <v-img :src="donationItems.image" class="white--text" height="50%"></v-img>
         </v-card-text>
         <v-card-text class="headline font-weight-bold white--text">
-          <span>보유 이노 : {{ coin || '0' }} 이노</span>
+          <span>保有しているイノ : {{ coin || '0' }} イノ</span>
         </v-card-text>
 			</v-layout>
       <v-card-actions class="pb-4">
           <input type="number" class="form-control title" style="width:100%; height:50px;" ref="donateInput" @keyup.enter="donate">
         </v-card-actions>
         <v-card-actions class="pb-4">
-          <v-btn block large color="white" class="font-weight-bold" @click="donate">기부하기</v-btn>
+          <v-btn block large color="white" class="font-weight-bold" @click="donate">寄付します。</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -70,25 +70,25 @@
           this.FETCH_DONATION()
           if(response.status == "success") {
             await swal({
-              title: '아름다운 기부',
-              text: `\n${this.donationItems.title} 기부처에 ${this.$refs.donateInput.value} 이노를 기부하셨습니다 !
-              \n내 보유이노 : ${(this.inocoin.current_ino - this.$refs.donateInput.value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`,
+              title: '世界を変える寄付',
+              text: `\n${this.donationItems.title} という所に ${this.$refs.donateInput.value} イノを寄付しました！
+              \n保有しているイノ : ${(this.inocoin.current_ino - this.$refs.donateInput.value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`,
               icon: "success",
-              button: "확인"
+              button: "確認"
             })
           }
           if(response.status=="end"){
             await swal({
-              title: '기부 오류',
-              text: '이미 종료된 모금입니다.',
+              title: '寄付失敗',
+              text: 'もう機関が過ぎました。',
               icon: "error",
-              button: "확인"
+              button: "確認"
             })
           }
           if(response.status =="excess"){
             await swal({
-              title: '기부 오류',
-              text: '목표금액보다 초과한 금액을 기부할 수 없습니다.',
+              title: '寄付失敗',
+              text: '満額より超える価格を寄付できません。목표금액보다 초과한 금액을 기부할 수 없습니다.',
               icon: "error",
               button: "확인"
             })

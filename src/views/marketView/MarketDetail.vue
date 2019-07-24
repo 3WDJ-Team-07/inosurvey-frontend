@@ -11,7 +11,7 @@
           <v-flex xs2>
             <div class="mr-5 mt-4 mb-4 pa-3">
               <v-btn color="info" large block @click="SET_IS_SURVEY_PURCHASE(true)">
-                구매하기
+                購買
               </v-btn>
             </div>
           </v-flex>

@@ -7,25 +7,25 @@
         <v-flex xs12 sm12 md6 class="pa-5">
         	<v-card tile flat color="#FAFAFA" height="100vh">
           	<v-card-title>
-            	<div class="display-2 font-weight-bold ml-4">회원가입</div>
+            	<div class="display-2 font-weight-bold ml-4">会員登録</div>
           	</v-card-title>
-          	<span class="ml-5 headline">INO-SURVEY와 함께해요!</span>
+          	<span class="ml-5 headline">INO-SURVEYと一緒に行きましょう！</span>
           	<v-card-text class="pa-5">
 							<v-form @submit.prevent="register" id="check-register-form">
 								<v-layout row wrap justify-center>
 										<v-radio-group v-model="is_donator" class="pl-5" row prepend-icon="check">
-											<v-radio label="일반회원" :value="0"></v-radio>
-											<v-radio color="red" label="기부단체" :value="1"></v-radio>
+											<v-radio label="一般会員" :value="0"></v-radio>
+											<v-radio color="red" label="寄付団体" :value="1"></v-radio>
 										</v-radio-group>
 									<v-flex sm10 column>
 										<v-text-field
 											v-model="user_id"
-											placeholder="아이디"
+											placeholder="Id"
 											ref="input" required>
 										</v-text-field>
 										<v-text-field
 											v-model="password"
-											placeholder="비밀번호"
+											placeholder="Password"
 											type="password"
 											counter="20"
 											:rules="passwordRules"
@@ -34,14 +34,14 @@
 										<v-text-field
 											v-model="email"
 											type="email"
-											placeholder="이메일"
+											placeholder="E-mail"
 											:rules="emailRules"
 											required>
 										</v-text-field>
 										<v-text-field
 											v-model="nickname"
 											required
-											placeholder="닉네임">
+											placeholder="NickName">
 										</v-text-field>
 									</v-flex>
 								</v-layout>
@@ -52,13 +52,13 @@
 											class="pl-4 pb-5 pr-4 pt-2 
 											font-weight-bold title"
 											style="width:250px;">
-											<span style="line-height:40px;">남성</span>
+											<span style="line-height:40px;">男</span>
 										</v-btn>
 										<v-btn
 											depressed flat :value="2"
 											class="pl-4 pb-5 pr-4 pt-2 
 											font-weight-bold title" style="width:250px;">
-											<span style="line-height:40px;">여성</span>
+											<span style="line-height:40px;">女</span>
 										</v-btn>
 									</v-btn-toggle>
 								</v-layout >
@@ -68,7 +68,7 @@
 										 	class="mr-3"
 											v-model="job_id"
 											:items="job_item" 
-											label="직종선택"
+											label="職種選択"
 											item-text="name"
 											item-value="value" 
 											outline height=0
@@ -100,7 +100,7 @@
                   <template v-slot:activator>
                     <v-text-field
                       v-model="age"
-                      label="생년월일"
+                      label="生年月日"
                       prepend-icon="event"
                       readonly
                     ></v-text-field>
@@ -123,7 +123,7 @@
 												form="check-register-form" 
 												color="info" large block 
 												class="headline font-weight-bold mt-3">
-												회원가입
+												会員登録
 											</v-btn>
 										</v-flex>
 									</v-layout>
@@ -136,7 +136,7 @@
         	<v-card tile flat height="100vh" color="#FAFAFA">
           	<v-card-text class="register_photo">
               <v-card-title>
-                <h2 class="white--text">어떤 것을 알아보고 싶으세요?</h2>
+                <h2 class="white--text">どんなことを調べたいですか。</h2>
               </v-card-title>
           	</v-card-text>
         	</v-card>

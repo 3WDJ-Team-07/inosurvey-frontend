@@ -44,7 +44,7 @@
           <v-btn
             type="submit" block flat 
             class="info" form="check-login-form">
-            로그인
+            ログイン
           </v-btn>
         </v-card-actions>
         <v-card-actions>
@@ -52,7 +52,7 @@
            class="blue--text"  
            block outline
            @click="registerPage">
-           회원가입
+           会員登録
           </v-btn>
         </v-card-actions>
       </v-card>
