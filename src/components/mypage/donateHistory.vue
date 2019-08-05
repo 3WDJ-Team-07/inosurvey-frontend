@@ -1,5 +1,4 @@
 <template>
-<!-- 정은이가 수정 예정~!~!~! -->
   <span>
     <div v-if="!loading">
       <v-layout row wrap justify-space-around>

@@ -7,12 +7,13 @@
     style="z-index: 9999; "
     >
     <router-link to="/">
-      <img src="/static/logo.png" id="top">
+      <img v-if="this.$route.name == 'home'" :src="!isScrolling ? '/static/logo_wh.png':'/static/logo.png'" id="top">
+      <img v-else src="/static/logo.png" id="top">
     </router-link>
     <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
-      <v-btn 
-        :active-class="!isScrolling ? 'info--text' : undefined" v-for="(item,i) in items"
-        :key="i" :to="item.to" flat class="title"><span v-text="item.text"/>
+      <v-btn
+        :active-class="!isScrolling ? 'grey--text text--darken-3' : 'grey--text text--darken-3'" v-for="(item,i) in items"
+        :key="i" :to="item.to" flat :class="!isScrolling ? 'title white--text' : 'title grey--text text--darken-3'"><span v-text="item.text"/>
       </v-btn>
     </v-toolbar-items>
     <v-spacer/>

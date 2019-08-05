@@ -2,44 +2,36 @@
   <div>
     <v-container 
       fluid grid-list-lg 
-      class="mt-3 mb-3">
-      <v-layout row>
-        <v-flex xs12 class="text-xs-center display-1 font-weight-black " id="element">
-          {{$t("Home.cardTitle")}}
-        </v-flex>
-      </v-layout>
+      class="my-1">
       <v-layout 
         align-center 
         justify-center 
         fill-height 
         wrap class="pa-5">
-        <v-flex 
-          xs12 sm12 md5 xl5 
+        <v-flex id="element"
+          xs12 sm12 md3 xl3 
           class="pa-2" 
           v-for="card in cardFeatures" 
           :key="card.title">
-          <v-card 
+          <div
             color="white darken-2" 
-            class="white--text pa-3" 
-            data-aos="fade-right" 
-            data-aos-delay="200">
-            <v-layout>
-              <v-flex xs5 class="pa-5">
-                <v-avatar size="150" class="grey lighten-2" >
-                  <v-img :src="card.img" contain></v-img>
-                </v-avatar>
-              </v-flex>
-              <v-flex xs7 class="mr-4">
-                <v-card-title class="black--text">
+            class="white--text pa-3 servicebox" 
+            data-aos="fade-down"
+            data-aos-easing="linear"
+            data-aos-duration="500">
+            <v-container>
+              <v-layout column align-center text-md-center >
+                <div><v-img :src="card.img" width="100"></v-img></div>
+                <div class="black--text">
                   <div>
-                    <div class="headline font-weight-bold grey--text mb-4">{{ card.title }}</div>
-                    <div class="caption font-weight-black">{{ card.subtitle }}</div>
+                    <div class="headline font-weight-bold info--text mb-4">{{ card.title }}</div>
                     <div>{{ card.text }}</div>
                   </div>
-                </v-card-title>
-              </v-flex>
-            </v-layout>
-          </v-card>
+                </div>
+              </v-layout>
+            </v-container>
+
+          </div>
         </v-flex>
       </v-layout>
     </v-container>
