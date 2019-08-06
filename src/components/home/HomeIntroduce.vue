@@ -50,7 +50,6 @@
           <v-btn color="info" class="rounded" large router :to="{name: 'join'}">スタート</v-btn>
         </div>
         </v-img>
-        
       </v-flex>
     </v-layout>
   </v-fade-transition>

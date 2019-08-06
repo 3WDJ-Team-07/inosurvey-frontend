@@ -37,6 +37,9 @@
   *{
     text-decoration: none;
     list-style: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    /* font-family: 'M PLUS 1p', sans-serif; */
+    /* font-family: 'M PLUS Rounded 1c', sans-serif; */
   }
   .form-control {
     box-sizing: border-box;
