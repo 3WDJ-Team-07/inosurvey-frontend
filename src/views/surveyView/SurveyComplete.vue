@@ -9,18 +9,21 @@
       <v-btn color="info" class="pl-5 pr-5 subheading" disabled large>Next</v-btn>
     </v-toolbar>
     <v-divider/>
-    <v-layout column wrap align-center style="margin-top:220px;"> 
-      <div>
-        <span class="display-3 font-weight-bold">「 {{formTitle}} 」</span>
-        <span class="display-1 font-weight-bold"> が登録しました !</span>
+    <v-layout column wrap align-center text-xs-center mt-5 pt-4> 
+      <v-img src="/static/surveycomplete.png" width="30vw">
+        <div class="">
+        <span class="display-2 font-weight-bold">「 {{formTitle}} 」</span>
+        <span class="display-1 font-weight-bold"> が<br>登録しました !</span>
       </div>
       <div>
         <v-btn 
         large @click="mySurvey" color="info"
-        class="title pr-5 pl-5 font-weight-bold" 
+        class="title px-5 font-weight-bold"
+        style="border-radius: 30px;"
         >自分のアンケート
         </v-btn>
       </div>
+      </v-img>
     </v-layout>
   </v-container>
 </template>
@@ -40,4 +43,6 @@
     }
   }
 </script>
+<style scoped>
 
+</style>

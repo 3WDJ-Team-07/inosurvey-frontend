@@ -3,6 +3,7 @@
     <v-img
      src="/static/main.png"
      :key="$route.path"
+     height="100vh"
 >
       <v-fade-transition mode="out-in">
         <v-container :key="$route.path" fill-height>
