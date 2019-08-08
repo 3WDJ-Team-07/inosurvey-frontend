@@ -9,13 +9,12 @@
         fill-height 
         wrap class="pa-5">
         <v-flex id="element"
-          xs12 sm12 md3 xl3 
-          class="pa-2" 
+          class="pa-3" 
           v-for="card in cardFeatures" 
           :key="card.title">
           <div
             color="white darken-2" 
-            class="white--text pa-3 servicebox" 
+            class="white--text descriptbox" 
             data-aos="fade-down"
             data-aos-easing="linear"
             data-aos-duration="500">
@@ -51,3 +50,9 @@
     }
   }
 </script>
+
+<style scoped>
+.descriptbox{
+  width: 15vw
+}
+</style>

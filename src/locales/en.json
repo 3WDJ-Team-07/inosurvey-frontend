@@ -31,16 +31,16 @@
   "Survey": {
     "surveyFeatures": [
       {
-        "hoverTitle": "アンケート作成",
+        "hoverTitle": "アンケート依頼",
         "mainText": "",
-        "subText": "自分だけのアンケート作成",
+        "subText": "自分だけのアンケート依頼",
         "img": "/static/create.png",
         "color": "blue--text text--darken-1"
       },
       {
         "hoverTitle": "アンケートリスト",
         "mainText": "",
-        "subText": "自分の作成したアンケート",
+        "subText": "自分の依頼したアンケート",
         "img": "/static/mysurvey.png",
         "color": "amber--text text--darken-3"
       }
@@ -50,11 +50,11 @@
     "jumbotronTitle": "透明で信頼のある人気アンケート",
     "jumbotronLogo": "INO-Survey",
     "jumbotronSubTitle": "自分に必要な答えを探してください。",
-    "btnText": "アンケート 作成",
+    "btnText": "アンケート 依頼",
     "cardTitle": "サービスの紹介",
     "cardFeatures": [
       {
-        "title": "アンケートの作成",
+        "title": "アンケートの依頼",
         "text": "調査しようとする回答者の年齢代や性別などを指定して必要な情報が得られます。そして、好きなテーマに合わせて質問をカスタマイジングしてみてください!",
         "img": "/static/write.png",
         "subtitle": ""
@@ -72,15 +72,20 @@
         "subtitle": ""
       },
       { 
-        "title": "アンケート·マーケット",
+        "title": "アンケートマーケット",
         "text": "アンケートの結果分析の資料を取り引きしてデータの活用度を高めます! 自分が持っている資料を他人と共有してみてください！",
         "img": "/static/market.png"
+      },
+      { 
+        "title": "寄付",
+        "text": "寄付説明",
+        "img": "/static/donate.png"
       }
     ]
   },
   "Market": {
-    "jumbotronTitle": "설문마켓",
-    "jumbotronSubTitle": "설문조사 결과를 거래하는 공간"
+    "jumbotronTitle": "アンケートマーケット",
+    "jumbotronSubTitle": "アンケートの結果を取引する空間"
   },
   "Donation": {
     "jumbotronTitle": "기부",

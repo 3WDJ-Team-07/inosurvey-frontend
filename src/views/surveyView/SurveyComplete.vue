@@ -19,7 +19,7 @@
         <v-btn 
         large @click="mySurvey" color="info"
         class="title px-5 font-weight-bold"
-        style="border-radius: 30px;"
+        round
         >自分のアンケート
         </v-btn>
       </div>

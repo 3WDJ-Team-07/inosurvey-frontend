@@ -1,19 +1,7 @@
 <template>
   <span>
     <v-container fluid grid-list-xl v-if="!this.$store.state.loading">
-      <v-layout text-xs-center row wrap class="pa-3 mx-5">
-        <v-layout>
-          <v-flex xs12>
-            <div class="pa-3 mb-4">
-              <span class="title font-weight-bold grey--text text--darken-2">
-              <i class="fas fa-thumbtack mr-2"></i>
-              <span class="info--text">{{surveyList.length}} </span>개의 설문이 
-              <span v-if="search.length == 0">판매중입니다!</span>
-              <span v-else>검색되었습니다.</span>
-              </span>
-            </div>
-          </v-flex>
-        </v-layout>
+      <v-layout text-xs-center row wrap class="pa-2 mx-5">
         <v-layout justify-end style="margin-left:700px;">
           <v-flex xs3>
             <v-select
@@ -35,10 +23,19 @@
               @focus="search=''"
             >
             </v-text-field>
+
+            <div>
+              <span class="font-weight-bold grey--text text--darken-2">
+              <i class="fas fa-thumbtack mr-2"></i>
+              <span class="info--text">{{surveyList.length}} </span>개의 설문이 
+              <span v-if="search.length == 0">판매중입니다!</span>
+              <span v-else>검색되었습니다.</span>
+              </span>
+            </div>
           </v-flex>
         </v-layout>
         <v-layout row wrap justify-center>
-          <v-flex xs9 class="border" v-for="(card,index) in surveyList" :key="index">
+          <v-flex xs12 v-for="(card,index) in surveyList" :key="index">
             <router-link
               :to="{
                 name: 'surveymarketdetail',
@@ -110,8 +107,3 @@
     }
   }
 </script>
-<style scoped>
-.border{
-  border-top: 1px solid lightgrey;
-}
-</style>

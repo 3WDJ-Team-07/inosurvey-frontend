@@ -47,7 +47,7 @@
           <v-card-text class="display-2 mt-5">
             気になりませんか？
           </v-card-text>
-          <v-btn color="info" class="rounded" large router :to="{name: 'join'}">スタート</v-btn>
+          <v-btn color="info" round large router :to="{name: 'join'}">スタート</v-btn>
         </div>
         </v-img>
       </v-flex>
@@ -59,7 +59,4 @@
  .message{
    line-height: 200%
  }
-  .rounded{
-		border-radius: 30px;
-	}
  </style>

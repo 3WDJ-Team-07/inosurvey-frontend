@@ -1,75 +1,88 @@
 /* 마이페이지 */
 
 <template>
+ <v-img src="/static/mypage.png">
   <v-container
     fluid grid-list-md 
 		text-xs-center
     class="pa-5 mt-5">
+    
       <div v-if="this.$route.name == 'mypage'">
-        <div class="display-2 pa-5 mt-5 font-weight-bold">
+       
+          <div class="display-2 pa-5 font-weight-bold">
           <span class="blue--text">{{userinfo.nickname}} </span>
           <span>様のマイページ</span> 
         </div>
         <v-layout 
           row wrap align-center 
-          justify-center class="pt-5 ml-5">
+          justify-center class="pt-2 ml-5">
           <v-flex d-flex xs12 sm3 class="mr-5">
             <v-card class="border_round elevation-4">
-              <v-card-title>
+              <v-card-title style="background-color:#66B3FF">
                 <div style="margin:0 auto">
-                  <div class="display-1 font-weight-bold py-3">アンケート</div>
+                  <div class="display-1 font-weight-bold py-1 white--text">アンケート</div>
                 </div>
               </v-card-title>
               <v-card flat :to="{name: 'surveyhistory'}">
                 <div class="hover_style" style="margin:0 auto">
-                  <div class="title font-weight-bold py-4" >アンケート回答の記録</div>
+                  <div class="title font-weight-bold py-3" >アンケート回答の記録</div>
                 </div>
               </v-card>
               <v-card flat :to="{name: 'markethistory'}">
                 <div class="hover_style" style="margin:0 auto">
-                  <div class="title font-weight-bold py-4">アンケート購買の記録</div>
+                  <div class="title font-weight-bold py-3">アンケート購買の記録</div>
                 </div>
               </v-card>
             </v-card>
           </v-flex>
           <v-flex d-flex xs12 sm3 class="mr-5">
             <v-card class="border_round elevation-4">
-              <v-card-title>
+              <v-card-title style="background-color:#66B3FF">
                 <div style="margin:0 auto">
-                  <div class="display-1 font-weight-bold py-3">寄付</div>
+                  <div class="display-1 font-weight-bold py-1 white--text">寄付</div>
                 </div>
               </v-card-title>
               <v-card v-if="userinfo.is_donator ==1" flat :to="{name: 'foundationhistory'}">
                 <div class="hover_style" style="margin:0 auto">
-                  <div class="title font-weight-bold py-4" >登録した募金</div>
+                  <div class="title font-weight-bold py-3" >登録した募金</div>
                 </div>
               </v-card>
               <v-card flat :to="{name: 'donatehistory'}">
-                <div class="hover_style py-4" style="margin:0 auto">
+                <div class="hover_style py-3" style="margin:0 auto">
                   <div class="title font-weight-bold" :style="styleObject">参加した募金</div>
                 </div>
               </v-card>
             </v-card>
           </v-flex>
-          <v-flex d-flex xs12 sm3 >
-            <v-card class="border_round pa-4 elevation-4">
-              <v-card-title>
+          <v-flex d-flex xs12 sm3 class="mr-5">
+            <v-card class="border_round elevation-4">
+              <v-card-title style="background-color:#66B3FF">
                 <div style="margin:0 auto">
-                  <div class="display-1 font-weight-bold">イノウォレット</div>
-                  <div class="headline mt-4 font-weight-black mt-4">保有しているイノ<span class="display-1 font-weight-black">{{totalCoin}}</span></div>
+                  <div class="display-1 font-weight-bold py-1 white--text">イノウォレット</div>
                 </div>
               </v-card-title>
-              <v-card-actions>
-                <v-btn color="info" id="btn_center" class="title font-weight-bold" large :to="{name: 'wallethistory'}">もっと</v-btn>
-              </v-card-actions>
+              <v-card flat>
+                <div class="border" style="margin:0 auto">
+                  <div class="font-weight-black my-2">保有しているイノ <span class="headline info--text font-weight-black">{{totalCoin}}</span></div>
+                </div>
+              </v-card>
+              <v-card flat  :to="{name: 'wallethistory'}">
+                <div class="hover_style" style="margin:0 auto">
+                  <div class="title font-weight-bold py-3">もっと</div>
+                </div>
+              </v-card>
             </v-card>
           </v-flex>
         </v-layout>
+      
       </div>
+        
     <div v-else>
       <router-view/>
     </div>
+    
   </v-container>
+    </v-img>
 </template>
 
 <script>
@@ -123,6 +136,9 @@
   .hover_style {
     cursor: pointer;
     transition: background 0.3s ease;
+    border-top: 1px solid lightgrey;
+  }
+  .border{
     border-top: 1px solid lightgrey;
   }
   .hover_style:hover{

@@ -1,5 +1,5 @@
 <template>
-  <v-card color="#FAFAFA" flat style="cursor:pointer;">
+  <v-card color="#FAFAFA" style="cursor:pointer;" elevation="8" class="my-4">
     <v-layout align-center>
       <v-flex xs9>
         <v-card flat color="#FAFAFA" class="my-4">

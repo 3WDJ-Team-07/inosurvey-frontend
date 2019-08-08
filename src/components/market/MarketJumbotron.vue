@@ -1,23 +1,20 @@
 <template>
 <div>
-  <v-img src="/static/market-hero.png" height="35vh"
-    gradient="to top,  rgba(0, 0, 0, .3), rgba(0, 0, 0, .1)">
       <v-container fill-height>
-        <v-layout align-center row wrap>
-          <v-flex xs9 pl-5>
-            <h1 class="display-2 white--text font-weight-bold">
-              {{$t('Market.jumbotronTitle')}}
-            </h1>
-            <div class="title white--text mt-1 ml-1">
+        <v-layout align-center row wrap style="z-index:1">
+          <v-flex xs9 >
+            <div class="title white--text ml-2">
               {{$t('Market.jumbotronSubTitle')}}
             </div>
+            <div class="white--text mt-2 mb-5 page-title">
+              {{$t('Market.jumbotronTitle')}}
+            </div>
+            <v-btn large class="info--text px-5 title font-weight-bold sell-but" @click="SET_IS_SURVEY_SALE(true)">アンケート販売</v-btn>
           </v-flex>
           <v-flex xs3 pl-4>
-            <v-btn color="info" large @click="SET_IS_SURVEY_SALE(true)">설문판매</v-btn>
-          </v-flex>
+        </v-flex>
         </v-layout>
       </v-container>
-    </v-img>
   </div>
 </template>
 <script>
@@ -33,10 +30,16 @@
 </script>
 
 <style scoped>
-  .v-btn{
-    min-width: 200px;
-  }
-  .display-2, title{
+
+  .page-title{
+    font-size:3em;
+    font-weight: bold;
     text-shadow: 2px 2px 4px #00000048;
+  }
+
+  .sell-but{
+    padding-top:20px;
+    padding-bottom:40px;
+    border-radius: 50px
   }
 </style>

@@ -19,8 +19,8 @@
                 <div class="title white--text mt-4">
                   {{$t('Home.jumbotronSubTitle')}}
                 </div>
-                <v-btn color="white" router :to="{name : 'survey'}"
-                 class="title info--text font-weight-bold mt-4 pl-5 pr-5 pa-4 rounded">
+                <v-btn color="white" router :to="{name : 'survey'}" round
+                 class="title info--text font-weight-bold mt-4 pl-5 pr-5 pa-4">
                   {{ $t('Home.btnText')}}
                 </v-btn>
               </v-flex>
@@ -47,8 +47,4 @@
     left:49%;
     bottom: 5%;
   }
-
- .rounded{
-		border-radius: 30px;
-	}
  </style>
