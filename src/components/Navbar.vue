@@ -10,10 +10,19 @@
       <img v-if="this.$route.name == 'home'" :src="!isScrolling ? '/static/logo_wh.png':'/static/logo.png'" id="top">
       <img v-else src="/static/logo.png" id="top">
     </router-link>
-    <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
+    <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp && this.$route.name == 'home'">
+      <!-- :active-class="!isScrolling ? 'grey--text text--darken-3' : 'grey--text text--darken-3'"  -->
       <v-btn
-        :active-class="!isScrolling ? 'grey--text text--darken-3' : 'grey--text text--darken-3'" v-for="(item,i) in items"
-        :key="i" :to="item.to" flat :class="!isScrolling ? 'title white--text' : 'title grey--text text--darken-3'"><span v-text="item.text"/>
+        v-for="(item,i) in items" :key="i" :to="item.to" flat 
+        :class="!isScrolling ? 'title white--text' : 'title grey--text text--darken-3'">
+          <span v-text="item.text"/>
+      </v-btn>
+    </v-toolbar-items>
+    <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp && this.$route.name !== 'home'">
+      <v-btn
+        v-for="(item,i) in items" :key="i" :to="item.to" flat 
+        :class="!isScrolling ? 'title grey--text text--darken-3' : 'title grey--text text--darken-3'">
+          <span v-text="item.text"/>
       </v-btn>
     </v-toolbar-items>
     <v-spacer/>
@@ -22,9 +31,6 @@
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'join'}" flat outline class="subheading">sign up</v-btn>
     </template>
     <template v-else>
-      <v-btn  v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" class="headline" flat fab>
-        <i class="far fa-bell"></i>
-      </v-btn>
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" :to="{name : 'mypage'}" flat outline class="subheading">MyPage</v-btn>
       <v-btn v-if="$vuetify.breakpoint.mdAndUp"  :active-class="!isScrolling ? 'blue--text' : undefined" 
       @click.prevent="logout" flat outline class="subheading">Logout</v-btn>

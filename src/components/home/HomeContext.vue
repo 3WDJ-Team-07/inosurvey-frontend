@@ -4,10 +4,11 @@
       fluid grid-list-lg 
       class="my-1">
       <v-layout 
-        align-center 
         justify-center 
         fill-height 
-        wrap class="pa-5">
+        wrap class="pa-5"
+        style="margin-top:100px;"
+        >
         <v-flex id="element"
           xs12 sm12 md3 xl3 
           class="pa-2" 
@@ -20,17 +21,12 @@
             data-aos-easing="linear"
             data-aos-duration="500">
             <v-container>
-              <v-layout column align-center text-md-center >
-                <div><v-img :src="card.img" width="100"></v-img></div>
-                <div class="black--text">
-                  <div>
-                    <div class="headline font-weight-bold info--text mb-4">{{ card.title }}</div>
-                    <div>{{ card.text }}</div>
-                  </div>
-                </div>
+              <v-layout column align-center text-xs-center>
+                <v-img :src="card.img" width="100"></v-img>
+                <div class="headline font-weight-bold info--text mb-4">{{ card.title }}</div>
+                <div class="black--text">{{ card.text }}</div>
               </v-layout>
             </v-container>
-
           </div>
         </v-flex>
       </v-layout>

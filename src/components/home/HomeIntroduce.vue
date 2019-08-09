@@ -5,17 +5,18 @@
         <div
           class="pa-5" 
           data-aos="fade-right" 
-          data-aos-delay="200" >
-          <v-layout row　align-center>
-            <v-img src="/static/respond.png" class="ma-5" max-width="30%"></v-img>
-          <span class="text-xs-left text-md-left ">
-            <span class="headline info--text text-xs-left font-weight-black">回答者</span>
-            <div class="mt-4 title message" >
-              モバイルの環境で便利にアンケートに<br>
-              参加してください。アンケートに回答して<br>
-              データに対する正当な補償を受けなさい。
-            </div>
-          </span>
+          data-aos-delay="200"
+          >
+          <v-layout  align-center justify-center>
+              <v-img src="/static/respond.png" class="ma-5" max-width="30%" centered></v-img>
+              <span class="text-xs-left text-md-left ">
+                <span class="headline info--text text-xs-left font-weight-black">回答者</span>
+                <div class="mt-4 title message" >
+                  モバイルの環境で便利にアンケートに<br>
+                  参加してください。アンケートに回答して<br>
+                  データに対する正当な補償を受けなさい。
+                </div>
+              </span>
           </v-layout>
         </div>
       </v-flex>
@@ -24,7 +25,7 @@
           class="pa-5" 
           data-aos="fade-right" 
           data-aos-delay="200" >
-          <v-layout row　align-center>
+          <v-layout row　align-center justify-center>
           <span class="text-xs-left text-md-left ">
             <span class="headline info--text text-xs-left font-weight-black">依頼者</span>
             <div class="mt-4 title message" >
