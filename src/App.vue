@@ -2,7 +2,7 @@
   <v-app>
     <Navbar/>
     <Navigation/>
-    <v-content transition="slide-x-transition" class="ma-0 pa-0 pb-5">
+    <v-content transition="slide-x-transition" class="ma-0 pa-0">
         <router-view/>
     </v-content>
     <Login/>
