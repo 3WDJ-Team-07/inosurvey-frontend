@@ -13,7 +13,7 @@
       <v-img src="/static/surveycomplete.png" width="30vw">
         <div class="">
         <span class="display-2 font-weight-bold">「 {{formTitle}} 」</span>
-        <span class="display-1 font-weight-bold"> が<br>登録しました !</span>
+        <span class="display-1 font-weight-bold"> が<br>登録しました!</span>
       </div>
       <div>
         <v-btn 
