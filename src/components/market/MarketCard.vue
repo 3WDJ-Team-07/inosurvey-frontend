@@ -1,9 +1,9 @@
 <template>
-  <v-card color="#FAFAFA" style="cursor:pointer;" elevation="8" class="my-4">
+  <v-card color="#FAFAFA" style="cursor:pointer;" elevation="8" class="my-3 marketcard">
     <v-layout align-center>
       <v-flex xs9>
-        <v-card flat color="#FAFAFA" class="my-4">
-          <div v-if="card.isBuy==true" class="text-xs-left red--text">이미 구매한 설문입니다.</div>
+        <v-card flat color="#FAFAFA">
+          <div v-if="card.isBuy==true" class="text-xs-left red--text ml-4">이미 구매한 설문입니다.</div>
           <div class="card-title 
           display-1 font-weight-bold pb-2">
           {{ card.title }}
@@ -49,3 +49,9 @@
     }
   }
 </script>
+
+<style scoped>
+.marketcard{
+  border-radius: 8px;
+}
+</style>

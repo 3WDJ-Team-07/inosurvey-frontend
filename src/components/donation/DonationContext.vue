@@ -3,7 +3,22 @@
 <template>
   <span>
     <v-container grid-list-xl  class="mt-2" v-if="!this.$store.state.loading">
-      <v-layout row wrap class="pr-2" style="margin-right:50px;" justify-end>
+      
+      <v-layout justify-end>
+       <div v-for="(category, index) in category_item" :key="index" class="pa-2 mb-1">
+          <v-btn depressed :category_id="category.id" v-model="category_id" fab class="info">
+          <v-img width="1vh":src="`/static/category/${category.id}.png`" >
+          </v-img> 
+          </v-btn>
+          <v-layout justify-space-around>
+            <div class="caption font-weight-bold grey--text">
+            {{category.name}}
+          </div>
+          </v-layout>
+          
+        </div>
+      </v-layout>
+      <v-layout row wrap justify-end >
         <v-flex xs3>
           <v-select
             v-model="donate_id"
@@ -16,19 +31,6 @@
             solo hide-details>
 					</v-select>
         </v-flex>
-      </v-layout>
-      <v-layout justify-center>
-       <div v-for="(category, index) in category_item" :key="index" class="pa-3 mb-5">
-          <v-btn depressed :category_id="category.id" v-model="category_id" class="fabbtn">
-          <v-img :src="`/static/category/${category.id}.png`" style="border-radius:50%; background-color:#42A5F5; padding:40px;">
-          </v-img> 
-          </v-btn>
-          <v-layout justify-space-around>
-            <div class="caption font-weight-bold grey--text">
-            {{category.name}}
-          </div>
-          </v-layout>
-        </div>
       </v-layout>
       <v-layout
         row wrap

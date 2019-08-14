@@ -3,7 +3,8 @@
 <template lang="html">
   <span>
     <div v-if="this.$route.name == 'donation'">
-      <DonationJumbotron/> 
+       <v-img src="/static/donation-hero.png" style="z-index:0"></v-img>
+      <DonationJumbotron style="margin-top:-500px;"/> 
       <DonationContext/> 
     </div>
     <div v-else>

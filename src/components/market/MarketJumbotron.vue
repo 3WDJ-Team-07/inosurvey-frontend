@@ -11,8 +11,6 @@
             </div>
             <v-btn large class="info--text px-5 title font-weight-bold sell-but" @click="SET_IS_SURVEY_SALE(true)">アンケート販売</v-btn>
           </v-flex>
-          <v-flex xs3 pl-4>
-        </v-flex>
         </v-layout>
       </v-container>
   </div>

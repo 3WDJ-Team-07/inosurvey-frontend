@@ -56,23 +56,20 @@
       {
         "title": "アンケートの依頼",
         "text": "調査しようとする回答者の年齢代や性別などを指定して必要な情報が得られます。そして、好きなテーマに合わせて質問をカスタマイジングしてみてください!",
-        "img": "/static/write.png",
-        "subtitle": ""
+        "img": "/static/write.png"
       },
       {
         "title": "アンケートの分析",
         "text": "回答者が提供した健康情報をリアルタイムで確認することができます。 グラフ、図表などあなたが望む形で情報を整理してください！",
-        "img": "/static/chart.png",
-        "subtitle": ""
+        "img": "/static/chart.png"
       },
       {
         "title": "アンケートの回答",
         "text": "簡単なアンケートから詳しいアンケートまで、回答をすればイノを補償します。",
-        "img": "/static/surveyreq.png",
-        "subtitle": ""
+        "img": "/static/surveyreq.png"
       },
       { 
-        "title": "アンケートマーケット",
+        "title": "マーケット",
         "text": "アンケートの結果分析の資料を取り引きしてデータの活用度を高めます! 自分が持っている資料を他人と共有してみてください！",
         "img": "/static/market.png"
       },
@@ -88,7 +85,7 @@
     "jumbotronSubTitle": "アンケートの結果を取引する空間"
   },
   "Donation": {
-    "jumbotronTitle": "기부",
-    "jumbotronSubTitle": "당신의 아름다운 손길이 세상을 밝힙니다!"
+    "jumbotronTitle": "寄付",
+    "jumbotronSubTitle": "あなたの手が伸べてから、温情あふれる世の中に"
   }
 }

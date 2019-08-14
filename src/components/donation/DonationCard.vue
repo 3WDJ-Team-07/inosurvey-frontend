@@ -3,8 +3,23 @@
     <v-card class="rounded-card" style="width:90%;" :class="achieved">
       <v-img :src="card.image"  height="250px">
         <v-flex mt-2 ml-2>
-        <v-chip color="#555555" dark class="daychip subheading">D {{dDay}}</v-chip>
+        <v-chip color="white" class="daychip subheading info--text">D {{dDay}}</v-chip>
         </v-flex>
+        <div class="px-2">
+          <v-progress-linear
+          color="info"
+          height="20"
+          class="rounded-bar  pbar"
+          :value="rate"
+        >
+          <span
+            class="font-weight-bold"
+            style="color:white; margin-left:2%;"
+          >
+            {{rate}}
+          </span>
+        </v-progress-linear>
+        </div>
       </v-img>
        <v-card-text
           style="position: relative;"
@@ -24,21 +39,8 @@
         </v-btn>
       </v-card-text>
       <v-card-text class="px-4">
-        <div class="title font-weight-bold mb-2">{{ card.title }}</div>
+        <div class="title font-weight-bold mb-2" style="margin-top:-1%">{{ card.title }}</div>
         <div>{{card.content.replace(/(<([^>]+)>)/gi, "") | substr(30,'.....')}}</div>
-         <v-progress-linear
-          color="info"
-          height="20"
-          class="rounded-bar"
-          :value="rate"
-        >
-          <span
-            class="font-weight-bold"
-            style="color:white; margin-left:2%;"
-          >
-            {{rate}}
-          </span>
-        </v-progress-linear>
       </v-card-text>
     </v-card>
   </v-layout>
@@ -107,6 +109,9 @@
     filter: grayscale(80%) brightness(100%) contrast(50%)
   }
   .daychip{
-    box-shadow: 0 0 10px #555555
+    box-shadow: 0 0 5px #55555555
+  }
+  .pbar{
+    margin-top: 45%;
   }
 </style>

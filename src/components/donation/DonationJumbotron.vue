@@ -1,30 +1,26 @@
 <template>
   <v-fade-transition mode="out-in">
-    <v-img src="/static/donation-hero.png" height="35vh"
-      gradient="to top,  rgba(0, 0, 0, .3), rgba(0, 0, 0, .1)">
-      <v-fade-transition mode="out-in">
         <v-container fill-height>
-          <v-layout align-center row wrap>
-            <v-flex xs9 pl-5>
-              <h1 class="display-2 white--text font-weight-bold">
+          <v-layout align-center row wrap style="z-index:1">
+            <v-flex xs9>
+              <div class="title white--text ml-2"> {{$t('Donation.jumbotronSubTitle')}}</div>
+               <div class="white--text mt-2 mb-5 page-title">
                 {{$t('Donation.jumbotronTitle')}}
-              </h1>
-              <div class="title white--text mt-1"> {{$t('Donation.jumbotronSubTitle')}}</div>
-            </v-flex>
-            <v-flex xs3 pl-4>
+              </div>
               <v-btn
               :to="{ name: 'adddonationbox' }"
               v-if="userinfo.is_donator==1"
-              color="#444444" large class="white--text"
+               large class="info--text px-5 title font-weight-bold dona-but" 
               >
-              모금함 등록
+              募金箱登録
               </v-btn>
+            </v-flex>
+            <v-flex xs3 pl-4>
+              
             </v-flex>
           </v-layout>
         </v-container>
       </v-fade-transition>
-    </v-img>
-  </v-fade-transition>
 </template>
 
 <script>
@@ -42,10 +38,14 @@ import {mapState} from 'vuex'
 </script>
 
 <style scoped>
-  .v-btn{
-    min-width: 200px;
-  }
-  .display-2, title{
+  .page-title{
+    font-size:3em;
+    font-weight: bold;
     text-shadow: 2px 2px 4px #00000048;
+  }
+  .dona-but{
+    padding-top:30px;
+    padding-bottom:30px;
+    border-radius: 50px
   }
 </style>
