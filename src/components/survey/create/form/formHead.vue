@@ -1,8 +1,8 @@
 <template>
   <v-container style="margin:0;padding:0;">
-    <v-container grid-list-xs class="blue lighten-3">
+    <v-container grid-list-xs class="blue lighten-1">
       <v-layout column class="hoverEvent">
-        <v-flex xs12 class="ma-1">
+        <v-flex xs12>
           <input 
             class="form-control headline" 
             v-if="isEditTitle" type="text" 
@@ -11,7 +11,8 @@
             @keyup.enter="onSubmitTitle"
           >
           <div 
-            v-else class="display-1" 
+            v-else class="font-weight-bold white--text"
+            style="font-size: 33px; height: 33px; line-height:30px;"
             @click="onClickTitle" 
             v-html="formTitle"
           ></div>
@@ -30,7 +31,7 @@
             solo class="title"
           ></v-textarea>
           <div 
-            v-else class="title" 
+            v-else class="title grey--text"
             @click="onClickIntro"
           > {{ getIntro }} </div>
         </v-flex>

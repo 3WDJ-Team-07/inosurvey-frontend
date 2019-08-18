@@ -23,19 +23,19 @@
         color="#29B6F6" 
         dark fixed 
         left bottom 
-        style="margin-bottom:350px; 
+        style="margin-bottom:270px; 
         height:200px; margin-left:-30px;" 
         @click.stop="drawer = !drawer"
         >
           <v-icon>arrow_forward_ios</v-icon>
         </v-btn>
         <v-flex xs12>
-        <v-layout row wrap justify-center class="mr-5 pt-4 pr-4">
+        <v-layout row wrap justify-center class="pt-4">
           <v-flex xs8>
             <div class="jumbotron">
               <div
               class="display-3 font-weight-bold"
-              style="margin-top:50px; padding:30px;"
+              style="margin-top:50px;padding:30px;"
               >현재 보유 이노 
                 <div>
                   <span class="info--text font-italic">{{totalCoin}}</span>
@@ -46,7 +46,7 @@
           </v-flex>
         </v-layout>
         </v-flex>
-        <v-layout row wrap justify-center class="mr-5 pr-4">
+        <v-layout row wrap justify-center>
           <v-flex xs8>
             <v-card class="pa-4 mb-3" id="bordering" flat style="background-color:#BDBDBD;">
               <v-layout row wrap justify-space-around>

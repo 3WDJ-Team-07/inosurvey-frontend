@@ -1,6 +1,6 @@
 <template>
   <v-container fluid grid-list-md class="pt-5 mt-5">
-    <v-divider/>
+    <v-divider style="margin:0 auto; width:95%;"/>
     <v-toolbar color="#FAFAFA" flat>
       <v-btn flat color="info" class="subheading font-weight-bold">作成</v-btn><i class="info--text fas fa-chevron-right"></i>
       <v-btn flat color="grey" class="subheading font-weight-bold">要請</v-btn><i class="grey--text fas fa-chevron-right"></i>
@@ -13,7 +13,6 @@
         large @click="next_stage"
       >Next</v-btn>
     </v-toolbar>
-    <v-divider/>
     <v-layout row wrap>
       <v-flex xs12>
         <v-card 

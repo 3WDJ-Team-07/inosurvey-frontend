@@ -2,24 +2,20 @@
 
 <template>
   <span>
-    <v-container grid-list-xl  class="mt-2" v-if="!this.$store.state.loading">
-      
-      <v-layout justify-end>
-       <div v-for="(category, index) in category_item" :key="index" class="pa-2 mb-1">
-          <v-btn depressed :category_id="category.id" v-model="category_id" class="categoryBtn">
-          <v-img :src="`/static/category/${category.id}.png`" class="categoryImg">
-          </v-img> 
-          </v-btn>
+    <v-container grid-list-sm fluid class="mt-2" v-if="!this.$store.state.loading">
+      <v-layout row wrap justify-end class="mr-2">
+          <div v-for="(category, index) in category_item" :key="index">
+            <v-btn depressed fab large>
+              <img :src="`/static/category/${category.id}.png`" width="30"/>
+            </v-btn>
           <v-layout justify-space-around>
             <div class="caption font-weight-bold grey--text">
             {{category.name}}
-             
           </div>
           </v-layout>
-          
         </div>
       </v-layout>
-      <v-layout row wrap justify-end >
+      <v-layout row wrap justify-end class="mt-4 mr-3">
         <v-flex xs3>
           <v-select
             v-model="donate_id"
@@ -106,17 +102,4 @@
     }
   }
 </script>
-<style scoped>
-.fabbtn{
-  border-radius: 50%;
-  height: 12vh
-}
-
-.categoryBtn{
-  border-radius: 30px;
-  }
-.categoryImg{
-  width: 10px
-}
-</style>
 

@@ -23,14 +23,14 @@
           color="#29B6F6" 
           dark fixed 
           left bottom 
-          style="margin-bottom:350px; 
-          height:200px; margin-left:-30px;" 
+          style="margin-bottom:270px; 
+        height:200px; margin-left:-30px;" 
           @click.stop="drawer = !drawer"
           >
             <v-icon>arrow_forward_ios</v-icon>
           </v-btn>
         <v-flex xs9>
-          <div class="display-1 font-weight-bold mb-2">참여한 모금</div>
+          <div class="display-1 font-weight-bold mb-2"><span class="info--text" style="text-decoration: underline; text-underline-position: under;">{{userinfo.nickname}}</span> 님의 참여한 모금</div>
           <div class="headline font-weight-bold mb-5">총 기부 금액 : <span class="red--text">{{total}}</span> 이노</div>
             <v-data-table
             :headers="headers"

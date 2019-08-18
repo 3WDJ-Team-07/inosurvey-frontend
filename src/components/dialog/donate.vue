@@ -1,6 +1,6 @@
 <template>
   <v-layout row justify-center>
-    <v-dialog v-model="isDonateDialog" hide-overlay persistent max-width="500px">
+    <v-dialog v-model="isDonateDialog" persistent max-width="500px">
       <v-card color="#1E88E5" class="pa-4 border_rounded">
 		  <span
         class="pr-1 pt-1 pb-3 right white--text" 
@@ -106,3 +106,9 @@
     },
   }
 </script>
+
+<style >
+  .v-dialog:not(.v-dialog--fullscreen) {
+    max-height: 70%;
+  }
+</style>
