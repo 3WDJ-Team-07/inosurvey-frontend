@@ -6,13 +6,14 @@
       
       <v-layout justify-end>
        <div v-for="(category, index) in category_item" :key="index" class="pa-2 mb-1">
-          <v-btn depressed :category_id="category.id" v-model="category_id" fab class="info">
-          <v-img width="1vh":src="`/static/category/${category.id}.png`" >
+          <v-btn depressed :category_id="category.id" v-model="category_id" class="categoryBtn">
+          <v-img :src="`/static/category/${category.id}.png`" class="categoryImg">
           </v-img> 
           </v-btn>
           <v-layout justify-space-around>
             <div class="caption font-weight-bold grey--text">
             {{category.name}}
+             
           </div>
           </v-layout>
           
@@ -109,6 +110,13 @@
 .fabbtn{
   border-radius: 50%;
   height: 12vh
+}
+
+.categoryBtn{
+  border-radius: 30px;
+  }
+.categoryImg{
+  width: 10px
 }
 </style>
 

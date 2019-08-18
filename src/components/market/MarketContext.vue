@@ -17,7 +17,7 @@
           </v-flex>
           <v-flex xs6 class="searchBox"> 
             <v-text-field
-              placeholder="검색..."
+              placeholder="検索..."
               append-icon="search"
               v-model="search"
               @focus="search=''"
@@ -27,9 +27,9 @@
             <div>
               <span class="font-weight-bold grey--text text--darken-2">
               <i class="fas fa-thumbtack mr-2"></i>
-              <span class="info--text">{{surveyList.length}} </span>개의 설문이 
-              <span v-if="search.length == 0">판매중입니다!</span>
-              <span v-else>검색되었습니다.</span>
+              <span class="info--text">{{surveyList.length}} </span>個の アンケートが 
+              <span v-if="search.length == 0">販売しています!</span>
+              <span v-else>検索されました。</span>
               </span>
             </div>
           </v-flex>
@@ -50,8 +50,8 @@
         </v-layout>
         <v-flex v-if="surveyList.length === 0" xs12 style="margin-top:100px;">
           <div class="display-1 grey--text">
-            <span v-if="search.length == 0"><i class="far fa-frown mx-2"></i>판매중인 설문이 없습니다. </span>
-            <span v-else><i class="far fa-frown mx-2"></i> " {{ search }} " 를 찾을 수 없습니다 ! </span>
+            <span v-if="search.length == 0"><i class="far fa-frown mx-2"></i>販売しているアンケートがありません。</span>
+            <span v-else><i class="far fa-frown mx-2"></i> " {{ search }} " がありません。</span>
           </div>
         </v-flex>
       </v-layout>
