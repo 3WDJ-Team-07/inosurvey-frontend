@@ -18,7 +18,7 @@
         :donationItems = "this.donationItems"
       />
     </v-layout>
-    </v-container>0
+    </v-container>
     <Spinner v-else/>
   </div>
 </template>
