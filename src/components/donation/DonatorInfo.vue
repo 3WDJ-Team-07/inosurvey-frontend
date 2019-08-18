@@ -1,6 +1,6 @@
 <template>
-  <v-layout text-xs-center justify-center mt-5>
-    <v-flex xs3>
+  <v-layout text-xs-center justify-center mt-5 ml-5>
+    <v-flex xs12>
       <div class="mb-3">
         <div v-for="(item, index) in SliceDonationItems" :key="index">
           <v-layout text-xs-center justify-center>

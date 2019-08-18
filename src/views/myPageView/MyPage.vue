@@ -125,7 +125,6 @@
 </script>
 
 <style scoped>
-  
 	#btn_center{
 		border-radius: 5%;
 		margin: 0 auto;

@@ -23,14 +23,14 @@
           color="#29B6F6" 
           dark fixed 
           left bottom 
-          style="margin-bottom:350px; 
-          height:200px; margin-left:-30px;" 
+          style="margin-bottom:270px; 
+        height:200px; margin-left:-30px;" 
           @click.stop="drawer = !drawer"
           >
             <v-icon>arrow_forward_ios</v-icon>
           </v-btn>
           <v-flex xs9>
-            <div class="display-1 pa-5">등록한 모금</div>
+            <div class="display-1 pa-5"><span class="info--text" style="text-decoration: underline; text-underline-position: under;">{{userinfo.nickname}}</span> 님의 등록한 모금</div>
             <!--      <div>
                <carousel-3d :width="600" :height="400" :controls-visible="true" :clickable="false">
     <slide v-for="(donation, i) in donationInfo" :index="i" >

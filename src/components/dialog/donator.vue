@@ -2,8 +2,8 @@
 
 <template>
   <v-layout row justify-center>
-    <v-dialog v-model="isDonatorDialog" persistent max-width="700px">
-      <v-card class="pb-5 pt-4 pl-5 pr-5" style="height:720px;overflow-y:scroll">
+    <v-dialog v-model="isDonatorDialog" persistent max-width="700px" style="z-index:1001">
+      <v-card class="pb-5 pt-4 pl-5 pr-5" style="height:500px;">
 		    <span 
           class="headline right grey--text" 
           @click="close">

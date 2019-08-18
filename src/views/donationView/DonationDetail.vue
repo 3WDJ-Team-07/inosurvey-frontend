@@ -1,12 +1,9 @@
 <template>
   <div transition="slide-x-transition">
-      <v-img :src="donationItems.image" id="donationImg" class="donationImg" height="35vh" color=""
-      gradient="to top,  rgba(0, 0, 0, .6), rgba(0, 0, 0, .1)"
-      style="border-bottom-left-radius: 5%; 
-   border-bottom-right-radius: 5% ">
-
+      <v-img :src="donationItems.image" id="donationImg" class="donationImg" gradient="to bottom, rgba(33,92,209,1) 0%, rgba(33,92,209,0) 65%" height="80vh" style="clip-path: ellipse(70% 70% at 48% 0%); margin-left:-30px; margin-right:-30px;" 
+      >
         <v-container fill-height>
-          <v-layout align-center justify-center>
+          <v-layout justify-center align-center style="margin-bottom:160px;">
             <div class="font-weight-bold white--text" style="font-size: 3em; text-shadow: 0 0 20px #000000" >
               {{donationItems.title}}
             </div>
