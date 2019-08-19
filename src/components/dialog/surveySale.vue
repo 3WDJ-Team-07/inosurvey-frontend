@@ -13,7 +13,7 @@
           <v-layout column align-center class="py-5">
             <v-flex xs12>
               <v-card-title>
-              <span class="display-1 font-weight-bold mx-5">판매할 설문 선택</span>
+              <span class="display-1 font-weight-bold mx-5">販売するアンケート選択</span>
             </v-card-title>
             <v-card-text >
               <div v-for="(survey) in SortSellSurvey" class="title py-3">
@@ -33,14 +33,14 @@
                 name : 'marketsale',
                 params: { sell_id: pickedSurvey }
               }">
-              <v-btn color="info" block style="width:400px;" large round @click="sale">판매하기</v-btn>
+              <v-btn color="info" block style="width:400px;" large round @click="sale">販売</v-btn>
             </router-link>
           </v-layout>
         </span>
         <span v-else>
           <v-layout row wrap justify-center>
               <v-card-title class="headline pa-5">
-                판매 할 설문이 없습니다...
+                見つかりません…
               </v-card-title>
           </v-layout>
         </span>

@@ -13,11 +13,11 @@
           {{marketItems.title}}
         </v-card-title>
         <v-card-title primary-title class="white--text title font-weight-bold">
-          <span>{{ino}}</span></span>이노에 구매하시겠습니까 ?
+          <span>{{ino}}</span></span>INOで購入しますか？
         </v-card-title>
 			</v-layout>
         <v-card-actions class="pt-4 pb-4">
-          <v-btn block color="white" class="info--text font-weight-bold" @click="purchase">결제하기</v-btn>
+          <v-btn block color="white" class="info--text font-weight-bold" @click="purchase">決済</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

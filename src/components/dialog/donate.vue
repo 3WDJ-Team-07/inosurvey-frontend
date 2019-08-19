@@ -74,7 +74,7 @@
               text: `\n${this.donationItems.title} という所に ${this.$refs.donateInput.value} イノを寄付しました！
               \n保有しているイノ : ${(this.inocoin.current_ino - this.$refs.donateInput.value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`,
               icon: "success",
-              button: "確認"
+              button: "OK"
             })
           }
           if(response.status=="end"){
@@ -82,19 +82,19 @@
               title: '寄付失敗',
               text: 'もう機関が過ぎました。',
               icon: "error",
-              button: "確認"
+              button: "OK"
             })
           }
           if(response.status =="excess"){
             await swal({
               title: '寄付失敗',
-              text: '満額より超える価格を寄付できません。목표금액보다 초과한 금액을 기부할 수 없습니다.',
+              text: '満額より超える価格を寄付できません。',
               icon: "error",
-              button: "확인"
+              button: "OK"
             })
           }
         } else {
-          swal("이노가 부족합니다 !", `\n지금 바로 이노를 충전하시겠습니까 ? \n\n내 보유이노 : ${this.coin} 이노`,
+          swal("イノが足りないです！", `\n今、イノを充塡しますか？ \n\n保有イノ : ${this.coin} INO`,
           {icon: "warning", buttons: true, dangerMode: true,})
           .then(response => {
             if(response) {

@@ -32,7 +32,7 @@
     components: { item },
     data() {
       return {
-        MultipleValues: { value: '' || "タイトルを指定してください。" }
+        MultipleValues: { value: '' || "タイトルをご記入ください。" }
       }
     },
     mounted() {

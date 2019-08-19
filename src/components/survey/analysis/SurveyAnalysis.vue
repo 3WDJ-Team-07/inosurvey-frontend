@@ -12,14 +12,14 @@
         </v-flex>
         <v-flex xs12>
           <div class="mt-3">
-            <v-btn class="font-weight-bold" flat style="float:right;">엑셀파일 변환</v-btn>
+            <v-btn class="font-weight-bold" flat style="float:right;">エクセルファイルで変換</v-btn>
           </div>
         </v-flex>
       </v-layout>
       <v-layout row wrap>
         <v-flex xs3 class="border_style">
           <v-card height="180px" class="text-xs-center" flat style="background-color:#FAFAFA;" >
-            <div class="headline font-weight-bold pt-3 pt-5 mt-5">설문 정보</div>
+            <div class="headline font-weight-bold pt-3 pt-5 mt-5">アンケート情報</div>
           </v-card>
         </v-flex>
         <v-flex xs9 class="border_style pa-4"> 
@@ -36,22 +36,22 @@
               </v-progress-circular>
             <div class="title font-weight-bold pa-4">{{chartData.form[0].formData.description}}</div>
             <div class="title font-weight-bold pa-1">
-              <v-btn color="success" depressed round @click="SET_IS_TARGET(true)" large class="subheading">전체 타겟 응답결과</v-btn>
+              <v-btn color="success" depressed round @click="SET_IS_TARGET(true)" large class="subheading">全体ターゲットの回答結果</v-btn>
 
                 <span v-if="chartData.form[0].formData.target.gender !== 0">
-                  <v-chip close large v-if="chartData.form[0].formData.target.gender == 1">남자</v-chip>
-                  <v-chip close large v-if="chartData.form[0].formData.target.gender == 2">여자</v-chip>
+                  <v-chip close large v-if="chartData.form[0].formData.target.gender == 1">男性</v-chip>
+                  <v-chip close large v-if="chartData.form[0].formData.target.gender == 2">女性</v-chip>
                 </span>
                 <span v-else>
-                  <v-chip close large>모든성별</v-chip>
+                  <v-chip close large>男女</v-chip>
                 </span>
                 <span v-if="chartData.form[0].formData.target.age.length !== 10">
                   <span v-for="(item, index) in chartData.form[0].formData.target.age" :key="item">
-                    <v-chip close large>{{item}}대</v-chip>
+                    <v-chip close large>{{item}}代</v-chip>
                   </span>
                 </span>
                 <span v-else>
-                  <v-chip close large>모든나이</v-chip>
+                  <v-chip close large>すべての年齢</v-chip>
                 </span>
                 <span v-if="chartData.form[0].formData.target.job.length !== 9">
                   <span v-for="(item, index) in chartData.form[0].formData.target.job" :key="index">
@@ -59,7 +59,7 @@
                   </span>
                 </span>
                 <span v-else>
-                  <v-chip close large>모든직업</v-chip>
+                  <v-chip close large>すべての職業</v-chip>
                 </span>
 
             </div>
@@ -67,7 +67,7 @@
               <v-icon large style="line-height:20px;">event</v-icon>
               <span class="ml-3 left_class">{{started}} ~ {{closed}}</span>
               <div class="mr-5 pr-4" style="float:right;"><v-icon large style="line-height:20px;">person</v-icon>
-              <span class="ml-3">{{chartData.form[0].formData.respondent_count}} / {{chartData.form[0].formData.respondent_number}} 명</span></div>
+              <span class="ml-3">{{chartData.form[0].formData.respondent_count}} / {{chartData.form[0].formData.respondent_number}} 人</span></div>
             </div>
           </v-card>
         </v-flex>
@@ -87,12 +87,12 @@
                 <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">{{ props.item[0].question_number-1 }}</td>
                 <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">{{ props.item[0].question_title }}</td>
                 <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">
-                  <span v-if="props.item[0].type_id == 1">객관식</span>
-                  <span v-else-if="props.item[0].type_id == 2">주관식</span>
-                  <span v-else-if="props.item[0].type_id == 3">선택란</span>
-                  <span v-else-if="props.item[0].type_id == 4">별등급</span>
-                  <span v-else-if="props.item[0].type_id == 5">의견란</span>
-                  <span v-else-if="props.item[0].type_id == 6">이미지선택란</span>
+                  <span v-if="props.item[0].type_id == 1">単一回答</span>
+                  <span v-else-if="props.item[0].type_id == 2">記述式</span>
+                  <span v-else-if="props.item[0].type_id == 3">複数選択</span>
+                  <span v-else-if="props.item[0].type_id == 4">星評価</span>
+                  <span v-else-if="props.item[0].type_id == 5">意見書き</span>
+                  <span v-else-if="props.item[0].type_id == 6">画像タイプ</span>
                 </td>
               </template>
             </v-data-table>
@@ -128,19 +128,19 @@
         job: [],
         headers: [
           {
-            text: '설문번호',
+            text: '番号',
             align: 'center',
             sortable: false,
             value: 'name'
           },
           { 
-            text: '설문제목',
+            text: '題目',
             align: 'center',
             sortable: false,
             value: 'calories'
           },
           { 
-            text: '설문유형',
+            text: 'タイプ',
             align: 'center',
             sortable: false,
             value: 'calories'

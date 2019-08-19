@@ -10,8 +10,8 @@ const state = {
   isDonateDialog: false,        // 기부 모달 
   isDonatorDialog: false,       // 기부자 모달
   isTargetDialog: false,        // 타겟분석 모달
-  formTitle: "" || "무제",      // 설문제목
-  formIntro: "" || "소개글을 입력하세요", // 설명글
+  formTitle: "" || "無題",      // 설문제목
+  formIntro: "" || "紹介文をご記入ください。", // 설명글
   token: null,                  // 유저 토큰
   loading: false,               // 로딩
   isSuccessFormData: false,     // 저장하면버튼활성화

@@ -5,8 +5,8 @@
       <v-card class="text-xs-center" flat style="background-color:#FAFAFA;" >
         <v-container fluid>
           <v-layout align-center justify-space-around column fill-height>
-            <div class="display-1 font-weight-bold my-5 py-5">설문 정보</div>
-            <div class="display-1 font-weight-bold py-5 my-5">문항 정보</div>
+            <div class="display-1 font-weight-bold my-5 py-5">アンケート情報</div>
+            <div class="display-1 font-weight-bold py-5 my-5">項目情報</div>
           </v-layout>
         </v-container>
       </v-card>
@@ -23,9 +23,9 @@
                 <v-tooltip right color="info">
                   <span slot="activator">
                     <i class="fas fa-user ma-1"></i>
-                    <span>{{marketItems.respondent_count}}명</span>
+                    <span>{{marketItems.respondent_count}}人</span>
                   </span>
-                  <span>응답인원</span>
+                  <span>回答した人数</span>
                 </v-tooltip>
               </div>
               <div class="title font-weight-bold px-4 pb-3">
@@ -37,30 +37,30 @@
                     ~ {{marketItems.closed_at | substr}}
                     </span>
                   </span>
-                  <span>설문 진행 일정</span>
+                  <span>進行日程</span>
                 </v-tooltip>
               </div>
               <div class="title font-weight-bold px-4 pb-3">
                 <v-tooltip right color="info">
                   <span slot="activator">
-                    <i class="fas fa-coins ma-1"></i><span>{{ino}}이노</span>
+                    <i class="fas fa-coins ma-1"></i><span>{{ino}}INO</span>
                   </span>
-                  <span>판매가격</span>
+                  <span>販売価格</span>
                 </v-tooltip>
               </div>
               <div v-if="marketItems.target" class="px-4 pb-3">
                 <v-tooltip right color="info">
                   <span slot="activator">
                     <span v-if="gender == 0">
-                      <v-chip color="grey darken-2" text-color="white" large>모든 성별</v-chip>
+                      <v-chip color="grey darken-2" text-color="white" large>男女</v-chip>
                     </span>
                     <span v-else>
                       <v-chip color="grey darken-2" text-color="white" large>
                         <span v-if="gender == 1">
-                          남자
+                          男性
                         </span>
                         <span v-else-if="gender == 2">
-                          여자
+                          女性
                        </span>
                       </v-chip>
                     </span>
@@ -69,7 +69,7 @@
                         color="grey darken-2" text-color="white" large
                         v-for="(targetAge, index) in age " :key="index"
                       >
-                        {{ targetAge }} 대
+                        {{ targetAge }} 代
                       </v-chip>
                     </span>
                     <span v-else>
@@ -78,7 +78,7 @@
                         text-color="white"
                         large
                       >
-                        모든 연령
+                        すべての年齢
                       </v-chip>
                     </span>
                     <span v-if="job.length !== 0">
@@ -95,15 +95,15 @@
                         text-color="white" 
                         large 
                       >
-                        모든 직업
+                        すべての職業
                       </v-chip>
                     </span>
                   </span>
-                  <span>타겟</span>
+                  <span>対象</span>
                 </v-tooltip>
               </div>
               <div v-if="!marketItems.target" class="px-3">
-                <v-chip class="pa-1" color="grey darken-2" text-color="white" large close>모든 인원</v-chip>
+                <v-chip class="pa-1" color="grey darken-2" text-color="white" large close>すべての人数</v-chip>
               </div>
             </div>
             <div style="margin-top:50px;">

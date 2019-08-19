@@ -5,9 +5,9 @@
         <v-flex xs12 sm12 md12 xl11 class="center_card">
           <v-layout row wrap justify-end>
             <div>
-              <v-btn small color="" @click="sale_check = 2" ></v-btn>
-              <v-btn small color="grey" @click="stay" dark>대기중</v-btn>
-              <v-btn small color="grey" @click="staySale" dark>판매 대기중</v-btn>
+              <v-btn small color="" @click="sale_check = 2" >すべて</v-btn>
+              <v-btn small color="grey" @click="stay" dark>待機中</v-btn>
+              <v-btn small color="grey" @click="staySale" dark>販売待機中</v-btn>
               <v-btn small color="#64B5F6" @click="sale" dark>販売中</v-btn>
             </div>
           </v-layout>
@@ -30,7 +30,7 @@
                   <v-flex xs3>
                     <v-layout row wrap justify-start>
                       <div class="pb-2"><v-icon large style="line-height:20px;">person</v-icon><span class="ml-3">{{form.respondent_count}} / {{form.respondent_number}} 人</span></div>
-                      <div class="pb-2 mt-4"><v-icon large style="line-height:20px;">event</v-icon><span class="ml-3">{{form.created_at}} ~ {{form.closed_at || '설문마감 미정'}}</span></div>
+                      <div class="pb-2 mt-4"><v-icon large style="line-height:20px;">event</v-icon><span class="ml-3">{{form.created_at}} ~ {{form.closed_at || 'アンケートの締め切り 未定'}}</span></div>
                     </v-layout>
                   </v-flex>
                   <v-flex xs4>
@@ -168,13 +168,13 @@
       },
       surveySales(index, id) {
         if(this.mySurveyForm[index].is_completed == 1 && this.mySurveyForm[index].is_sale == 0) {
-          swal("무료로 설문을 등록하시겠어요 ?", "마켓에서 확인할 수 있습니다.",
+          swal("アンケートを無料で登録しますか ?", "マーケットで確認できます。",
           {icon: "warning", buttons: true, dangerMode: true,})
           .then(response => {
             if(response) {
               this.updateComplete(id)
               setTimeout(() => {
-                swal("판매등록 완료", "마켓에 설문상품이 등록되었습니다 !", "success", {button:"확인"});
+                swal("販売登録 完了", "アンケート商品がマーケットに登録されました！", "success", {button:"OK"});
               }, 1000);
               this.updateSale(id)
             }
@@ -182,27 +182,27 @@
         }else if(this.mySurveyForm[index].is_completed == 0 && this.mySurveyForm[index].is_sale == 0){
           if(this.mySurveyForm[index].respondent_number >= this.mySurveyForm[index].respondent_count || 
           this.mySurveyForm[index].closed_at >= this.mySurveyForm[index].created_at){
-            swal("조건이 충족되지 않았습니다", "즉시 무료로 설문을 등록하시겠어요 ?",
+            swal("条件が満たしていませんでした。", "今、アンケートを無料で登録しますか ?",
             {icon: "warning", buttons: true,  dangerMode: true})
             .then(response => {
               if(response) {
                 this.updateComplete(id)
                 setTimeout(() => {
-                  swal("판매등록 완료", "마켓에 설문상품이 등록되었습니다 !", "success", {button:"확인"});
+                  swal("販売登録 完了", "アンケート商品がマーケットに登録されました！", "success", {button:"OK"});
                 }, 1000);
                 this.updateSale(id)
               }
             })
           }
         } else if(this.mySurveyForm[index].is_completed == 1 && this.mySurveyForm[index].is_sale == 1) {
-          swal("이미 등록된 상품입니다", "마켓에서 확인해보세요 !", "warning", {button:"확인"} );
+          swal("もう、登録された商品です。", "マーケットで確認してください !", "warning", {button:"OK"} );
         } else if(this.mySurveyForm[index].is_completed == 0 && this.mySurveyForm[index].is_sale == 1) {
-          swal("조건이 충족되면 자동등록 됩니다 !", "지금 등록 하시겠어요 ?",{icon: "warning", buttons: true, dangerMode: true,})
+          swal("条件が満たしたら自動に登録されます！", "今、アンケートを登録しますか ?",{icon: "warning", buttons: true, dangerMode: true,})
           .then(response => {
             if(response) {
               this.updateComplete(id)
               setTimeout(() => {
-                swal("판매등록 완료", "마켓에 설문상품이 등록되었습니다 !", "success", {button:"확인"});
+                swal("販売登録 完了", "アンケート商品がマーケットに登録されました！", "success", {button:"OK"});
               }, 1000);
               this.updateSale(id)
             }
@@ -210,10 +210,10 @@
         }
       },
       noRedirectAnalysis() {
-        swal("확인불가","아무도 응답을 하지않았습니다","error", {button:"확인"});
+        swal("確認できません","誰も応じなかったです。","error", {button:"OK"});
       },
       surveyRemove() {
-       swal({text: "정말 삭제하시겠어요?", icon: "warning", buttons: true, dangerMode: true})
+       swal({text: "本当に削除しますか？", icon: "warning", buttons: true, dangerMode: true})
       },
     }
   }

@@ -164,15 +164,15 @@
 				is_donator: 0,  // 기부단체 or 일반회원
 				menu:false,
 				job_item: [
-					{ name: '교육', value: 1},
-					{ name: '건설', value: 2},
-					{ name: '금융 / 무역', value: 3},
-					{ name: '사무 / 경영', value: 4},
-					{ name: '생산 / 제조', value: 5},
-					{ name: '서비스 / 상담', value: 6},
-					{ name: '연구 / 개발', value: 7},
-					{ name: '예술 / 방송', value: 8},
-					{ name: 'IT / 인터넷', value: 9},
+					{ name: '教育', value: 1},
+					{ name: '建設', value: 2},
+					{ name: '金融 / 貿易', value: 3},
+					{ name: '事務 / 経営', value: 4},
+					{ name: '生産 / 製造', value: 5},
+					{ name: 'サービス / 相談', value: 6},
+					{ name: '研究 / 開発', value: 7},
+					{ name: '芸術 / 放送', value: 8},
+					{ name: 'IT / インターネット', value: 9},
 				],
 				// age_item: [
 				// 	{ name: '1950년도생', value: 1950},
@@ -184,12 +184,12 @@
 				// 	{ name: '2010년도생', value: 2010},
 				// ],
 				emailRules: [
-          v => !!v || '이메일을 입력하세요', 
-          v => /.+@.+/.test(v) || '이메일 형식으로 입력하세요' 
+          v => !!v || 'メールをご記入ください', 
+          v => /.+@.+/.test(v) || 'メール形式でご記入ください' 
         ],
         passwordRules: [
-          v => !!v || '비밀번호를 입력하세요',
-          v => v.length >= 6 || '6자 이상으로 입력해주세요'
+          v => !!v || 'パスワードをご記入ください',
+          v => v.length >= 6 || '6字以上でご記入ください'
         ],
 			}
 		},
@@ -211,7 +211,7 @@
 			register(){
 				if(!this.user_id || !this.password || !this.nickname || !this.email ||	
 				!this.gender || !this.job_id || !this.age ){
-					swal("모두 입력하지 않았습니다!","모든입력란을 채워주세요","error",{button:"확인"});
+					swal("全部ご記入しなかったです。","全部ご記入ください！","error",{button:"OK"});
 				}
 				else{
 					const user = new URLSearchParams()
@@ -225,8 +225,8 @@
 					user.append('is_donator', this.is_donator)
 					this.$store.dispatch('REGISTER', user)
 					.then( () => {
-						swal("회원가입이 완료되었습니다!","로그인 해주세요","success",{
-							button:"확인",
+						swal("会員登録 成功！","ログインしてください。","success",{
+							button:"OK",
             });
             this.$router.push({name: 'home'})
 					})

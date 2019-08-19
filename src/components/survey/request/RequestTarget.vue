@@ -146,9 +146,9 @@
         </v-flex>
       </v-layout>
     </v-card>
- <pre>
+ <!-- <pre>
     {{this.$store.state.form}}
-    </pre>
+    </pre> -->
   </v-container>
 </template>
 
@@ -164,9 +164,9 @@
 				age: [],  // 연령대
 				job: [],  // 직업
         gender_item: [
-          {name: '무관', value: 0},
-          {name: '남성', value: 1},
-          {name: '여성', value: 2}
+          {name: '男女', value: 0},
+          {name: '男性', value: 1},
+          {name: '女性', value: 2}
         ],
         // age_item: [
         //   { name: '1950년도생', value: 1950},
@@ -178,24 +178,24 @@
 				// 	{ name: '2010년도생', value: 2010}
         // ],
         age_item: [
-          { name: '10대', value: 10},
-					{ name: '20대', value: 20},
-					{ name: '30대', value: 30},
-					{ name: '40대', value: 40},
-					{ name: '50대', value: 50},
-					{ name: '60대', value: 60},
-					{ name: '70대', value: 70}
+          { name: '10代', value: 10},
+					{ name: '20代', value: 20},
+					{ name: '30代', value: 30},
+					{ name: '40代', value: 40},
+					{ name: '50代', value: 50},
+					{ name: '60代', value: 60},
+					{ name: '70代', value: 70}
         ],
         job_item: [
-					{ name: '서비스/상담', value: 1},
-					{ name: '금융/무역', value: 2},
-					{ name: '연구/개발', value: 3},
-					{ name: 'IT/인터넷', value: 4},
-					{ name: '건설', value: 5},
-					{ name: '사무/경영', value: 6},
-					{ name: '의료', value: 7},
-					{ name: '교육', value: 8},
-					{ name: '생산/제조', value: 9},
+					{ name: 'サービス / 相談', value: 1},
+					{ name: '金融 / 貿易', value: 2},
+					{ name: '研究 / 開発', value: 3},
+					{ name: 'IT / インターネット', value: 4},
+					{ name: '建設', value: 5},
+					{ name: '事務 / 経営', value: 6},
+					{ name: '医療', value: 7},
+					{ name: '教育', value: 8},
+					{ name: '生産 / 製造', value: 9},
 				],
         items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
         responseNumber: 100,  // 응답수,

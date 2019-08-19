@@ -13,7 +13,7 @@
         <v-layout row wrap>
           <v-flex xs3 class="border_style">
             <v-card class="text-xs-center" flat style="background-color:#FAFAFA;">
-              <div class="display-1 font-weight-bold my-5 py-5">설문 정보</div>
+              <div class="display-1 font-weight-bold my-5 py-5">情報</div>
             </v-card>
           </v-flex>
           <v-flex xs9 class="border_style pa-3 text-xs-left">
@@ -38,7 +38,7 @@
                             ~{{surveyFormInfo.survey.closed_at}}
                           </span>
                         </span>
-                        <span>설문 진행 일정</span>
+                        <span>進行日程</span>
                       </v-tooltip>
                     </div>
                     <div class="title font-weight-bold px-4 pb-3">
@@ -46,25 +46,25 @@
                         <span slot="activator">
                           <i class="fas fa-coins ma-1"></i>
                           <span>
-                            {{surveyFormInfo.price}} 이노
+                            {{surveyFormInfo.price}} INO
                           </span>
                         </span>
-                        <span>금액</span>
+                        <span>金額</span>
                       </v-tooltip>
                     </div>
                     <div v-if="surveyFormInfo.survey.target" class="px-4">
                       <v-tooltip right color="info">
                       <span slot="activator">
                         <span v-if="gender == 0">
-                          <v-chip color="grey darken-2" text-color="white" large>모든 성별</v-chip>
+                          <v-chip color="grey darken-2" text-color="white" large>すべて</v-chip>
                         </span>
                         <span v-else>
                           <v-chip color="grey darken-2" text-color="white" large>
                             <span v-if="gender == 1">
-                              남자
+                              男性
                             </span>
                             <span v-else-if="gender == 2">
-                              여자
+                              女性
                           </span>
                           </v-chip>
                         </span>
@@ -73,7 +73,7 @@
                             color="grey darken-2" text-color="white" large
                             v-for="(targetAge, index) in age " :key="index"
                           >
-                            {{ targetAge }} 대
+                            {{ targetAge }} 代
                           </v-chip>
                         </span>
                         <span v-else>
@@ -82,7 +82,7 @@
                             text-color="white"
                             large
                           >
-                            모든 연령
+                            年齢
                           </v-chip>
                         </span>
                         <span v-if="job.length !== 0">
@@ -99,15 +99,15 @@
                             text-color="white" 
                             large 
                           >
-                            모든 직업
+                            職業
                           </v-chip>
                         </span>
                       </span>
-                      <span>타겟</span>
+                      <span>対象</span>
                     </v-tooltip>
                   </div>
                   <div v-if="!surveyFormInfo.survey.target" class="px-3">
-                <v-chip class="pa-1" color="grey darken-2" text-color="white" large close>모든 인원</v-chip>
+                <v-chip class="pa-1" color="grey darken-2" text-color="white" large close>すべて</v-chip>
               </div>
                 </div>
               </v-flex>
@@ -125,9 +125,9 @@
                       <span slot="activator">
                         <i class="fas fa-user ma-1"></i>
                         <span>{{surveyFormInfo.survey.respondent_count}}</span>
-                        /<span>{{surveyFormInfo.survey.respondent_number}}</span>명
+                        /<span>{{surveyFormInfo.survey.respondent_number}}</span>人
                       </span>
-                      <span>응답인원</span>
+                      <span>回答した人数</span>
                     </v-tooltip>
                   </div>
                 </div>
@@ -146,7 +146,7 @@
                 <v-btn color="info" class="pa-5" fab style="width:180px; height:180px">
                   <img src="/static/analysis2.png" style="width:130%"/>
                 </v-btn>
-                  분석하기
+                  分析する
               </div>
               </router-link>
             </div>

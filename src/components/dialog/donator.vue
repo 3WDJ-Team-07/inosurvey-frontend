@@ -11,7 +11,7 @@
         </span>
         <v-layout column align-center>
           <v-card-title>
-          	<span class="display-1 font-weight-bold pa-5 info--text">기부자 현황</span>
+          	<span class="display-1 font-weight-bold pa-5 info--text">寄付者の現況</span>
 					</v-card-title>
           <v-select
             :items="donator_item"
@@ -34,7 +34,7 @@
           </v-flex>
 				</v-layout>
         <v-card-actions class="pr-4 pl-4 pb-4 mt-5">
-          <v-btn block color="info" class="font-weight-black headline" dark large @click="close">확인</v-btn>
+          <v-btn block color="info" class="font-weight-black headline" dark large @click="close">確認</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -49,10 +49,10 @@
     data() {
       return {
         donator_item: [
-					{ name: '최신순', value: 1},
-					{ name: '오래된순', value: 2},
-					{ name: '많은기부순', value: 3},
-					{ name: '적은기부순', value: 4},
+					{ name: '早い', value: 1},
+					{ name: '遅い', value: 2},
+					{ name: '多い', value: 3},
+					{ name: '少ない', value: 4},
 				],
       }
     },

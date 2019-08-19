@@ -3,7 +3,7 @@
     <v-layout align-center>
       <v-flex xs9>
         <v-card flat color="#FAFAFA">
-          <div v-if="card.isBuy==true" class="text-xs-left red--text ml-4">이미 구매한 설문입니다.</div>
+          <div v-if="card.isBuy==true" class="text-xs-left red--text ml-4">もう購入したアンケートです。</div>
           <div class="card-title 
           display-1 font-weight-bold pb-2">
           {{ card.title }}
@@ -16,11 +16,11 @@
       <v-flex xs3 text-xs-left>
         <v-card flat color="#FAFAFA" class="py-4 subheading font-weight-bold">
           <div class="headline font-weight-bold">
-           <span class="info--text font-italic"> {{card.price}} </span> 이노
+           <span class="info--text font-italic"> {{card.price}} </span> INO
           </div>
           <div>
             <i class="fas fa-user-alt">
-              {{ card.respondent_number}} 명
+              {{ card.respondent_number}} 人
             </i>
           </div>
           <div>

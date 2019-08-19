@@ -48,7 +48,7 @@
     ],
     data() {
       return{
-        BankValues: { value: '' || "질문을 지정해주세요." },
+        BankValues: { value: '' || "質問をご記入ください。" },
       }
     },
     created() {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="title white--text font-weight-bold pa-3" style="border:1px; border-radius:40px; background-color:#42A5F5; margin-left:20px;">사전조사</span>
+    <span class="title white--text font-weight-bold pa-3" style="border:1px; border-radius:40px; background-color:#42A5F5; margin-left:20px;">一次調査</span>
     <input type="text" v-if="!inputQuestion" v-model="question.question_title" class="form-control title ml-4" name="name" label="label">
     <label v-else class="headline ml-4 font-weight-bold">[ {{question.question_title}} ]</label>
     <v-divider class="pa-3 mt-4"/>
@@ -19,7 +19,7 @@
       </ul>
     </div>
     <v-divider class="pa-4 mt-5"></v-divider>
-    <span style="float:left;" class="pa-3 title font-weight-black">※ 응답자 1차 설문 번호</span>
+    <span style="float:left;" class="pa-3 title font-weight-black">※ 回答者一次調査番号</span>
     <v-flex xs2 style="float:left;">
       <input type="text" class="form-control title" v-model="getTestNumber"/>
     </v-flex>
@@ -38,7 +38,7 @@
     components: { item },
     data() {
       return {
-        SingleValues: { value: '' || "질문을 지정해주세요." }
+        SingleValues: { value: '' || "質問をご記入ください。" }
       }
     },
     computed: {

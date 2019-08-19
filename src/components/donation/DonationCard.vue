@@ -34,7 +34,7 @@
           <v-tooltip left>
             <!-- <i slot="activator" color="#ffd700" class="fas fa-crown fa-4x"></i> -->
             <v-icon slot="activator" color="#ffd700" x-large>thumb_up</v-icon>
-            <div class="pa-3 subheading">목표금액을 달성했습니다</div>
+            <div class="pa-3 subheading">目標金額を達成しました！</div>
           </v-tooltip>
         </v-btn>
       </v-card-text>

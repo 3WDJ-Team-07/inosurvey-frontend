@@ -11,12 +11,12 @@
           <div class="headline text-xs-center pa-4 mt-5 info--text">{{userinfo.nickname}}</div>
             <v-list class="pt-5" dense>
               <v-divider></v-divider>
-              <div class="pa-5 myhover_style text-xs-center title" @click="surveyPage">응답 설문 내역</div>
-              <div class="pa-5 myhover_style text-xs-center title" @click="marketPage">구매 설문 내역</div>
+              <div class="pa-5 myhover_style text-xs-center title" @click="surveyPage">回答されたアンケート</div>
+              <div class="pa-5 myhover_style text-xs-center title" @click="marketPage">購入したアンケート</div>
               <div class="pa-5 myhover_style text-xs-center title" 
-              v-if="userinfo.is_donator==1" @click="foundationPage">등록한 모금</div>
-              <div class="pa-5 myhover_style text-xs-center title" @click="donatePage">참여한 모금</div>
-              <div class="pa-5 myhover_style text-xs-center title" @click="walletPage">이노 지갑</div>
+              v-if="userinfo.is_donator==1" @click="foundationPage">登録した募金箱</div>
+              <div class="pa-5 myhover_style text-xs-center title" @click="donatePage">参加した募金箱</div>
+              <div class="pa-5 myhover_style text-xs-center title" @click="walletPage">イノウォレット</div>
             </v-list>
           </v-navigation-drawer>
           <v-btn 
@@ -30,7 +30,7 @@
             <v-icon>arrow_forward_ios</v-icon>
           </v-btn>
           <v-flex xs9>
-            <div class="display-1 pa-5"><span class="info--text" style="text-decoration: underline; text-underline-position: under;">{{userinfo.nickname}}</span> 님의 등록한 모금</div>
+            <div class="display-1 pa-5"><span class="info--text" style="text-decoration: underline; text-underline-position: under;">{{ userinfo.nickname }} </span>様の 登録した募金箱</div>
             <!--      <div>
                <carousel-3d :width="600" :height="400" :controls-visible="true" :clickable="false">
     <slide v-for="(donation, i) in donationInfo" :index="i" >
@@ -105,16 +105,16 @@
         pagination: {},
         headers: [
           { 
-            text: '모금함 이름', 
+            text: '募金箱名', 
             align: 'center', 
             width : '500'
           },
           { 
-            text: '기부현황', 
+            text: '寄付現況', 
             align: 'center', 
           },
           { 
-            text: '기부한 날짜', 
+            text: '寄付した日', 
             align: 'center', 
           },
         ],

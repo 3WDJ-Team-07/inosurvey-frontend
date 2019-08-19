@@ -11,12 +11,12 @@
           <div class="headline text-xs-center pa-4 mt-5 info--text">{{userinfo.nickname}}</div>
             <v-list class="pt-5" dense>
               <v-divider></v-divider>
-              <div class="pa-5 myhover_style text-xs-center title" @click="surveyPage">응답 설문 내역</div>
-              <div class="pa-5 myhover_style text-xs-center title" @click="marketPage">구매 설문 내역</div>
+              <div class="pa-5 myhover_style text-xs-center title" @click="surveyPage">回答されたアンケート</div>
+              <div class="pa-5 myhover_style text-xs-center title" @click="marketPage">購入したアンケート</div>
               <div class="pa-5 myhover_style text-xs-center title" 
-              v-if="userinfo.is_donator==1" @click="foundationPage">등록한 모금</div>
-              <div class="pa-5 myhover_style text-xs-center title" @click="donatePage">참여한 모금</div>
-              <div class="pa-5 myhover_style text-xs-center title" @click="walletPage">이노 지갑</div>
+              v-if="userinfo.is_donator==1" @click="foundationPage">登録した募金箱</div>
+              <div class="pa-5 myhover_style text-xs-center title" @click="donatePage">参加した募金箱</div>
+              <div class="pa-5 myhover_style text-xs-center title" @click="walletPage">イノウォレット</div>
             </v-list>
           </v-navigation-drawer>
           <v-btn 
@@ -30,8 +30,8 @@
             <v-icon>arrow_forward_ios</v-icon>
           </v-btn>
         <v-flex xs9>
-          <div class="display-1 font-weight-bold mb-2"><span class="info--text" style="text-decoration: underline; text-underline-position: under;">{{userinfo.nickname}}</span> 님의 참여한 모금</div>
-          <div class="headline font-weight-bold mb-5">총 기부 금액 : <span class="red--text">{{total}}</span> 이노</div>
+          <div class="display-1 font-weight-bold mb-2"><span class="info--text" style="text-decoration: underline; text-underline-position: under;">{{ userinfo.nickname }} </span>様の 参加した募金箱</div>
+          <div class="headline font-weight-bold mb-5">総 寄付金額 : <span class="red--text">{{total}}</span> INO</div>
             <v-data-table
             :headers="headers"
             :items="donationInfo"
@@ -48,10 +48,10 @@
               </router-link>
               <td class="title">
                 <span v-if="props.item.sign == '+'" style="color:#42A5F5;">
-                  <i class="fas fa-plus fa-xs"></i>&nbsp;{{ props.item.price }}  <span class="caption">이노</span>
+                  <i class="fas fa-plus fa-xs"></i>&nbsp;{{ props.item.price }}  <span class="caption">INO</span>
                 </span> 
                 <span v-else-if="props.item.sign == '-'" style="color:red;"><i class="fas fa-minus fa-xs">
-                  </i>&nbsp;{{ props.item.price }} <span class="caption">이노</span>
+                  </i>&nbsp;{{ props.item.price }} <span class="caption">INO</span>
                 </span> 
                 <span v-else style="color:#42A5F5">{{props. item.price }}</span> 
               </td>
@@ -85,15 +85,15 @@
         headers: [
 
           { 
-            text: '모금함 이름', 
+            text: '募金箱名', 
             align: 'center'
           },
           { 
-            text: '기부 금액', 
+            text: '寄付金額', 
             align: 'center'
           },
           { 
-            text: '날짜', 
+            text: '日付', 
             align: 'center'
           },
         ],

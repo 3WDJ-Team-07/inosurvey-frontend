@@ -44,7 +44,7 @@
     components: { ImageInput },
     data() {
       return {
-        ImageValues: { value: '' || "내용을 지정해주세요.", image: ''},
+        ImageValues: { value: '' || "内容を指定してください。", image: ''},
         avatar: null,
         requestUrl: ''
       }
