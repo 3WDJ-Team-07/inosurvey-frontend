@@ -27,12 +27,12 @@
               </v-card-title>
               <v-card flat :to="{name: 'surveyhistory'}">
                 <div class="hover_style" style="margin:0 auto">
-                  <div class="title font-weight-bold py-4" >アンケート回答の記録</div>
+                  <div class="title font-weight-bold py-4" >回答の記録</div>
                 </div>
               </v-card>
               <v-card flat :to="{name: 'markethistory'}">
                 <div class="hover_style" style="margin:0 auto">
-                  <div class="title font-weight-bold py-4">アンケート購買の記録</div>
+                  <div class="title font-weight-bold py-4">購買の記録</div>
                 </div>
               </v-card>
             </v-card>
@@ -65,7 +65,7 @@
               </v-card-title>
               <v-card flat>
                 <div class="border" style="margin:0 auto">
-                  <div class="font-weight-black my-3">保有しているイノ <span class="headline info--text font-weight-black">{{totalCoin}}</span></div>
+                  <div class="font-weight-black my-3">保有しているイノ <span class="headline info--text font-weight-black">{{totalCoin}}</span> INO</div>
                 </div>
               </v-card>
               <v-card flat  :to="{name: 'wallethistory'}">

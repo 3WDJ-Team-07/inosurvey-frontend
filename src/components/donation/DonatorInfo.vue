@@ -9,7 +9,7 @@
             </v-flex>
             <v-flex xs12>
               <span class="info--text title">{{ item.pivot.donation_amount }}</span>
-              <span class="title font-weight-bold">이노</span>
+              <span class="title font-weight-bold">INO</span>
             </v-flex>
             <v-flex xs12>
               <span class="caption">{{ item.pivot.created_at }}</span>
@@ -17,7 +17,7 @@
           </v-layout>
         </div>
       </div>
-      <v-btn block color="grey" dark @click="SET_IS_DONATOR(true)">모두보기</v-btn> 
+      <v-btn block color="grey" dark @click="SET_IS_DONATOR(true)" style="width:90%; margin:0 auto;">すべて</v-btn> 
       <donator
         :donationItems = "donationItems"
       />

@@ -11,12 +11,12 @@
         <div class="headline text-xs-center pa-4 mt-5 info--text">{{userinfo.nickname}}</div>
           <v-list class="pt-5" dense>
             <v-divider></v-divider>
-            <div class="pa-5 myhover_style text-xs-center title" @click="surveyPage">응답 설문 내역</div>
-            <div class="pa-5 myhover_style text-xs-center title" @click="marketPage">구매 설문 내역</div>
+            <div class="pa-5 myhover_style text-xs-center title" @click="surveyPage">回答されたアンケート</div>
+            <div class="pa-5 myhover_style text-xs-center title" @click="marketPage">購入したアンケート</div>
             <div class="pa-5 myhover_style text-xs-center title" 
-            v-if="userinfo.is_donator==1" @click="foundationPage">등록한 모금</div>
-            <div class="pa-5 myhover_style text-xs-center title" @click="donatePage">참여한 모금</div>
-            <div class="pa-5 myhover_style text-xs-center title" @click="walletPage">이노 지갑</div>
+            v-if="userinfo.is_donator==1" @click="foundationPage">登録した募金箱</div>
+            <div class="pa-5 myhover_style text-xs-center title" @click="donatePage">参加した募金箱</div>
+            <div class="pa-5 myhover_style text-xs-center title" @click="walletPage">イノウォレット</div>
           </v-list>
         </v-navigation-drawer>
         <v-btn 
@@ -36,7 +36,7 @@
               <div
               class="display-3 font-weight-bold"
               style="margin-top:50px;padding:30px;"
-              >현재 보유 이노 
+              ><span class="info--text">{{ userinfo.nickname }} </span>様の 保有イノ 
                 <div>
                   <span class="info--text font-italic">{{totalCoin}}</span>
                   <img src="/static/coin.png" width="60" class="pos ml-3"></img>
@@ -51,10 +51,10 @@
             <v-card class="pa-4 mb-3" id="bordering" flat style="background-color:#BDBDBD;">
               <v-layout row wrap justify-space-around>
                 <table>
-                  <td class="font-weight-black title white--text">내역</td>
-                  <td class="font-weight-black title white--text">제목</td>
-                  <td class="font-weight-black title white--text">이노</td>
-                  <td class="font-weight-black title white--text">날짜</td>
+                  <td class="font-weight-black title white--text">内訳</td>
+                  <td class="font-weight-black title white--text">題目</td>
+                  <td class="font-weight-black title white--text">INO</td>
+                  <td class="font-weight-black title white--text">日付</td>
                 </table>
               </v-layout>
             </v-card>
@@ -67,8 +67,8 @@
                   <td class="subheading">{{ item.title }} {{ item.method}}</td>
                   <td class="subheading">{{ item.content }}</td>
                   <td class="title">
-                      <span v-if="item.sign == '+'" style="color:#42A5F5;"><i class="fas fa-plus fa-xs"></i>&nbsp;{{ item.price }}  <span class="caption">이노</span></span> 
-                      <span v-else-if="item.sign == '-'" style="color:red;"><i class="fas fa-minus fa-xs"></i>&nbsp;{{ item.price }} <span class="caption">이노</span></span> 
+                      <span v-if="item.sign == '+'" style="color:#42A5F5;"><i class="fas fa-plus fa-xs"></i>&nbsp;{{ item.price }}  <span class="caption">INO</span></span> 
+                      <span v-else-if="item.sign == '-'" style="color:red;"><i class="fas fa-minus fa-xs"></i>&nbsp;{{ item.price }} <span class="caption">INO</span></span> 
                       <span v-if="item.price==0" style="display:none"></span> 
 
                   </td>

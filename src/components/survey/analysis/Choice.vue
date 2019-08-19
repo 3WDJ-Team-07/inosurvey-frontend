@@ -11,18 +11,18 @@
       >
         <span>
           <select v-model="gender" class="subheading pr-3 pl-3">
-            <option :value="0">모든 성별</option>
-            <option v-if="targetData.gender == 0" :value="1">남성</option>
-            <option v-if="targetData.gender == 0" :value="2">여성</option>
-            <option :value="1" v-if="targetData.gender == 1">남성</option>
-            <option :value="2" v-if="targetData.gender == 2">여성</option>
+            <option :value="0">男女</option>
+            <option v-if="targetData.gender == 0" :value="1">男性</option>
+            <option v-if="targetData.gender == 0" :value="2">女性</option>
+            <option :value="1" v-if="targetData.gender == 1">男性</option>
+            <option :value="2" v-if="targetData.gender == 2">女性</option>
           </select>
           <select v-model="age" class="subheading pr-3 pl-3">
-            <option :value="0">모든 연령</option>
-            <option :value="item" v-for="(item, index) in targetData.age" :key="index">{{item}}대</option>
+            <option :value="0">すべての年齢</option>
+            <option :value="item" v-for="(item, index) in targetData.age" :key="index">{{item}}代</option>
           </select>
           <select v-model="job" class="subheading pr-3 pl-3">
-            <option :value="0">모든 직업</option>
+            <option :value="0">すべての職業</option>
             <option :value="item.id" v-for="(item, index) in targetData.job" :key="index">{{item.name}}</option>
           </select>
         </span>
@@ -92,13 +92,13 @@
       return {
         headers: [
           {
-            text: '질문문항',
+            text: '項目',
             align: 'center',
             sortable: false,
             value: 'name'
           },
           { 
-            text: '응답률',
+            text: '回答率',
             align: 'center',
             sortable: false,
             value: 'calories'
@@ -136,7 +136,7 @@
         },
         series: [
           {
-            name: '응답수 ',
+            name: '回答数 ',
             data: ''
            }
         ],

@@ -12,8 +12,8 @@
           <v-card class="text-xs-center" flat style="background-color:#FAFAFA;" >
             <v-container fluid>
               <v-layout align-center justify-space-around column fill-height>
-                <div class="display-1 font-weight-bold my-5 py-5">설문 정보</div>
-                <div class="display-1 font-weight-bold  my-5 py-5">설문 구매처</div>
+                <div class="display-1 font-weight-bold my-5 py-5">情報</div>
+                <div class="display-1 font-weight-bold  my-5 py-5">販売先</div>
               </v-layout>
             </v-container>
           </v-card>
@@ -34,10 +34,10 @@
                     <span slot="activator">
                       <i class="fas fa-user ma-1"></i>
                       <span>
-                        {{surveyFormInfo.survey.respondent_count}}명
+                        {{surveyFormInfo.survey.respondent_count}}人
                       </span>
                       </span>
-                      <span>응답인원</span>
+                      <span>回答した人数</span>
                     </v-tooltip>
                   </div>
                   <div class="title font-weight-bold px-4 pb-3">
@@ -51,7 +51,7 @@
                           ~{{surveyFormInfo.survey.closed_at}}
                         </span>
                       </span>
-                      <span>설문 진행 일정</span>
+                      <span>進行日程</span>
                     </v-tooltip>
                   </div>
                   <div class="title font-weight-bold px-4 pb-3">
@@ -59,10 +59,10 @@
                     <span slot="activator">
                       <i class="fas fa-coins ma-1"></i>
                       <span>
-                        {{surveyFormInfo.reward}} 이노
+                        {{surveyFormInfo.reward}} INO
                       </span>
                       </span>
-                      <span>금액</span>
+                      <span>金額</span>
                     </v-tooltip>
                   </div>
                 </div>
@@ -70,7 +70,7 @@
                   <v-layout row wrap>
                     <v-flex xs-12 pa-4>
                       <div class="font-weight-bold  my-2" v-for="i in 1">
-                        <span class="mr-5">김민영</span>
+                        <!-- <span class="mr-5">김민영</span> -->
                         <span class="grey--text">2019-06-19</span>
                       </div>
                     </v-flex>

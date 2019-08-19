@@ -39,7 +39,7 @@
     ],
     data() {
       return {
-        multipleValues: { value: '' || "タイトルを指定してください。" }
+        multipleValues: { value: '' || "タイトルをご記入ください" }
       }
     },
     methods: {

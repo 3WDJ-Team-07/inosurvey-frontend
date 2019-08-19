@@ -14,7 +14,7 @@
             </v-flex>
             <v-flex xs5>
               <v-layout row wrap >
-                <div class="title font-weight-bold px-5">
+                <div class="title font-weight-bold" style="margin-left: 75px;">
               <v-tooltip right color="info">
                 <span slot="activator">
                   <i class="far fa-calendar-alt ma-1"></i>
@@ -23,7 +23,7 @@
                     ~ {{donationItems.closed_at | substr(10)}}
                   </span>
                 </span>
-                <span>모금 일정</span>
+                <span>募金日程</span>
               </v-tooltip>
             </div>
           <v-container fill-height>
@@ -36,9 +36,9 @@
                       <span class="info--text">
                       {{donationItems.current_amount}}
                       </span>
-                      / {{donationItems.target_amount}} 이노
+                      / {{donationItems.target_amount}} INO
                     </span>
-                    <span>모금 상황</span>
+                    <span>募金状況</span>
                   </v-tooltip>
               </div>
               </v-flex>
@@ -57,20 +57,20 @@
           </v-container>
           <v-layout row wrap justify-center text-xs-center>
             <div class="donate pa-5">
-              <span class="headline font-weight-bold mr-4">내 보유 이노</span>
+              <span class="headline font-weight-bold mr-4">保有イノ</span>
               <v-progress-circular
                 v-if="loading"
                 indeterminate
                 color="primary"
               ></v-progress-circular>
               <span v-else class="headline font-weight-bold info--text">{{coin || '0'}}</span>
-              <span class="headline font-weight-bold mr-3">&nbsp;&nbsp;이노</span>
+              <span class="headline font-weight-bold mr-3">&nbsp;&nbsp;INO</span>
               <v-btn
                 round
                 large color="info"
                 class="mb-3 title font-weight-bold"
                 @click="SET_IS_DONATE(true)"
-              >기부하기</v-btn>
+              >寄付する</v-btn>
             </div>
           </v-layout>
           <div style="width:90%;" v-if="!this.donationItems.users.length==0">
@@ -80,7 +80,7 @@
           </div>
           <div v-else>
             <div class="mt-5 font-weight-bold" style="margin-left:100px;">
-              당신이 첫번째 기부의 주인공이 되어주세요!
+              あなたが一番目の寄付主人公になってください！
             </div>
           </div>
               </v-layout>

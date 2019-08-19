@@ -16,7 +16,7 @@
       <v-card>
         <v-card-text class="subheading">{{errorText}}</v-card-text>
         <v-card-actions>
-          <v-btn @click="errorDialog = false" color="info" block>확인</v-btn>
+          <v-btn @click="errorDialog = false" color="info" block>確認</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -56,11 +56,11 @@
           if (!imageFile.type.match('image.*')) {
             // 사진이 아닐때
             this.errorDialog = true
-            this.errorText = '사진 파일만 넣어주세요'
+            this.errorText = '写真型ファイルだけ入れてください'
           } else if (size>10) {
             // 사이즈 체크
             this.errorDialog = true
-            this.errorText = '사진파일이 너무 큽니다!! 10MB이하인 파일을 지정해주세요'
+            this.errorText = '写真型ファイル大きすぎます！！10MB以下のファイルを指定してください。'
           } else {
             EventBus.$on('itemIndex', itemIndex => {
               this.itemIndex = itemIndex

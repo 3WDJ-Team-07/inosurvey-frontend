@@ -7,7 +7,7 @@
             <v-select
             :items="items"
             v-model="items.value"
-            label="전체"
+            label="すべて"
             item-text="text"
             item-value="value"
             color="info"
@@ -76,9 +76,9 @@
       return{
         search:'',
         items:[
-          { text: '전체', value:1 },
-          { text: '제목', value:2 },
-          { text: '소개글', value:3 },
+          { text: 'すべて', value:1 },
+          { text: '題目', value:2 },
+          { text: '紹介文', value:3 },
           ]
         }
     },

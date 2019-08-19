@@ -20,7 +20,7 @@
           <v-select
             v-model="donate_id"
             :items="donate_item"
-            label="무관"
+            label="無関係"
             item-text="name"
             item-value="value"
             color="info"
@@ -66,20 +66,20 @@
         donate_id: 2,
         category_id:'',
         donate_item: [
-					{ name: '모든 모금함', value: 2},
-					{ name: '미달성 모금함', value: 0},
-					{ name: '달성 모금함', value: 1},
+					{ name: 'すべて', value: 2},
+					{ name: '未達成', value: 0},
+					{ name: '達成', value: 1},
         ],
         category_item: [
-          {name: '전체', id: 0},
-          {name: '아동 / 청소년', id: 1},
-          {name: '어르신', id: 2},
-          {name: '장애인', id: 3},
-          {name: '지구촌', id: 4},
-          {name: '가족 / 여성', id: 5},
-          {name: '시민사회', id: 6},
-          {name: '동 / 식물', id: 7},
-          {name: '기타', id: 8}
+          {name: 'すべて', id: 0},
+          {name: '児童 / 青少年', id: 1},
+          {name: '老人', id: 2},
+          {name: '障碍者', id: 3},
+          {name: 'グローバル', id: 4},
+          {name: '家族 / 女性', id: 5},
+          {name: '市民社会', id: 6},
+          {name: '動植物', id: 7},
+          {name: 'その他', id: 8}
         ],
       }
     },

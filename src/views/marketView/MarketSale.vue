@@ -182,7 +182,7 @@
       ...mapActions(['UPDATE_MARKET']),
       sell(){
         if(this.sellItems.is_sale == 0){
-          swal("조건이 충족되지 않았습니다", "이대로 판매를 하시겠습니까 ?",
+          swal("条件が満たしていません。", "このままで販売しますか？",
           {icon: "warning", buttons: true,  dangerMode: true})
           .then(response => {
             if(response) {
@@ -194,17 +194,17 @@
               this.$router.replace({name: 'surveymarket'})
               setTimeout(() => {
                 swal(
-                  "판매등록 완료",
-                  "마켓에 설문상품이 등록되었습니다 !",
+                  "販売登録 完了",
+                  "アンケート商品がマーケットに登録されました！",
                   "success",
-                  {button: "확인"}
+                  {button: "OK"}
                 );
               }, 1000);
             }
           })
         }
         else{
-          swal("조건이 충족되면 자동등록 됩니다 !", "지금 판매 하시겠어요 ?",{icon: "warning", buttons: true, dangerMode: true,})
+          swal("条件が満たしたら自動に登録します！", "今、販売しますか？",{icon: "warning", buttons: true, dangerMode: true,})
           .then(response => {
             if(response) {
               this.UPDATE_MARKET({

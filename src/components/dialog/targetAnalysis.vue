@@ -5,7 +5,7 @@
     <v-dialog v-model="isTargetDialog" persistent fullscreen style="z-index:10000;">
       <v-card class="pa-1 border_rounded">
         <v-layout column align-center class="pt-2 grey--text" style="margin-top:60px;">
-          <div class="display-1 mb-4">전체 타겟 응답결과</div>
+          <div class="display-1 mb-4">ターゲット別の回答結果</div>
           <span>
             <v-btn color="red" dark large fab depressed @click="pieChart">pie</v-btn>
             <v-btn color="red" dark large fab depressed @click="donutChart">donut</v-btn>
@@ -23,7 +23,7 @@
           <v-btn 
           style="width:1000px;margin-left:10px; margin-bottom:60px;" 
           block absolute bottom color="info" dark 
-          large @click="SET_IS_TARGET(false)">확인</v-btn>
+          large @click="SET_IS_TARGET(false)">OK</v-btn>
         </v-layout>
       </v-card>
     </v-dialog>
@@ -47,7 +47,7 @@
         c: [0, 0, 0, 0, 0, 0, 0, 0, 0],
         SexSeries: [44, 22],
         chartSexOptions: {
-          labels: ['남자', '여자'],
+          labels: ['男性', '女性'],
           responsive: [{
             breakpoint: 480,
             options: {
@@ -63,7 +63,7 @@
         },
         AgeSeries: [0, 0, 0, 40, 0, 60, 70, 80, 23, 23],
         chartAgeOptions: {
-          labels: ['10대', '20대', '30대', '40대', '50대', '60대', '70대', '80대', '90대', '100대'],
+          labels: ['10代', '20代', '30代', '40代', '50代', '60代', '70代', '80代', '90代', '100代'],
           responsive: [{
             breakpoint: 480,
             options: {
@@ -79,7 +79,7 @@
         },
         JobSeries: [44, 55, 13, 43, 62, 0, 0, 0, 0],
         chartJobOptions: {
-          labels: ['서비스/상담', '금융/무역', '연구/개발', 'IT/인터넷', '건설', '사무/경영', '의료', '교육', '생산/제조'],
+          labels: ['サービス / 相談', '金融 / 貿易', '研究 / 開発', 'IT / インターネット', '建設', '事務 / 経営', '医療', '教育', '生産 / 製造'],
           responsive: [{
             breakpoint: 480,
             options: {

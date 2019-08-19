@@ -17,7 +17,7 @@
                 <v-flex xs12> 
                   <v-text-field
                     prepend-inner-icon="person" 
-                    name="email"  label="아이디" 
+                    name="email"  label="id" 
                     type="text" v-model="form.user_id"
                     required>
                   </v-text-field>
@@ -25,7 +25,7 @@
                 <v-flex xs12> 
                   <v-text-field
                     prepend-inner-icon="lock"  
-                    name="password" label="비밀번호" 
+                    name="password" label="password" 
                     id="password" type="password" 
                     required v-model="form.password" 
                     :rules="passwordRules">
@@ -73,13 +73,13 @@
           password: ''	 // 패스워드
         },
         emailRules: [	 // 이메일 규칙
-          v => !!v || '이메일을 입력하세요', 
-          v => /.+@.+/.test(v) || '이메일 형식으로 입력하세요' 
+          v => !!v || 'メールをご記入ください', 
+          v => /.+@.+/.test(v) || 'メール形式でご記入ください' 
           
         ],
         passwordRules: [  // 패스워드 규칙
-          v => !!v || '비밀번호를 입력하세요',
-          v => v.length >= 6 || '6자 이상으로 입력해주세요'
+          v => !!v || 'パスワードをご記入ください',
+          v => v.length >= 6 || '6字以上でご記入ください'
         ],
         error: null,	 // 에러메시지
       }
@@ -101,13 +101,13 @@
         })
         .then(response => {
           this.$store.state.isLoginDialog = false
-          swal("환영합니다!", "로그인이 완료되었습니다.", "success",{ button: "확인" });
+          swal("ようこそ。InoSurveyへ!", "ログイン成功！", "success",{ button: "OK" });
           this.$router.push({name: 'home'})
           let token = localStorage.getItem('token')
           this.$store.dispatch('USER_INFO', { access_token: token })
         })
         .catch(_ => {
-          this.error = "아이디 또는 비밀번호가 틀렸습니다."
+          this.error = "IDやパスワードが間違います。"
         })
       }
     },

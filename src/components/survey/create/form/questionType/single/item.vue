@@ -41,7 +41,7 @@
     ],
     data() {
       return {
-        SingleValues: { value: '' || "질문을 지정해주세요." },
+        SingleValues: { value: '' || "質問をご記入ください" },
       }
     },
     methods: {

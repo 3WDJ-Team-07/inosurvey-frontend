@@ -10,14 +10,14 @@
           <v-layout row wrap>
             <v-flex xs10>
               <div class="display-2 font-weight-bold pa-3 ml-5">
-                <span v-if="this.title.length==0" class="grey--text text--darken-1">모금함 등록</span>
+                <span v-if="this.title.length==0" class="grey--text text--darken-1">募金箱登録</span>
                 <span v-else>{{title}}</span>
               </div>
             </v-flex>
             <v-flex xs2>
               <div class="mr-5 pa-3">
                 <v-btn block color="info" type="submit" form="add-donation-form">
-                  등록하기
+                  登録する
                 </v-btn>
             </div>
           </v-flex>
@@ -28,10 +28,10 @@
           <v-card class="text-xs-center" flat style="background-color:#FAFAFA;" >
             <v-container fluid>
               <v-layout align-center justify-space-around column fill-height>
-                <div class="display-1 font-weight-bold py-5 my-2">모금함 주제</div>
-                <div class="display-1 font-weight-bold py-5 my-5">소개 이미지</div>
-                <div class="display-1 font-weight-bold py-5 my-5">모금함 설명</div>
-                <div class="display-1 font-weight-bold py-5">모금함 정보</div>
+                <div class="display-1 font-weight-bold py-5 my-2">募金箱名</div>
+                <div class="display-1 font-weight-bold py-5 my-5">紹介イメージ</div>
+                <div class="display-1 font-weight-bold py-5 my-5">説明</div>
+                <div class="display-1 font-weight-bold py-5">情報</div>
               </v-layout>
             </v-container>
           </v-card>
@@ -46,7 +46,7 @@
                       <v-select
                         :items="category_item"
                         v-model="category"
-                        label="카테고리"
+                        label="カテゴリー"
                         item-text="name"
                         item-value="value"
                         append-icon="arrow_drop_down"
@@ -58,7 +58,7 @@
                         v-model="title"
                         :rules="titleRules"
                         :counter="30"
-                        label="모금함이름"
+                        label="募金箱名"
                         required>
                       </v-text-field>
                     </v-flex>
@@ -75,7 +75,7 @@
                       v-if="!imageData"
                       class="placeholder"
                     >
-                      이미지를 선택하세요
+                      イメージを選択してください
                     </span>
                     <input
                       class="file-input"
@@ -91,7 +91,7 @@
                       v-model="content" solo
                       :rules="contentRules"
                       :counter="255"
-                      label="모금함에 대해 설명해주세요"
+                      label="募金箱について説明してください"
                     >
                     </v-textarea>
                   </v-flex>
@@ -111,7 +111,7 @@
                         <template v-slot:activator>
                           <v-text-field
                             v-model="closed_at"
-                            label="모금마감일"
+                            label="募金締め切り日"
                             prepend-icon="event"
                             readonly
                           ></v-text-field>
@@ -126,10 +126,10 @@
                       </v-menu>
                     </v-flex>
                     <v-flex xs2>
-                      <v-text-field type="number" v-model="target_amount" label="목표 모금액" required>
+                      <v-text-field type="number" v-model="target_amount" label="目標募金額" required>
                       </v-text-field>
                     </v-flex>
-                    <v-flex class="mt-4">이노</v-flex>
+                    <v-flex class="mt-4">INO</v-flex>
                   </v-layout>
                 </div>
               </v-layout>
@@ -155,13 +155,13 @@
         title:'',
         titleRules: [
           //모금함 이름 규격
-          v => !!v || '모금함 이름을 작성해주세요.',
-          v => v.length <= 30 || '모금함 이름은 30자 이내여야합니다.'
+          v => !!v || '募金箱名をご記入ください。',
+          v => v.length <= 30 || '募金箱名は30字以内でお願いします。'
         ],
         contentRules: [
           //모금함 설명 규격
-          v => !!v || '모금함 소개를 작성해주세요.',
-          v => v.length <= 255 || '모금함 소개는 255자 이내여야합니다.'
+          v => !!v || '募金箱の紹介をご記入ください。',
+          v => v.length <= 255 || '募金箱の紹介は255字以内でお願いします。'
         ],
         file:'',
         content:'',
@@ -172,14 +172,14 @@
         imageData: null,
         category:'',
         category_item: [
-          {name: '아동 / 청소년', value: 1},
-          {name: '어르신', value: 2},
-          {name: '장애인', value: 3},
-          {name: '지구촌', value: 4},
-          {name: '가족 / 여성', value: 5},
-          {name: '시민사회', value: 6},
-          {name: '동식물', value: 7},
-          {name: '기타', value: 8}
+          {name: '児童 / 青少年', id: 1},
+          {name: '老人', id: 2},
+          {name: '障碍者', id: 3},
+          {name: 'グローバル', id: 4},
+          {name: '家族 / 女性', id: 5},
+          {name: '市民社会', id: 6},
+          {name: '動植物', id: 7},
+          {name: 'その他', id: 8}
         ],
       }
     },
