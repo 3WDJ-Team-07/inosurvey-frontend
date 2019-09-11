@@ -9,24 +9,24 @@
 <br/>  online survey systems based on Block-chain mechanisms
 
 ## サービス紹介　Service Introduction
-__ 1. アンケートの依頼　Survey Request __
+__1. アンケートの依頼　Survey Request__
    * 好きなテーマに合わせて質問をカスタマイジングできます。
    * 回答者の対象を指定して必要な情報が得られます。
 
-** 2. アンケートの回答　Survey Response **
+__2. アンケートの回答　Survey Response__
 * 簡単なアンケートから専門的なアンケートまで、回答をすればINOが得られます。
 
-** 3. アンケートの分析　Survey Analysis **
+__3. アンケートの分析　Survey Analysis__
    * 回答者が提供した健康情報をリアルタイムで確認できます。 
    * グラフ、図表などあなたが望む形で情報が確認できます。
 
-** 4. アンケートマケット　Survey Results Market **
+__4. アンケートマケット　Survey Results Market__
    * アンケート結果の分析資料は売買が可能で、データの有効活用ができます。
 
- ** 5. 寄付サービス　Donation **
+__5. 寄付サービス　Donation__
    * INO-Surveyで得たINOを寄付して健康な社会を構築することに貢献します。
 
-** 6. サービス利用内訳照会　Service history inquiry **
+__6. サービス利用内訳照会　Service history inquiry__
    * ブロックチェーンのネットワーク上で記録されたサービス利用内訳を確認できます。
 
 # Front-end開発者　Front-end contributors
