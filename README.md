@@ -22,12 +22,12 @@
     * ブロックチェーンのネットワーク上で記録されたサービス利用内訳を確認できます。
 
 # Front-end開発者　Front-end contributors
-- [チュ・ホジン ( Chu Hojin )](https://github.com/Hojin-Chu "Chu Hojin") GitHub
-- [リュ・ジョンウン ( Ryu Jeongeun )](https://github.com/JeongeunRyu "Ryu Jeongeun") GitHub
+- チュ・ホジン ( Chu Hojin )[ GitHub](https://github.com/Hojin-Chu "Chu Hojin") :
+- リュ・ジョンウン ( Ryu Jeongeun )[ GitHub](https://github.com/JeongeunRyu "Ryu Jeongeun") :
 
 # 使用技術　Core Technology
 - INO-SURVEYのWeb Front-endを開発するとき使った技術
-- Following technologies are used in Front-end side of INO-Survey.
+  Following technologies are used in Front-end side of INO-Survey.
 
 <a href="https://vuejs.org" target="_blank"><img width="90" src="https://vuejs.org/images/logo.png" alt="Vue"></a>|<a href="https://vuetifyjs.com" target="_blank"><img width="80" src="https://cdn.vuetifyjs.com/images/logos/logo.svg" alt="Vuetify"></a>| <a href="https://github.com/axios/axios" target="_blank"><img width="100" src="https://user-images.githubusercontent.com/8939680/57233884-20344080-6fe5-11e9-8df3-0df1282e1574.png" alt="Axios"></a>| <a href="https://apexcharts.com/" target="_blank"><img width="100" src="https://ph-files.imgix.net/2364bb25-f440-4363-add2-55d5b1475f50?auto=format" alt="Apexchart"></a>| <a href="https://sweetalert.js.org/"><img width="100" src="https://raw.githubusercontent.com/t4t5/sweetalert/e3c2085473a0eb5a6b022e43eb22e746380bb955/assets/logotype.png" alt="swal"></a>| <img width="100" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile8.uf.tistory.com%2Fimage%2F99F758365B6BE5C116FED5" alt="HTML CSS JS">
 ------- | ------- | -------| -------| -------| -------
