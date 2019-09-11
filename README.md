@@ -1,5 +1,6 @@
 
 
+
 # INO-SURVEYについて　About INO-SURVEY
 ###### 　-　INO-SURVEYのウェブサイト　Website of INO-SURVEY
 <p align="center"><a href="http://54.180.29.63/" target="_blank" ><img src="https://github.com/3WDJ-Team-07/inosurvey-frontend/blob/master/public/static/frontend.png?raw=true" alt="INO-SURVEY"></a></p>
@@ -8,20 +9,25 @@
 <br/>  online survey systems based on Block-chain mechanisms
 
 ## サービス紹介　Service Introduction
-<b>1. アンケートの依頼　Survey Request</b>
+** 1. アンケートの依頼　Survey Request **
    * 好きなテーマに合わせて質問をカスタマイジングできます。
    * 回答者の対象を指定して必要な情報が得られます。
- <b>2. アンケートの回答　Survey Response</b>
-    * 簡単なアンケートから専門的なアンケートまで、回答をすればINOが得られます。
- <b>3. アンケートの分析　Survey Analysis</b>
-    * 回答者が提供した健康情報をリアルタイムで確認できます。 
-    * グラフ、図表などあなたが望む形で情報が確認できます。
- <b>4. アンケートマケット　Survey Results Market</b>
-    * アンケート結果の分析資料は売買が可能で、データの有効活用ができます。
- <b>5. 寄付サービス　Donation</b>
-    * INO-Surveyで得たINOを寄付して健康な社会を構築することに貢献します。
- <b>6. サービス利用内訳照会　Service history inquiry</b>
-    * ブロックチェーンのネットワーク上で記録されたサービス利用内訳を確認できます。
+
+** 2. アンケートの回答　Survey Response **
+* 簡単なアンケートから専門的なアンケートまで、回答をすればINOが得られます。
+
+** 3. アンケートの分析　Survey Analysis **
+   * 回答者が提供した健康情報をリアルタイムで確認できます。 
+   * グラフ、図表などあなたが望む形で情報が確認できます。
+
+** 4. アンケートマケット　Survey Results Market **
+   * アンケート結果の分析資料は売買が可能で、データの有効活用ができます。
+
+ ** 5. 寄付サービス　Donation **
+   * INO-Surveyで得たINOを寄付して健康な社会を構築することに貢献します。
+
+** 6. サービス利用内訳照会　Service history inquiry **
+   * ブロックチェーンのネットワーク上で記録されたサービス利用内訳を確認できます。
 
 # Front-end開発者　Front-end contributors
 - チュ・ホジン ( Chu Hojin )[ GitHub](https://github.com/Hojin-Chu "Chu Hojin") :
