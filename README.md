@@ -2,7 +2,7 @@
 
 # About INO-SURVEY
 ###### 　-　INO-SURVEYのウェブサイト
-<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img src="https://github.com/3WDJ-Team-07/inosurvey-frontend/blob/master/public/static/frontend.png?raw=true" alt="INO-SURVEY"></a></p>
+<p align="center"><a href="http://54.180.29.63/" target="_blank" ><img src="https://github.com/3WDJ-Team-07/inosurvey-frontend/blob/master/public/static/frontend.png?raw=true" alt="INO-SURVEY"></a></p>
 
 - ブロックチェーン基盤、アンケートプラットフォーム
 ## サービス紹介
