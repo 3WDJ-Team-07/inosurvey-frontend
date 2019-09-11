@@ -7,9 +7,8 @@
             <v-flex xs5>
               <img src="/static/crip.png" style="z-index:1000; position:relative; bottom:70px;" width="60px;" alt="">
               <v-card style="z-index:10; position:relative; bottom:100px; height:700px;" class="pa-5">
-                <v-card-title primary-title class="title">
-                  {{donationItems.content}}
-                </v-card-title>
+                <v-card-text primary-title class="title text-sm-left" v-html="donationItems.content">
+                </v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs5>
@@ -57,7 +56,7 @@
           </v-container>
           <v-layout row wrap justify-center text-xs-center>
             <div class="donate pa-5">
-              <span class="headline font-weight-bold mr-4">保有イノ</span>
+              <span class="headline font-weight-bold mr-4">保有INO</span>
               <v-progress-circular
                 v-if="loading"
                 indeterminate

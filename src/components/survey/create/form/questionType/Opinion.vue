@@ -10,7 +10,7 @@
           <v-textarea
           box name="input-7-4"
           label="私の意見"
-          value="自分の意見を自由にご記入ください。"
+          value="あなたの意見を自由にご記入ください。"
           ></v-textarea>
         </v-flex>
       </v-layout>

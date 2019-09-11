@@ -10,7 +10,7 @@
           <v-layout align-center>
             <v-fade-transition mode="out-in">
               <v-flex :key="$route.path" text-xs-left>
-                <h1 class="display-1 white--text font-weight-bold">
+                <h1 class=" white--text font-weight-bold">
                   {{$t('Home.jumbotronTitle')}}
                 </h1>
                 <h1 class="display-2 white--text font-weight-bold">

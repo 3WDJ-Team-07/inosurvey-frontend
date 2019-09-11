@@ -32,7 +32,7 @@
               </v-card>
               <v-card flat :to="{name: 'markethistory'}">
                 <div class="hover_style" style="margin:0 auto">
-                  <div class="title font-weight-bold py-4">購買の記録</div>
+                  <div class="title font-weight-bold py-4">購入の記録</div>
                 </div>
               </v-card>
             </v-card>
@@ -46,12 +46,12 @@
               </v-card-title>
               <v-card v-if="userinfo.is_donator ==1" flat :to="{name: 'foundationhistory'}">
                 <div class="hover_style" style="margin:0 auto">
-                  <div class="title font-weight-bold py-4" >登録した募金</div>
+                  <div class="title font-weight-bold py-4" >登録した募金箱</div>
                 </div>
               </v-card>
               <v-card flat :to="{name: 'donatehistory'}">
                 <div class="hover_style py-4" style="margin:0 auto">
-                  <div class="title font-weight-bold" :style="styleObject">参加した募金</div>
+                  <div class="title font-weight-bold" :style="styleObject">寄付した募金箱</div>
                 </div>
               </v-card>
             </v-card>
@@ -60,17 +60,17 @@
             <v-card class="border_round elevation-4">
               <v-card-title style="background-color:#66B3FF">
                 <div style="margin:0 auto">
-                  <div class="display-1 font-weight-bold py-1 white--text">イノウォレット</div>
+                  <div class="display-1 font-weight-bold py-1 white--text">INOウォレット</div>
                 </div>
               </v-card-title>
               <v-card flat>
                 <div class="border" style="margin:0 auto">
-                  <div class="font-weight-black my-3">保有しているイノ <span class="headline info--text font-weight-black">{{totalCoin}}</span> INO</div>
+                  <div class="font-weight-black my-3">保有しているINO <span class="headline info--text font-weight-black">{{totalCoin}}</span> INO</div>
                 </div>
               </v-card>
               <v-card flat  :to="{name: 'wallethistory'}">
                 <div class="hover_style" style="margin:0 auto">
-                  <div class="title font-weight-bold py-4">もっと</div>
+                  <div class="title font-weight-bold py-4">もっと見る</div>
                 </div>
               </v-card>
             </v-card>

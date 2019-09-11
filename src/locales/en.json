@@ -33,21 +33,21 @@
       {
         "hoverTitle": "アンケート依頼",
         "mainText": "",
-        "subText": "自分だけのアンケート依頼",
+        "subText": "アンケート作成",
         "img": "/static/create.png",
         "color": "blue--text text--darken-1"
       },
       {
         "hoverTitle": "アンケートリスト",
         "mainText": "",
-        "subText": "自分の依頼したアンケート",
+        "subText": "作成したアンケートリスト",
         "img": "/static/mysurvey.png",
         "color": "amber--text text--darken-3"
       }
     ]
   },
   "Home": {
-    "jumbotronTitle": "透明で信頼のある人気アンケート",
+    "jumbotronTitle": "透明で信頼性の高いアンケート",
     "jumbotronLogo": "INO-Survey",
     "jumbotronSubTitle": "自分に必要な答えを探してください。",
     "btnText": "アンケート 依頼",
@@ -55,27 +55,27 @@
     "cardFeatures": [
       {
         "title": "アンケートの依頼",
-        "text": "調査しようとする回答者の年齢代や性別などを指定して必要な情報が得られます。そして、好きなテーマに合わせて質問をカスタマイジングしてみてください!",
+        "text": "好きなテーマに合わせて質問をカスタマイジングしてください!回答者の対象を指定して必要な情報が得られます。",
         "img": "/static/write.png"
       },
       {
         "title": "アンケートの分析",
-        "text": "回答者が提供した健康情報をリアルタイムで確認することができます。 グラフ、図表などあなたが望む形で情報を整理してください！",
+        "text": "回答者が提供した健康情報をリアルタイムで確認できます。 グラフ、図表などあなたが望む形で情報を確認できます！",
         "img": "/static/chart.png"
       },
       {
         "title": "アンケートの回答",
-        "text": "簡単なアンケートから詳しいアンケートまで、回答をすればイノを補償します。",
+        "text": "簡単なアンケートから専門的なアンケートまで、回答をすればINOが得られます。",
         "img": "/static/surveyreq.png"
       },
       { 
         "title": "マーケット",
-        "text": "アンケートの結果分析の資料を取り引きしてデータの活用度を高めます! 自分が持っている資料を他人と共有してみてください！",
+        "text": "アンケート結果の分析資料は売買が可能で、データの有効活用ができます! 自分の資料を他人と共有しましょう！",
         "img": "/static/market.png"
       },
       { 
         "title": "寄付",
-        "text": "寄付説明",
+        "text": "INO-Surveyで得たINOを寄付して健康な社会を実現しましょう！",
         "img": "/static/donate.png"
       }
     ]
@@ -86,6 +86,6 @@
   },
   "Donation": {
     "jumbotronTitle": "寄付",
-    "jumbotronSubTitle": "あなたの手が伸べてから、温情あふれる世の中に"
+    "jumbotronSubTitle": "あなたの手が伸べで、温かい世界に"
   }
 }

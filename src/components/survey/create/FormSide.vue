@@ -30,11 +30,11 @@
               </v-card>
             </v-expansion-panel-content>
           </v-expansion-panel>
-          <v-card-text class="border_bottom pa-4 card_transition" @click="add_single_question">単一回答</v-card-text>
+          <v-card-text class="border_bottom pa-4 card_transition" @click="add_single_question">客観式</v-card-text>
           <v-card-text class="border_bottom pa-4 card_transition" @click="add_subject_question">記述式</v-card-text>
           <v-card-text class="border_bottom pa-4 card_transition" @click="add_multiple_question">複数選択</v-card-text>
           <v-card-text class="border_bottom pa-4 card_transition" @click="add_star_question">星評価</v-card-text>
-          <v-card-text class="border_bottom pa-4 card_transition" @click="add_opinion_question">意見書き</v-card-text>
+          <v-card-text class="border_bottom pa-4 card_transition" @click="add_opinion_question">コメント</v-card-text>
           <v-card-text class="border_bottom pa-4 card_transition" @click="add_image_question">画像タイプ</v-card-text>
         </v-card>
       </v-tab-item>

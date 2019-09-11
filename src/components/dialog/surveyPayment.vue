@@ -13,9 +13,9 @@
           <v-card-title>
           	<span class="display-1 font-weight-bold pa-5 grey--text">{{this.$store.state.formTitle}}</span>
 					</v-card-title>
-					<div class="headline font-weight-bold pb-3">項目当たり価格 {{questionNumberPay}} INO</div>
+					<div class="headline font-weight-bold pb-3">一項目当たりの価格 {{questionNumberPay}} INO</div>
 					<div class="headline font-weight-bold pb-4">回答者数{{responseNumber}} 人</div>
-          <div class="headline font-weight-bold pa-3">決済金額 {{total}} イノを</div>
+          <div class="headline font-weight-bold pa-3">決済金額 {{total}} INOを</div>
           <div class="headline font-weight-bold">決済します。</div>
 				</v-layout>
         <v-card-actions class="pr-4 pl-4 pb-4">
@@ -69,7 +69,7 @@
           this.SET_IS_PAYMENT_SURVEY(false)
           this.$router.push('surveycomplete')
         }else {
-          swal("イノが足りないです！", `\n今、イノを充填しますか ? \n\n保有イノ : ${this.currentIno} INO`,
+          swal("INOが足りないです！", `\n今、INOを充填しますか ? \n\n保有INO : ${this.currentIno} INO`,
           {icon: "warning", buttons: true, dangerMode: true,})
           .then(response => {
             if(response) {

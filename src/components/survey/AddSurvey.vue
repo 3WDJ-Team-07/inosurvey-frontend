@@ -6,7 +6,7 @@
         <v-card-text justify-end>
           <v-text-field name="name" label="タイトル" outline id="id" v-model="getTitle" ref="input" @keyup.enter="onAddClick"></v-text-field>
           <div style="float:right">
-            <v-btn color="grey" dark @click="SET_IS_ADD_SURVEY(false)">取り消し</v-btn>
+            <v-btn color="grey" dark @click="SET_IS_ADD_SURVEY(false)">キャンセル</v-btn>
             <v-btn color="info" @click="onAddClick" :disabled="!valid">完了</v-btn>
           </div>
         </v-card-text>

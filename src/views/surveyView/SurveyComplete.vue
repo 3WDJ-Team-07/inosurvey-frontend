@@ -11,7 +11,8 @@
     <v-divider/>
     <v-layout column wrap align-center text-xs-center mt-5 pt-4> 
       <v-img src="/static/surveycomplete.png" width="30vw">
-        <div class="">
+        <v-layout align-center column pt-5 mt-5>
+          <div class="pt-5">
         <span class="display-2 font-weight-bold">「 {{formTitle}} 」</span>
         <span class="display-1 font-weight-bold"> が<br>登録しました!</span>
       </div>
@@ -20,9 +21,10 @@
         large @click="mySurvey" color="info"
         class="title px-5 font-weight-bold"
         round
-        >自分のアンケート
+        >アンケートリストに戻る
         </v-btn>
       </div>
+        </v-layout>
       </v-img>
     </v-layout>
   </v-container>

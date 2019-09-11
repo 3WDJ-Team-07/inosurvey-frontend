@@ -34,7 +34,7 @@
       class="headline 
       center_sorting 
       font-weight-bold pa-1">
-      イノウォレット</div>
+      INOウォレット</div>
     </v-card-title>
   </v-card>
 </template>

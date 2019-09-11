@@ -17,7 +17,7 @@
               <div class="pa-5 myhover_style text-xs-center title" 
               v-if="userinfo.is_donator==1" @click="foundationPage">登録した募金箱</div>
               <div class="pa-5 myhover_style text-xs-center title" @click="donatePage">参加した募金箱</div>
-              <div class="pa-5 myhover_style text-xs-center title" @click="walletPage">イノウォレット</div>
+              <div class="pa-5 myhover_style text-xs-center title" @click="walletPage">INOウォレット</div>
             </v-list>
           </v-navigation-drawer>
           <v-btn 
@@ -90,7 +90,7 @@
         pagination: {},
         headers: [
           {
-            text: '題目',
+            text: '',
             align: 'center',
             sortable: false,
             width : '700'

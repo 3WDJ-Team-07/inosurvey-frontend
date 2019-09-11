@@ -15,7 +15,7 @@
            <v-img :src="donationItems.image" class="white--text" height="50%"></v-img>
         </v-card-text>
         <v-card-text class="headline font-weight-bold white--text">
-          <span>保有しているイノ : {{ coin || '0' }} イノ</span>
+          <span>保有しているINO : {{ coin || '0' }} INO</span>
         </v-card-text>
 			</v-layout>
       <v-card-actions class="pb-4">
@@ -71,8 +71,8 @@
           if(response.status == "success") {
             await swal({
               title: '世界を変える寄付',
-              text: `\n${this.donationItems.title} という所に ${this.$refs.donateInput.value} イノを寄付しました！
-              \n保有しているイノ : ${(this.inocoin.current_ino - this.$refs.donateInput.value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`,
+              text: `\n${this.donationItems.title} という所に ${this.$refs.donateInput.value} INOを寄付しました！
+              \n保有しているINO : ${(this.inocoin.current_ino - this.$refs.donateInput.value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`,
               icon: "success",
               button: "OK"
             })
@@ -94,7 +94,7 @@
             })
           }
         } else {
-          swal("イノが足りないです！", `\n今、イノを充塡しますか？ \n\n保有イノ : ${this.coin} INO`,
+          swal("INOが足りないです！", `\n今、INOを充塡しますか？ \n\n保有INO : ${this.coin} INO`,
           {icon: "warning", buttons: true, dangerMode: true,})
           .then(response => {
             if(response) {

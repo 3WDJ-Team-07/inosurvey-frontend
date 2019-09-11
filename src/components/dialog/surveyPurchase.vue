@@ -66,41 +66,41 @@
           .then(response => {
             if(response.status == "mysurvey"){
               swal({
-                title: '구매 오류',
-                text: '자신이 만든 설문조사는 구매할 수 없습니다.',
+                title: '購入エラ',
+                text: '自分が作成したアンケートは購入できません。',
                 icon: "error",
-                button: "확인"
+                button: "確認"
               })
             }
             else if(response.status == "duplicated"){
               swal({
-                title: '구매 오류',
-                text: '이미 구매한 설문입니다.',
+                title: '購入エラ',
+                text: 'もう購入したアンケートです。',
                 icon: "error",
-                button: "확인"
+                button: "確認"
               })
             }
             else if(response.status == "request failure"){
               swal({
-                title: '구매 오류',
-                text: '네트워크가 불안정합니다.',
+                title: '購入成功',
+                text: 'ネットワークに問題があります。',
                 icon: "error",
-                button: "확인"
+                button: "確認"
               })
             }
             else{
               swal({
-                title: '구매 성공',
-                text: '구매한 설문은 마이페이지에서 볼 수 있습니다!',
+                title: '購入成功',
+                text: '購入したアンケートはマイページで見られます!',
                 icon: "success",
-                button: "확인"
+                button: "確認"
               })
             }
           })
           this.SET_IS_SURVEY_PURCHASE(false);
           this.$router.replace({name:'surveymarket'})
         }else {
-          swal("이노가 부족합니다 !", `\n지금 바로 이노를 충전하시겠습니까 ? \n\n내 보유이노 : ${this.currentIno} 이노`,
+          swal("INOが不足です", `\n今充電しますか？\n\n保有しているINO : ${this.currentIno} INO`,
           {icon: "warning", buttons: true, dangerMode: true,})
           .then(response => {
             if(response) {

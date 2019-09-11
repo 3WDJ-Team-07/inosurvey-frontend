@@ -87,11 +87,11 @@
                 <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">{{ props.item[0].question_number-1 }}</td>
                 <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">{{ props.item[0].question_title }}</td>
                 <td class="subheading text-xs-center pa-1" style="background-color:#FAFAFA;">
-                  <span v-if="props.item[0].type_id == 1">単一回答</span>
+                  <span v-if="props.item[0].type_id == 1">客観式</span>
                   <span v-else-if="props.item[0].type_id == 2">記述式</span>
                   <span v-else-if="props.item[0].type_id == 3">複数選択</span>
                   <span v-else-if="props.item[0].type_id == 4">星評価</span>
-                  <span v-else-if="props.item[0].type_id == 5">意見書き</span>
+                  <span v-else-if="props.item[0].type_id == 5">コメント</span>
                   <span v-else-if="props.item[0].type_id == 6">画像タイプ</span>
                 </td>
               </template>
@@ -134,7 +134,7 @@
             value: 'name'
           },
           { 
-            text: '題目',
+            text: '質問内容',
             align: 'center',
             sortable: false,
             value: 'calories'

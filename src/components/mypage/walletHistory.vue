@@ -16,7 +16,7 @@
             <div class="pa-5 myhover_style text-xs-center title" 
             v-if="userinfo.is_donator==1" @click="foundationPage">登録した募金箱</div>
             <div class="pa-5 myhover_style text-xs-center title" @click="donatePage">参加した募金箱</div>
-            <div class="pa-5 myhover_style text-xs-center title" @click="walletPage">イノウォレット</div>
+            <div class="pa-5 myhover_style text-xs-center title" @click="walletPage">INOウォレット</div>
           </v-list>
         </v-navigation-drawer>
         <v-btn 
@@ -36,7 +36,7 @@
               <div
               class="display-3 font-weight-bold"
               style="margin-top:50px;padding:30px;"
-              ><span class="info--text">{{ userinfo.nickname }} </span>様の 保有イノ 
+              ><span class="info--text">{{ userinfo.nickname }} </span>様の 保有INO 
                 <div>
                   <span class="info--text font-italic">{{totalCoin}}</span>
                   <img src="/static/coin.png" width="60" class="pos ml-3"></img>
@@ -52,7 +52,7 @@
               <v-layout row wrap justify-space-around>
                 <table>
                   <td class="font-weight-black title white--text">内訳</td>
-                  <td class="font-weight-black title white--text">題目</td>
+                  <td class="font-weight-black title white--text">情報</td>
                   <td class="font-weight-black title white--text">INO</td>
                   <td class="font-weight-black title white--text">日付</td>
                 </table>

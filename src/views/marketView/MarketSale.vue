@@ -130,7 +130,7 @@
               </v-layout>
               <div class="display-3 font-weight-bold" style="margin-top:70px;">
                 「 <span class="info--text">{{sellItems.title}}</span> 」を 「<span class="info--text font-italic">
-                {{saleIno}}</span> イノ」に 販売します。
+                {{saleIno}}</span> INO」に 販売します。
               </div>
             </div>
           </v-card>

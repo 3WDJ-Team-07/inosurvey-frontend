@@ -8,13 +8,13 @@
         <div class="pa-3 mt-2 font-weight-bold display-2">
           <v-layout row wrap justify-space-between>
             <span>お支払い金額</span>
-            <span>{{total}} イノ</span>
+            <span>{{total}} INO</span>
           </v-layout>
         </div>
         <v-divider class="pa-2 mt-5"/>
         <div justify-space-between class="pa-4 font-weight-bold title grey--text">
           <v-layout row wrap justify-space-between>
-            <span>予想応答者数</span>
+            <span>予想回答者数</span>
             <span ref="targetNumber">{{responseNumber}} 人</span>
           </v-layout>
         </div>
@@ -28,8 +28,8 @@
         <v-divider class="pa-2 mt-2"/>
         <div justify-space-between class="pa-4 mb-5 font-weight-bold title grey--text">
           <v-layout row wrap justify-space-between>
-            <span>質問当たりの料金</span>
-            <span>{{questionNumberPay}} イノ</span>
+            <span>質問一項目当たりの料金</span>
+            <span>{{questionNumberPay}} INO</span>
           </v-layout>
         </div>
       </v-layout>

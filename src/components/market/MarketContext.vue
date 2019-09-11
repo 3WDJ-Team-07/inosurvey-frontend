@@ -77,7 +77,7 @@
         search:'',
         items:[
           { text: 'すべて', value:1 },
-          { text: '題目', value:2 },
+          { text: 'タイトル', value:2 },
           { text: '紹介文', value:3 },
           ]
         }
