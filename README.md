@@ -9,7 +9,7 @@
 <br/>  online survey systems based on Block-chain mechanisms
 
 ## サービス紹介　Service Introduction
-** 1. アンケートの依頼　Survey Request **
+__ 1. アンケートの依頼　Survey Request __
    * 好きなテーマに合わせて質問をカスタマイジングできます。
    * 回答者の対象を指定して必要な情報が得られます。
 
