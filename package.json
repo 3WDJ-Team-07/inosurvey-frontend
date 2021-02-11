@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",
-    "apexcharts": "^3.6.7",
+    "apexcharts": "^3.24.0",
     "axios": "^0.18.0",
     "sweetalert": "^2.1.2",
     "vue": "^2.5.22",
